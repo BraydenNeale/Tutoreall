@@ -1,0 +1,24 @@
+Braintree vs stripe
+
+Have it done for the start of the next school year - Feb 2
+Timeline
+
+User
+	Devise (username, email, password ... )
+	type - tutor/student
+	phone number
+	banking details - card number/expiry ... 
+	Availability - MTWTFSS
+	area
+	Subjects
+
+Subject
+	Name
+	Code
+
+
+
+
+
+
+
