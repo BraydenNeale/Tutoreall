@@ -8,6 +8,23 @@
 </head>
 <body>
 
+<header>
+	<% if tutor_signed_in? %>
+		<li>
+			<%= link_to current_tutor.email, tutor_path(current_tutor) %>
+		</li>
+		<li>
+			<%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %>
+		</li>
+	<% else %>
+		<li>
+			<%= link_to "Tutor sign up", new_tutor_registration_path %>
+		</li>
+		<li>
+			<%= link_to "Tutor log in", new_tutor_session_path %>
+		</li>
+</header>
+
 <%= yield %>
 
 </body>
