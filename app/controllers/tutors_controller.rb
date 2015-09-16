@@ -1,4 +1,4 @@
-class TutorController < ApplicationController
+class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update, :destroy]
 
   def index
