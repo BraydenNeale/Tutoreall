@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :tutors
+  devise_for :tutors
   get 'static/home'
 
   root 'static#home'
