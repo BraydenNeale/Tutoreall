@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :students
   root 'static#home'
 
   devise_for :tutors
