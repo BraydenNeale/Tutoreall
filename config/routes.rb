@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
-
-  get 'students/index'
-
-  get 'students/show'
-
-  get 'students/edit'
-
+  
   devise_for :students
-  root 'static#home'
+  resources :students
 
   devise_for :tutors
   resources :tutors
   
+  root 'static#home'
   get 'static/home'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,2 +1,23 @@
 <h1>Tutor#index</h1>
-<p>Find me in app/views/tutor/index.html.erb</p>
+
+<table>
+	<thead>
+		<tr>
+			<td>Email</td>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+	<% @tutors.each do |tutor| %>
+		<tr>
+			<td>
+				<%= tutor.email %>
+			</td>
+			<td>
+				<%= link_to "show", tutor %>
+			</td>
+		</tr>
+	<% end %>
+</table>
