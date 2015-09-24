@@ -24,6 +24,22 @@
 			<%= link_to "Tutor log in", new_tutor_session_path %>
 		</li>
 	<% end %>
+
+	<% if student_signed_in? %>
+		<li>
+			<%= link_to current_student.email, student_path(current_student) %>
+		</li>
+		<li>
+			<%= link_to "Log out", destroy_student_session_path, :method => :delete %>
+		</li>
+	<% else %>
+		<li>
+			<%= link_to "Student sign up", new_student_registration_path %>
+		</li>
+		<li>
+			<%= link_to "Student log in", new_student_session_path %>
+		</li>
+	<% end %>
 </header>
 
 <%= yield %>
