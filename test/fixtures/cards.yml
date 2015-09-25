@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Number: MyString
+  Expiry: MyString
+  Code: MyString
+
+two:
+  Number: MyString
+  Expiry: MyString
+  Code: MyString
