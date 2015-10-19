@@ -4,12 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Devise firstname and lastname - added
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  # before_filter :configure_permitted_parameters, if: :devise_controller?
+  devise_group :user, contains: [:student, :tutor]
 
   # helper_method :current_user
   # helper_method :user_signed_in
-  # helper_method :is_tutor
-  # helper_method :is_student
+  helper_method :is_tutor
+  helper_method :is_student
 
   # def current_user
   #   current_student || current_tutor
@@ -24,13 +25,13 @@ class ApplicationController < ActionController::Base
   #   sign_out_and_redirect(current_user)
   # end
 
-  # def is_tutor
-  #   return current_user.is_a? Tutor
-  # end
+  def is_tutor
+    return current_user.is_a? Tutor
+  end
 
-  # def is_student
-  #   return current_user.is_a? Student
-  # end
+  def is_student
+    return current_user.is_a? Student
+  end
 
   protected
   def configure_permitted_parameters
