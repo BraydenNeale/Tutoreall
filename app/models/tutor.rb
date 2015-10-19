@@ -16,4 +16,8 @@ class Tutor < ActiveRecord::Base
 	# def self.search(field, term)
 	# 	where("? like ?", "%#{field}", "%#{term}")
 	# end
+
+  def display_name
+    return "#{self.firstname} #{self.lastname}"
+  end
 end
