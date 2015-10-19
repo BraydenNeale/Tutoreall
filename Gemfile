@@ -47,6 +47,7 @@ end
 gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'mailboxer'
 
 #heroku
 gem 'puma'

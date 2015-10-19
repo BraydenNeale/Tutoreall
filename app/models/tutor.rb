@@ -6,6 +6,8 @@ class Tutor < ActiveRecord::Base
 
   has_one :card, :as => :user
 
+  acts_as_messageable # mailboxer
+
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
 

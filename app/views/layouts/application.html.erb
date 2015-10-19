@@ -9,12 +9,19 @@
 <body>
 
 <header>
-	<% if tutor_signed_in? %>
+	<% if user_signed_in %>
 		<li>
-			<%= link_to current_tutor.email, tutor_path(current_tutor) %>
+			<%= link_to current_user.email, tutor_path(current_tutor) %>
 		</li>
 		<li>
-			<%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %>
+			<%#= link_to "Log Out", destroy_tutor_session_path, :method => :delete %>
+			<%#= link_to "Log Out", :controller => "application", :action => "sign_out"%>
+			<%#= link_to "Log Out", sign_out_and_redirect(current_user) %>
+			<% if is_tutor %>
+				<%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %>
+			<% else %>
+				<%= link_to "Log Out", destroy_student_session_path, :method => :delete %>
+			<% end %>
 		</li>
 	<% else %>
 		<li>
@@ -23,16 +30,6 @@
 		<li>
 			<%= link_to "Tutor log in", new_tutor_session_path %>
 		</li>
-	<% end %>
-
-	<% if student_signed_in? %>
-		<li>
-			<%= link_to current_student.email, student_path(current_student) %>
-		</li>
-		<li>
-			<%= link_to "Log out", destroy_student_session_path, :method => :delete %>
-		</li>
-	<% else %>
 		<li>
 			<%= link_to "Student sign up", new_student_registration_path %>
 		</li>
@@ -40,6 +37,7 @@
 			<%= link_to "Student log in", new_student_session_path %>
 		</li>
 	<% end %>
+
 </header>
 
 <%= yield %>
