@@ -45,7 +45,8 @@ end
 
 #Project Gems
 gem 'devise'
-
+gem 'rmagick'
+gem 'carrierwave'
 
 #heroku
 gem 'puma'
