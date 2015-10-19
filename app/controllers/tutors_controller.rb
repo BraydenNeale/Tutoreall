@@ -30,4 +30,8 @@ class TutorsController < ApplicationController
   def set_tutor
     @tutor = Tutor.find(params[:id])
   end
+
+  def tutor_params
+      params.require(:tutor).permit(:picture, :rate, :age, :about, :experience)
+  end
 end
