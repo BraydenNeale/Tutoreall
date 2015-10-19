@@ -4,6 +4,8 @@ class Tutor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :card, :as => :user
+
  # 	def self.search(search)
  # 		where("name like ?", "%#{search}%")
 	# end
