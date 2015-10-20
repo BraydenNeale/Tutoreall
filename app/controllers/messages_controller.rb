@@ -8,9 +8,9 @@ class MessagesController < ApplicationController
     # recipients = User.where(id: params['recipients'])
     # if  is_tutor?
     if current_user.is_a? Tutor
-    	recipients = Student.where(id: params['recipicents'])
+    	recipients = Student.where(id: params['recipients'])
     else
-    	recipients = Tutor.where(id: params['recipicents'])
+    	recipients = Tutor.where(id: params['recipients'])
     end
     conversation = current_user.send_message(recipients, params[:message][:body], params[:message][:subject]).conversation
     flash[:success] = "Message has been sent!"

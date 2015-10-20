@@ -1,9 +1,5 @@
 module MessagesHelper
 	def recipients_options
-		# User.all.each do |user|
-		# 	s << "<option value='#{user.id}'>#{user.name}</option>"
-		# end
-		# s.html_safe
 		s = ''
 		if is_tutor
 			Student.all.each do |user|
@@ -16,4 +12,8 @@ module MessagesHelper
 		end
 		s.html_safe
 	end
+
+	def participant_names(conversation)
+    conversation.receipts.reject { |p| p.receiver == current_user }.collect {|p| p.receiver.display_name }.uniq.join(" ,")
+  end
 end

@@ -1,23 +1,8 @@
 <h1>Conversations</h1>
 
-<% if is_tutor %>
-	Hello tutor
-<% end %>
-
 <p><%= link_to 'Start conversation', new_message_path %></p>
-<!-- <ul>
-  <%= render partial: 'conversations/conversation', collection: @conversations %>
-</ul> -->
 <ul>
-	<% @conversations.each do |conversation| %>
-		<li>
-			<p><%= link_to conversation.subject, conversations_path(conversation) %></p>
-			<p>
-				<%= conversation.last_message.body %>
-				<%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
-			</p>
-		</li>
-	<% end %>
+  <%= render partial: 'conversations/conversation', collection: @conversations %>
 </ul>
 
 <%= will_paginate %>

@@ -24,4 +24,8 @@ class Tutor < ActiveRecord::Base
   def display_name
     return "#{self.firstname} #{self.lastname}"
   end
+
+  def mailboxer_email(object)
+    #return the model's email here
+  end
 end

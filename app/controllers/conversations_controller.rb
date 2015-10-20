@@ -7,7 +7,8 @@ class ConversationsController < ApplicationController
 	end
 
 	def index
-		@conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+		# @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+		@conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
 	end
 
 	def reply
@@ -19,8 +20,7 @@ class ConversationsController < ApplicationController
 	private
 
 	def get_mailbox
-		# @mailbox ||= current_user.mailbox
-		@mailbox = current_user.mailbox
+		@mailbox ||= current_user.mailbox
 	end
 
 	def get_conversation

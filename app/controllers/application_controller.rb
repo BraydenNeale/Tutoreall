@@ -9,14 +9,24 @@ class ApplicationController < ActionController::Base
   
   helper_method :is_tutor
   helper_method :is_student
+  helper_method :check_is_tutor
+  helper_method :check_is_student
 
 
   def is_tutor
     return current_user.is_a? Tutor
   end
 
+  def check_is_tutor(user)
+    return user.is_a? Tutor
+  end
+
   def is_student
     return current_user.is_a? Student
+  end
+
+   def check_is_student(user)
+    return user.is_a? Student
   end
 
   rescue_from ActiveRecord::RecordNotFound do

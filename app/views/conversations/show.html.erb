@@ -1,10 +1,8 @@
 <h1>Conversations</h1>
 
 <p>Chatting with
-	<% @conversation.participants.each do |participant| %>
-		<p><%= participant.display_name %></p> <br>
-	<% end %>
-	<%#= render 'conversations/participants', conversation: @conversation %>
+	<%#= participant_names(@conversation) %>
+	 <%= render 'conversations/participants', conversation: @conversation %>
 </p>
 
 <% @conversation.receipts_for(current_user).each do |receipt| %>
@@ -14,9 +12,10 @@
 		says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
 	<%= message.body %>
 
+
 	<%= form_tag reply_conversation_path(@conversation), method: :post do %>
 	  <div class="field">
-	    <%= text_area_tag 'body', nil, cols: 3, placeholder: 'Type something...', required: true %>
+	    <%= text_area_tag 'body', nil, placeholder: 'Type something...', required: true %>
 	  </div>
 	 <div class="actions">
 	    <%= submit_tag 'Send' %>
