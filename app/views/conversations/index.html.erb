@@ -1,5 +1,6 @@
 <h1>Conversations</h1>
 
+<p><%= link_to 'Start conversation', new_message_path %></p>
 <ul>
 	<%= render partial: 'conversations/conversations', collection: @conversations %>
 </ul>

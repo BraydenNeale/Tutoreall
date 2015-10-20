@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get 'static/home'
 
   resources :conversations, only: [:index, :show, :destroy]
+  resources :messages, only: [:new, :create]
 end

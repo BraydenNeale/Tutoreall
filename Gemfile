@@ -48,6 +48,8 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'mailboxer'
+gem 'jquery-turbolinks'
+gem 'chosen-rails'
 
 #heroku
 gem 'puma'
