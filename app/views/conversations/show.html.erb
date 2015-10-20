@@ -1,0 +1,13 @@
+<h1>Conversations</h1>
+
+<p>Chatting with
+	<%= render 'conversations/participants', conversation: @conversation %>
+</p>
+
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+	<% message = receipt.message %>
+
+	<% message.sender.name %>
+		says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
+	<%= message.body %>
+<% end %>

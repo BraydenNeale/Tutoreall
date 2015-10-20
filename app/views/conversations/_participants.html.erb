@@ -1,0 +1,7 @@
+<% conversation.participants.each do |participant| %>
+	<% unless participant == current_user %>
+		<% if is_tutor? %>
+			<%= image_tag participant.picture_url(:thumb) %>
+		<% end %>
+	<% end %>
+<% end %>

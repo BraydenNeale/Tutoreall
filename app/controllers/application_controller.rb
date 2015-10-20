@@ -33,6 +33,15 @@ class ApplicationController < ActionController::Base
     return current_user.is_a? Student
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:warning] = 'Resource not found.'
+    redirect_back_or root_path
+  end
+
+  def redirect_back_or(path)
+    redirect_to request.referer || path
+  end
+
   protected
   def configure_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_up) << :firstname

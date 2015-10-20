@@ -1,0 +1,9 @@
+<li>
+	<p><%= link_to conversation.subject, conversations_path(conversation) %></p>
+
+	<p>
+		<%= conversation.last_message.body %>
+		<%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
+	</p>
+
+</li>
