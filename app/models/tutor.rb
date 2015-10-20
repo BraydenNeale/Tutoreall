@@ -6,6 +6,8 @@ class Tutor < ActiveRecord::Base
 
   has_one :card, :as => :user
 
+  mount_uploader :picture, PictureUploader
+
   acts_as_messageable # mailboxer
 
   has_and_belongs_to_many :subjects

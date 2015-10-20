@@ -2,8 +2,9 @@
 <p>Find me in app/views/tutor/show.html.erb</p>
 
 <p><%= @tutor.display_name %></p>
+<%= image_tag @tutor.picture_url(:thumb) %>
+<%#= image_tag @tutor.picture_url.to_s %>
 <p><%= @tutor.email %></p>
-<p><%= @tutor.picture %></p>
 <p><%= @tutor.rate %></p>
 <p><%= @tutor.age %></p>
 <p><%= @tutor.about %></p>
