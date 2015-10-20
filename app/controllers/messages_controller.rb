@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
 
   def create
     # recipients = User.where(id: params['recipients'])
-    if is_tutor?
+    # if  is_tutor?
+    if current_user.is_a? Tutor
     	recipients = Student.where(id: params['recipicents'])
     else
     	recipients = Tutor.where(id: params['recipicents'])

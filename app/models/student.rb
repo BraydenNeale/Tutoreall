@@ -8,4 +8,7 @@ class Student < ActiveRecord::Base
 
   acts_as_messageable
 
+  def display_name
+    return "#{self.firstname} #{self.lastname}"
+  end
 end
