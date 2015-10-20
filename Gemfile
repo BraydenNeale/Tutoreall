@@ -49,7 +49,9 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'mailboxer'
 gem 'jquery-turbolinks'
-gem 'chosen-rails'
+gem 'will_paginate'
+# gem 'chosen-rails'
+# gem 'compass-rails'
 
 #heroku
 gem 'puma'

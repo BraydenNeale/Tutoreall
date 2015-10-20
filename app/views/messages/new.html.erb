@@ -1,20 +1,22 @@
-<h1>Start Conversation</h1>
+<h1>New Message</h1>
 
-<%= form_tag messages_path, method :post do %>
-	<div class="field">
-		<%= label_tag 'message[subject]', 'Subject' %>
-		<%= text_field_tag 'message[subject]', nil, required: true %>
-	</div>
-	<div class="field">
-		<%= label_tag 'message[body]', 'Message' %>
-		<%= text_area_tag 'message[body]', nil, cols: 3, required: true %>
-	</div>
-	<div class="field">
-		<%= label_tag 'recipients', 'Choose recipients' %>
-		<%= select_tag 'recipients', recipients_options, multiple: true %>
-	</div>
-  <div class="actions">
-    <%= f.submit %>
+<%= form_tag messages_path, method: :post do %>
+  <div class="field">
+    <%= label_tag 'message[subject]', 'Subject' %>
+    <%= text_field_tag 'message[subject]', nil, required: true %>
   </div>
-	
+
+  <div class="field">
+    <%= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, required: true %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'recipients', 'Choose recipients' %>
+    <%= select_tag 'recipients', recipients_options, multiple: true %>
+  </div>
+  
+  <div class="actions">
+    <%= submit_tag 'Send', class: 'btn btn-primary' %>
+  </div>
 <% end %>

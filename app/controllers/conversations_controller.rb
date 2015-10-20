@@ -1,13 +1,15 @@
 class ConversationsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :get_mailbox
-	before_action :get_mailbox, except: [:index]
+	before_action :get_conversation, except: [:index]
 
 	def show
 	end
 
 	def index
 		@conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+		# @conversations = @mailbox.inbox
+		# @conversations = @mailbox.conversations.page(params[:page]).per(9)
 	end
 
 	private

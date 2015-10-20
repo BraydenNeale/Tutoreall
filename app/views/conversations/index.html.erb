@@ -2,7 +2,7 @@
 
 <p><%= link_to 'Start conversation', new_message_path %></p>
 <ul>
-	<%= render partial: 'conversations/conversations', collection: @conversations %>
+	<%= render partial: 'conversations/conversation', collection: @conversations %>
 </ul>
 
 <%= will_paginate %>
