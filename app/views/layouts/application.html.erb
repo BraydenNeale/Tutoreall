@@ -9,22 +9,27 @@
 <body>
 
 <header>
-	<div class="row">
-		<% if user_signed_in? %>
-			<% if is_tutor %>
-				<%= link_to current_user.email, tutor_path(current_user) %> <br>
-				<%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %> <br>
+	<nav>
+		<ul>
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Search Tutors', tutors_path %></li>
+			<% if user_signed_in? %>
+				<% if is_tutor %>
+					<li><%= link_to current_user.display_name, tutor_path(current_user) %></li>
+					<li><%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to current_user.display_name, student_path(current_user) %></li>
+					<li><%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %></li>
+				<% end %>
 			<% else %>
-				<%= link_to current_user.email, student_path(current_user) %> <br>
-				<%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %> <br>
+				<li><%= link_to "Tutor sign up", new_tutor_registration_path %></li>
+				<li><%= link_to "Tutor log in", new_tutor_session_path %></li>
+				<li><%= link_to "Student sign up", new_student_registration_path %></li>
+				<li><%= link_to "Student log in", new_student_session_path %></li>
 			<% end %>
-		<% else %>
-			<%= link_to "Tutor sign up", new_tutor_registration_path %> <br>
-			<%= link_to "Tutor log in", new_tutor_session_path %> <br>
-			<%= link_to "Student sign up", new_student_registration_path %> <br>
-			<%= link_to "Student log in", new_student_session_path %> <br>
-		<% end %>
-	</div>
+		</ul>
+	</nav>
+		
 </header>
 
 <div class="container">

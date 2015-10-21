@@ -24,11 +24,26 @@ html{
 .container{
 	height: 100%;
 	min-height: 700px;
+	padding: 2%;
+	border-left: 1px solid #B7C1BF;
+	border-right: 1px solid #B7C1BF;
 }
 
 header{
 	height: 75px;
 	border-bottom: 1px solid black;
+	nav{
+		ul{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			li{
+				display:inline;
+				margin: 20% 5%;
+				vertical-align: middle;
+			}
+		}
+	}
 }
 
 footer{
