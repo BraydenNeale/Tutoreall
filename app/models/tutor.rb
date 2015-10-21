@@ -22,10 +22,18 @@ class Tutor < ActiveRecord::Base
 	# end
 
   def display_name
-    return "#{self.firstname} #{self.lastname}"
+    return "#{self.firstname} #{self.lastname}".titleize
+  end
+
+  def display_rate
+    return helper.number_to_currency(self.rate)
   end
 
   def mailboxer_email(object)
     #return the model's email here
+  end
+
+  def helper
+    ActionController::Base.helpers
   end
 end
