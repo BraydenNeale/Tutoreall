@@ -2,7 +2,7 @@
 	<% unless participant == current_user %>
 		<%= participant.display_name %>
 		<% if check_is_tutor(participant) %>
-			<%= image_tag participant.picture_url(:thumb) %>
+			<%= image_tag participant.picture_url(:chat) %>
 		<% end %>
 	<% end %>
 <% end %>
