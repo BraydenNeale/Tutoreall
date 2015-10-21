@@ -14,10 +14,15 @@
 	<p>About: <br><%= @tutor.about %></p>
 	<p>Experience: <br><%= @tutor.experience %></p>
 	<!-- <p>Email: <%#= @tutor.email %></p> -->
-
-	<a href="">Send message</a>
 </div>
 
 <div class="row">
-	
+	<% if this_tutor(@tutor) %>
+		<%= link_to 'my messages', conversations_path %> |
+		<%= link_to 'edit profile', edit_tutor_path(@tutor) %>
+	<% elsif is_student %>
+		<a href="">Mesage Tutor</a>
+	<% else %>
+		<p>Sign up to message this tutor</p>
+	<% end %>
 </div>
