@@ -18,3 +18,20 @@
 @import "normalize";
 @import "skeleton";
 
+html{
+}
+
+.container{
+	height: 100%;
+	min-height: 700px;
+}
+
+header{
+	height: 75px;
+	border-bottom: 1px solid black;
+}
+
+footer{
+	height: 50px;
+	border-top: 1px solid black;
+}

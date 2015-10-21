@@ -1,11 +1,23 @@
-<h1>Tutor#show</h1>
-<p>Find me in app/views/tutor/show.html.erb</p>
+<div class="row">
+	<div class="four columns">
+		<%= image_tag @tutor.picture_url(:thumb) %>
+	</div>
+	<div class="eight columns">
+		<h3><%= @tutor.display_name %></h3>
+	</div>
+</div>
+<br><br>
 
-<p><%= @tutor.display_name %></p>
-<%= image_tag @tutor.picture_url(:thumb) %>
-<%#= image_tag @tutor.picture_url.to_s %>
-<p><%= @tutor.email %></p>
-<p><%= @tutor.rate %></p>
-<p><%= @tutor.age %></p>
-<p><%= @tutor.about %></p>
-<p><%= @tutor.experience %></p>
+<div class="row">
+	<p>Hourly rate: <%= @tutor.rate %></p>
+	<p>Age: <%= @tutor.age %></p>
+	<p>About: <br><%= @tutor.about %></p>
+	<p>Experience: <br><%= @tutor.experience %></p>
+	<!-- <p>Email: <%#= @tutor.email %></p> -->
+
+	<a href="">Send message</a>
+</div>
+
+<div class="row">
+	
+</div>

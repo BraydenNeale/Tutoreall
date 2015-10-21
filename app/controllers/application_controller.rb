@@ -7,28 +7,6 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   devise_group :user, contains: [:student, :tutor]
   
-  helper_method :is_tutor
-  helper_method :is_student
-  helper_method :check_is_tutor
-  helper_method :check_is_student
-
-
-  def is_tutor
-    return current_user.is_a? Tutor
-  end
-
-  def check_is_tutor(user)
-    return user.is_a? Tutor
-  end
-
-  def is_student
-    return current_user.is_a? Student
-  end
-
-   def check_is_student(user)
-    return user.is_a? Student
-  end
-
   rescue_from ActiveRecord::RecordNotFound do
     flash[:warning] = 'Resource not found.'
     redirect_back_or root_path
