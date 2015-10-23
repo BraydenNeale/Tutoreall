@@ -3,7 +3,7 @@
 <table>
 	<thead>
 		<tr>
-			<td>Email</td>
+			<td>Name</td>
 			<td></td>
 		</tr>
 	</thead>
@@ -13,7 +13,7 @@
 	<% @tutors.each do |tutor| %>
 		<tr>
 			<td>
-				<%= tutor.email %>
+				<%= tutor.display_name %>
 			</td>
 			<td>
 				<%= link_to "show", tutor %>
