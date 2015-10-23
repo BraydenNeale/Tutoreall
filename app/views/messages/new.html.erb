@@ -8,11 +8,11 @@
 
   <div class="field">
     <%= label_tag 'message[body]', 'Message' %>
-    <%= text_area_tag 'message[body]', nil, cols: 3, required: true %>
+    <%= text_area_tag 'message[body]', nil, required: true %>
   </div>
 
   <div class="field">
-    <%= label_tag 'recipients', 'Choose recipients' %>
+    <%= label_tag 'recipients', 'Choose recipient' %>
     <%= select_tag 'recipients', recipients_options, multiple: false %>
   </div>
   

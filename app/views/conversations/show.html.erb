@@ -5,20 +5,22 @@
 	 <%= render 'conversations/participants', conversation: @conversation %>
 </p>
 
-<% @conversation.receipts_for(current_user).each do |receipt| %>
+<% @conversation.receipts_for(current_user).reverse_each do |receipt| %>
 	<% message = receipt.message %>
 
 	<%= message.sender.firstname %>
 		says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
 	<%= message.body %>
 
-
-	<%= form_tag reply_conversation_path(@conversation), method: :post do %>
-	  <div class="field">
-	    <%= text_area_tag 'body', nil, placeholder: 'Type something...', required: true %>
-	  </div>
-	 <div class="actions">
-	    <%= submit_tag 'Send' %>
-	  </div>
+	<% if receipt == @conversation.receipts_for(current_user).last %>
+		<%= form_tag reply_conversation_path(@conversation), method: :post do %>
+		  <div class="field">
+		    <%= text_area_tag 'body', nil, placeholder: 'Type something...', required: true %>
+		  </div>
+		 <div class="actions">
+		    <%= submit_tag 'Send' %>
+		  </div>
+		<% end %>
 	<% end %>
+	<br>
 <% end %>
