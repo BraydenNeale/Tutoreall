@@ -1,4 +1,7 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h4><%= @student.display_name %></h4>
 
-<p><%= @student.display_name %></p>
+<div class="row">
+	<% if this_student(@student) %>
+		<%= link_to 'my messages', conversations_path %> 
+	<% end %>
+</div>

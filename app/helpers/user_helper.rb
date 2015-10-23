@@ -18,4 +18,8 @@ module UserHelper
   def this_tutor(tutor)
     return tutor_signed_in? && (current_user.id == tutor.id)
   end
+
+  def this_student(student)
+    return student_signed_in? && (current_user.id == student.id)
+  end
 end
