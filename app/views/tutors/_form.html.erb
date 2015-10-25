@@ -36,16 +36,16 @@
     <%= hidden_field_tag "tutor[area_ids][]", nil %>
     <% Area.all.each do |area| %>
       <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area) %>
-      <%= label_tag dom_id(area), area.name %> 
+      <%= label_tag dom_id(area), area.name %> <br>
     <% end %>
   </div> <br>
 
  <div class="field">
-    <h4>Subject</h4>
+    <h4>Subjects</h4>
     <%= hidden_field_tag "tutor[subject_ids][]", nil %>
     <% Subject.all.each do |subject| %>
       <%= check_box_tag "tutor[subject_ids][]", subject.id, @tutor.subject_ids.include?(subject.id), id: dom_id(subject) %>
-      <%= label_tag dom_id(subject), subject.name %>
+      <%= label_tag dom_id(subject), subject.name %> <br>
     <% end %>
   </div>
 
