@@ -1,7 +1,8 @@
 <h1>Find a tutor</h1>
 
 <%= form_tag("#", :method => "get") do %>
-	<%= text_field_tag :subject, params[:subject], placeholder: "Find subject" %>
+	<%#= text_field_tag :subject, params[:subject], placeholder: "Find subject" %>
+	<%= select_tag 'subject', subjects_options, multiple: false %>
 	<%= submit_tag "Search", :name => nil %>
 <% end %>
 

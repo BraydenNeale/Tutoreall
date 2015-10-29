@@ -5,7 +5,7 @@ class TutorsController < ApplicationController
     if params[:subject]
       @tutors = Tutor.searchSubject(params[:subject])
     elsif params[:area]
-      @tutor = Tutor.searchArea(params[:area])
+      @tutors = Tutor.searchArea(params[:area])
     else
       @tutors = Tutor.all
     end

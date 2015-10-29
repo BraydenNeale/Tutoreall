@@ -34,11 +34,19 @@ class Tutor < ActiveRecord::Base
   end
 
   def self.searchSubject(subject)
-    where("firstname like ?", "%#{subject}%")
+    sub = Subject.where("name like ?", "%#{subject}%").first
+    includes(:subjects).where('subjects.id' => sub.id)
   end
 
   def self.searchArea(area)
-    where("lastname like ?", "%#{area}%")
+    ar = Area.where("name like ?", "%#{area}%").first
+
+    if ar.present?
+      includes(:areas).where('areas.id' => ar.id)
+    else
+      return Array.new
+    end
+    # where("firstname like ?", "%#{area}%")
   end
 
   def helper
