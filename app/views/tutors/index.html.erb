@@ -1,5 +1,15 @@
 <h1>Find a tutor</h1>
 
+<%= form_tag("#", :method => "get") do %>
+	<%= text_field_tag :subject, params[:subject], placeholder: "Find subject" %>
+	<%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<%= form_tag("#", :method => "get") do %>
+	<%= text_field_tag :area, params[:area], placeholder: "Find area" %>
+	<%= submit_tag "Search", :name => nil %>
+<% end %>
+
 <table>
 	<thead>
 		<tr>
@@ -8,16 +18,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		
+		<% @tutors.each do |tutor| %>
+			<tr>
+				<td>
+					<%= tutor.display_name %>
+				</td>
+				<td>
+					<%= link_to "show", tutor %>
+				</td>
+			</tr>
+		<% end %>
 	</tbody>
-	<% @tutors.each do |tutor| %>
-		<tr>
-			<td>
-				<%= tutor.display_name %>
-			</td>
-			<td>
-				<%= link_to "show", tutor %>
-			</td>
-		</tr>
-	<% end %>
 </table>

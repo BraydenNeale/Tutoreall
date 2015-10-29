@@ -2,7 +2,13 @@ class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tutors = Tutor.all
+    if params[:subject]
+      @tutors = Tutor.searchSubject(params[:subject])
+    elsif params[:area]
+      @tutor = Tutor.searchArea(params[:area])
+    else
+      @tutors = Tutor.all
+    end
   end
 
   def show

@@ -33,6 +33,14 @@ class Tutor < ActiveRecord::Base
     #return the model's email here
   end
 
+  def self.searchSubject(subject)
+    where("firstname like ?", "%#{subject}%")
+  end
+
+  def self.searchArea(area)
+    where("lastname like ?", "%#{area}%")
+  end
+
   def helper
     ActionController::Base.helpers
   end
