@@ -1,13 +1,19 @@
 <h1>Find a tutor</h1>
 
-<%= form_tag("#", :method => "get") do %>
+<%#= form_tag("#", :method => "get") do %>
 	<%#= text_field_tag :subject, params[:subject], placeholder: "Find subject" %>
-	<%= select_tag 'subject', subjects_options, multiple: false %>
-	<%= submit_tag "Search", :name => nil %>
-<% end %>
+	<%#= select_tag 'subject', subjects_options, multiple: false %>
+	<%#= submit_tag "Search", :name => nil %>
+<%# end %>
+
+<%#= form_tag("#", :method => "get") do %>
+	<%#= text_field_tag :area, params[:area], placeholder: "Find area" %>
+	<%#= submit_tag "Search", :name => nil %>
+<%# end %>
 
 <%= form_tag("#", :method => "get") do %>
-	<%= text_field_tag :area, params[:area], placeholder: "Find area" %>
+	<%= text_field_tag :area, params[:area], placeholder: "select Area" %>
+	<%= select_tag 'subject', subjects_options, multiple: false %>
 	<%= submit_tag "Search", :name => nil %>
 <% end %>
 
