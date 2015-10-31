@@ -59,7 +59,7 @@ class Tutor < ActiveRecord::Base
       else
         return tutors
       end
-    elsif sub.present
+    elsif sub.present?
       includes(:subjects).where('subjects.id' => sub.id)
     else
       return Array.new
