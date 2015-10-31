@@ -15,9 +15,9 @@ module TutorHelper
 
 	def subjects_options
 		s = ''
-		s << "<option value=''>Select Subject</option>"
+		s << "<option value=nil>Select Subject</option>"
 		Subject.all.each do |subject|
-			s << "<option value='#{subject.name}'>#{subject.name}</option>"
+			s << "<option value='#{subject.name}'>#{subject.display_name}</option>"
 		end
 		s.html_safe
 	end
