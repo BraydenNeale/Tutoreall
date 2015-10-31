@@ -49,7 +49,8 @@ class Tutor < ActiveRecord::Base
   end
 
   def self.search(area, subject)
-    ar = Area.where("name like ?", "%#{area}%").first
+    # ar = Area.where("name like ?", "%#{area}%").first
+    ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first # until autocomplete
     sub = Subject.where("name like ?", "%#{subject}%").first
 
     if ar.present?
