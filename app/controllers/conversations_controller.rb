@@ -6,11 +6,10 @@ class ConversationsController < ApplicationController
 	def show
 		# if @conversation.is_unread?(current_user)
 			# mark as read .. somehow
-		# end 
+		# end
 	end
 
 	def index
-		# @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
 		@conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
 	end
 
@@ -23,7 +22,7 @@ class ConversationsController < ApplicationController
 	def mark_as_read
 		@conversation.mark_as_read(current_user)
 		flash[:success] = 'The conversation was marked as read'
-		redirect_to conversation_path(conversation)
+		redirect_to conversation_path(@conversation)
 	end
 
 	private
