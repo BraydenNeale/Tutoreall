@@ -16,5 +16,11 @@ Rails.application.routes.draw do
 	  end
 	end
 
+  resources :areas do 
+    collection do 
+      get :autocomplete
+    end
+  end
+
   resources :messages, only: [:new, :create]
 end
