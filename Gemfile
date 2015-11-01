@@ -51,6 +51,7 @@ gem 'mailboxer'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
 gem 'jquery-ui-rails'
+gem 'local_time'
 # gem 'chosen-rails'
 # gem 'compass-rails'
 

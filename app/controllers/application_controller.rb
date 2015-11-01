@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   # Devise firstname and lastname - added
   before_filter :configure_permitted_parameters, if: :devise_controller?
   devise_group :user, contains: [:student, :tutor]
+
+  around_filter :with_timezone
   
   rescue_from ActiveRecord::RecordNotFound do
     flash[:warning] = 'Resource not found.'
@@ -24,5 +26,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:firstname, :lastname, :email, :password, :password_confirmation, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:firstname, :lastname, :email, :password, :password_confirmation, :current_password) }
+  end
+
+  private 
+  def with_timezone
+    timezone = Time.find_zone(cookies[:timezone])
+    Time.use_zone(timezone) { yield }
   end
 end

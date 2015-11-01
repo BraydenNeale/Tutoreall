@@ -13,7 +13,7 @@
 	<% message = receipt.message %>
 
 	<%= message.sender.firstname.titleize %>
-		says at <%= message.created_at.utc.getlocal.strftime("%-d %B %Y, %H:%M:%S") %>
+		says at <%= local_time(message.created_at.strftime("%-d %B %Y, %H:%M:%S")) %>
 	<%= message.body %>
 
 	<% if receipt == @conversation.receipts_for(current_user).last %>
