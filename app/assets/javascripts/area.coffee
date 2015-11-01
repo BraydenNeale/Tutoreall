@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
+autocomplete = ->
   $('#area-search').autocomplete
     source: "/areas/autocomplete.json"
+
+# for turbolinks
+$(document).ready(autocomplete)
+$(document).on('page:update', autocomplete)
