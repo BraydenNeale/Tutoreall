@@ -6,7 +6,9 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @messages_count = current_user.mailbox.inbox({:read => false}).count
+    if(user_signed_in?)
+      @messages_count = current_user.mailbox.inbox({:read => false}).count
+    end
   end
 
   def new
@@ -33,6 +35,6 @@ class StudentsController < ApplicationController
   end
 
   def tutor_params
-      params.require(:student).permit()
+    params.require(:student).permit()
   end
 end
