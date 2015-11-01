@@ -2,17 +2,13 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    # if current_user.is_a? Tutor
-    #   recipient = Student.where(id: params['recipients'])
-    # else
-    #   recipient = Tutor.where(id: params['recipients'])
-    # end
-
-    # existing_conversation = Mailboxer::Conversation.find(params[:id])
-    # if existing_conversation.present?
-    #   redirect_to conversation_path(conversation)
-    # end
     @tutor = Tutor.find_by(id: params[:tutor])
+    # existing_conversation = Mailboxer::Conversation.participant(current_user).where('conversations.id in (?)', Mailboxer::Conversation.participant(@tutor).collect(&:id))
+    existing_conversation = Mailboxer::Conversation.participant(current_user).participant(@tutor).first
+
+    if existing_conversation.present?
+      redirect_to conversation_path(existing_conversation)
+    end
   end
 
   def create
@@ -27,7 +23,6 @@ class MessagesController < ApplicationController
     # redirect_to conversation_path(conversation)
 
     recipient = Tutor.find_by(id: params[:tutor])
-    # current_user.send_message(@recipient, params[:body], params[:subject])
     conversation = current_user.send_message(recipient, params[:message][:body], params[:message][:subject]).conversation
     flash[:success] = "Message has been sent!"
     redirect_to conversation_path(conversation)
