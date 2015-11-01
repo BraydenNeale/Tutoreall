@@ -13,14 +13,6 @@ class Tutor < ActiveRecord::Base
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
 
- # 	def self.search(search)
- # 		where("name like ?", "%#{search}%")
-	# end
-
-	# def self.search(field, term)
-	# 	where("? like ?", "%#{field}", "%#{term}")
-	# end
-
   def display_name
     return "#{self.firstname} #{self.lastname}".titleize
   end

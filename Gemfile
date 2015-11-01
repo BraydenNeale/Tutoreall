@@ -50,6 +50,7 @@ gem 'carrierwave'
 gem 'mailboxer'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
+gem 'jquery-ui-rails'
 # gem 'chosen-rails'
 # gem 'compass-rails'
 
