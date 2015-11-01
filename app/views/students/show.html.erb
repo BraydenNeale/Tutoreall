@@ -2,6 +2,7 @@
 
 <div class="row">
 	<% if this_student(@student) %>
-		<%= link_to 'my messages', conversations_path %> 
+		<%#= link_to 'my messages: #{@messages_count} unread', conversations_path %> 
+		<%= link_to 'my messages:', conversations_path %> <%= @messages_count %> unread
 	<% end %>
 </div>

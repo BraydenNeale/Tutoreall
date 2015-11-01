@@ -18,6 +18,8 @@ class TutorsController < ApplicationController
   end
 
   def show
+    # only displayed if the profile is that of the current user
+    @messages_count = current_user.mailbox.inbox({:read => false}).count
   end
 
   def new

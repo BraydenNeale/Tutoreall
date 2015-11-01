@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @messages_count = current_user.mailbox.inbox({:read => false}).count
   end
 
   def new

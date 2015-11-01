@@ -3,5 +3,10 @@
 <%# end %>
 
 <li>
-	<p><%= link_to participant_name(conversation), conversation_path(conversation) %></p>
+	<% if conversation.is_unread?(current_user) %>
+		<p><%= link_to participant_name(conversation), conversation_path(conversation) %> - new</p> 
+	<% else %>
+		<p><%= link_to participant_name(conversation), conversation_path(conversation) %></p>
+	<% end %>
+	
 </li>

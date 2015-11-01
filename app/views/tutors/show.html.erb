@@ -20,7 +20,7 @@
 
 <div class="row">
 	<% if this_tutor(@tutor) %>
-		<%= link_to 'my messages', conversations_path %> |
+		<%= link_to 'my messages:', conversations_path %> <%= @messages_count %> new <br>
 		<%= link_to 'edit profile', edit_tutor_path(@tutor) %>
 	<% elsif is_student %>
 		<%= link_to "Message This Tutor", new_message_path(:tutor => @tutor.id) %>
@@ -28,3 +28,4 @@
 		<p>Sign up to message this tutor</p>
 	<% end %>
 </div>
+

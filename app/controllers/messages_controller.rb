@@ -11,10 +11,9 @@ class MessagesController < ApplicationController
     unless existing.nil? or !existing.is_participant?(current_user)
       redirect_to conversation_path(existing)
     end
-    
+
     # should work - but error is thrown
     #existing_conversation = Mailboxer::Conversation.participant(current_user).where('conversations.id in (?)', Mailboxer::Conversation.participant(@tutor).collect(&:id))
-    # existing_conversation = Mailboxer::Conversation.participant(current_user).participant(@tutor).first
 
     # if existing_conversation.present?
     #   redirect_to conversation_path(existing_conversation)

@@ -8,8 +8,8 @@
 	 <%= render 'conversations/participants', conversation: @conversation %>
 </p>
 
-<%# @conversation.receipts_for(current_user).reverse_each do |receipt| %>
-<% @conversation.receipts_for(current_user).each do |receipt| %>
+<% @conversation.receipts_for(current_user).reverse_each do |receipt| %>
+<%# @conversation.receipts_for(current_user).each do |receipt| %>
 	<% message = receipt.message %>
 
 	<%= message.sender.firstname.titleize %>
