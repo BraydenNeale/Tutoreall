@@ -13,7 +13,8 @@ module MessagesHelper
 		s.html_safe
 	end
 
-	def participant_names(conversation)
-    conversation.receipts.reject { |p| p.receiver == current_user }.collect {|p| p.receiver.display_name }.uniq.join(" ,")
+	# get name of other participants - limited to 2 users (IM)
+	def participant_name(conversation)
+    conversation.receipts.reject { |p| p.receiver == current_user }.collect {|p| p.receiver.display_name }.uniq.join(", ")
   end
 end

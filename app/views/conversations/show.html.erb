@@ -1,14 +1,18 @@
 <h1>Conversations</h1>
 
+<% if @conversation.is_unread?(current_user) %>
+	<%= link_to 'mark as read', mark_as_read_conversation_path(@conversation), method: :post %>
+<% end %>
+
 <p>Chatting with
-	<%#= participant_names(@conversation) %>
 	 <%= render 'conversations/participants', conversation: @conversation %>
 </p>
 
-<% @conversation.receipts_for(current_user).reverse_each do |receipt| %>
+<%# @conversation.receipts_for(current_user).reverse_each do |receipt| %>
+<% @conversation.receipts_for(current_user).each do |receipt| %>
 	<% message = receipt.message %>
 
-	<%= message.sender.firstname %>
+	<%= message.sender.firstname.titleize %>
 		says at <%= message.created_at.strftime("%-d %B %Y, %H:%M:%S") %>
 	<%= message.body %>
 

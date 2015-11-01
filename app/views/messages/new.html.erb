@@ -1,22 +1,24 @@
 <h1>New Message</h1>
 
 <%= form_tag messages_path, method: :post do %>
-  <div class="field">
-    <%= label_tag 'message[subject]', 'Subject' %>
-    <%= text_field_tag 'message[subject]', nil, required: true %>
-  </div>
+  <!-- <div class="field">
+    <%#= label_tag 'message[subject]', 'Subject' %>
+    <%#= text_field_tag 'message[subject]', nil, required: true %>
+  </div> -->
 
   <div class="field">
-    <%= label_tag 'message[body]', 'Message' %>
+    <%#= label_tag 'message[body]', 'Message' %>
     <%= text_area_tag 'message[body]', nil, required: true %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%#= label_tag 'recipients', 'Choose recipient' %>
     <%#= select_tag 'recipients', recipients_options, multiple: false %>
-    <%= hidden_field_tag(:tutor, "#{@tutor.id}") %>
-  </div>
+  </div> -->
   
+  <%= hidden_field_tag('message[subject]', "conversation") %>
+  <%= hidden_field_tag(:tutor, "#{@tutor.id}") %>
+
   <div class="actions">
     <%= submit_tag 'Send' %>
   </div>
