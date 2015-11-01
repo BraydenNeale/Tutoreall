@@ -1,23 +1,17 @@
 Braintree vs stripe
 
-Have it done for the start of the next school year - Feb 2
-Timeline
+Dev done by December 2015
+Full app ready and deployed for start of feb 2016
 
-User
-	Devise (username, email, password ... )
-	type - tutor/student
-	phone number
-	banking details - card number/expiry ... 
-	Availability - MTWTFSS
-	area
-	Subjects
+Student
+
+Tutor
+	- add verified tutor field
+	- add working with children field
+
+Area
 
 Subject
-	Name
-	Code
-
-
-
 
 
 
