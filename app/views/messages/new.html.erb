@@ -12,8 +12,9 @@
   </div>
 
   <div class="field">
-    <%= label_tag 'recipients', 'Choose recipient' %>
-    <%= select_tag 'recipients', recipients_options, multiple: false %>
+    <%#= label_tag 'recipients', 'Choose recipient' %>
+    <%#= select_tag 'recipients', recipients_options, multiple: false %>
+    <%= hidden_field_tag(:tutor, "#{@tutor.id}") %>
   </div>
   
   <div class="actions">

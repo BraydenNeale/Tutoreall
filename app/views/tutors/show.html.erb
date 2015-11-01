@@ -23,7 +23,7 @@
 		<%= link_to 'my messages', conversations_path %> |
 		<%= link_to 'edit profile', edit_tutor_path(@tutor) %>
 	<% elsif is_student %>
-		<a href="">Mesage Tutor</a>
+		<%= link_to "Message This Tutor", new_message_path(:tutor => @tutor.id) %>
 	<% else %>
 		<p>Sign up to message this tutor</p>
 	<% end %>
