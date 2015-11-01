@@ -1,5 +1,8 @@
 # Perth - as per http://www.whitecollar.com.au/perth_regions.pdf
 
+# rails c 
+# load './db/scrips/perth.rb'
+
 # CBD
 Area.create :name => "perth city", :code => "6000"
 Area.create :name => "highgate", :code => "6003"

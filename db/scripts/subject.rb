@@ -1,3 +1,6 @@
+# rails c 
+# load './db/scrips/perth.rb'
+
 Subject.create :name => "music", :code => "music"
 Subject.create :name => "business", :code => "business"
 Subject.create :name => "humanities", :code => "humanities"
