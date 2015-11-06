@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :students
 
   devise_for :tutors
-  resources :tutors
+  resources :tutors do
+    member do 
+      get :dashboard
+    end
+  end
   
   root 'static#home'
   get 'static/home'
@@ -23,4 +27,5 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:new, :create]
+  resources :lessons
 end

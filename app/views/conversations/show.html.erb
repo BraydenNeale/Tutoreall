@@ -1,5 +1,10 @@
 <h1>Conversations</h1>
 
+
+<% if is_tutor %>
+	<%= link_to "Add lesson", new_lesson_path(:student => get_partner(@conversation).id) %>
+<% end %> <br> <br>
+
 <% if @conversation.is_unread?(current_user) %>
 	<%= link_to 'mark as read', mark_as_read_conversation_path(@conversation), method: :post %>
 <% end %>
@@ -7,10 +12,6 @@
 <p>Chatting with
 	 <%= render 'conversations/participants', conversation: @conversation %>
 </p>
-
-<% if is_tutor %>
-	<%= link_to "Add lesson", new_lesson_path(:student => get_partner.id) %>
-<% end %>
 
 <%# @conversation.receipts_for(current_user).reverse_each do |receipt| %>
 <% @conversation.receipts_for(current_user).each do |receipt| %>

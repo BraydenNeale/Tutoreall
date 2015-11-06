@@ -1,5 +1,7 @@
 class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update, :destroy]
+  before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard]
+
 
   def index
     # if params[:subject]
@@ -22,6 +24,10 @@ class TutorsController < ApplicationController
     if(user_signed_in?)
       @messages_count = current_user.mailbox.inbox({:read => false}).count
     end
+  end
+
+  def dashboard
+    @lessons = @tutor.lessons
   end
 
   def new
@@ -49,5 +55,12 @@ class TutorsController < ApplicationController
 
   def tutor_params
       params.require(:tutor).permit(:picture, :rate, :age, :about, :experience, :subject_ids => [], :area_ids => [])
+  end
+
+  def verify_tutor
+  set_tutor
+    unless current_user.id == @tutor.user_id
+      redirect_to @tutor, notice: "Forbidden"
+    end
   end
 end

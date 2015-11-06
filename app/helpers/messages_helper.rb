@@ -20,6 +20,6 @@ module MessagesHelper
 
   def get_partner(conversation)
   	# Only between 2 users
-  	return conversation.receipts.reject { |p| p.receiver == current_user }.first
+  	return conversation.participants.find { |p| p != current_user }
   end
 end
