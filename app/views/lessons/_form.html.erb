@@ -16,7 +16,8 @@
     <%= f.datetime_select(:date) %>
   </div>
 
-  <%= hidden_field_tag(:student, "#{@student.id}") %>
+  <!-- Not adding directly through as params...? -->
+  <%= hidden_field_tag(:student_id, "#{@student.id}") %>
   <%= hidden_field_tag(:status, "initial") %>
 
   <div class="actions">

@@ -12,11 +12,11 @@ class LessonsController < ApplicationController
   # GET /lessons/1
   # GET /lessons/1.json
   def show
+    # @student = Student.find(@lesson.student_id)
   end
 
   # GET /lessons/new
   def new
-    # @lesson = Lesson.new
     @lesson = current_user.lessons.build
     @student = Student.find_by(id: params[:student])
   end
@@ -29,6 +29,8 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = current_user.lessons.build(lesson_params)
+    @lesson.student_id = params[:student_id]
+    @lesson.status = params[:status]
 
     respond_to do |format|
       if @lesson.save
