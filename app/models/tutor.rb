@@ -13,6 +13,15 @@ class Tutor < ActiveRecord::Base
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
 
+  has_many :lessons
+
+  # validate :uniqueness_of_a_property_across_models
+
+  # def uniqueness_of_a_property_across_models
+  #    # check the other model
+  # end
+
+
   def display_name
     return "#{self.firstname} #{self.lastname}".titleize
   end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tutor_id: 
+  student_id: 
+  date: 2015-11-06 18:01:20
+  status: MyString
+
+two:
+  tutor_id: 
+  student_id: 
+  date: 2015-11-06 18:01:20
+  status: MyString
