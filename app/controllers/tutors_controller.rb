@@ -59,8 +59,9 @@ class TutorsController < ApplicationController
 
   def verify_tutor
   set_tutor
-    unless current_user.id == @tutor.user_id
-      redirect_to @tutor, notice: "Forbidden"
+    # sort out error for students who arent' logged in 
+    unless current_user.id == @tutor.id
+      redirect_to root, notice: "Forbidden"
     end
   end
 end

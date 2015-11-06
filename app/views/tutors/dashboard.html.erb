@@ -1,5 +1,19 @@
 <h1>Dashboard</h1>
 
-<% @lessons.each do |lesson| %>
-	<%= lesson.id %>
-<% end %>
+<div class="row">
+	<div class="four columns">
+		<h4>My conversations</h4>
+	</div>
+	<div class="four columns">
+		<h4>My Lessons</h4>
+		<% @lessons.each do |lesson| %>
+			<%= lesson.id %>
+		<% end %>
+	</div>
+	<div class="four columns">
+		<h4>My Students</h4>
+		<%# @students.each do |student| %>
+			<%#= student.display_name %>
+		<%# end %>
+	</div>
+</div>

@@ -16,7 +16,8 @@ class LessonsController < ApplicationController
 
   # GET /lessons/new
   def new
-    @lesson = Lesson.new
+    # @lesson = Lesson.new
+    @lesson = current_user.lessons.build
     @student = Student.find_by(id: params[:student])
   end
 
@@ -27,7 +28,7 @@ class LessonsController < ApplicationController
   # POST /lessons
   # POST /lessons.json
   def create
-    @lesson = Lesson.new(lesson_params)
+    @lesson = current_user.lessons.build(lesson_params)
 
     respond_to do |format|
       if @lesson.save
@@ -72,7 +73,7 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params[:lesson]
+      params.require(:lesson).permit(:student_id, :date, :status)
     end
 
     def verify_user
