@@ -17,6 +17,7 @@ class LessonsController < ApplicationController
   # GET /lessons/new
   def new
     @lesson = Lesson.new
+    @student = Student.find_by(id: params[:student])
   end
 
   # GET /lessons/1/edit

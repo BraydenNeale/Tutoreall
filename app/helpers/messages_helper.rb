@@ -17,4 +17,9 @@ module MessagesHelper
 	def participant_name(conversation)
     conversation.receipts.reject { |p| p.receiver == current_user }.collect {|p| p.receiver.display_name }.uniq.join(", ")
   end
+
+  def get_partner(conversation)
+  	# Only between 2 users
+  	return conversation.receipts.reject { |p| p.receiver == current_user }.first
+  end
 end

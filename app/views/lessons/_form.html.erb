@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <div class="field">
+     <%= f.label :date %><br>
+    <%= f.datetime_select(:date) %>
+  </div>
+
+  <%= hidden_field_tag(:student, "#{@student.id}") %>
+  <%= hidden_field_tag(:status, "initial") %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

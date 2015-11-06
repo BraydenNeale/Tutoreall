@@ -8,6 +8,10 @@
 	 <%= render 'conversations/participants', conversation: @conversation %>
 </p>
 
+<% if is_tutor %>
+	<%= link_to "Add lesson", new_lesson_path(:student => get_partner.id) %>
+<% end %>
+
 <%# @conversation.receipts_for(current_user).reverse_each do |receipt| %>
 <% @conversation.receipts_for(current_user).each do |receipt| %>
 	<% message = receipt.message %>
