@@ -1,6 +1,8 @@
 class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update, :destroy]
   before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard]
+  before_action :get_mailbox, only: [:dashboard]
+  # before_action :get_conversation, only: [:dashboard]
 
 
   def index
@@ -28,6 +30,7 @@ class TutorsController < ApplicationController
 
   def dashboard
     @lessons = @tutor.lessons
+    @conversations = @mailbox.conversations
   end
 
   def new
@@ -63,5 +66,13 @@ class TutorsController < ApplicationController
     unless current_user.id == @tutor.id
       redirect_to root, notice: "Forbidden"
     end
+  end
+
+  def get_mailbox
+    @mailbox ||= current_user.mailbox
+  end
+
+  def get_conversation
+    @conversation ||= @mailbox.conversations.find(params[:id])
   end
 end

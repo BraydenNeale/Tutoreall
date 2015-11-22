@@ -6,6 +6,7 @@
 <div class="row">
 	<div class="four columns">
 		<h4>My conversations</h4>
+			<%= render partial: 'conversations/conversation', collection: @conversations %>
 	</div>
 	<div class="four columns">
 		<h4>My Lessons</h4>
@@ -22,3 +23,5 @@
 		<% end %>
 	</div>
 </div>
+
+<%#= will_paginate %>

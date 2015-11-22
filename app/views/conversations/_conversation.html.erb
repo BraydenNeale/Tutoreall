@@ -2,10 +2,10 @@
 	<%#= link_to 'mark as read', mark_as_read_conversation_path(conversation), method: :post %>
 <%# end %>
 
-<li>
+<!-- <li> -->
 	<% if conversation.is_unread?(current_user) %>
-		<p><%= link_to participant_name(conversation), conversation_path(conversation) %> - new</p> 
+		<%= link_to participant_name(conversation), conversation_path(conversation) %> - new <br>
 	<% else %>
-		<p><%= link_to participant_name(conversation), conversation_path(conversation) %></p>
+		<%= link_to participant_name(conversation), conversation_path(conversation) %> <br>
 	<% end %>
-</li>
+<!-- </li> -->
