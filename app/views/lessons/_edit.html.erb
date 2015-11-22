@@ -19,6 +19,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :duration %> (hours) <br>
+    <%= f.number_field :duration, min: 1, max: 5 %>
+  </div>
+  <div class="field">
      <%= f.label :date %><br>
     <%= f.datetime_select(:date) %>
   </div>
@@ -26,6 +30,7 @@
   <!-- Not adding directly through as params...? -->
   <!-- change lessons state to edited - needs to be re-accepted -->
   <%= hidden_field_tag(:status, "edited") %>
+  <%= hidden_field_tag(:tutor_change, is_tutor) %>
 
   <div class="actions">
     <%= f.submit %>

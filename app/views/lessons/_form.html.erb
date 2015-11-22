@@ -27,6 +27,7 @@
   <!-- Not adding directly through as params...? -->
   <%= hidden_field_tag(:student_id, "#{@student.id}") %>
   <%= hidden_field_tag(:status, "initial") %>
+  <%= hidden_field_tag(:tutor_change, is_tutor) %>
 
   <div class="actions">
     <%= f.submit %>

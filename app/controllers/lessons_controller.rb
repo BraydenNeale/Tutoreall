@@ -29,8 +29,10 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = current_user.lessons.build(lesson_params)
+    # Not being updated in the build params...? - hidden field?
     @lesson.student_id = params[:student_id]
     @lesson.status = params[:status]
+    @lesson.tutor_change = params[:tutor_change]
 
     respond_to do |format|
       if @lesson.save
@@ -47,6 +49,7 @@ class LessonsController < ApplicationController
   # PATCH/PUT /lessons/1.json
   def update
     @lesson.status = params[:status]
+    @lesson.tutor_change = params[:tutor_change]
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
@@ -76,7 +79,7 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:student_id, :date, :status, :subject, :description)
+      params.require(:lesson).permit(:student_id, :date, :status, :subject, :description, :duration, :tutor_change)
     end
 
     def verify_user
