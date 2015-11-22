@@ -75,13 +75,13 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:student_id, :date, :status)
+      params.require(:lesson).permit(:student_id, :date, :status, :subject, :description)
     end
 
     def verify_user
       set_lesson
       unless current_user.id == @lesson.tutor_id || current_user.id == @lesson.student.id
-        redirect_to @photo, notice: "Forbidden"
+        redirect_to root_path, notice: "Forbidden"
       end
     end
 end

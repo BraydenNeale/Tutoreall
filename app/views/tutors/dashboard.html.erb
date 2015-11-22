@@ -1,3 +1,6 @@
+<!-- refactor this -->
+<% students = Set.new %>
+
 <h1>Dashboard</h1>
 
 <div class="row">
@@ -7,13 +10,15 @@
 	<div class="four columns">
 		<h4>My Lessons</h4>
 		<% @lessons.each do |lesson| %>
-			<%= lesson.id %>
+			<%= link_to "#{lesson.student.firstname.titleize}-#{lesson.subject}", lesson %> 
+			<%= local_time(lesson.date, '%d/%m/%Y %H:%M') %> <br>
+			<% students.add(lesson.student) %>
 		<% end %>
 	</div>
 	<div class="four columns">
 		<h4>My Students</h4>
-		<%# @students.each do |student| %>
-			<%#= student.display_name %>
-		<%# end %>
+		<% students.each do |student| %>
+			<%= student.display_name %>
+		<% end %>
 	</div>
 </div>
