@@ -1,0 +1,27 @@
+<!-- refactor this into controller -->
+<% tutors = Set.new %>
+
+<h1>Dashboard</h1>
+
+<div class="row">
+	<div class="four columns">
+		<h4>My conversations</h4>
+			<%= render partial: 'conversations/conversation', collection: @conversations %>
+	</div>
+	<div class="four columns">
+		<h4>My Lessons</h4>
+		<% @lessons.each do |lesson| %>
+			<%= link_to "#{lesson.tutor.firstname.titleize}-#{lesson.subject}", lesson %> 
+			<%= local_time(lesson.date, '%d/%m/%Y %H:%M') %> <br>
+			<% tutors.add(lesson.tutor) %>
+		<% end %>
+	</div>
+	<div class="four columns">
+		<h4>My Tutors</h4>
+		<% tutors.each do |tutor| %>
+			<%= link_to tutor.display_name, tutor %>
+		<% end %>
+	</div>
+</div>
+
+<%#= will_paginate %>

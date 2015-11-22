@@ -2,7 +2,6 @@ class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update, :destroy]
   before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard]
   before_action :get_mailbox, only: [:dashboard]
-  # before_action :get_conversation, only: [:dashboard]
 
 
   def index
@@ -70,9 +69,5 @@ class TutorsController < ApplicationController
 
   def get_mailbox
     @mailbox ||= current_user.mailbox
-  end
-
-  def get_conversation
-    @conversation ||= @mailbox.conversations.find(params[:id])
   end
 end

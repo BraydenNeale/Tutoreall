@@ -9,6 +9,12 @@ Rails.application.routes.draw do
       get :dashboard
     end
   end
+
+  resources :students do 
+    member do 
+      get :dashboard 
+    end
+  end
   
   root 'static#home'
   get 'static/home'
