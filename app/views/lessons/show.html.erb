@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @lesson.tutor.display_name %></p>
-<p><%= @lesson.student.display_name %></p>
-<p><%= @lesson.status %></p>
-<p><%= @lesson.date.to_s %></p>
+<p>Subject: <%= @lesson.subject %></p>
+<p>Description: <%= @lesson.description %></p>
+<p>Tutor: <%= @lesson.tutor.display_name %></p>
+<p>Student: <%= @lesson.student.display_name %></p>
+<p>Status: <%= @lesson.status %></p> <!-- debug only -->
+<p>Date: <%= @lesson.date.to_s %></p>
 
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>
