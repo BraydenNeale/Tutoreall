@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :lessons do 
+    member do
+      put :approve
+      put :cancel
+    end
+  end
+
   resources :messages, only: [:new, :create]
   resources :lessons
 end

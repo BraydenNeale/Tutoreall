@@ -11,29 +11,38 @@ module LessonsHelper
 	# Look into state machine gem for this
 	def status_helper
 		if @lesson.status == "approved"
-			return "Peeps be happy with these conditions"
+			return "Lesson was approved on "
 		elsif @lesson.status == "completed"
-			return "Lesson is completed"
+			return "Lesson completed on "
 		elsif @lesson.status == "cancelled"
-			return "Lesson cancelled"
+			return "Lesson cancelled on "
 		elsif @lesson.status == "problem"
 			return "Someone didn't get payed for some reason" 
-		else
-			return our_approval
+		elsif @lesson.status == "edited"
+			return lesson_edited_by
+		elsif @lesson.status == "initial"
+			return "lesson created on: "
 		end
 	end
 
-	def our_approval
+	def my_approval
+		# if(@lesson.status == "approved" || @lesson.status == "cancelled" || @lesson.status == "completed")
+		if(not(@lesson.status == "edited" || @lesson.status == "initial"))
+			return false
+		end
+
 		if (@lesson.tutor_change and is_student) or (not @lesson.tutor_change and is_tutor)
-			return link_to "Approve", root_path
+			return true
 		else
-			return "Waiting for approval"
+			return false
 		end
 	end
 
 	def lesson_edited_by
+		# localtime string concat doesn't work
 		if @lesson.tutor_change
 			return "last edit was by #{@lesson.tutor.display_name} on "
+			#last edit was by #{@lesson.tutor.display_name} on " + local_time(@lesson.updated_at.strftime('%d/%m/%Y %H:%M'))
 	  else	
 	 		return "last edit was by #{@lesson.student.display_name} on "
 	 	end
@@ -41,13 +50,14 @@ module LessonsHelper
 
 	def lesson_updated
 		updated = local_time(@lesson.updated_at.strftime('%d/%m/%Y %H:%M'))
-		# if @lesson.tutor_change
-		# 	# return "last edit was by #{@lesson.tutor.display_name} on " + updated.to_s
-		# 	return updated
-	 #  else	
-	 # 		# return "last edit was by #{@lesson.student.display_name} on" + updated.to_s
-	 # 		return updated
-	 # 	end 
 	 return updated
+	end
+
+	def is_cancelled
+		if @lesson.status == "cancelled"
+			return true
+		else
+			return false
+		end
 	end
 end

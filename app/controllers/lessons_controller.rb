@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :approve, :cancel]
   before_action :authenticate_user!
   before_action :verify_user, only: [:edit, :update, :destroy]
 
@@ -45,9 +45,36 @@ class LessonsController < ApplicationController
     end
   end
 
+  # could/should refactor approve/cancel into update
+  # put
+  def approve
+    @lesson.status = "approved"
+    if @lesson.save
+      flash[:notice] = "Lesson Approved"
+      redirect_to @lesson
+    else
+      flash[:notice] = "something went wrong"
+      redirect_to @lesson
+    end
+  end
+
+  # put
+  def cancel
+    @lesson.status = "cancelled"
+    if @lesson.save
+      flash[:notice] = "Lesson Cancelled"
+      redirect_to @lesson
+    else
+      flash[:notice] = "something went wrong"
+      redirect_to @lesson
+    end
+  end
+
+
   # PATCH/PUT /lessons/1
   # PATCH/PUT /lessons/1.json
   def update
+    # Need to move these out of update in order to refactor approve - for some reason not going through params
     @lesson.status = params[:status]
     @lesson.tutor_change = params[:tutor_change]
     respond_to do |format|

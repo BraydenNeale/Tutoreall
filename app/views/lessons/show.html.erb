@@ -11,8 +11,27 @@
 
 
 <!-- local_time string concat broken... -->
-<%= lesson_edited_by %> <%= lesson_updated %> <br> <br>
+<%= status_helper %> <%= lesson_updated %><br><br>
 
-<%= status_helper %> <br>
+<%if my_approval %>
+	<%= form_tag approve_lesson_path(@lesson), method: :put do %>
+		<%= hidden_field_tag(:id, @lesson.id) %>
+		<div class="actions">
+	    <%= submit_tag 'Approve' %>
+	  </div>
+  <% end %>
+<% else %>
+<% end %>
+
+<!-- Maybe move this into edit path -->
+<% if not is_cancelled %>
+	<%= form_tag cancel_lesson_path(@lesson), method: :put do %>
+		<%= hidden_field_tag(:id, @lesson.id) %>
+		<div class="actions">
+	    <%= submit_tag 'Cancel' %>
+	  </div>
+	<% end %>
+<% end %>
+
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>
