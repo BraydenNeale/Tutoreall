@@ -1,1 +1,13 @@
-Calender
+<div class="row">
+	<div class="twelve columns">
+		<%= month_calendar events: @lessons do |date, lessons| %>
+			<%= date.strftime("%d") %>
+
+			<% lessons.each do |lesson| %>
+				<div class="cal-lesson">
+					<%= link_to "#{lesson.tutor.firstname.titleize}-#{lesson.subject}", lesson %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>

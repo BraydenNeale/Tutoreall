@@ -1,0 +1,31 @@
+.simple-calendar{
+	width: 100%;
+
+	table{
+		width: 100%;
+
+		thead{
+			tr{
+				border: 1px solid black;
+				outline-bottom: 1px solid black;
+			}
+		}
+		td{
+			min-height: 50px;
+			// height: 100px;
+			width: 14.28%;
+			border: 1px solid black;
+		}
+	}
+
+	// .wday-1{
+	// 	padding-left: 12px;
+	// }
+	th:first-child, td:first-child{
+		padding-left: 12px;
+	}
+
+	.prev-month, .next-month{
+		background-color: #8B9393;
+	}
+}
