@@ -10,7 +10,7 @@
 	</div>
 	<div class="four columns">
 		<h4>My Lessons</h4>
-		<%= link_to "My Calender", calendar_student_path(current_user) %>
+		<%= link_to "My Calender", calendar_student_path(current_user) %> <br> <br>
 		<% @lessons.each do |lesson| %>
 			<%= link_to "#{lesson.tutor.firstname.titleize}-#{lesson.subject}", lesson %> 
 			<%= local_time(lesson.date, '%d/%m/%Y %H:%M') %> <br>

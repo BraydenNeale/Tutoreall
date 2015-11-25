@@ -19,7 +19,7 @@ class StudentsController < ApplicationController
   end
 
   def calendar
-    @lessons = @tutor.lessons
+    @lessons = @student.lessons
   end
 
   def new
