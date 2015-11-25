@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :get_mailbox, only: [:dashboard]
-  before_action :verify_student, only: [:edit, :update, :destroy, :dashboard]
+  before_action :verify_student, only: [:edit, :update, :destroy, :dashboard, :calendar]
 
   def index
     @tutors = Tutor.all
@@ -16,6 +16,10 @@ class StudentsController < ApplicationController
   def dashboard
     @lessons = @student.lessons
     @conversations = @mailbox.conversations
+  end
+
+  def calendar
+    @lessons = @tutor.lessons
   end
 
   def new

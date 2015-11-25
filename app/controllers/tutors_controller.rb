@@ -1,6 +1,6 @@
 class TutorsController < ApplicationController
   before_action :set_tutor, only: [:show, :edit, :update, :destroy]
-  before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard]
+  before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard, :calendar]
   before_action :get_mailbox, only: [:dashboard]
 
 
@@ -30,6 +30,10 @@ class TutorsController < ApplicationController
   def dashboard
     @lessons = @tutor.lessons
     @conversations = @mailbox.conversations
+  end
+
+  def calendar
+     @lessons = @tutor.lessons
   end
 
   def new

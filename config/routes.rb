@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  root 'static#home'
+  get 'static/home'
+
   devise_for :students
   resources :students
 
@@ -7,17 +10,16 @@ Rails.application.routes.draw do
   resources :tutors do
     member do 
       get :dashboard
+      get :calendar
     end
   end
 
   resources :students do 
     member do 
       get :dashboard 
+      get :calendar
     end
   end
-  
-  root 'static#home'
-  get 'static/home'
 
  	resources :conversations, only: [:index, :show, :destroy] do
 	  member do

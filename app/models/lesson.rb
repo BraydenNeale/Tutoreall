@@ -9,4 +9,9 @@ class Lesson < ActiveRecord::Base
   def helper
     ActionController::Base.helpers
   end
+
+  # Simple calender
+  def start_time
+  	self.date
+  end
 end

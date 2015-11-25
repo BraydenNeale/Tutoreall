@@ -70,7 +70,6 @@ class LessonsController < ApplicationController
     end
   end
 
-
   # PATCH/PUT /lessons/1
   # PATCH/PUT /lessons/1.json
   def update

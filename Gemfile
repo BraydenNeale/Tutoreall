@@ -44,14 +44,15 @@ group :development, :test do
 end
 
 #Project Gems
-gem 'devise'
-gem 'rmagick'
-gem 'carrierwave'
-gem 'mailboxer'
-gem 'jquery-turbolinks'
-gem 'will_paginate'
-gem 'jquery-ui-rails'
-gem 'local_time'
+gem 'devise'	# devise for user signups and logins
+gem 'rmagick' # image processing 
+gem 'carrierwave' # image uploading for user profiles
+gem 'mailboxer' 	# Used to implement messaging system
+gem 'jquery-turbolinks' # Turbolinks
+gem 'will_paginate'		# pagination
+gem 'jquery-ui-rails'	# Jquery ui for dialogs and other jquery features
+gem 'local_time'			# output utc times in local time (javascript on client)
+gem 'simple_calendar'	# integrate lesson dates onto a calender
 # gem 'chosen-rails'
 # gem 'compass-rails'
 
