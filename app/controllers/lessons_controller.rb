@@ -33,7 +33,7 @@ class LessonsController < ApplicationController
     @lesson.student_id = params[:student_id]
     @lesson.status = params[:status]
     @lesson.tutor_change = params[:tutor_change]
-
+    @lesson.duration = 1 if @lesson.duration.blank?
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }

@@ -20,6 +20,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :duration %> (hours) <br>
+    <%= f.number_field :duration, min: 1, max: 5 %>
+  </div>
+  <div class="field">
      <%= f.label :date %><br>
     <%= f.datetime_select(:date) %>
   </div>
