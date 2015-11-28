@@ -4,7 +4,7 @@
 <p>Description: <%= @lesson.description %></p>
 <p>Tutor: <%= @lesson.tutor.display_name %></p>
 <p>Student: <%= @lesson.student.display_name %></p>
-<p>Duration: <%= pluralize(@lesson.duration, 'hour') %> </p>
+<p>Duration: <%= pluralize(@lesson.duration, 'minute') %> </p>
 <p>Cost: <%= @lesson.get_cost %></p>
 <p>Status: <%= @lesson.status %></p> <!-- debug only -->
 <p>Date: <%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>

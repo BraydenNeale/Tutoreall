@@ -7,6 +7,7 @@ module LessonsHelper
 	# completed - lesson has completed (assume everything was fine and process payment)
 	# cancelled - lesson was cancelled
 	# problem - discrepancy (tutor or student not happy after lesson date)
+	# requested - student requested lesson
 
 	# Look into state machine gem for this
 	def status_helper

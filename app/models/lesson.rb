@@ -2,8 +2,15 @@ class Lesson < ActiveRecord::Base
   belongs_to :tutor
   belongs_to :student
 
+  # def get_cost
+    # return helper.number_to_currency(self.duration * self.tutor.rate)
+  # end
+
   def get_cost
-    return helper.number_to_currency(self.duration * self.tutor.rate)
+    # hours
+    # return helper.number_to_currency(self.duration * self.tutor.rate)
+    # minutes
+    return helper.number_to_currency((self.duration * self.tutor.rate) / 60)
   end
 
   def helper
