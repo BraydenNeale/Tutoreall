@@ -33,6 +33,8 @@ class LessonsController < ApplicationController
     @lesson.student_id = params[:student_id]
     @lesson.status = params[:status]
     @lesson.tutor_change = params[:tutor_change]
+    @lesson.subject = params[:subject]
+
     @lesson.duration = 1 if @lesson.duration.blank?
     respond_to do |format|
       if @lesson.save
@@ -76,6 +78,8 @@ class LessonsController < ApplicationController
     # Need to move these out of update in order to refactor approve - for some reason not going through params
     @lesson.status = params[:status]
     @lesson.tutor_change = params[:tutor_change]
+    @lesson.subject = params[:subject]
+
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
