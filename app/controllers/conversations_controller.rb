@@ -7,6 +7,8 @@ class ConversationsController < ApplicationController
 		# if @conversation.is_unread?(current_user)
 			# mark as read .. somehow
 		# end
+		# mark_as_read
+		@conversation.mark_as_read(current_user)
 	end
 
 	def index
