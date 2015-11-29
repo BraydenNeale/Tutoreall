@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :approve, :cancel]
   before_action :authenticate_user!
-  before_action :verify_user, only: [:edit, :update, :destroy]
+  before_action :verify_user, only: [:edit, :update, :destroy, :show]
 
   # GET /lessons
   # GET /lessons.json
