@@ -15,11 +15,16 @@ class Tutor < ActiveRecord::Base
 
   has_many :lessons
 
-  # validate :uniqueness_of_a_property_across_models
+  validate :uniqueness_of_user_email
 
-  # def uniqueness_of_a_property_across_models
-  #    # check the other model
-  # end
+
+  def uniqueness_of_user_email
+    Student.all.each do |student|
+      if(student.email == self.email)
+        errors.add(:field, "- Student account exists with that email address")
+      end
+    end
+  end
 
 
   def display_name

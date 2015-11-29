@@ -9,11 +9,16 @@ class Student < ActiveRecord::Base
 
   acts_as_messageable
 
-  # validate :uniqueness_of_a_property_across_models
+   validate :uniqueness_of_user_email
 
-  # def uniqueness_of_a_property_across_models
-  #    # check the other model
-  # end
+
+  def uniqueness_of_user_email
+    Tutor.all.each do |tutor|
+      if(tutor.email == self.email)
+        errors.add(:field, " - Tutor account exists with that email address")
+      end
+    end
+  end
 
   def display_name
     return "#{self.firstname} #{self.lastname}".titleize
