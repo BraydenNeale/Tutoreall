@@ -35,8 +35,15 @@ class Tutor < ActiveRecord::Base
     return helper.number_to_currency(self.rate)
   end
 
+  # if you want message updates to notify them in email
   def mailboxer_email(object)
     #return the model's email here
+  end
+
+  def get_age
+    now = Time.now.utc.to_date
+    dob = self.date_of_birth
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
   def self.searchSubject(subject)
