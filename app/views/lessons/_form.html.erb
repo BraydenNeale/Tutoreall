@@ -33,14 +33,14 @@
     <%= f.datetime_select(:date) %>
   </div>
 
-  <!-- Not adding directly through as params...? -->
-  <%#= hidden_field_tag(:student_id, @student.id %>
   <%= f.hidden_field :student_id, value: @student.id %>
-  <%#= hidden_field_tag(:status, "initial") %>
   <%= f.hidden_field :status, value: "initial" %>
-  <%#= hidden_field_tag(:tutor_change, is_tutor) %>
   <%= f.hidden_field :tutor_change, value: is_tutor %>
 
+  <!-- hidden_field_tag and adding requests from student - Branch created -->
+  <%#= hidden_field_tag(:tutor_id, @tutor.id) %>
+  <%#= hidden_field_tag(:status, "requested") %> 
+  
   <div class="actions">
     <%= f.submit %>
   </div>
