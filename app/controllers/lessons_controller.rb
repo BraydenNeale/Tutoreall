@@ -17,7 +17,8 @@ class LessonsController < ApplicationController
 
   # GET /lessons/new
   def new
-    @lesson = current_user.lessons.build
+    # @lesson = current_user.lessons.build
+    @lesson = Lesson.new
     @student = Student.find_by(id: params[:student])
   end
 
@@ -29,13 +30,7 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = current_user.lessons.build(lesson_params)
-    # Not being updated in the build params...? - hidden field?
-    @lesson.student_id = params[:student_id]
-    @lesson.status = params[:status]
-    @lesson.tutor_change = params[:tutor_change]
-    @lesson.subject = params[:subject]
-
-    @lesson.duration = 1 if @lesson.duration.blank?
+    
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
