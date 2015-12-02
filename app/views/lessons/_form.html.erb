@@ -14,7 +14,7 @@
   <div class="field">
     <%#= f.label :subject %> <br>
     <%#= f.text_field :subject %>
-    <%= f.select :subject, subjects_options, multiple: false %>
+    <%= f.select :subject, subjects_options, multiple: false, required: true %>
   </div>
   <div class="field">
     <%= f.label :location %> <br>
@@ -26,11 +26,11 @@
   </div>
   <div class="field">
     <%= f.label :duration %> (minutes) <br>
-    <%= f.number_field :duration, min: 30 %>
+    <%= f.number_field :duration, min: 30, step: 5, required: true %>
   </div>
   <div class="field">
-     <%= f.label :date %><br>
-    <%= f.datetime_select(:date) %>
+    <%= f.label :date %><br>
+    <%= f.datetime_select(:date, start_year: Time.now.year, order: [:day, :month, :year], required: true) %>
   </div>
 
   <%= f.hidden_field :student_id, value: @student.id %>

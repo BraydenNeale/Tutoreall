@@ -13,7 +13,7 @@
   <div class="field">
     <!-- <%#= f.label :subject %> <br> -->
     <%#= f.text_field :subject %>
-    <%= select_tag :subject, subjects_options, multiple: false %>
+    <%= select_tag :subject, subjects_options, multiple: false, required: true %>
   </div>
   <div class="field">
     <%= f.label :location %> <br>
@@ -25,17 +25,15 @@
   </div>
   <div class="field">
     <%= f.label :duration %> (minutes) <br>
-    <%= f.number_field :duration, min: 30 %>
+    <%= f.number_field :duration, min: 30, step: 5, required: true %>
   </div>
   <div class="field">
      <%= f.label :date %><br>
-    <%= f.datetime_select(:date) %>
+    <%= f.datetime_select(:date, start_year: Time.now.year, order: [:day, :month, :year], required: true) %>
   </div>
 
-  <!-- Not adding directly through as params...? -->
-  <!-- change lessons state to edited - needs to be re-accepted -->
-  <%= hidden_field_tag(:status, "edited") %>
-  <%= hidden_field_tag(:tutor_change, is_tutor) %>
+  <%= f.hidden_field(:status, value: "edited") %>
+  <%= f.hidden_field(:tutor_change, value: is_tutor) %>
 
   <div class="actions">
     <%= f.submit %>
