@@ -12,6 +12,7 @@ class Tutor < ActiveRecord::Base
 
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
+  has_and_belongs_to_many :weekdays
 
   has_many :lessons
 
