@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202115946) do
+ActiveRecord::Schema.define(version: 20151202121453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,14 @@ ActiveRecord::Schema.define(version: 20151202115946) do
 
   add_index "tutors", ["email"], name: "index_tutors_on_email", unique: true, using: :btree
   add_index "tutors", ["reset_password_token"], name: "index_tutors_on_reset_password_token", unique: true, using: :btree
+
+  create_table "tutors_weekdays", id: false, force: :cascade do |t|
+    t.integer "tutor_id",   null: false
+    t.integer "weekday_id", null: false
+  end
+
+  add_index "tutors_weekdays", ["tutor_id", "weekday_id"], name: "index_tutors_weekdays_on_tutor_id_and_weekday_id", using: :btree
+  add_index "tutors_weekdays", ["weekday_id", "tutor_id"], name: "index_tutors_weekdays_on_weekday_id_and_tutor_id", using: :btree
 
   create_table "weekdays", force: :cascade do |t|
     t.integer  "day"
