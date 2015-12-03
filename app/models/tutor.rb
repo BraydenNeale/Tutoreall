@@ -4,12 +4,11 @@ class Tutor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :card, :as => :user
-
   mount_uploader :picture, PictureUploader
 
   acts_as_messageable # mailboxer
 
+  has_one :wwc_card
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
   has_and_belongs_to_many :weekdays
