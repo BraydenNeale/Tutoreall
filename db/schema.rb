@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203112430) do
+ActiveRecord::Schema.define(version: 20151203120300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,14 +33,6 @@ ActiveRecord::Schema.define(version: 20151203112430) do
 
   add_index "areas_tutors", ["area_id", "tutor_id"], name: "index_areas_tutors_on_area_id_and_tutor_id", using: :btree
   add_index "areas_tutors", ["tutor_id", "area_id"], name: "index_areas_tutors_on_tutor_id_and_area_id", using: :btree
-
-  create_table "cards", force: :cascade do |t|
-    t.string   "Number"
-    t.string   "Expiry"
-    t.string   "Code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "tutor_id"
@@ -182,6 +174,14 @@ ActiveRecord::Schema.define(version: 20151203112430) do
 
   create_table "weekdays", force: :cascade do |t|
     t.integer  "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wwc_cards", force: :cascade do |t|
+    t.integer  "tutor_id"
+    t.string   "number"
+    t.date     "expiry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
