@@ -5,18 +5,18 @@ class TutorsController < ApplicationController
 
 
   def index
-    # if params[:subject]
-    #   @tutors = Tutor.searchSubject(params[:subject])
-    # elsif params[:area]
-    #   @tutors = Tutor.searchArea(params[:area])
+    alltutors = Tutor.all.where(verified: true)
+
+    # if params[:area] or params[:subject]
+    #   @tutors = Tutor.search(params[:area], params[:subject])
     # else
     #   @tutors = Tutor.all
     # end
 
     if params[:area] or params[:subject]
-      @tutors = Tutor.search(params[:area], params[:subject])
+      @tutors = alltutors.search(params[:area], params[:subject])
     else
-      @tutors = Tutor.all
+      @tutors = alltutors
     end
   end
 
