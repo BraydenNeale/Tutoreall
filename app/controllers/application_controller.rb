@@ -19,8 +19,20 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    if current_user.is_a? Student 
+      return dashboard_student_path(current_user)
+    else
+      if current_user.verified
+        return dashboard_tutor_path(current_user)
+      end
+
+      return edit_tutor_path(current_user)
+    end
+
+    # never reached
     request.env['omniauth.origin'] || resource || root_path
   end
+
 
   protected
   def configure_permitted_parameters
