@@ -43,6 +43,10 @@ class TutorsController < ApplicationController
   end
 
   def update
+    if(is_verified(@tutor))
+      @tutor.verified = true
+    end
+
     respond_to do |format|
       if @tutor.update(tutor_params)
         format.html { redirect_to @tutor, notice: 'Profile successfully updated.' }
@@ -69,6 +73,19 @@ class TutorsController < ApplicationController
     unless current_user.id == @tutor.id
       redirect_to root, notice: "Forbidden"
     end
+  end
+
+  # all required fields have been filled out, tutor has a valid wwc card and tutor has an account linked (how to check valid?)
+  def is_verified(tutor)
+    rate = tutor.rate.present?
+    birth = tutor.date_of_birth.present?
+    # Valid wwc card
+    # account information
+    if(rate and birth)
+      return true
+    end
+
+    return false;
   end
 
   def get_mailbox

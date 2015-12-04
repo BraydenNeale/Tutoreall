@@ -1,5 +1,13 @@
 <h1>Editing Profile</h1>
 
+<% if not @tutor.verified %>
+	<br>
+	<h4>
+		You need to fill in the required fields and add a valid WWC card / bank account in order to be indexed for students to find.
+	</h4>
+	<br>
+<% end %>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @tutor%> |
