@@ -43,7 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
-#Project Gems
+#Project Gems - should probably go through and specify versions for these.
 gem 'devise'	# devise for user signups and logins
 gem 'rmagick' # image processing 
 gem 'carrierwave' # image uploading for user profiles
@@ -53,6 +53,7 @@ gem 'will_paginate'		# pagination
 gem 'jquery-ui-rails'	# Jquery ui for dialogs and other jquery features
 gem 'local_time'			# output utc times in local time (javascript on client)
 gem 'simple_calendar'	# integrate lesson dates onto a calender
+# gem 'mailcatcher', '~> 0.6.1' # mail catching in dev
 # gem 'chosen-rails'
 # gem 'compass-rails'
 
