@@ -70,8 +70,8 @@ class Tutor < ActiveRecord::Base
   def self.search(area, subject)
     # ar = Area.where("name like ?", "%#{area}%").first
     ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first # until autocomplete
-    # sub = Subject.where("name like ?", "%#{subject}%").first
-    sub = Subject.where("faculty like ?", "%#{subject}").first
+    sub = Subject.where("name like ?", "%#{subject}%").first
+    # sub = Subject.where("faculty like ?", "%#{subject}").first
 
     if ar.present?
       tutors = includes(:areas).where('areas.id' => ar.id)
@@ -85,6 +85,45 @@ class Tutor < ActiveRecord::Base
     else
       return Array.new
     end
+  end
+
+  def self.simple_search(area, faculty)
+    area = Area.where("lower(name) like ?", "%#{area.downcase}%").first
+    subs = Subject.where("faculty like ?", "#{faculty.downcase}")
+
+    return self.joins(:subjects).where(subjects: { id: subs.ids }).distinct
+    # search = new Array
+    # tutors = self.all
+
+    # subs.each do |sub|
+    #   if self.subject_ids.contains(sub.id)
+    #     search.add(self)
+    # end
+
+    # self.joins(:subject).where(subject: {id: subs.ids).group('subjects.id').having('count(*) >= ?', 1)
+
+    # return self.all
+
+    # if area.present?
+    #   tutors = includes(:areas).where('areas.id' => area.id)
+    #   if(subs.present?)
+    #     return tutors.includes(:subjects).where('subjects.id' => subs.ids)
+    #     # return tutors.includes(:subject).where('subjects.id = faculty')
+    #     # subs.each.do 
+    #     # return self.all
+    #     # return self.all
+    #   else
+    #     return self.all
+    #   end
+    # elsif subs.present?
+    #   return self.all
+    # end
+
+    #   # includes(:subject).where('subjects.faculty' => faculty)
+    #   # return self.all
+    # else
+    #   return Array.new
+    # end
   end
 
   def helper
