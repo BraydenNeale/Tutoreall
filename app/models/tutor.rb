@@ -8,12 +8,14 @@ class Tutor < ActiveRecord::Base
 
   acts_as_messageable # mailboxer
 
-  has_one :wwc_card
+  has_one :wwc_card, dependent: :destroy
+  accepts_nested_attributes_for :wwc_card, :allow_destroy => true
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
+  # maybe better as an enum...
   has_and_belongs_to_many :weekdays
 
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
 
   validate :uniqueness_of_user_email
 
