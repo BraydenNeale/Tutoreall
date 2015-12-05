@@ -87,43 +87,31 @@ class Tutor < ActiveRecord::Base
     end
   end
 
+  # area still messed up - need to fix
   def self.simple_search(area, faculty)
-    area = Area.where("lower(name) like ?", "%#{area.downcase}%").first
+
+    ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
     subs = Subject.where("faculty like ?", "#{faculty.downcase}")
 
-    return self.joins(:subjects).where(subjects: { id: subs.ids }).distinct
-    # search = new Array
-    # tutors = self.all
+    if(subs.present?)
+      tutors = self.joins(:subjects).where(subjects: { id: subs.ids }).distinct
 
-    # subs.each do |sub|
-    #   if self.subject_ids.contains(sub.id)
-    #     search.add(self)
-    # end
+      # if not ar.present?
+      #   return tutors
+      # end
 
-    # self.joins(:subject).where(subject: {id: subs.ids).group('subjects.id').having('count(*) >= ?', 1)
+      return tutors.includes(:areas).where('areas.id' => ar.id)
+      # return tutors
+    end
 
-    # return self.all
-
-    # if area.present?
-    #   tutors = includes(:areas).where('areas.id' => area.id)
-    #   if(subs.present?)
-    #     return tutors.includes(:subjects).where('subjects.id' => subs.ids)
-    #     # return tutors.includes(:subject).where('subjects.id = faculty')
-    #     # subs.each.do 
-    #     # return self.all
-    #     # return self.all
-    #   else
-    #     return self.all
-    #   end
-    # elsif subs.present?
-    #   return self.all
-    # end
-
-    #   # includes(:subject).where('subjects.faculty' => faculty)
-    #   # return self.all
-    # else
+    # nil being assigned to & for some reason in form
+    # if not ar.present?
     #   return Array.new
     # end
+
+    # return self.includes(:areas).where('areas.id' => ar.id)
+
+    return Array.new
   end
 
   def helper
