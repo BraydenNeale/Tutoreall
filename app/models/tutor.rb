@@ -70,7 +70,8 @@ class Tutor < ActiveRecord::Base
   def self.search(area, subject)
     # ar = Area.where("name like ?", "%#{area}%").first
     ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first # until autocomplete
-    sub = Subject.where("name like ?", "%#{subject}%").first
+    # sub = Subject.where("name like ?", "%#{subject}%").first
+    sub = Subject.where("faculty like ?", "%#{subject}").first
 
     if ar.present?
       tutors = includes(:areas).where('areas.id' => ar.id)

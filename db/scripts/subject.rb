@@ -93,7 +93,7 @@ Subject.create :name => "media production and analysis", :faculty => "other", :g
 Subject.create :name => "food science and technology", :faculty => "other", :group => "year11"
 
 # YEAR 10
-Subject.create :name => "mathematics", :faculty => "math", :group => "year10"
+Subject.create :name => "mathematics", :faculty => "mathematics", :group => "year10"
 
 Subject.create :name => "accounting", :faculty => "business and it", :group => "year10"
 Subject.create :name => "law and commerce", :faculty => "business and it", :group => "year10"

@@ -67,7 +67,7 @@
     <%= hidden_field_tag "tutor[subject_ids][]", nil %>
     <% Subject.all.each do |subject| %>
       <%= check_box_tag "tutor[subject_ids][]", subject.id, @tutor.subject_ids.include?(subject.id), id: dom_id(subject) %>
-      <%= label_tag dom_id(subject), subject.display_name %> <br>
+      <%= label_tag dom_id(subject), "#{subject.display_name} - #{subject.group}" %> <br>
     <% end %>
   </div>
 

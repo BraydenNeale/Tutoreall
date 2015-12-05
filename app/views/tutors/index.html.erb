@@ -13,7 +13,8 @@
 
 <%= form_tag("#", :method => "get") do %>
 	<%= text_field_tag :area, params[:area], id: "area-search", placeholder: "Select Area" %>
-	<%= select_tag 'subject', subjects_options, multiple: false %>
+	<%#= select_tag 'subject', subjects_options, multiple: false %>
+	<%= select_tag 'subject', subjects_faculties, multiple: false %>
 	<%= submit_tag "Search", :name => nil %>
 <% end %>
 

@@ -14,7 +14,6 @@
 	<p>About: <br><%= @tutor.about %></p>
 	<p>Experience: <br><%= @tutor.experience %></p>
 	<!-- <p>Email: <%#= @tutor.email %></p> -->
-	<p>WW</p>
 	<p>Availability: <%= @tutor.weekdays.collect(&:day).join(",") %></p>
 	<p>Areas: <%= @tutor.areas.collect(&:name).join(",") %></p>
 	<p>Subjects: <%= @tutor.subjects.collect(&:name).join(",") %></p>
