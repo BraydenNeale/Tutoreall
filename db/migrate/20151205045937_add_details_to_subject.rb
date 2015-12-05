@@ -1,7 +1,7 @@
 class AddDetailsToSubject < ActiveRecord::Migration
   def change
-  	remove_column :subject, :code
-  	add_column :subject, :faculty, :string
-  	add_column :subject, :group, :string
+  	remove_column :subjects, :code
+  	add_column :subjects, :faculty, :string
+  	add_column :subjects, :group, :string
   end
 end
