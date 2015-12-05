@@ -21,7 +21,7 @@
   </div>
    <div class="field">
      <%= f.label :date_of_birth %><br>
-    <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year=> Date.today.year)%>
+    <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil) %>
   </div>
 
   <!-- Working with children card -->
@@ -31,7 +31,7 @@
     <%= wwc.text_field :number %>
 
     <%= wwc.label :expiry %>
-    <%= wwc.date_select(:expiry, :start_year => Date.today.year) %>
+    <%= wwc.date_select(:expiry, :start_year => Date.today.year, :include_blank => true, :default => nil) %>
   <% end %>
 
   <div class="field">

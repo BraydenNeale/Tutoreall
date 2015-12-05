@@ -1,5 +1,5 @@
 # rails c 
-# load './db/scrips/perth.rb'
+# load './db/scrips/subject.rb'
 
 Subject.create :name => "music", :code => "music"
 Subject.create :name => "business", :code => "business"
