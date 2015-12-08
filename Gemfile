@@ -58,6 +58,7 @@ gem 'simple_calendar'	# integrate lesson dates onto a calender
 # gem 'compass-rails'
 gem 'braintree' # braintree for processing payments
 gem 'figaro' # Figaro - secure config
+gem 'gon'
 
 #heroku
 gem 'puma'
