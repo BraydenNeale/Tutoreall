@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'transactions/new'
+
   root 'static#home'
   get 'static/home'
 
@@ -43,4 +45,5 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
   resources :lessons
+  resources :transactions, only: [:new, :create]
 end
