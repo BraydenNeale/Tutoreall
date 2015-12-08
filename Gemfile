@@ -56,6 +56,8 @@ gem 'simple_calendar'	# integrate lesson dates onto a calender
 # gem 'mailcatcher', '~> 0.6.1' # mail catching in dev
 # gem 'chosen-rails'
 # gem 'compass-rails'
+gem 'braintree' # braintree for processing payments
+gem 'figaro' # Figaro - secure config
 
 #heroku
 gem 'puma'
