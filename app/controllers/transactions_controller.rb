@@ -1,6 +1,9 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_student!
 
+  # Braintree sandbox valid card numbers (for testing)
+  # https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers
+
   def new
     gon.client_token = generate_client_token
   end
@@ -13,9 +16,9 @@ class TransactionsController < ApplicationController
         amount: 5,
         payment_method_nonce: params[:payment_method_nonce],
         customer: {
-          first_name: current_user.firstname
-          last_name: current_user.lastname
-          email: current_user.email
+          first_name: current_user.firstname,
+          last_name: current_user.lastname,
+          email: current_user.email,
           phone: params[:phone]
         },
         options: {
@@ -29,7 +32,7 @@ class TransactionsController < ApplicationController
     # @result.transaction.payment_instrument_type is the type of payment that was used credit/paypal
 
     if @result.success?
-      current_user.update(braintree_customer_id: @result.transaction.customer_details) unless current_user.has_payment_info?
+      current_user.update(braintree_customer_id: @result.transaction.customer_details.id) unless current_user.has_payment_info?
       # Change state of lesson
       # some other validations ... in the db
       redirect_to root_url, notice: "Lesson has been booked"
@@ -46,5 +49,6 @@ class TransactionsController < ApplicationController
       Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
     else
       Braintree::ClientToken.generate
+    end
   end
 end
