@@ -26,6 +26,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    # gon.client_token = generate_client_token
   end
 
   def update
@@ -38,6 +39,43 @@ class StudentsController < ApplicationController
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def braintree_new
+    gon.client_token = generate_client_token
+  end
+
+  def braintree_create
+    result = Braintree::Customer.create(
+      first_name: current_user.firstname,
+      last_name: current_user.lastname,
+      email: current_user.email,
+      phone: params[:phone],
+      :payment_method_nonce => nonce_from_the_client
+    )
+    if result.success?
+      current_user.update(braintree_customer_id: @result.transaction.customer_details.id) unless current_user.has_payment_info?
+      redirect_to root_url, notice: "Payment info added"
+    else
+      flash[:alert] = "Something went wrong"
+    end
+  end
+
+  def braintree_edit
+    # gon.client_token = generate_client_token
+  end
+
+  def braintree_update
+    # result = Braintree::Customer.update(
+    #   "a_customer_id", # id of customer to update
+    #   :first_name => "New First Name",
+    #   :last_name => "New Last Name"
+    # )
+    # if result.success?
+    #   puts "customer successfully updated"
+    # else
+    #   p result.errors
+    # end
   end
 
   private
@@ -59,5 +97,14 @@ class StudentsController < ApplicationController
 
   def get_mailbox
     @mailbox ||= current_user.mailbox
+  end
+
+  def generate_client_token
+    if current_user.has_payment_info?
+      Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
+    else
+      # Braintree::ClientToken.generate
+      # add an error - can't pay without payment info already added
+    end
   end
 end
