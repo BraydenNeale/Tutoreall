@@ -26,7 +26,6 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    # gon.client_token = generate_client_token
   end
 
   def update
@@ -41,28 +40,35 @@ class StudentsController < ApplicationController
     end
   end
 
-  def braintree_new
+  # https://developers.braintreepayments.com/guides/customers/ruby#create
+  # Need to refine customer creation and deletion
+  def braintree
     gon.client_token = generate_client_token
   end
 
   def braintree_create
-    result = Braintree::Customer.create(
-      first_name: current_user.firstname,
-      last_name: current_user.lastname,
-      email: current_user.email,
-      phone: params[:phone],
-      :payment_method_nonce => nonce_from_the_client
-    )
+    if not current_user.has_payment_info?
+      result = Braintree::Customer.create(
+        first_name: current_user.firstname,
+        last_name: current_user.lastname,
+        email: current_user.email,
+        phone: params[:phone],
+        payment_method_nonce: params[:payment_method_nonce]
+      )
+    else
+      result = Braintree::Customer.update(
+        current_user.braintree_customer_id, # id of customer to update
+        payment_method_nonce: params[:payment_method_nonce]
+      )
+    end
+
     if result.success?
-      current_user.update(braintree_customer_id: @result.transaction.customer_details.id) unless current_user.has_payment_info?
+      current_user.update(braintree_customer_id: result.customer.id) unless current_user.has_payment_info?
       redirect_to root_url, notice: "Payment info added"
     else
       flash[:alert] = "Something went wrong"
+      render :edit
     end
-  end
-
-  def braintree_edit
-    # gon.client_token = generate_client_token
   end
 
   def braintree_update
@@ -103,7 +109,7 @@ class StudentsController < ApplicationController
     if current_user.has_payment_info?
       Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
     else
-      # Braintree::ClientToken.generate
+      Braintree::ClientToken.generate
       # add an error - can't pay without payment info already added
     end
   end

@@ -1,0 +1,9 @@
+<div class="form-container">
+  <h2 class="mbs">New Transaction</h2>
+  <%= form_tag students_path do%>
+    <%#= render 'student_form' unless current_user.has_payment_info? %>
+    <p>Please enter your payment details:</p>
+    <div id="dropin"></div>
+    <%=submit_tag "Update payment info", class: "button mt1" %>
+  <%end%>
+</div>

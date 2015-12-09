@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     member do 
       get :dashboard 
       get :calendar
+      get :braintree
+      patch :braintree_create
     end
   end
 

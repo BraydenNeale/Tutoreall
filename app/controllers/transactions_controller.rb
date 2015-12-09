@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
   # https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers
 
   def new
+    # if current_user has no payment deatails redirect to braintree page
     gon.client_token = generate_client_token
   end
 
