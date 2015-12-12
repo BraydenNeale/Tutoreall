@@ -7,15 +7,10 @@ class TutorsController < ApplicationController
   def index
     # alltutors = Tutor.all.where(verified: true)
     alltutors = Tutor.all
+    puts "\n\n\n\narea: #{params[:area]} \n\n\n\n "
 
-    # if params[:area] or params[:subject]
-    #   @tutors = Tutor.search(params[:area], params[:subject])
-    # else
-    #   @tutors = Tutor.all
-    # end
-
+    # Where subject is faculty in this case
     if params[:area] or params[:subject]
-      # @tutors = alltutors.search(params[:area], params[:subject])
       @tutors = alltutors.simple_search(params[:area], params[:subject])
     else
       @tutors = alltutors
@@ -72,7 +67,7 @@ class TutorsController < ApplicationController
   end
 
   def verify_tutor
-  set_tutor
+    set_tutor
     # sort out error for students who arent' logged in 
     unless current_user.id == @tutor.id
       redirect_to root, notice: "Forbidden"
