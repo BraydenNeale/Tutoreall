@@ -33,6 +33,7 @@
 	<% end %>
 <% end %>
 
+<!-- Need to only render this on certain lesson conditions - need to work out with Chris exactly how that is going to happen -->
 <% if is_student %>
 	<%= render 'transactions/book_lesson', lesson: @lesson %>
 <% end %>

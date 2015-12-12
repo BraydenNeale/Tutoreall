@@ -5,8 +5,7 @@ class TransactionsController < ApplicationController
   # https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers
 
   def new
-    # if current_user has no payment deatails redirect to braintree page
-    gon.client_token = generate_client_token
+    # gon.client_token = generate_client_token
   end
 
   def create
@@ -16,9 +15,7 @@ class TransactionsController < ApplicationController
     @lesson = Lesson.find_by(id: params[:lesson_id])
 
     unless current_user.has_payment_info?
-    # move the payment info account stuff into a student payment form before this
       @result = Braintree::Transaction.sale(
-        # amount: 5,
         amount: @lesson.braintree_payment,
         payment_method_nonce: params[:payment_method_nonce],
         customer: {
@@ -51,11 +48,11 @@ class TransactionsController < ApplicationController
   end
 
   private
-  def generate_client_token
-    if current_user.has_payment_info?
-      Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
-    else
-      Braintree::ClientToken.generate
-    end
-  end
+  # def generate_client_token
+  #   if current_user.has_payment_info?
+  #     Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
+  #   else
+  #     Braintree::ClientToken.generate
+  #   end
+  # end
 end

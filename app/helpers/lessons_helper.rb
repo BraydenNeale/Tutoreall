@@ -8,6 +8,7 @@ module LessonsHelper
 	# cancelled - lesson was cancelled
 	# problem - discrepancy (tutor or student not happy after lesson date)
 	# requested - student requested lesson
+	# braintree payment - 
 
 	# Look into state machine gem for this
 	def status_helper
@@ -43,24 +44,19 @@ module LessonsHelper
 
 	def lesson_edited_by
 		# localtime string concat doesn't work
+		# e.g. last edit was by #{@lesson.tutor.display_name} on " + local_time(@lesson.updated_at.strftime('%d/%m/%Y %H:%M'))
 		if @lesson.tutor_change
 			return "last edit was by #{@lesson.tutor.display_name} on "
-			#last edit was by #{@lesson.tutor.display_name} on " + local_time(@lesson.updated_at.strftime('%d/%m/%Y %H:%M'))
 	  else	
 	 		return "last edit was by #{@lesson.student.display_name} on "
 	 	end
 	end
 
 	def lesson_updated
-		updated = local_time(@lesson.updated_at.strftime('%d/%m/%Y %H:%M'))
-	 return updated
+		return local_time(@lesson.updated_at.strftime('%d/%m/%Y %H:%M'))
 	end
 
 	def is_cancelled
-		if @lesson.status == "cancelled"
-			return true
-		else
-			return false
-		end
+		return (@lesson.status == "cancelled")
 	end
 end

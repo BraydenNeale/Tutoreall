@@ -3,7 +3,6 @@
   <%= form_tag transactions_path do%>
     <%= render 'student_form' unless current_user.has_payment_info? %>
     <p>Please enter your payment details:</p>
-    <%#= hidden_field_tag(:cost, lesson.get_cost) %>
     <%= hidden_field_tag(:lesson_id, lesson.id) %>
     <div id="dropin"></div>
     <%=submit_tag "Book lesson - #{lesson.get_cost}", class: "button mt1" %>
