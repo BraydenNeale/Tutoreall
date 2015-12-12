@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2 class="mbs">New Transaction</h2>
+  <h2 class="mbs">Add payment details</h2>
   <%= form_for(current_user, url: braintree_create_student_path) do |f| %>
     <%= render 'payment_info' unless current_user.has_payment_info? %>
     <p>Please enter your payment details:</p>

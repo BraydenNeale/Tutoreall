@@ -1,13 +1,11 @@
-<!-- <h1>Transactions#new</h1>
-<p>Find me in app/views/transactions/new.html.erb</p> -->
-
 <div class="form-container">
   <h2 class="mbs">New Transaction</h2>
   <%= form_tag transactions_path do%>
     <%= render 'student_form' unless current_user.has_payment_info? %>
     <p>Please enter your payment details:</p>
-    <%= hidden_field_tag(:cost, 5) %>
+    <%= hidden_field_tag(:cost, lesson.get_cost) %>
+    <% hidden_field_tag(:lesson_id, lesson.id) %>
     <div id="dropin"></div>
-    <%=submit_tag "Pay", class: "button mt1" %>
+    <%=submit_tag "Book lesson - #{lesson.get_cost}", class: "button mt1" %>
   <%end%>
 </div>

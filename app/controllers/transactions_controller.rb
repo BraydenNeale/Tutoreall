@@ -14,7 +14,8 @@ class TransactionsController < ApplicationController
     unless current_user.has_payment_info?
     # move the payment info account stuff into a student payment form before this
       @result = Braintree::Transaction.sale(
-        amount: 5,
+        # amount: 5,
+        amount: params[:cost],
         payment_method_nonce: params[:payment_method_nonce],
         customer: {
           first_name: current_user.firstname,

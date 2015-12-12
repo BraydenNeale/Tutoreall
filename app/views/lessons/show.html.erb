@@ -33,5 +33,9 @@
 	<% end %>
 <% end %>
 
+<% if is_student %>
+	<%= render 'transactions/book_lesson', lesson: @lesson %>
+<% end %>
+
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>
