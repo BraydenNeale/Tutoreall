@@ -13,6 +13,9 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     # @student = Student.find(@lesson.student_id)
+    if current_user.is_a? Student
+      gon.client_token = generate_client_token
+    end
   end
 
   # GET /lessons/new
@@ -113,4 +116,12 @@ class LessonsController < ApplicationController
         redirect_to root_path, notice: "Forbidden"
       end
     end
+
+  def generate_client_token
+    if current_user.has_payment_info?
+      Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
+    else
+      Braintree::ClientToken.generate
+    end
+  end
 end

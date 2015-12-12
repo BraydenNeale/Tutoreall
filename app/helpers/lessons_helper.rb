@@ -23,6 +23,8 @@ module LessonsHelper
 			return lesson_edited_by
 		elsif @lesson.status == "initial"
 			return "lesson created on: "
+		elsif @lesson.status == "braintree"
+			return "Lesson payed for through braintree"
 		end
 	end
 

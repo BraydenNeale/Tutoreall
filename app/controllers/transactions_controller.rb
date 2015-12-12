@@ -11,11 +11,15 @@ class TransactionsController < ApplicationController
 
   def create
     # will be directed here from lesson accept or edit page as a student - amount will be determined from that
+    # gon.client_token = generate_client_token
+
+    @lesson = Lesson.find_by(id: params[:lesson_id])
+
     unless current_user.has_payment_info?
     # move the payment info account stuff into a student payment form before this
       @result = Braintree::Transaction.sale(
         # amount: 5,
-        amount: params[:cost],
+        amount: @lesson.braintree_payment,
         payment_method_nonce: params[:payment_method_nonce],
         customer: {
           first_name: current_user.firstname,
@@ -28,7 +32,7 @@ class TransactionsController < ApplicationController
         })
     else
       @result = Braintree::Transaction.sale(
-        amount: 5,
+        amount: @lesson.braintree_payment,
         payment_method_nonce: params[:payment_method_nonce])
     end
     # @result.transaction.payment_instrument_type is the type of payment that was used credit/paypal
@@ -36,6 +40,7 @@ class TransactionsController < ApplicationController
     if @result.success?
       current_user.update(braintree_customer_id: @result.transaction.customer_details.id) unless current_user.has_payment_info?
       # Change state of lesson
+      @lesson.update(status: "braintree")
       # some other validations ... in the db
       redirect_to root_url, notice: "Lesson has been booked"
     else
