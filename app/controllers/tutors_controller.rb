@@ -5,14 +5,15 @@ class TutorsController < ApplicationController
 
 
   def index
-    alltutors = Tutor.all.where(verified: true)
+    # alltutors = Tutor.all.where(verified: true)
+    alltutors = Tutor.all
 
     # Where subject is faculty in this case
     if params[:area] or params[:subject]
       @tutors = alltutors.simple_search(params[:area], params[:subject])
     else
-      # @tutors = alltutors
-      @tutors = Array.new
+      @tutors = alltutors
+      # @tutors = Array.new
     end
   end
 
