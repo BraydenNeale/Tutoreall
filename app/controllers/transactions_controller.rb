@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
   # https://developers.braintreepayments.com/reference/general/testing/ruby#credit-card-numbers
 
   def new
-    # gon.client_token = generate_client_token
+    gon.client_token = generate_client_token
   end
 
   def create
@@ -48,11 +48,11 @@ class TransactionsController < ApplicationController
   end
 
   private
-  # def generate_client_token
-  #   if current_user.has_payment_info?
-  #     Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
-  #   else
-  #     Braintree::ClientToken.generate
-  #   end
-  # end
+  def generate_client_token
+    if current_user.has_payment_info?
+      Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
+    else
+      Braintree::ClientToken.generate
+    end
+  end
 end

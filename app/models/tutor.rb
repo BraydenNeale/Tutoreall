@@ -87,27 +87,25 @@ class Tutor < ActiveRecord::Base
 
   # area still messed up - need to fix
   def self.simple_search(area, faculty)
-
-    ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
+    if(area.present?)
+      ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
+    end
+    
     subs = Subject.where("faculty like ?", "#{faculty.downcase}")
 
     if(subs.present?)
       tutors = self.joins(:subjects).where(subjects: { id: subs.ids }).distinct
 
-      # if not ar.present?
-      #   return tutors
-      # end
+      if ar.present?
+        return tutors.includes(:areas).where('areas.id' => ar.id)
+      end
 
-      return tutors.includes(:areas).where('areas.id' => ar.id)
-      # return tutors
+      return tutors
     end
 
-    # nil being assigned to & for some reason in form
-    # if not ar.present?
-    #   return Array.new
-    # end
-
-    # return self.includes(:areas).where('areas.id' => ar.id)
+    if(ar.present?)
+      return self.includes(:areas).where('areas.id' => ar.id)
+    end
 
     return Array.new
   end
