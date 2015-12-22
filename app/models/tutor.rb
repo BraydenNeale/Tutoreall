@@ -43,7 +43,7 @@ class Tutor < ActiveRecord::Base
   end
 
   def hash_tag_list
-    return self.subjects.map(&:faculty).uniq.take(3)
+    return self.subjects.map(&:faculty).uniq.take(2)
   end
 
   def get_age

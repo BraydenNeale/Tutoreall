@@ -19,20 +19,22 @@
 // require chosen-jquery
 //= require messages
 //= require local_time
-//= require_tree ../../../vendor/assets/javascripts/.
+
+
+// some jquery clashes I need to sort
+// require_tree ../../../vendor/assets/javascripts/.
 
 
 // JavaScript Document
-// From front-ent dev
+// From front-end dev
 $(document).ready(function() {
-
   $('input').iCheck({
     checkboxClass: 'icheckbox_square',
     radioClass: 'iradio_square',
   });
   
   $(".selbox").selectbox();
-  
+
   $( ".datepicker" ).datepicker();
 
   $(".datepicker").on("blur", function(e) { $(this).datepicker("hide"); });

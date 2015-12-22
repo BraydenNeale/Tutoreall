@@ -2,7 +2,7 @@
   <div class="clearfix">
       <div class="title">
           <h2>Featured Tutors</h2>
-            <p>Here are some of our oustanding tutors!</p>
+            <p>Here are some of our outstanding tutors!</p>
         </div>
         <div class="sort_by">
           <input type="text" class="txtbox_2" placeholder="Location">
@@ -16,7 +16,7 @@
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
         <div class="profilebox">
             <!-- <div class="img"><img src="../../assets/layout/profile_img_1.jpg" alt=""></div> -->
-            <div class="img"><%= image_tag tutor.picture_url(:profile) %></div>
+            <div class="img"><%= link_to(image_tag(tutor.picture_url(:profile)), tutor) %></div>
             <div class="details">
               <h3><%= tutor.display_name %></h3>
                 <p><img src="../../assets/layout/map_marker_1.png" alt="">City Beach, WA</p> <!-- tutor.area -->
