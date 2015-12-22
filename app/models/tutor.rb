@@ -42,6 +42,10 @@ class Tutor < ActiveRecord::Base
     #return the model's email here
   end
 
+  def hash_tag_list
+    return self.subjects.map(&:faculty).uniq.take(3)
+  end
+
   def get_age
     if self.date_of_birth.nil?
       return nil

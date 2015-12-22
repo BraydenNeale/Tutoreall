@@ -1,2 +1,126 @@
-<h1>Tutoreall</h1>
-<p>Home page</p>
+<div class="feat_tutors clearfix">
+  <div class="clearfix">
+      <div class="title">
+          <h2>Featured Tutors</h2>
+            <p>Here are some of our oustanding tutors!</p>
+        </div>
+        <div class="sort_by">
+          <input type="text" class="txtbox_2" placeholder="Location">
+            <input type="text" class="txtbox_2 sub_txtbox" placeholder="Subject">
+            <input type="submit" class="btn_1" value="SORT"> 
+        </div>
+    </div>
+</div>
+<div class="row feat_tutors_c">
+  <% @tutors.each do |tutor| %>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+        <div class="profilebox">
+            <!-- <div class="img"><img src="../../assets/layout/profile_img_1.jpg" alt=""></div> -->
+            <div class="img"><%= image_tag tutor.picture_url(:profile) %></div>
+            <div class="details">
+              <h3><%= tutor.display_name %></h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">City Beach, WA</p> <!-- tutor.area -->
+                <span class="reviews">12 Reviews</span> <!-- need a tutor review attribute -->
+                <div class="tags">
+                  .
+                  <% tutor.hash_tag_list.each do |tag| %>
+                    <a href="">#<%= tag %></a>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+  <% end %>
+    <!-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_2.jpg" alt=""></div>
+            <div class="details">
+              <h3>Ben Smith</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Ellenbrook, WA</p>
+                <span class="reviews">15 Reviews</span>
+                <div class="tags"><a href="#">#science</a><a href="#">#mandarin</a><a href="#">#it</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_3.jpg" alt=""></div>
+            <div class="details">
+              <h3>Jon Ogden</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                <span class="reviews">9 Reviews</span>
+                <div class="tags"><a href="#">#music</a><a href="#">#business</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_4.jpg" alt=""></div>
+            <div class="details">
+              <h3>Chris Bowden</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Inglewood, WA</p>
+                <span class="reviews">25 Reviews</span>
+                <div class="tags"><a href="#">#art</a><a href="#">#business</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_5.jpg" alt=""></div>
+            <div class="details">
+              <h3>Tomoko Nagano</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                <span class="reviews">21 Reviews</span>
+                <div class="tags"><a href="#">#japanese</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_6.jpg" alt=""></div>
+            <div class="details">
+              <h3>Eunkyoung Hong</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Glendalough, WA</p>
+                <span class="reviews">7 Reviews</span>
+                <div class="tags"><a href="#">#korean</a><a href="#">#art</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_7.jpg" alt=""></div>
+            <div class="details">
+              <h3>Quentin Gallot</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                <span class="reviews">14 Reviews</span>
+                <div class="tags"><a href="#">#french</a><a href="#">#physio</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+      <div class="profilebox">
+          <div class="img"><img src="../../assets/layout/profile_img_8.jpg" alt=""></div>
+            <div class="details">
+              <h3>Hasib Sarvari</h3>
+                <p><img src="../../assets/layout/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                <span class="reviews">11 Reviews</span>
+                <div class="tags"><a href="#">#it</a><a href="#">#business</a></div>
+            </div>
+        </div>
+    </div> -->
+</div>
+<div id="search_totur">
+  <div class="container">
+      <div class="search_totur">
+            <h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
+            <input type="text" class="txtbox" placeholder="e.g. Nedlands">
+            <input type="text" class="txtbox sub_txtbox" placeholder="Select a Subject">
+            <input type="submit" class="ser_btn" value="SEARCH">
+    </div>
+    </div>
+</div>
+<div id="becum_totur">
+  <div class="container">
+      <h1>Become a tutor<a href="#" class="sign_up_btn">SIGN UP</a></h1>
+    </div>
+</div>
