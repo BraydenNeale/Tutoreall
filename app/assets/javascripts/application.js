@@ -19,3 +19,4 @@
 // require chosen-jquery
 //= require messages
 //= require local_time
+//= require_tree ../../../vendor/assets/javascripts/.
