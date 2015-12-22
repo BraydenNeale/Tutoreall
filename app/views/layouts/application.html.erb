@@ -29,7 +29,7 @@
 					<% else %>
 						<!--<li><%#= link_to current_user.display_name, student_path(current_user) %></li>-->
 						<li><%= link_to current_user.display_name, dashboard_student_path(current_user) %></li>
-						<li><%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %></li>
+						<li><%= link_to "Log Out", destroy_student_session_path, :method => :delete %></li>
 					<% end %>
 				<% else %>
 					<li><%= link_to "Tutor sign up", new_tutor_registration_path %></li>
@@ -49,17 +49,28 @@
 <div id="header">
     	<div class="container">
         	<div class="header clearfix">
-          	<div class="logo"><a href="#"><img src="../../assets/layout/logo.png" alt=""></a></div>
+          	<!-- <div class="logo"><a href="#"><img src="../../assets/layout/logo.png" alt=""></a></div> -->
+          	<div class="logo"><%= link_to(image_tag("layout/logo.png"), root_url) %></div>
               <div class="learn_more"><a href="#">Learn more</a></div>
-              <div class="login_signup"><a class="fancybox" href="#signin_popup">SIGN IN / SIGN UP</a></div>
-              <% if current_page?(root_url) %>
-              <!--   <div class="search_c">
-                	<h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
-                	<input type="text" class="txtbox" placeholder="e.g. Nedlands">
-                  <input type="text" class="txtbox sub_txtbox" placeholder="Select a Subject">
-                  <input type="submit" class="ser_btn" value="SEARCH">
-              	</div> -->
+              <% if user_signed_in? %>
+              	<div class="breadcrumb_1">
+                	<ul>
+                		<% if is_tutor %>
+											<li><%= link_to(image_tag(current_user.picture_url(:chat)) + " PROFILE", tutor_path(current_user)) %>/</li>
+											<li><%= link_to "DASHBOARD", dashboard_tutor_path(current_user)%>/</li>
+											<li><%= link_to "LOGOUT", destroy_tutor_session_path, :method => :delete %></li>
+										<% else %>
+											<li><%= link_to "PROFILE", student_path(current_user) %>/</li>
+											<li><%= link_to "DASHBOARD", dashboard_student_path(current_user)%>/</li>
+											<li><%= link_to "LOGOUT", destroy_student_session_path, :method => :delete %></li>
+										<% end %>
+                  </ul>
+                </div>
+              <% else %>
+              	<div class="login_signup"><a class="fancybox" href="#signin_popup">SIGN IN / SIGN UP</a></div>
+              <% end %>
 
+              <%if current_page?(root_url) %>
 								<div class="search_c">
 	              	<%= form_tag({:controller => "tutors", :action => "index"}, :method => "get") do %>
 	              		<h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
