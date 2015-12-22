@@ -5,6 +5,8 @@
 autocomplete = ->
   $('#area-search').autocomplete
     source: "/areas/autocomplete.json"
+  $('#area-search2').autocomplete
+    source: "/areas/autocomplete.json"
 
 # for turbolinks
 $(document).ready(autocomplete)

@@ -13,6 +13,7 @@
 <% else %>
 	<body>
 <% end %>
+
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
 <% if false %>
@@ -49,37 +50,37 @@
 <div id="header">
     	<div class="container">
         	<div class="header clearfix">
-          	<!-- <div class="logo"><a href="#"><img src="../../assets/layout/logo.png" alt=""></a></div> -->
           	<div class="logo"><%= link_to(image_tag("layout/logo.png"), root_url) %></div>
-              <div class="learn_more"><a href="#">Learn more</a></div>
-              <% if user_signed_in? %>
-              	<div class="breadcrumb_1">
-                	<ul>
-                		<% if is_tutor %>
-											<li><%= link_to(image_tag(current_user.picture_url(:chat)) + " PROFILE", tutor_path(current_user)) %>/</li>
-											<li><%= link_to "DASHBOARD", dashboard_tutor_path(current_user)%>/</li>
-											<li><%= link_to "LOGOUT", destroy_tutor_session_path, :method => :delete %></li>
-										<% else %>
-											<li><%= link_to "PROFILE", student_path(current_user) %>/</li>
-											<li><%= link_to "DASHBOARD", dashboard_student_path(current_user)%>/</li>
-											<li><%= link_to "LOGOUT", destroy_student_session_path, :method => :delete %></li>
-										<% end %>
-                  </ul>
-                </div>
-              <% else %>
-              	<div class="login_signup"><a class="fancybox" href="#signin_popup">SIGN IN / SIGN UP</a></div>
-              <% end %>
+            <div class="learn_more"><a href="#">Learn more</a></div>
 
-              <%if current_page?(root_url) %>
-								<div class="search_c">
-	              	<%= form_tag({:controller => "tutors", :action => "index"}, :method => "get") do %>
-	              		<h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
-										<%= text_field_tag :area, params[:area], id: "area-search", class: "txtbox", placeholder: "e.g. Nedlands" %>
-										<%= select_tag 'subject', subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
-										<%= submit_tag "Search", :name => nil, class: "ser_btn" %>
+            <% if user_signed_in? %>
+            	<div class="breadcrumb_1">
+              	<ul>
+              		<% if is_tutor %>
+										<li><%= link_to(image_tag(current_user.picture_url(:chat)) + " PROFILE", tutor_path(current_user)) %>/</li>
+										<li><%= link_to "DASHBOARD", dashboard_tutor_path(current_user)%>/</li>
+										<li><%= link_to "LOGOUT", destroy_tutor_session_path, :method => :delete %></li>
+									<% else %>
+										<li><%= link_to "PROFILE", student_path(current_user) %>/</li>
+										<li><%= link_to "DASHBOARD", dashboard_student_path(current_user)%>/</li>
+										<li><%= link_to "LOGOUT", destroy_student_session_path, :method => :delete %></li>
 									<% end %>
-								</div>
-             <% end %>
+                </ul>
+              </div>
+            <% else %>
+            	<div class="login_signup"><a class="fancybox" href="#signin_popup">SIGN IN / SIGN UP</a></div>
+            <% end %>
+
+            <%if current_page?(root_url) %>
+							<div class="search_c">
+              	<%= form_tag({:controller => "tutors", :action => "index"}, :method => "get") do %>
+              		<h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
+									<%= text_field_tag :area, params[:area], id: "area-search", class: "txtbox", placeholder: "e.g. Nedlands" %>
+									<%= select_tag 'subject', subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
+									<%= submit_tag "Search", :name => nil, class: "ser_btn" %>
+								<% end %>
+							</div>
+           <% end %>
           </div>
       </div>
       <div class="curve_1"><img src="../../assets/layout/head_curve_1.png" alt=""></div>
@@ -90,6 +91,27 @@
 		<%= yield %>
 	</div>
 </div>
+
+<!-- Is not contained within content/container - so this is the easiest way to manage it -->
+<%if current_page?(root_url) %>
+	<div id="search_totur">
+	  <div class="container">
+	    <div class="search_totur">
+	        <%= form_tag({:controller => "tutors", :action => "index"}, :method => "get") do %>
+	          <h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
+	          <%= text_field_tag :area, params[:area], id: "area-search2", class: "txtbox", placeholder: "e.g. Nedlands" %>
+	          <%= select_tag 'subject', subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
+	          <%= submit_tag "Search", :name => nil, class: "ser_btn" %>
+	        <% end %>
+	    </div>
+	  </div>
+	</div>
+	<div id="becum_totur">
+	  <div class="container">
+	    <h1>Become a tutor<a href="#" class="sign_up_btn">SIGN UP</a></h1>
+	  </div>
+	</div>
+<% end %>
 
 <div id="footer">
 	<div class="container">
