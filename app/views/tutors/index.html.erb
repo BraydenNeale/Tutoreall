@@ -1,33 +1,10 @@
 <% if false %>
-<h1>Find a tutor</h1>
-
-<%= form_tag("#", :method => "get") do %>
-	<%= text_field_tag :area, params[:area], id: "area-search", placeholder: "Select Area" %>
-	<%#= select_tag 'subject', subjects_options, multiple: false %>
-	<%= select_tag 'subject', subjects_faculties, multiple: false %>
-	<%= submit_tag "Search", :name => nil %>
-<% end %>
-
-<table>
-	<thead>
-		<tr>
-			<td>Name</td>
-			<td></td>
-		</tr>
-	</thead>
-	<tbody>
-		<% @tutors.each do |tutor| %>
-			<tr>
-				<td>
-					<%= tutor.display_name %>
-				</td>
-				<td>
-					<%= link_to "show", tutor %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+  <%= form_tag("#", :method => "get") do %>
+  	<%= text_field_tag :area, params[:area], id: "area-search", placeholder: "Select Area" %>
+  	<%#= select_tag 'subject', subjects_options, multiple: false %>
+  	<%= select_tag 'subject', subjects_faculties, multiple: false %>
+  	<%= submit_tag "Search", :name => nil %>
+  <% end %>
 <% end %>
 
 <div class="search_main">  
@@ -130,10 +107,7 @@
                       <p><img src="../../assets/layout/map_marker_1.png" alt="">Mt Lawley, WA</p>
                       <a href="#" class="cont_btn">CONTACT</a>
 	                      <div class="tags">
-	                      .   <!-- . is so that all displays are the same size until I work out how to manage these # -->
-	                      <% tutor.hash_tag_list.first do |tag| %>
-	                        <a href="">#<%= tag %></a>
-	                      <% end %>
+                        <a href="">#<%= tutor.hash_tag_list.first %></a>
                     </div>
                     </div>
                   </div>

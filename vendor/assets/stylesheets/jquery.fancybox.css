@@ -76,7 +76,7 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-	background-image: url('../images/fancybox_sprite.png');
+	background-image: url('../../assets/layout/fancybox_sprite.png');
 }
 
 #fancybox-loading {
@@ -259,18 +259,17 @@
 
 /*Retina graphics!*/
 
-
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 	   only screen and (min--moz-device-pixel-ratio: 1.5),
 	   only screen and (min-device-pixel-ratio: 1.5){
 
 	#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-		background-image: url('../images/fancybox_sprite@2x.png');
+		background-image: url('../../assets/layout/fancybox_sprite@2x.png');
 		background-size: 44px 152px; 
 	}
 
 	#fancybox-loading div {
-		background-image: url('../images/fancybox_loading@2x.gif');
+		background-image: url('../../assets/layout/fancybox_loading@2x.gif');
 		background-size: 24px 24px; 
 	}
 }

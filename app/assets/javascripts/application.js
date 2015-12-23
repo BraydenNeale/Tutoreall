@@ -10,18 +10,20 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+// require jquery
+//= require jquery-1.7.2.min
+//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery.turbolinks
 // require chosen-jquery
 //= require messages
 //= require local_time
 
 // some jquery clashes I need to sort
 // require_tree ../../../vendor/assets/javascripts/.
+// require jquery-1.7.2.min
 //= require bootstrap
 //= require jquery.fancybox
 //= require jquery.icheck

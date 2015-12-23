@@ -1,3 +1,4 @@
+<% if false %>
 <%= form_for(@tutor) do |f| %>
   <% if @tutor.errors.any? %>
     <div id="error_explanation">
@@ -75,3 +76,111 @@
     <%= f.submit %>
   </div>
 <% end %>
+<% end %>
+
+<div class="settings_main">
+  <h2>SETTINGS</h2>
+  <div class="basic_details">
+      <h3>Basic details</h3>
+        <div class="clearfix">
+          <div class="block_1">
+                <input type="text" class="txtbox_1" placeholder="Chris Bowden">
+            </div>    
+            <div class="block_1">
+                <input type="text" class="txtbox_1" placeholder="chris.bowden@gmail.com">
+            </div>
+            <div class="block_1">
+                <input type="text" class="txtbox_1" placeholder="•••••••••••••••••••••">
+            </div>    
+        </div>
+        <div class="clearfix">
+          <div class="block_1">
+              <select class="selbox"><option>Female</option><option>Male</option></select>
+            </div>
+            <div class="block_2">
+              <select class="selbox"><option>22</option><option>21</option><option>20</option><option>19</option></select>
+            </div>
+            <div class="block_3">
+              <select class="selbox"><option>November</option><option>option 2</option><option>option 3</option><option>option 4</option></select>
+            </div>
+            <div class="block_4">
+              <select class="selbox"><option>1991</option><option>1990</option><option>1989</option><option>1988</option></select>
+            </div>
+        </div>
+    </div>
+    <div class="photo_details clearfix">
+      <div class="block_1">
+          <h3>Photo</h3>
+            <div class="img"><%= image_tag(@tutor.picture_url(:display)) %></div>
+            <a href="#" class="edit_btn">EDIT IMAGE</a>
+        </div>
+        <div class="block_2">
+          <h3>Experience</h3>
+            <textarea cols="" rows="" placeholder="What experience do you have?"></textarea>
+            <h3>About</h3>
+            <textarea cols="" rows="" placeholder="Tell us about yourself..."></textarea>
+        </div>
+    </div>
+    <div class="more_details">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="block block_1">
+                  <input type="text" class="txtbox_1" placeholder="Suburb">
+                </div>
+                <div class="block">
+                  <select class="selbox">
+                      <option>When do you want to tutor?</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                </div>
+                <div class="block">
+                  <select class="selbox">
+                      <option>What subjects do you tutor?</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="block">
+                          <h5>Working with children number</h5>
+                          <input type="text" class="txtbox_1" placeholder="55661122 867">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="block"> 
+                          <h5>Working with children expiry</h5>
+                          <input type="text" class="txtbox_1 datepicker" placeholder="22 / 12 / 2016">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="block">
+                            <input type="text" class="txtbox_1" placeholder="Hourly Rate">
+                            <span class="infotxt">*Tutorial Academy charges 10% commision</span>
+                        </div>
+                  </div>
+                </div>
+                <div class="clearfix">
+                    <div class="where_tutor">
+                        <h5>Where do you tutor?</h5>
+                        <div class="clearfix">
+                            <div class="opt opt_1"><input type="checkbox" class="chkbox">Public place</div>
+                            <div class="opt opt_2"><input type="checkbox" class="chkbox">Tutors home</div>
+                            <div class="opt opt_3"><input type="checkbox" class="chkbox">Students home</div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+        <div class="clearfix">
+          <input type="submit" class="save_btn" value="SAVE SETTINGS">
+        </div>
+    </div>
+</div>
