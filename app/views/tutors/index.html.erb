@@ -1,15 +1,5 @@
+<% if false %>
 <h1>Find a tutor</h1>
-
-<%#= form_tag("#", :method => "get") do %>
-	<%#= text_field_tag :subject, params[:subject], placeholder: "Find subject" %>
-	<%#= select_tag 'subject', subjects_options, multiple: false %>
-	<%#= submit_tag "Search", :name => nil %>
-<%# end %>
-
-<%#= form_tag("#", :method => "get") do %>
-	<%#= text_field_tag :area, params[:area], placeholder: "Find area" %>
-	<%#= submit_tag "Search", :name => nil %>
-<%# end %>
 
 <%= form_tag("#", :method => "get") do %>
 	<%= text_field_tag :area, params[:area], id: "area-search", placeholder: "Select Area" %>
@@ -38,3 +28,209 @@
 		<% end %>
 	</tbody>
 </table>
+<% end %>
+
+<div class="search_main">  
+	<h2>Search Result: Mt Lawley, Music</h2>      	
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+      	<div class="ser_leftbar">
+          	<div class="clearfix leftbar_serchbox">
+              	<input type="text" class="txtbox_2" placeholder="Enter your suburb">
+                  <input type="submit" class="btn_1" value="SEARCH">
+              </div>
+              <div class="filter_box">
+              	<ul>
+                  	<li class="active music">
+                      	<a href="#">MUSIC<span class="val_txt">(6)</span></a>
+                          <ul>
+                          	<li><input type="checkbox" class="chkbox">Guitar</li>
+                              <li><input type="checkbox" class="chkbox">Piano</li>
+                              <li><input type="checkbox" class="chkbox">Strings</li>
+                              <li><input type="checkbox" class="chkbox">Brass</li>
+                              <li><input type="checkbox" class="chkbox">Woodwind</li>
+                              <li><input type="checkbox" class="chkbox">Other</li>
+                          </ul>
+                      </li>
+                      <li>
+                      	<a href="#">BUSINESS<span class="val_txt">(1)</span></a>
+                          <ul>
+                          	<li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                          </ul>
+                      </li>
+                      <li>
+                      	<a href="#">LANGUAGES<span class="val_txt">(11)</span></a>
+                          <ul>
+                          	<li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                          </ul>
+                      </li>
+                      <li>
+                      	<a href="#">SCIENCE<span class="val_txt">(2)</span></a>
+                          <ul>
+                          	<li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                          </ul>
+                      </li>
+                      <li>
+                      	<a href="#">MATHS<span class="val_txt">(5)</span></a>
+                          <ul>
+                          	<li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                              <li><input type="checkbox" class="chkbox">Lorem Ipsum</li>
+                          </ul>
+                      </li>
+                      <li class="active">
+                      	<a href="#">AVAILABILITY</a>
+                          <ul>
+                          	<li><input type="checkbox" class="chkbox">Monday</li>
+                              <li><input type="checkbox" class="chkbox">Tuesday</li>
+                              <li><input type="checkbox" class="chkbox">Wednesday</li>
+                              <li><input type="checkbox" class="chkbox">Thursday</li>
+                              <li><input type="checkbox" class="chkbox">Friday</li>
+                              <li><input type="checkbox" class="chkbox">Saturday</li>
+                              <li><input type="checkbox" class="chkbox">Sunday</li>
+                          </ul>
+                      </li>
+                      <li class="active">
+                      	<a href="#">AGG</a>
+                          <ul>
+                          	<li>
+                              	<div class="sel_box">
+                                  	<select class="selbox"><option>Don’t mind</option><option>option 1</option><option>option 2</option><option>option 3</option></select>
+                              	</div>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+          <div class="ser_rightbar">
+          	<div class="row">
+      			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  	<div class="profilebox_2">
+                      	<div class="clearfix">
+                          	<div class="img"><img src="images/profile_img_9.jpg" alt=""></div>
+                              <div class="details">
+                              	<h3>Jon Ogden</h3>
+                                  <p><img src="images/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                                  <a href="#" class="cont_btn">CONTACT</a>
+                                  <div class="tags">
+                                  	<a href="#">#music</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <p>Graduated from Year 12 in Indonesia and currently studied at Taylors College to enter UWA next year. Very good at math (can be tested) and also good Piano experience (6 Years). Can teach student from age 6-17 for both math or Piano and can come to student's house preferably in south of Perth. Don't mind with the salary as long as reasonable. </p>
+                          <p>Feel free to contact me.</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  	<div class="profilebox_2">
+                      	<div class="clearfix">
+                          	<div class="img"><img src="images/profile_img_10.jpg" alt=""></div>
+                              <div class="details">
+                              	<h3>Chris Bowden</h3>
+                                  <p><img src="images/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                                  <a href="#" class="cont_btn">CONTACT</a>
+                                  <div class="tags">
+                                  	<a href="#">#music</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <p>I believe that all students have the ability to succeed at school. This is why I love to tutor. I am currently studying science at UWA, with an assured pathway to medicine. In 2012, I graduated as International Baccalaureate Dux of PLC, with an IB score of 44/45 (ATAR 99.9), placing me in the top 1% of graduates worldwide.</p>
+                          <p>Hopefully here from you.</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  	<div class="profilebox_2">
+                      	<div class="clearfix">
+                          	<div class="img"><img src="images/profile_img_11.jpg" alt=""></div>
+                              <div class="details">
+                              	<h3>Quentin Gallot</h3>
+                                  <p><img src="images/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                                  <a href="#" class="cont_btn">CONTACT</a>
+                                  <div class="tags">
+                                  	<a href="#">#music</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <p>I believe that all students have the ability to succeed at school. This is why I love to tutor. I am currently studying science at UWA, with an assured pathway to medicine. In 2012, I graduated as International Baccalaureate Dux of PLC, with an IB score of 44/45 (ATAR 99.9), placing me in the top 1% of graduates worldwide.</p>
+                          <p>Hopefully here from you.</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  	<div class="profilebox_2">
+                      	<div class="clearfix">
+                          	<div class="img"><img src="images/profile_img_12.jpg" alt=""></div>
+                              <div class="details">
+                              	<h3>Hasib Sarvari</h3>
+                                  <p><img src="images/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                                  <a href="#" class="cont_btn">CONTACT</a>
+                                  <div class="tags">
+                                  	<a href="#">#music</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <p>Graduated from Year 12 in Indonesia and currently studied at Taylors College to enter UWA next year. Very good at math (can be tested) and also good Piano experience (6 Years). Can teach student from age 6-17 for both math or Piano and can come to student's house preferably in south of Perth. Don't mind with the salary as long as reasonable. </p>
+                          <p>Feel free to contact me.</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  	<div class="profilebox_2">
+                      	<div class="clearfix">
+                          	<div class="img"><img src="images/profile_img_13.jpg" alt=""></div>
+                              <div class="details">
+                              	<h3>Eunkyoung Hong</h3>
+                                  <p><img src="images/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                                  <a href="#" class="cont_btn">CONTACT</a>
+                                  <div class="tags">
+                                  	<a href="#">#music</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <p>Graduated from Year 12 in Indonesia and currently studied at Taylors College to enter UWA next year. Very good at math (can be tested) and also good Piano experience (6 Years). Can teach student from age 6-17 for both math or Piano and can come to student's house preferably in south of Perth. Don't mind with the salary as long as reasonable. </p>
+                          <p>Feel free to contact me.</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  	<div class="profilebox_2">
+                      	<div class="clearfix">
+                          	<div class="img"><img src="images/profile_img_14.jpg" alt=""></div>
+                              <div class="details">
+                              	<h3>Ben Smith</h3>
+                                  <p><img src="images/map_marker_1.png" alt="">Mt Lawley, WA</p>
+                                  <a href="#" class="cont_btn">CONTACT</a>
+                                  <div class="tags">
+                                  	<a href="#">#music</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <p>I believe that all students have the ability to succeed at school. This is why I love to tutor. I am currently studying science at UWA, with an assured pathway to medicine. In 2012, I graduated as International Baccalaureate Dux of PLC, with an IB score of 44/45 (ATAR 99.9), placing me in the top 1% of graduates worldwide.</p>
+                          <p>Hopefully here from you.</p>
+                      </div>
+                  </div>
+          	</div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
