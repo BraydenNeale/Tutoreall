@@ -20,10 +20,12 @@
 //= require messages
 //= require local_time
 
-
 // some jquery clashes I need to sort
 // require_tree ../../../vendor/assets/javascripts/.
-
+//= require bootstrap
+//= require jquery.fancybox
+//= require jquery.icheck
+//= require jquery.selectbox-0.2
 
 // JavaScript Document
 // From front-end dev
