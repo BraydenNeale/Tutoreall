@@ -31,13 +31,28 @@ class PictureUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  # Use rails console to apply new/updated versions to existing tutor pictures
+  # Tutor.all.each do |tutor|
+  #   if tutor.picture.present?
+  #     tutor.picture.recreate_versions!
+  #   end
+  # end
+
   #Create different versions of your uploaded files:
   version :profile do
-    process :resize_to_fill => [250, 250]
+    process :resize_to_fill => [441, 442]
   end
 
   version :chat do 
-    process :resize_to_fill => [50, 50]
+    process :resize_to_fill => [41, 41]
+  end
+
+  version :display do 
+    process :resize_to_fill => [314, 314]
+  end
+
+  version :search do 
+    process :resize_to_fill => [206, 206]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

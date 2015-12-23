@@ -22,6 +22,9 @@ class TutorsController < ApplicationController
     if(user_signed_in?)
       @messages_count = current_user.mailbox.inbox({:read => false}).count
     end
+
+    # 2 random tutors that aren't this tutor
+    @similar = Tutor.all.where.not(id: @tutor.id).order("RANDOM()").limit(2)
   end
 
   def dashboard

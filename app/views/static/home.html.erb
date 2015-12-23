@@ -15,7 +15,7 @@
   <% @tutors.each do |tutor| %>
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
         <div class="profilebox">
-            <div class="img"><%= link_to(image_tag(tutor.picture_url(:profile)), tutor) %></div>
+            <div class="img"><%= link_to(image_tag(tutor.picture_url(:display)), tutor) %></div>
             <div class="details">
               <h3><%= tutor.display_name %></h3>
                 <p><img src="../../assets/layout/map_marker_1.png" alt="">City Beach, WA</p> <!-- tutor.area -->
