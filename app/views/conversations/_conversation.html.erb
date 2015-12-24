@@ -1,11 +1,18 @@
-<%# if conversation.is_unread?(current_user) %>
-	<%#= link_to 'mark as read', mark_as_read_conversation_path(conversation), method: :post %>
-<%# end %>
-
-<!-- <li> -->
-	<% if conversation.is_unread?(current_user) %>
-		<%= link_to participant_name(conversation), conversation_path(conversation) %> - new <br>
-	<% else %>
-		<%= link_to participant_name(conversation), conversation_path(conversation) %> <br>
-	<% end %>
-<!-- </li> -->
+<div class="block clearfix">
+  <%#= link_to(conversation_path(conversation), class: "clearfix") do %>
+  <%= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
+    <% if is_tutor %>
+      <div class="img"><img src="../../assets/default/search_default.png" alt=""></div>
+    <% else %>
+     <div class="img"><%= image_tag(get_partner(conversation).picture_url(:search)) %></div>
+    <% end %>
+    <div class="desc">
+      <h4><%= participant_name(conversation) %></h4>
+      <% if conversation.is_unread?(current_user) %>
+        <p>- NEW</p>
+      <% else %>
+        <p></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

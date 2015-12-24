@@ -12,7 +12,7 @@
     </div>
   <% end %>
   <%#= @tutor.picture if @tutor.picture? %>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :picture %><br>
     <%= f.file_field :picture %>
   </div>
@@ -23,28 +23,28 @@
    <div class="field">
      <%= f.label :date_of_birth %><br>
     <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil) %>
-  </div>
+  </div> -->
 
   <!-- Working with children card -->
-  <p><b>Working With Children Card</b></p>
+<!--   <p><b>Working With Children Card</b></p>
   <%= f.fields_for :wwc_card do |wwc| %>
     <%= wwc.label :number %>
     <%= wwc.text_field :number %>
 
     <%= wwc.label :expiry %>
     <%= wwc.date_select(:expiry, :start_year => Date.today.year, :include_blank => true, :default => nil) %>
-  <% end %>
+  <% end %> -->
 
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :about %><br>
     <%= f.text_area :about %>
   </div>
   <div class="field">
     <%= f.label :experience %><br>
     <%= f.text_area :experience %>
-  </div>
+  </div> -->
 
-  <div class="field">
+<!--   <div class="field">
     <h4>
       <%= hidden_field_tag "tutor[weekday_ids][]", nil %>
       <% Weekday.all.each do |wday| %>
@@ -70,7 +70,7 @@
       <%= check_box_tag "tutor[subject_ids][]", subject.id, @tutor.subject_ids.include?(subject.id), id: dom_id(subject) %>
       <%= label_tag dom_id(subject), "#{subject.display_name} - #{subject.group}" %> <br>
     <% end %>
-  </div>
+  </div> -->
 
   <div class="actions">
     <%= f.submit %>

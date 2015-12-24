@@ -13,12 +13,20 @@ class ConversationsController < ApplicationController
 
 	def index
 		@conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
+
+		if params[:current].present?
+			@current = @mailbox.conversations.find(params[:current])
+			@current.mark_as_read(current_user)
+		else
+			@current = @conversations.first
+		end
 	end
 
 	def reply
 	  current_user.reply_to_conversation(@conversation, params[:body])
 	  flash[:success] = 'Reply sent'
-	  redirect_to conversation_path(@conversation)
+	  # redirect_to conversation_path(@conversation)
+	  redirect_to conversations_path(current: @conversation.id)
 	end
 
 	def mark_as_read
