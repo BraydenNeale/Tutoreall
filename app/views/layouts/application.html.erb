@@ -17,37 +17,6 @@
 
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
-<% if false %>
-	<header>
-		<nav>
-			<ul>
-					<li><%= link_to 'Home', root_path %></li>
-					<li><%= link_to 'Search Tutors', tutors_path %></li>
-				<% if user_signed_in? %>
-					<% if is_tutor %>
-						<li><%= link_to current_user.display_name, tutor_path(current_user) %></li>
-						<li><%#= link_to 'Dashboard', dashboard_tutor_path(@tutor) %></li>
-						<li><%= link_to "Log Out", destroy_tutor_session_path, :method => :delete %></li>
-					<% else %>
-						<!--<li><%#= link_to current_user.display_name, student_path(current_user) %></li>-->
-						<li><%= link_to current_user.display_name, dashboard_student_path(current_user) %></li>
-						<li><%= link_to "Log Out", destroy_student_session_path, :method => :delete %></li>
-					<% end %>
-				<% else %>
-					<li><%= link_to "Tutor sign up", new_tutor_registration_path %></li>
-					<li><%= link_to "Tutor log in", new_tutor_session_path %></li>
-					<li><%= link_to "Student sign up", new_student_registration_path %></li>
-					<li><%= link_to "Student log in", new_student_session_path %></li>
-				<% end %>
-			</ul>
-		</nav>
-	</header>
-
-	<p id="notice"><%= notice %></p>
-	<p id="alert"><%= alert %></p>
-<% end %>
-
-
 <div id="header">
     	<div class="container">
         	<div class="header clearfix">
@@ -61,6 +30,7 @@
                   <% if is_tutor %>
                     <li><%= link_to "My Profile", tutor_path(current_user) %></li>
                     <li><a href="#">Notes</a></li>
+                    <li><%= link_to "Inbox", conversations_path %></li>
                     <li><%= link_to "Settings", edit_tutor_path(current_user) %></li>
                     <li><%= link_to "Logout", destroy_tutor_session_path, :method => :delete %></li>
                   <% else %>
@@ -92,6 +62,8 @@
 
 <div id="content">
 	<div class="container">
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
 		<%= yield %>
 	</div>
 </div>

@@ -12,13 +12,15 @@ class ConversationsController < ApplicationController
 	end
 
 	def index
-		@conversations = @mailbox.conversations.paginate(page: params[:page], per_page: 10)
+		# not ordering correctly for some reason
+		@conversations = @mailbox.conversations.reorder(updated_at: :desc) #.paginate(page: params[:page], per_page: 10)
 
 		if params[:current].present?
 			@current = @mailbox.conversations.find(params[:current])
 			@current.mark_as_read(current_user)
 		else
-			@current = @conversations.first
+			# @current = @conversations.first
+			@current = nil
 		end
 	end
 
