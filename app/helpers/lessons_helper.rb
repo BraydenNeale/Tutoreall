@@ -59,4 +59,34 @@ module LessonsHelper
 	def is_cancelled
 		return (@lesson.status == "cancelled")
 	end
+
+	def next_tutor_lesson(student, tutor)
+	end
+
+	def next_student_lesson(student, tutor)
+		# return student.lessons.order(date: :asc).where(lesson.student)
+		student.lessons.order(date: :desc).each do |lesson|
+			if(lesson.tutor.id = tutor.id && lesson.date >= DateTime.now)
+				return lesson
+			end
+		end
+
+		return nil
+	end
+
+	def next_lesson_date(lesson)
+		if lesson.present?
+			return local_time(lesson.date.strftime('%d/%m/%Y %H:%M'))
+		end
+
+		return "Not scheduled"
+	end
+
+	def next_lesson_faculty(lesson)
+		if lesson.present?
+			return "##{lesson.subject}"
+		end
+
+		return ""
+	end
 end

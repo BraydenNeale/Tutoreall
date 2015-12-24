@@ -1,6 +1,4 @@
-<!-- refactor this into controller -->
-<% students = Set.new %>
-
+<% if false %>
 <h1>Dashboard</h1>
 
 <div class="row">
@@ -14,15 +12,45 @@
 		<% @lessons.each do |lesson| %>
 			<%= link_to "#{lesson.student.firstname.titleize}-#{lesson.subject}", lesson %> 
 			<%= local_time(lesson.date, '%d/%m/%Y %H:%M') %> <br>
-			<% students.add(lesson.student) %>
 		<% end %>
 	</div>
 	<div class="four columns">
 		<h4>My Students</h4>
-		<% students.each do |student| %>
+		<% @students.each do |student| %>
 			<%= student.display_name %>
 		<% end %>
 	</div>
 </div>
-
 <%#= will_paginate %>
+<% end %>
+
+<div class="student_main">
+  <div class="clearfix">
+    <h2>My Students</h2>
+    <div class="filter_btns">
+        <a href="#" class="active">SORT BY</a>
+        <a href="#" class="dates_btn">DATES</a>
+    </div>
+  </div>
+  <div class="row">
+  	<% @students.each do |student| %>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+        <div class="profilebox_3">
+            <div class="img">
+                <img src="../../assets/default/display_default.png" alt="">
+                <div class="btns">
+                    <!-- <a href="#msz_popup" class="fancybox">MESSAGE</a> -->
+                    <%= link_to "MESSAGE", conversations_path(current: get_conversation(student, current_user)) %>
+                    <a href="#book_popup" class="fancybox">BOOK</a>
+                </div>
+            </div>
+            <h3><%= student.display_name %></h3>
+            <% next_lesson = next_student_lesson(student, current_user) %>
+            <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
+            	<a href="#"><%= next_lesson_faculty(next_lesson) %></a>
+            </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

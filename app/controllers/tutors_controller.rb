@@ -29,6 +29,11 @@ class TutorsController < ApplicationController
 
   def dashboard
     @lessons = @tutor.lessons
+    @students = Set.new
+    @lessons.each do |lesson|
+      @students.add(lesson.student)
+    end
+
     @conversations = @mailbox.conversations
   end
 

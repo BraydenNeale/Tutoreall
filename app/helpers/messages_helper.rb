@@ -22,4 +22,10 @@ module MessagesHelper
   	# Only between 2 users
   	return conversation.participants.find { |p| p != current_user }
   end
+
+  def get_conversation(student, tutor)
+    conv_check_1 = Mailboxer::Conversation.participant(tutor)
+    conv_check_2 = Mailboxer::Conversation.participant(student)
+    return (conv_check_1 & conv_check_2).first.id
+  end
 end

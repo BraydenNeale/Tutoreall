@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     existing = (conv_check_1 & conv_check_2).first
 
     unless existing.nil? or !existing.is_participant?(current_user)
-      redirect_to conversation_path(existing)
+      redirect_to conversations_path(current: existing)
     end
 
     # should work - but error is thrown
