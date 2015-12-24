@@ -8,13 +8,19 @@ class StudentsController < ApplicationController
   end
 
   def show
-    if(user_signed_in?)
-      @messages_count = current_user.mailbox.inbox({:read => false}).count
-    end
+    # if(user_signed_in?)
+    #   @messages_count = current_user.mailbox.inbox({:read => false}).count
+    # end
   end
 
   def dashboard
     @lessons = @student.lessons
+    
+    @tutors = Set.new
+    @lessons.each do |lesson|
+      @tutors.add(lesson.tutor)
+    end
+
     @conversations = @mailbox.conversations
   end
 

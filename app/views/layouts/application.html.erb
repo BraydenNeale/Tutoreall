@@ -29,13 +29,15 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
                   <% if is_tutor %>
                     <li><%= link_to "My Profile", tutor_path(current_user) %></li>
-                    <li><a href="#">Notes</a></li>
+                    <!-- <li><a href="#">Notes</a></li> -->
+                    <li><%= link_to "Dashboard", dashboard_tutor_path(current_user) %></li>
                     <li><%= link_to "Inbox", conversations_path %></li>
                     <li><%= link_to "Settings", edit_tutor_path(current_user) %></li>
                     <li><%= link_to "Logout", destroy_tutor_session_path, :method => :delete %></li>
                   <% else %>
-                    <li><%= link_to "My Profile", student_path(current_user) %></li>
-                    <li><a href="#">Notes</a></li>
+                    <!-- <li><a href="#">Notes</a></li> -->
+                    <li><%= link_to "Dashboard", dashboard_student_path(current_user) %></li>
+                    <li><%= link_to "Inbox", conversations_path %></li>
                     <li><%= link_to "Settings", edit_student_path(current_user) %></li>
                     <li><%= link_to "Logout", destroy_student_session_path, :method => :delete %></li>
                   <% end %>
@@ -62,8 +64,8 @@
 
 <div id="content">
 	<div class="container">
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+    <!-- <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p> -->
 		<%= yield %>
 	</div>
 </div>

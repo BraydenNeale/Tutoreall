@@ -6,22 +6,27 @@
         	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-6">
           	<div class="clearfix btns_1">
                   <a href="#" class="btn_1">BACK</a>
-                  <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a>
+                  <!-- <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a> -->
             </div>
           	<div class="img">
-              	<!-- <img src="../../assets/layout/img_1.jpg" alt=""> -->
               	<%= image_tag @tutor.picture_url(:profile) %>
             </div>
           </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
             	<div class="details">
               	<h2><%= @tutor.display_name %></h2>
-                <p><img src="../../assets/layout/map_marker_2.png" alt="">Mt Lawley, WA</p>
+                <p><img src="../../assets/layout/map_marker_2.png" alt="">Mt Lawley, WA</p> <%# @tutor.location %>
                 <div class="btns">
-                	<a href="#">CONTACT</a>
+                  <% if is_student %>
+                    <%= link_to "CONTACT", new_message_path(:tutor => @tutor.id) %>
                     <a href="#">BOOK</a>
                     <a href="#">REVIEW</a>
-                    <a href="#">PING</a>
+                    <a href="#">REPORT</a>
+                  <% elsif not current_user.present? %>
+                    <p>Sign in to message this tutor</p>
+                    <a href="#">Sign in</a>
+                    <a href="#">Sign Up</a>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -41,22 +46,24 @@
 				<h4>Subjects</h4>
 				<p><%= @tutor.subjects.collect(&:name).join(",") %></p>
 
-				<% if this_tutor(@tutor) %>
-					<%= link_to 'my messages:', conversations_path %> <%= @messages_count %> new <br>
-					<%= link_to 'Dashboard', dashboard_tutor_path(@tutor) %> <br>
-					<%= link_to 'edit profile', edit_tutor_path(@tutor) %>
-				<% elsif is_student %>
-					<%= link_to "Message This Tutor", new_message_path(:tutor => @tutor.id) %>
-				<% else %>
-					<p>Sign up to message this tutor</p>
-				<% end %>
+        <% if false %>
+  				<% if this_tutor(@tutor) %>
+  					<%= link_to 'my messages:', conversations_path %> <%= @messages_count %> new <br>
+  					<%= link_to 'Dashboard', dashboard_tutor_path(@tutor) %> <br>
+  					<%= link_to 'edit profile', edit_tutor_path(@tutor) %>
+  				<% elsif is_student %>
+  					<%= link_to "Message This Tutor", new_message_path(:tutor => @tutor.id) %>
+  				<% else %>
+  					<p>Sign up to message this tutor</p>
+  				<% end %>
+        <% end %>
     	</div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
     	<div class="pro_leftbar">
       	<div class="clearfix btns_1">
           	<a href="#" class="btn_1">BACK</a>
-            <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a>
+            <!-- <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a> -->
         </div>
       	<h3>Similiar Profiles</h3>
         <div class="row">

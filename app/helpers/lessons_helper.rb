@@ -60,7 +60,15 @@ module LessonsHelper
 		return (@lesson.status == "cancelled")
 	end
 
+	# Refactor this + next_student into one method
 	def next_tutor_lesson(student, tutor)
+		tutor.lessons.order(date: :desc).each do |lesson|
+			if(lesson.student.id = student.id && lesson.date >= DateTime.now)
+				return lesson
+			end
+		end
+
+		return nil
 	end
 
 	def next_student_lesson(student, tutor)

@@ -1,3 +1,4 @@
+<% if false %>
 <!-- refactor this into controller -->
 <% tutors = Set.new %>
 
@@ -24,5 +25,39 @@
 		<% end %>
 	</div>
 </div>
-
 <%#= will_paginate %>
+<% end %>
+
+<div class="student_main">
+  <div class="clearfix">
+    <h2>My Tutors</h2>
+    <div class="filter_btns">
+        <a href="#" class="active">SORT BY</a>
+        <!-- <a href="#" class="dates_btn">DATES</a> -->
+        <%= link_to "Calender", calendar_student_path(current_user) %>
+    </div>
+  </div>
+  <div class="row">
+  	<% @tutors.each do |tutor| %>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+        <div class="profilebox_3">
+            <div class="img">
+                <%= image_tag tutor.picture_url(:display) %>
+                <div class="btns">
+                    <!-- <a href="#msz_popup" class="fancybox">MESSAGE</a> -->
+                    <%= link_to "MESSAGE", conversations_path(current: get_conversation(current_user, tutor)) %>
+                    <a href="#book_popup" class="fancybox">BOOK</a>
+                </div>
+            </div>
+            <h3><%= tutor.display_name %></h3>
+            <% next_lesson = next_tutor_lesson(tutor, current_user) %>
+            <%#= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
+              <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
+              	<a href="#"><%= next_lesson_faculty(next_lesson) %></a>
+              </p>
+            <%# end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
