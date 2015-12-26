@@ -57,5 +57,22 @@ $(document).ready(function() {
         
       }
     });
-    
+});
+
+//app/assets/javscripts/application.js
+$(document).on('submit', '#login_form', function(e) {
+            //do stuff here
+}).on('ajax:success', '#login_form', function(e, data, status, xhr) {
+        //do stuff here 
+}).on('ajax:error', '#login_form', function(e, data, status, xhr) {
+        //do stuff here
+});
+
+//app/assets/javascripts/application.js
+$(document).on('submit', '#register_form', function(e){
+    //do stuff here
+}).on('ajax:success', '#register_form', function(e, data, status, xhr) {
+    //do stuff here
+}).on('ajax:error', '#register_form', function(e, data, status, xhr) {
+       //do stuff here  
 });

@@ -1,6 +1,6 @@
 _sign_in.html.erb
 
-<div class="signin_popup" id="signin_popup">
+<!-- <div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
       <h1>SIGN IN</h1>
       <div class="clearfix">
@@ -12,6 +12,28 @@ _sign_in.html.erb
           <a href="#"><img src="../../assets/layout/facebook.png" alt=""></a>
           <a href="#"><img src="../../assets/layout/google_plus.png" alt=""></a>
       </div>
+      <div class="center_txt">
+          <h2>Are you a student?<a href="#signup_popup_1" class="fancybox signup_btn">SIGN UP</a></h2>
+          <h2>Are you a tutor?<a href="#signup_popup_2" class="fancybox signup_btn">SIGN UP</a></h2>
+      </div>
+  </div>
+  <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
+</div> -->
+
+<div class="signin_popup" id="signin_popup">
+  <div class="signin_popup_inn">
+    <%= form_for(resource, as: resource_name, :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
+
+      <%= f.email_field :email, :autofocus => true, :placeholder => "email", :id => 'login_email' %>
+      <%= f.password_field :password, :placeholder => "password", :id => 'login_password' %>
+
+      <% if devise_mapping.rememberable? -%>
+        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <% end -%>
+
+      <div><%= f.submit "Sign up" %></div>
+    <% end %>
+
       <div class="center_txt">
           <h2>Are you a student?<a href="#signup_popup_1" class="fancybox signup_btn">SIGN UP</a></h2>
           <h2>Are you a tutor?<a href="#signup_popup_2" class="fancybox signup_btn">SIGN UP</a></h2>

@@ -1,6 +1,5 @@
 <!-- _tutor_sign_up.html.erb -->
-
-<div class="signup_popup" id="signup_popup_2">
+<!-- <div class="signup_popup" id="signup_popup_2">
   <div class="signup_popup_inn">
       <h1>TUTOR SIGN UP</h1>
       <div class="row">
@@ -37,4 +36,53 @@
       </div>
   </div>
   <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
+</div> -->
+
+<!-- #app/views/devise/registrations/new.html.erb -->
+ <div class="signup_popup" id="signup_popup_2">
+  <div class="signup_popup_inn">
+<%= form_for(resource, :as => resource_name, :html => {:id => 'register_form'}, :url => tutor_registration_path, :remote => :true, :format => :json) do |f| %>
+
+    <% if false %>
+    <div class="name_input_container">
+        <div class="name_input_cell">
+            <%= f.text_field :first_name, :autofocus => true, :class => 'first_name', :placeholder => 'first name' %>
+            <div class="error"><%= devise_resource.errors[:first_name].first if devise_resource.errors[:first_name].present? %></div>
+        </div>
+
+        <div class="name_input_cell_right">
+            <%= f.text_field :last_name, :class => 'last_name', :placeholder => 'last name' %>
+            <div class="error"><%= devise_resource.errors[:last_name].first if devise_resource.errors[:last_name].present? %></div>
+        </div>
+    </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :firstname %><br />
+      <%= f.text_field :firstname %>
+    </div>
+
+   <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+    <%= f.email_field :email, :placeholder => "email" %>
+    <div class="error"><%= esource.errors[:email].first if resource.errors[:email].present? %></div>
+
+    <%= f.password_field :password, :placeholder => "password", :title => "8+ characters" %>
+    <div class="error"><%= resource.errors[:password].first if resource.errors[:password].present? %></div>
+
+    <%= f.password_field :password_confirmation, :placeholder => "confirm password" %>
+    <div class="error"><%= resource.errors[:password_confirmation].first if resource.errors[:password_confirmation].present? %></div>
+
+    <div class="option_buttons">
+        <div class="already_registered">
+            <%= link_to 'already registered?', '#', :class => 'already_registered', :id => 'already_registered', :view => 'login' %>
+        </div>
+        <%= f.submit "Sign up" %>
+        <div class="clear"></div>
+    </div>
+<% end %>
+</div>
 </div>

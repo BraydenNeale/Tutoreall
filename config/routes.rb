@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   
   get 'transactions/new'
-
   root 'static#home'
+
   get 'static/home'
 
-  devise_for :students
-  resources :students
+  # devise_for :students # original devise views
+  # devise_for :tutors # original devise views
 
-  devise_for :tutors
+  devise_for :students, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+  devise_for :tutors, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+
   resources :tutors do
     member do 
       get :dashboard
