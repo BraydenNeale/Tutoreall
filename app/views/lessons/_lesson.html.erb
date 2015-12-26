@@ -1,0 +1,71 @@
+<!--  <div id="book_popup" class="book_popup">
+  <h2>BOOK TOMOKO NAGANO</h2>
+  <div class="clearfix">  
+      <div class="sel_box_1"><select class="selbox"><option>Select Subject</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+      <input type="text" class="txtbox" placeholder="Location">
+    </div>
+    <textarea cols="" rows="" placeholder="Message"></textarea>
+    <div class="clearfix">  
+      <div class="sel_box_1"><select class="selbox"><option>Duration</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+    </div>
+    <div class="clearfix">  
+      <div class="sel_box_2"><select class="selbox"><option>HOUR</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+      <div class="sel_box_2"><select class="selbox"><option>MINUTES</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+        <div class="sel_box_3"><select class="selbox"><option>PM</option><option>AM</option></select></div>
+    </div>
+    <div class="clearfix">  
+      <div class="sel_box_2"><select class="selbox"><option>2015</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+      <div class="sel_box_2"><select class="selbox"><option>DECEMBER</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+        <div class="sel_box_3"><select class="selbox"><option>15</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
+    </div>
+    <div class="clearfix">
+      <input type="submit" class="book_btn" value="BOOK">
+    </div>
+</div> -->
+<% lesson = Lesson.new %>
+
+<%= form_for(lesson) do |f| %>
+  <% if @lesson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+      <ul>
+      <% @lesson.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.select :subject, subjects_options, multiple: false, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :location %> <br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %> (minutes) <br>
+    <%= f.number_field :duration, min: 30, step: 5, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select(:date, start_year: Time.now.year, order: [:day, :month, :year], required: true) %>
+  </div>
+
+  <%= f.hidden_field :student_id, value: student.id %>
+  <%= f.hidden_field :status, value: "initial" %>
+  <%= f.hidden_field :tutor_change, value: is_tutor %>
+
+  <!-- hidden_field_tag and adding requests from student - Branch created -->
+  <%#= hidden_field_tag(:tutor_id, @tutor.id) %>
+  <%#= hidden_field_tag(:status, "requested") %> 
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

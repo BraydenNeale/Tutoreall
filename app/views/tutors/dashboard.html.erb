@@ -40,21 +40,28 @@
             <div class="img">
                 <img src="../../assets/default/display_default.png" alt="">
                 <div class="btns">
-                    <!-- <a href="#msz_popup" class="fancybox">MESSAGE</a> -->
-                    <%= link_to "MESSAGE", conversations_path(current: get_conversation(student, current_user)) %>
-                    <a href="#book_popup" class="fancybox">NOTES</a>
+                  <!-- <a href="#msz_popup" class="fancybox">MESSAGE</a> -->
+                  <%= link_to "MESSAGE", conversations_path(current: get_conversation(student, current_user)) %>
+                  <!-- <a href="#book_popup" class="fancybox">NOTES</a> -->
+                  <a href="" class="fancybox">NOTES</a>
 
                 </div>
             </div>
             <h3><%= student.display_name %></h3>
             <% next_lesson = next_student_lesson(student, current_user) %>
             <%#= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
-              <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
-              	<a href="#"><%= next_lesson_faculty(next_lesson) %></a>
-              </p>
+            <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
+              <% if next_lesson.present? %>
+                <%= link_to 'VIEW', lesson_path(next_lesson) %>
+              <% else %>
+                <a href="#book_popup" class="fancybox">CREATE</a>
+              <% end %>
+            </p>
             <%# end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= render partial: 'lessons/lesson', locals: {tutor: @tutor} %>

@@ -84,7 +84,7 @@ module LessonsHelper
 
 	def next_lesson_date(lesson)
 		if lesson.present?
-			return local_time(lesson.date.strftime('%d/%m/%Y %H:%M'))
+			return local_time(lesson.date, '%d/%m/%Y %I:%M%p')
 		end
 
 		return "Not scheduled"
@@ -95,6 +95,6 @@ module LessonsHelper
 			return "##{lesson.subject}"
 		end
 
-		return ""
+		return "CREATE"
 	end
 end

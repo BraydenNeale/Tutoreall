@@ -29,19 +29,19 @@ textarea { height:134px; padding:10px 18px; }
 .btn_1:hover { background:#ededed; color: #999999; } 
 
 
-#header { height:306px; margin:0; padding:0; background:url(/assets/layout/header_bg.png) no-repeat center center; position:relative; background-size:cover; }
+#header { height:306px; margin:0; padding:0; background:url(../../assets/layout/header_bg.png) no-repeat center center; position:relative; background-size:cover; }
 #header .header { position:relative; margin:0; padding:0; }
 #header .logo { text-align:center; margin:0 0 20px 0; padding:0; }
 #header .logo img { max-width:100%; margin:0; padding:0; position:relative; z-index:2;}
 #header .learn_more { margin:0; padding:0; text-align:center; }
-#header .learn_more a { margin:0; padding:0 35px 0 0; display:inline-block; vertical-align:top; font-size:18px; line-height:20px; color:#ffffff; font-weight:700; background:url(/assets/layout/learn_more_icon.png) no-repeat right center; position:relative; z-index:2; }
+#header .learn_more a { margin:0; padding:0 35px 0 0; display:inline-block; vertical-align:top; font-size:18px; line-height:20px; color:#ffffff; font-weight:700; background:url(../../assets/layout/learn_more_icon.png) no-repeat right center; position:relative; z-index:2; }
 #header .login_signup { position:absolute; top:40px; right:0; font-size:18px; line-height:20px; color:#fff; font-weight:700; text-transform:uppercase; margin:0; padding:0; }
 #header .login_signup a { color:#fff; display:inline-block; vertical-align:top; }
 #header .login_signup a span { padding:0 7px; display:inline-block; vertical-align:top; }
 #header .curve_1 { margin:0; padding:0; position:absolute; bottom:0; left:0; right:0; }
 #header .curve_1 img { width:100%; margin:0; padding:0; vertical-align:top; }
 
-.home #header { height:800px; background:url(/assets/layout/header_bg_2.png) no-repeat center center; background-size:cover; }
+.home #header { height:800px; background:url(../../assets/layout/header_bg_2.png) no-repeat center center; background-size:cover; }
 .home #header .logo  { margin-bottom:20px; }
 .home #header .search_c { padding:135px 0 0 0; margin:0; text-align:center;  }
 .home #header .search_c h1 { font-size:48px; line-height:50px; color:#ffffff; font-weight:normal; margin:0; padding:0 0 40px 0; }
@@ -91,7 +91,7 @@ textarea { height:134px; padding:10px 18px; }
 .profilebox .tags a { color:#4da3c3; display:inline-block; vertical-align:top; margin:0 8px 0 0; padding:0; }
 .profilebox .tags a:last-child { margin-right:0; }
 
-#search_totur { padding:110px 0 130px 0; margin:0; background:url(/assets/layout/search_bg.jpg) no-repeat center center; background-size:cover; text-align:center;  }
+#search_totur { padding:110px 0 130px 0; margin:0; background:url(../../assets/layout/search_bg.jpg) no-repeat center center; background-size:cover; text-align:center;  }
 #search_totur .search_totur { display:inline-block; vertical-align:top; }
 #search_totur h1 { font-size:48px; line-height:50px; color:#ffffff; font-weight:normal; margin:0; padding:0 0 40px 30px; text-align:left; }
 #search_totur h1 strong { font-weight:700; }
@@ -160,12 +160,12 @@ textarea { height:134px; padding:10px 18px; }
 #content .search_main .ser_leftbar .filter_box > ul > li > ul { margin:0; padding:15px 0 10px 0; display:none; background:#ededed; }
 #content .search_main .ser_leftbar .filter_box > ul > li > ul > li { margin:0; padding:0 0 10px 28px; display:block; font-size:14px; line-height:14px; color:#000000; }
 #content .search_main .ser_leftbar .filter_box > ul > li.active > ul { display:block; }
-#content .search_main .ser_leftbar .filter_box .icheckbox_square { width:15px; height:14px; background:url(/assets/layout/chkbox_2.png) no-repeat 0px 0px; }
+#content .search_main .ser_leftbar .filter_box .icheckbox_square { width:15px; height:14px; background:url(../../assets/layout/chkbox_2.png) no-repeat 0px 0px; }
 #content .search_main .ser_leftbar .filter_box .icheckbox_square.checked { background-position:-15px 0; }
 #content .search_main .ser_leftbar .filter_box .sel_box { max-width:213px; }
 #content .search_main .ser_leftbar .filter_box .sbHolder  { height:39px; background:#bbbbbb; }
 #content .search_main .ser_leftbar .filter_box .sbSelector { font-size:14px; line-height:39px; color:#fff; height:39px; text-indent:18px; }
-#content .search_main .ser_leftbar .filter_box .sbToggle { background: url(/assets/layout/down_arr_2.png) no-repeat center center; width:15px; height:39px; }
+#content .search_main .ser_leftbar .filter_box .sbToggle { background: url(../../assets/layout/down_arr_2.png) no-repeat center center; width:15px; height:39px; }
 #content .search_main .ser_leftbar .filter_box .sbOptions { background-color:#bbbbbb; }
 #content .search_main .ser_leftbar .filter_box .sbOptions a { color:#fff; }
 
@@ -212,9 +212,9 @@ textarea { height:134px; padding:10px 18px; }
 #content .settings_main .more_details .sbOptions { background:#fff; border:1px solid #bbbbbb; width:auto; left:-1px; right:-1px; }
 #content .settings_main .more_details .sbOptions a { color:#252525; }
 #content .settings_main .more_details .sbOptions a:hover, #content .settings_main .more_details .sbOptions a:focus, #content .settings_main .more_details .sbOptions a.sbFocus { background:#4da3c3; color:#fff; }
-#content .settings_main .more_details .sbToggle { background:url(/assets/layout/down_arr_3.png) no-repeat left center; width:30px; }
-#content .settings_main .more_details .sbToggleOpen { background:url(/assets/layout/up_arr_2.png) no-repeat left center; }
-#content .settings_main .datepicker { background:url(/assets/layout/calander_icon.png) no-repeat right center #fff;  }
+#content .settings_main .more_details .sbToggle { background:url(../../assets/layout/down_arr_3.png) no-repeat left center; width:30px; }
+#content .settings_main .more_details .sbToggleOpen { background:url(../../assets/layout/up_arr_2.png) no-repeat left center; }
+#content .settings_main .datepicker { background:url(../../assets/layout/calander_icon.png) no-repeat right center #fff;  }
 
 #content .student_main {   }
 #content .student_main h2 { float:left; }
@@ -340,9 +340,9 @@ textarea { height:134px; padding:10px 18px; }
 .signup_popup .sbOptions { background:#fff; border:1px solid #bbbbbb; width:auto; left:-1px; right:-1px; }
 .signup_popup .sbOptions a { color:#252525; }
 .signup_popup .sbOptions a:hover, .signup_popup .sbOptions a:focus, .signup_popup .sbOptions a.sbFocus { background:#4da3c3; color:#fff; }
-.signup_popup .sbToggle { background:url(/assets/layout/down_arr_3.png) no-repeat left center; width:30px; height:65px; }
-.signup_popup .sbToggleOpen { background:url(/assets/layout/up_arr_2.png) no-repeat left center; }
-.signup_popup .datepicker { background:url(/assets/layout/calander_icon.png) no-repeat right center #fff; padding-right:60px !important; margin-bottom:0 !important; }
+.signup_popup .sbToggle { background:url(../../assets/layout/down_arr_3.png) no-repeat left center; width:30px; height:65px; }
+.signup_popup .sbToggleOpen { background:url(../../assets/layout/up_arr_2.png) no-repeat left center; }
+.signup_popup .datepicker { background:url(../../assets/layout/calander_icon.png) no-repeat right center #fff; padding-right:60px !important; margin-bottom:0 !important; }
 .signup_popup .infotxt { font-size:11px; line-height:12px; padding:5px 0 15px 0; color:#777777; }
 
 
@@ -377,8 +377,8 @@ textarea { height:134px; padding:10px 18px; }
 .book_popup .sbOptions { background:#fff; border:1px solid #bbbbbb; width:auto; left:-1px; right:-1px; }
 .book_popup .sbOptions a { color:#252525; }
 .book_popup .sbOptions a:hover, .book_popup .sbOptions a:focus, .book_popup .sbOptions a.sbFocus { background:#4da3c3; color:#fff; }
-.book_popup .sbToggle { background:url(/assets/layout/down_arr_4.png) no-repeat left center; width:27px; height:55px; }
-.book_popup .sbToggleOpen { background:url(/assets/layout/down_arr_4.png) no-repeat left center; }
+.book_popup .sbToggle { background:url(../../assets/layout/down_arr_4.png) no-repeat left center; width:27px; height:55px; }
+.book_popup .sbToggleOpen { background:url(../../assets/layout/down_arr_4.png) no-repeat left center; }
 
 .book_popup h2 { font-size:24px; line-height:26px; color:#000000; font-weight:700; margin:0; padding:0 0 40px 0; text-transform:uppercase; }
 .book_popup .sel_box_1 { width:315px; float:left; margin:0 45px 0 0; padding:0; } 

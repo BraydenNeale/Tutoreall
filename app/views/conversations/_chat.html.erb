@@ -11,7 +11,11 @@
             <!-- <div class="load_msz"><a href="#">Load Older Messages (589)</a></div> -->
             <% if is_tutor %>
               <div class="load_msz">
-               <%= link_to "Add lesson", new_lesson_path(:student => get_partner(current).id) %>
+               <%= link_to "ADD LESSON", new_lesson_path(:student => get_partner(current).id) %>
+              </div>
+            <% else %>
+              <div class="load_msz">
+                <%= link_to "REQUEST LESSON", new_lesson_path(:student => get_partner(current).id) %>
               </div>
             <% end %>
 
