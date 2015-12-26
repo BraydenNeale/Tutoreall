@@ -1,4 +1,4 @@
-_sign_in.html.erb
+<!-- _sign_in.html.erb -->
 
 <!-- <div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
@@ -22,12 +22,12 @@ _sign_in.html.erb
 
 <div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
-    <%= form_for(resource, as: resource_name, :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
+    <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
 
       <%= f.email_field :email, :autofocus => true, :placeholder => "email", :id => 'login_email' %>
       <%= f.password_field :password, :placeholder => "password", :id => 'login_password' %>
 
-      <% if devise_mapping.rememberable? -%>
+      <% if devise_mapping(0).rememberable? -%>
         <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
       <% end -%>
 

@@ -140,10 +140,15 @@
   </div>
 </div>
 
-<%= render partial: 'partials/sign_in' %>
-<%= render partial: 'partials/student_sign_up' %>
-<%= render partial: 'partials/tutor_sign_up' %>
-<%= render partial: 'partials/tutor_details' %>
+<!-- Dont render the partials if a user is already logged in : or on certain pages (things break) -->
+<% if not current_user.present? %>
+  <% if not devise_page %>  
+    <%= render partial: 'partials/sign_in' %>
+    <%= render partial: 'partials/student_sign_up' %>
+    <%= render partial: 'partials/tutor_sign_up' %>
+    <%= render partial: 'partials/tutor_details' %>
+  <% end %>
+<% end %>
 
 </body>
 </html>
