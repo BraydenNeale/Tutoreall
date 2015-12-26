@@ -86,7 +86,7 @@ class RegistrationsController < DeviseController
   # Custom Fields
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:first_name, :last_name,
+      u.permit(:firstname, :lastname,
         :email, :password, :password_confirmation)
     end
   end

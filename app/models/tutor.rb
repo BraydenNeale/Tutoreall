@@ -4,6 +4,9 @@ class Tutor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+
   mount_uploader :picture, PictureUploader
 
   acts_as_messageable # mailboxer

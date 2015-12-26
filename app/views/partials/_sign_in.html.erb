@@ -10,7 +10,7 @@
       </div> -->
       <div class="clearfix">
         <h2>TUTOR</h2>
-        <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
+        <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_tutor'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
 
           <%= f.email_field :email, :placeholder => "email", class: "txtbox" %>
           <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
@@ -27,7 +27,7 @@
       </div>
       <div class="clearfix">
       <h2>STUDENT</h2>
-        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_form'}, :url => student_session_path, :remote => :true, :format => :json) do |f| %>
+        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_student'}, :url => student_session_path, :remote => :true, :format => :json) do |f| %>
 
           <%= f.email_field :email, :placeholder => "email", class: "txtbox" %>
           <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
