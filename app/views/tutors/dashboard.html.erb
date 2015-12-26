@@ -54,7 +54,8 @@
               <% if next_lesson.present? %>
                 <%= link_to 'VIEW', lesson_path(next_lesson) %>
               <% else %>
-                <a href="#book_popup" class="fancybox">CREATE</a>
+                <!-- <a href="#book_popup" class="fancybox">CREATE</a> -->
+                <%= link_to 'CREATE', new_lesson_path(student: student) %>
               <% end %>
             </p>
             <%# end %>
@@ -64,4 +65,5 @@
   </div>
 </div>
 
-<%= render partial: 'lessons/lesson', locals: {tutor: @tutor} %>
+<!-- Need to dynamically determine locals to pass to the partial - couldn't work out how -->
+<%#= render partial: 'lessons/lesson', locals: {tutor: @tutor} %>
