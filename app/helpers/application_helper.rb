@@ -19,20 +19,8 @@ module ApplicationHelper
   end
 
   def devise_mapping(user)
-    @devise_mapping ||= Devise.mappings[resource_name(0)]
+    @devise_mapping ||= Devise.mappings[resource_name(user)]
   end
-
-  # def resource_name
-  #   :tutor
-  # end
-
-  # def resource
-  #   @resource ||= Tutor.new
-  # end
-
-  # def devise_mapping
-  #   @devise_mapping ||= Devise.mappings[resource_name]
-  # end
 
   # check whether we are on a page that needs to do devise things
   # Horrible hack - there is probably an easier way to do this..

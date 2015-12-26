@@ -33,7 +33,7 @@
           <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
 
           <% if false %>
-            <% if devise_mapping(0).rememberable? -%>
+            <% if devise_mapping(1).rememberable? -%>
               <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
             <% end -%>
           <% end %>

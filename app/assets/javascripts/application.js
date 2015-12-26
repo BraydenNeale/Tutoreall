@@ -62,27 +62,23 @@ $(document).ready(function() {
 // Ajax requests for devise form from partial views
 
 $(document).on('submit', '#login_tutor', function(e) {
-  //do stuff here
 }).on('ajax:success', '#login_tutor', function(e, data, status, xhr) {
-  //do stuff here
-  window.location.assign("")
+  window.location.assign("");
 }).on('ajax:error', '#login_tutor', function(e, data, status, xhr) {
-  //do stuff here
-  alert('error occurred: Try again')
+  alert('error occurred: Try again');
 });
 
 $(document).on('submit', '#login_student', function(e) {
-  //do stuff here
 }).on('ajax:success', '#login_student', function(e, data, status, xhr) {
-  //do stuff here
+  window.location.assign("")
 }).on('ajax:error', '#login_student', function(e, data, status, xhr) {
-  alert('error occurred: Try again')
+  alert('error occurred: Try again');
 });
 
 $(document).on('submit', '#register_form', function(e){
-  //do stuff here
 }).on('ajax:success', '#register_form', function(e, data, status, xhr) {
-  //do stuff here
+  window.location.assign("")
+  alert("Confirmation email has been sent");
 }).on('ajax:error', '#register_form', function(e, data, status, xhr) {
-  alert('error occurred: Try again') 
+  alert('error occurred: Try again');
 });

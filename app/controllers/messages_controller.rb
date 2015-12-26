@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def new
+
+    # need to make this so that a tutor cannot message another tutor 
+    # as one of the tutors will be interpreted as a student - and things will break
+
     @tutor = Tutor.find_by(id: params[:tutor])
     
     conv_check_1 = Mailboxer::Conversation.participant(@tutor)
@@ -24,6 +28,6 @@ class MessagesController < ApplicationController
     recipient = Tutor.find_by(id: params[:tutor])
     conversation = current_user.send_message(recipient, params[:message][:body], params[:message][:subject]).conversation
     flash[:success] = "Message has been sent!"
-    redirect_to conversation_path(conversation)
+    redirect_to conversations_path(current: conversation)
   end
 end

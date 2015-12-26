@@ -28,4 +28,16 @@ module MessagesHelper
     conv_check_2 = Mailboxer::Conversation.participant(student)
     return (conv_check_1 & conv_check_2).first.id
   end
+
+  def is_conversation(student, tutor)
+    conv_check_1 = Mailboxer::Conversation.participant(tutor)
+    conv_check_2 = Mailboxer::Conversation.participant(student)
+    existing = (conv_check_1 & conv_check_2).first
+
+    unless existing.nil? or !existing.is_participant?(current_user)
+      return true
+    end
+
+    return false
+  end
 end

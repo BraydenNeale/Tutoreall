@@ -1,0 +1,44 @@
+<div id="msz_popup" class="msz_popup">
+  <h2><%= tutor.display_name %></h2>
+  <%= form_tag messages_path, method: :post do %>
+    <%= text_area_tag 'message[body]', nil, required: true, placeholder: "message" %>
+
+    <%= hidden_field_tag('message[subject]', "conversation") %>
+    <%= hidden_field_tag(:tutor, "#{tutor.id}") %>
+
+    <div class="clearfix">
+      <%= submit_tag "SEND", class: "send_btn" %>
+    </div>
+  <% end %>
+  <!-- <input type="text" class="txtbox" placeholder="Subject"> -->
+<!--     <textarea cols="Message" rows="" placeholder="Message"></textarea>
+    <div class="clearfix"><input type="submit" class="send_btn" value="SEND"></div> -->
+</div>
+
+<% if false %>
+<h1>New Message</h1>
+
+<%= form_tag messages_path, method: :post do %>
+  <!-- <div class="field">
+    <%#= label_tag 'message[subject]', 'Subject' %>
+    <%#= text_field_tag 'message[subject]', nil, required: true %>
+  </div> -->
+
+  <div class="field">
+    <p>To: <%= @tutor.display_name %></p>
+    <%#= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, required: true %>
+  </div>
+
+  <!-- <div class="field">
+    <%#= label_tag 'recipients', 'Choose recipient' %>
+    <%#= select_tag 'recipients', recipients_options, multiple: false %>
+  </div> -->
+  
+
+
+  <div class="actions">
+    <%= submit_tag 'Send' %>
+  </div>
+<% end %>
+<% end %>

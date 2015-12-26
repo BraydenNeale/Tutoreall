@@ -18,7 +18,12 @@
                 <p><img src="../../assets/layout/map_marker_2.png" alt="">Mt Lawley, WA</p> <%# @tutor.location %>
                 <div class="btns">
                   <% if is_student %>
-                    <%= link_to "CONTACT", new_message_path(:tutor => @tutor.id) %>
+                    <% if is_conversation(current_user, @tutor) %>
+                      <%= link_to "CONTACT", conversations_path(current: get_conversation(current_user, @tutor)) %>
+                    <% else %>
+                      <a href="#msz_popup" class="fancybox">CONTACT</a>
+                    <% end %>
+
                     <a href="#">BOOK</a>
                     <a href="#">REVIEW</a>
                     <a href="#">REPORT</a>
@@ -90,3 +95,7 @@
     </div>
   </div>
 </div>
+
+<% if is_student %>
+   <%= render partial: 'messages/message', locals: {tutor: @tutor} %>
+<% end %>
