@@ -1,40 +1,47 @@
 <!-- _student_sign_up.html.erb -->
 
+<!-- _tutor_sign_up.html.erb -->
 <div class="signup_popup" id="signup_popup_1">
   <div class="signup_popup_inn">
+    <%= form_for(resource(1), :as => resource_name(1), :html => {:id => 'register_form'}, :url => student_registration_path, :remote => :true, :format => :json) do |f| %>
       <h1>STUDENT / PARENT SIGN UP</h1>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-            <input type="text" class="txtbox" placeholder="First name">
+             <%= f.text_field :firstname, class: "txtbox", placeholder: "First name" %>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <input type="text" class="txtbox" placeholder="Surname">
+            <%= f.text_field :lastname, class: "txtbox", placeholder: "Surname" %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-            <input type="text" class="txtbox" placeholder="Email">
-          </div>
-          <div class="col-sm-6 col-xs-12">
-            <input type="text" class="txtbox" placeholder="Students DOB">
-          </div>
+             <%= f.email_field :email, class: "txtbox", placeholder: "Email" %>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <!-- <input type="text" class="txtbox" placeholder="Students DOB"> -->
+        </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-            <input type="text" class="txtbox" placeholder="Password">
+            <% if false %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+            <% end %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "txtbox" %>
           </div>
           <div class="col-sm-6 col-xs-12">    
-            <input type="text" class="txtbox" placeholder="Confirm Password">
+             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "txtbox" %>
           </div>
       </div>
-      <h2>or sign up using</h2>
       <div class="clearfix">
-        <div class="social">
+        <!-- <div class="social">
               <a href="#"><img src="../../assets/layout/facebook.png" alt=""></a>
               <a href="#"><img src="../../assets/layout/google_plus.png" alt=""></a>
-          </div>
-          <input type="submit" class="signup_btn" value="SIGN UP">
+          </div> -->
+           <%= f.submit "SIGN UP", class: "signup_btn" %>
       </div>
+    <% end %>
   </div>
   <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
 </div>

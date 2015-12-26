@@ -140,7 +140,7 @@
   </div>
 </div>
 
-<!-- Dont render the partials if a user is already logged in : or on certain pages (things break) -->
+<!-- Dont render the partials if a user is already logged in : or on pages with other devise forms (things break) -->
 <% if not current_user.present? %>
   <% if not devise_page %>  
     <%= render partial: 'partials/sign_in' %>

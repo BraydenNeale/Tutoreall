@@ -1,16 +1,50 @@
 <!-- _sign_in.html.erb -->
 
-<!-- <div class="signin_popup" id="signin_popup">
+<div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
       <h1>SIGN IN</h1>
-      <div class="clearfix">
+      <!-- <div class="clearfix">
           <input type="text" class="txtbox" placeholder="">
           <input type="text" class="txtbox" placeholder="">
           <input type="submit" class="login_btn" value="LOG IN" >
+      </div> -->
+      <div class="clearfix">
+        <h2>TUTOR</h2>
+        <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
+
+          <%= f.email_field :email, :placeholder => "email", class: "txtbox" %>
+          <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
+
+          <% if false %>
+            <% if devise_mapping(0).rememberable? -%>
+              <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+            <% end -%>
+          <% end %>
+
+          <%= f.submit "LOG IN", class: "login_btn" %>
+        <% end %>
+        <br><br>
       </div>
+      <div class="clearfix">
+      <h2>STUDENT</h2>
+        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_form'}, :url => student_session_path, :remote => :true, :format => :json) do |f| %>
+
+          <%= f.email_field :email, :placeholder => "email", class: "txtbox" %>
+          <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
+
+          <% if false %>
+            <% if devise_mapping(0).rememberable? -%>
+              <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+            <% end -%>
+          <% end %>
+
+          <%= f.submit "LOG IN", class: "login_btn" %>
+        <% end %>
+      </div>
+
       <div class="social">
-          <a href="#"><img src="../../assets/layout/facebook.png" alt=""></a>
-          <a href="#"><img src="../../assets/layout/google_plus.png" alt=""></a>
+          <!-- <a href="#"><img src="../../assets/layout/facebook.png" alt=""></a>
+          <a href="#"><img src="../../assets/layout/google_plus.png" alt=""></a> -->
       </div>
       <div class="center_txt">
           <h2>Are you a student?<a href="#signup_popup_1" class="fancybox signup_btn">SIGN UP</a></h2>
@@ -18,8 +52,9 @@
       </div>
   </div>
   <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
-</div> -->
+</div>
 
+<% if false %>
 <div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
     <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
@@ -41,3 +76,4 @@
   </div>
   <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
 </div>
+<% end %>

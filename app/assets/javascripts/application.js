@@ -45,7 +45,7 @@ $(document).ready(function() {
   
   $('.fancybox').fancybox({
     padding:0
-    });
+  });
   
   $("#content .search_main .ser_leftbar .filter_box > ul > li > a").click(function (e) {
       e.preventDefault();
