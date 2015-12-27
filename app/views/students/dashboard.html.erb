@@ -46,7 +46,8 @@
                 <div class="btns">
                     <!-- <a href="#msz_popup" class="fancybox">MESSAGE</a> -->
                     <%= link_to "MESSAGE", conversations_path(current: get_conversation(current_user, tutor)) %>
-                    <a href="#book_popup" class="fancybox">BOOK</a>
+                    <!-- <a href="#book_popup" class="fancybox">BOOK</a> -->
+                    <%= link_to 'BOOK', new_lesson_path(student: current_user, tutor: tutor) %>
                 </div>
             </div>
             <h3><%= tutor.display_name %></h3>
@@ -62,4 +63,4 @@
   </div>
 </div>
 
-<%= render partial: 'lessons/lesson', locals: {tutor: @tutor} %>
+<%#= render partial: 'lessons/lesson', locals: {tutor: @tutor} %>

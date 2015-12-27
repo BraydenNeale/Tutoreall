@@ -34,8 +34,15 @@
   </div>
 
   <%= f.hidden_field :student_id, value: @student.id %>
-  <%= f.hidden_field :status, value: "initial" %>
+  <%= f.hidden_field :tutor_id, value: @tutor.id %>
+  <%#= f.hidden_field :status, value: "initial" %>
   <%= f.hidden_field :tutor_change, value: is_tutor %>
+
+  <% if is_tutor %>
+    <%= f.hidden_field :status, value: "initial" %>
+  <% else %>
+    <%= f.hidden_field :status, value: "requested" %>
+  <% end %>
 
   <!-- hidden_field_tag and adding requests from student - Branch created -->
   <%#= hidden_field_tag(:tutor_id, @tutor.id) %>

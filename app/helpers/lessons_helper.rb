@@ -95,6 +95,6 @@ module LessonsHelper
 			return "##{lesson.subject}"
 		end
 
-		return "CREATE"
+		return ""
 	end
 end

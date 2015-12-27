@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_one :card, :as => :user
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
 
   acts_as_messageable
 

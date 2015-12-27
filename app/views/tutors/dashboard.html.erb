@@ -55,7 +55,7 @@
                 <%= link_to 'VIEW', lesson_path(next_lesson) %>
               <% else %>
                 <!-- <a href="#book_popup" class="fancybox">CREATE</a> -->
-                <%= link_to 'CREATE', new_lesson_path(student: student) %>
+                <%= link_to 'CREATE', new_lesson_path(student: student, tutor: current_user) %>
               <% end %>
             </p>
             <%# end %>
