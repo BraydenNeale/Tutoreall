@@ -11,6 +11,8 @@ class TutorsController < ApplicationController
     # Where subject is faculty in this case
     if params[:area] or params[:subject]
       @tutors = alltutors.simple_search(params[:area], params[:subject])
+    elsif params[:search]
+      @tutors = Search.find(params[:search]).tutors
     else
       @tutors = alltutors
       # @tutors = Array.new

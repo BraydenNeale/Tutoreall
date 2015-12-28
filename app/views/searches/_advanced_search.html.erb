@@ -1,0 +1,53 @@
+<!-- _advanced_search.html.erb -->
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+  <div class="ser_leftbar">
+    <%= form_for search do |f| %>
+      <div class="clearfix leftbar_serchbox">
+        <%= f.text_field :area, id: "area-search", placeholder: "Enter your suburb", class: "txtbox_2" %>
+        <%= f.submit "SEARCH", class: "btn_1" %>
+      </div>
+      
+      <div class="filter_box">
+        <ul>
+          <% Subject.uniq.pluck(:faculty).each_with_index do |faculty, idx| %>
+            <li>
+            <!-- <li class="active music">  Has the blue highlight -->
+              <a href="#"><%= faculty.to_s %><span class="val_txt"><%="(#{Subject.all.where(faculty: faculty).count})"%></span></a>
+              <ul>
+                <% Subject.all.where(faculty: faculty).each do |sub| %>
+                    <li>
+                      <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
+                      <%#= "#{sub.name}: #{sub.group}" %>
+                      <%= sub.name %>
+                    </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+          <li class="active">
+            <a href="#">AVAILABILITY</a>
+            <%= hidden_field_tag "search[availability][]", nil %>
+              <ul>
+                <% Date::DAYNAMES.each_with_index do |wday, i| %>
+                  <li>
+                    <%= check_box_tag "search[availability][]",i, false, id: :to_s, class: "chkbox" %>
+                    <%= wday.to_s %>
+                  </li>
+                <% end %>
+              </ul>
+          </li>
+          <li class="active">
+            <a href="#">AGE</a>
+              <ul>
+                <li>
+                  <div class="sel_box">
+                    <%= f.select :age, Search.age_brackets, {}, class: "selbox" %>
+                  </div>
+                </li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

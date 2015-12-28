@@ -5,16 +5,18 @@ class SearchesController < ApplicationController
 
   def create 
     @search = Search.new(search_params)
+    @search.save
+    redirect_to tutors_path(search: @search.to_param)
 
-    respond_to do |format|
-      if @search.save
-        format.html { redirect_to @search, notice: 'search was successfully created.' }
-        format.json { render :show, status: :created, location: @search }
-      else
-        format.html { render :new }
-        format.json { render json: @search.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @search.save
+    #     format.html { redirect_to @search, notice: 'search was successfully created.' }
+    #     format.json { render :show, status: :created, location: @search }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @search.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def show
