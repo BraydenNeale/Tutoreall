@@ -2,7 +2,6 @@ class Search < ActiveRecord::Base
   serialize :subjects
   serialize :availability
 
-  # AGE_BRACKETS = ['Don\'t mind','Less than 25','26 - 40','Above 40']
   enum age_brackets: ['Don\'t mind','Less than 25','26 - 40','Above 40']
 
   def tutors
@@ -12,15 +11,15 @@ class Search < ActiveRecord::Base
   private
 
   def find_tutors
-    if area.present?
-      ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
-    end
-
     tutors = Tutor.all
-    tutors = tutors.includes(:areas).where('areas.id' => ar.id) if ar.present?
+    filter1 = filter2 = filter3 = Array(tutors)
+
+    filter1 = areas_filter(tutors) if area.present?
+    filter2 = subjects_filter(tutors) if subjects.present?
+    filter3 = availability_filter(tutors) if availability.present?
+
+    tutors = filter1 & filter2 & filter3
     tutors = age_filter(tutors) if age.present?
-    tutors = subjects_filter(tutors) if subjects.present?
-    tutors = availability_filter(tutors) if availability.present?
 
     return tutors
   end
@@ -35,11 +34,25 @@ class Search < ActiveRecord::Base
     return tutors
   end
 
-  def subjects_filter(tutors)
-    return tutors
+  def areas_filter(tutors)
+    ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
+
+    if ar.present?
+      return Array(tutors.includes(:areas).where('areas.id' => ar.id)) 
+    end
+
+    return Array.new
   end
 
-  def availability_filter(tutors)
-    return tutors
+  def subjects_filter(tutors)
+    return Array(tutors.includes(:subjects).where('subjects.id' => subjects))
   end
+
+  # Not currently working - but need to refactor the whole week day model of tutors
+  def availability_filter(tutors)
+    # return tutors
+    return Array(tutors)
+    # return Array(tutors.includes(:weekdays).where('weekdays.id' => availability))
+  end
+
 end
