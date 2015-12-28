@@ -18,22 +18,28 @@ class Search < ActiveRecord::Base
 
     tutors = Tutor.all
     tutors = tutors.includes(:areas).where('areas.id' => ar.id) if ar.present?
-    tutors = age_filter(tutors)
+    tutors = age_filter(tutors) if age.present?
+    tutors = subjects_filter(tutors) if subjects.present?
+    tutors = availability_filter(tutors) if availability.present?
 
     return tutors
   end
 
   # Age brackets - taken from tutoric
   def age_filter(tutors)
-    if not age.present?
-      return tutors
-    end
-
     tutors = tutors.select {|t| t.get_age < 25 } if age == 1 # < 25
     tutors = tutors.select {|t| t.get_age >= 25 and t.get_age <= 40} if age == 2
     tutors = tutors.select {|t| t.get_age > 40} if age == 3
 
     # any other age value => any age is fine
+    return tutors
+  end
+
+  def subjects_filter(tutors)
+    return tutors
+  end
+
+  def availability_filter(tutors)
     return tutors
   end
 end
