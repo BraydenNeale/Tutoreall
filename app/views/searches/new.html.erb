@@ -1,21 +1,23 @@
 <!-- new.html.erb -->
-
 <h1>Advanced search</h1>
 <%= form_for @search do |f| %>
   <div class="field">
     <%= f.text_field :area, id: "area-search", placeholder: "Enter your suburb" %>
   </div>
-  <% if false %>
-    <div class="field">
-      <%= f.collection_select :subjects, Subject.all, :id, :name, include_blank: true %>
-    </div> 
-    <div class="field">
-      <%#= f.collection_select :availability, Weekday.all, :id, :get_day, include_blank: true %>
-      <%= f.collection_select :availability, Date::DAYNAMES, :to_s, :to_s, :include_blank => true %>
-    </div>
-  <% end %>
 
   <div class="field">
+    <h4>Subjects</h4>
+    <%= hidden_field_tag "search[subjects][]", nil %>
+    <% Subject.uniq.pluck(:faculty).each do |faculty| %>
+      <h5><%= faculty.to_s %></h5>
+      <% Subject.all.where(faculty: faculty).each do |sub| %>
+        <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub) %>
+        <%= label_tag dom_id(sub), "#{sub.name}: #{sub.group}" %> <br>
+      <% end %>
+    <% end %>
+
+  <div class="field">
+    <h4>Availability</h4>
     <%= hidden_field_tag "search[availability][]", nil %>
     <% Date::DAYNAMES.each_with_index do |wday, i| %>
       <%= check_box_tag "search[availability][]",i, false, id: :to_s %>
@@ -24,32 +26,7 @@
   </div>
 
   <div class="field">
-    <h4>Subjects</h4>
-    <%= hidden_field_tag "search[subjects][]", nil %>
-    <% Subject.all.each do |sub| %>
-      <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub) %>
-      <%= label_tag dom_id(sub), sub.name %> <br>
-    <% end %>
-
-
-  </div>
-
-  <div class="field">
-    
-  </div>
-
-  <% if false %>
-    <div class="field">
-      <h4>Areas</h4>
-      <%= hidden_field_tag "tutor[area_ids][]", nil %>
-      <% Area.all.each do |area| %>
-        <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area) %>
-        <%= label_tag dom_id(area), area.display_name %> <br>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="field">
+    <h4>Age</h4>
     <%= f.select :age, Search.age_brackets %>
   </div>
 

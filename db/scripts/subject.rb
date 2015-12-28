@@ -166,5 +166,13 @@ Subject.create :name => "physical education", :faculty => "other", :group => "lo
 Subject.create :name => "health", :faculty => "other", :group => "lowerhs"
 
 
-
+# faculties
+# Subject.where("faculty like ?", "#{faculty.downcase}")
+mathematics
+other
+business and it
+arts 
+science
+language
+english humanities
 
