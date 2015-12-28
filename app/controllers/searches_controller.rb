@@ -24,6 +24,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-      params.require(:search).permit(:area, :subjects, :availability, :age)
-    end
+    # params.require(:search).permit(:area, subjects: [], availability: [], :age)
+    params.require(:search).permit(:area, :age, :subjects=> [], :availability => [])
+  end
 end

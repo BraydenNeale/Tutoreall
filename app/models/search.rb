@@ -2,6 +2,9 @@ class Search < ActiveRecord::Base
   serialize :subjects
   serialize :availability
 
+  # AGE_BRACKETS = ['Don\'t mind','Less than 25','26 - 40','Above 40']
+  enum age_brackets: ['Don\'t mind','Less than 25','26 - 40','Above 40']
+
   def tutors
     @tutors ||= find_tutors
   end
@@ -15,8 +18,6 @@ class Search < ActiveRecord::Base
 
     tutors = Tutor.all
     tutors = tutors.includes(:areas).where('areas.id' => ar.id) if ar.present?
-    # tutors = tutors.where("get_age >= ?", age) if age.present?
-    # tutors = tutors.select {|t| t.get_age >= age } if age.present?
     tutors = age_filter(tutors)
 
     return tutors

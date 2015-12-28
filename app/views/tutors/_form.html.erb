@@ -45,13 +45,12 @@
   </div> -->
 
 <!--   <div class="field">
-    <h4>
+    <h4>Availability</h4>
       <%= hidden_field_tag "tutor[weekday_ids][]", nil %>
       <% Weekday.all.each do |wday| %>
         <%= check_box_tag "tutor[weekday_ids][]", wday.id, @tutor.weekday_ids.include?(wday.id), id: dom_id(wday) %>
         <%= label_tag dom_id(wday), wday.get_day %> <br>
       <% end %>
-    </h4>
   </div>
 
   <div class="field">
