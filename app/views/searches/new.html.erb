@@ -1,36 +1,62 @@
-<!-- new.html.erb -->
-<h1>Advanced search</h1>
-<%= form_for @search do |f| %>
-  <div class="field">
-    <%= f.text_field :area, id: "area-search", placeholder: "Enter your suburb" %>
+<div class="search_main">  
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="ser_leftbar">
+          <%= form_for @search do |f| %>
+            <div class="clearfix leftbar_serchbox">
+              <%= f.text_field :area, id: "area-search", placeholder: "Enter your suburb", class: "txtbox_2" %>
+              <%= f.submit "SEARCH", class: "btn_1" %>
+            </div>
+            
+            <div class="filter_box">
+              <ul>
+                <% Subject.uniq.pluck(:faculty).each_with_index do |faculty, idx| %>
+                  <li>
+                  <!-- <li class="active music">  Has the blue highlight -->
+                    <a href="#"><%= faculty.to_s %><span class="val_txt"><%="(#{Subject.all.where(faculty: faculty).count})"%></span></a>
+                    <ul>
+                      <% Subject.all.where(faculty: faculty).each do |sub| %>
+                          <li>
+                            <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
+                            <%#= "#{sub.name}: #{sub.group}" %>
+                            <%= sub.name %>
+                          </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% end %>
+                <li class="active">
+                  <a href="#">AVAILABILITY</a>
+                  <%= hidden_field_tag "search[availability][]", nil %>
+                    <ul>
+                      <% Date::DAYNAMES.each_with_index do |wday, i| %>
+                        <li>
+                          <%= check_box_tag "search[availability][]",i, false, id: :to_s, class: "chkbox" %>
+                          <%= wday.to_s %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </li>
+                <li class="active">
+                  <a href="#">AGE</a>
+                    <ul>
+                      <li>
+                        <div class="sel_box">
+                          <%= f.select :age, Search.age_brackets, {}, class: "selbox" %>
+                        </div>
+                      </li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+          <div class="ser_rightbar">
+            <div class="row">
+            </div>
+          </div>
+      </div>
   </div>
-
-  <div class="field">
-    <h4>Subjects</h4>
-    <%= hidden_field_tag "search[subjects][]", nil %>
-    <% Subject.uniq.pluck(:faculty).each do |faculty| %>
-      <h5><%= faculty.to_s %></h5>
-      <% Subject.all.where(faculty: faculty).each do |sub| %>
-        <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub) %>
-        <%= label_tag dom_id(sub), "#{sub.name}: #{sub.group}" %> <br>
-      <% end %>
-    <% end %>
-
-  <div class="field">
-    <h4>Availability</h4>
-    <%= hidden_field_tag "search[availability][]", nil %>
-    <% Date::DAYNAMES.each_with_index do |wday, i| %>
-      <%= check_box_tag "search[availability][]",i, false, id: :to_s %>
-      <%= label_tag :to_s, wday %> <br>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <h4>Age</h4>
-    <%= f.select :age, Search.age_brackets %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Search" %>
-  </div>
-<% end %>
+</div>
