@@ -1,0 +1,7 @@
+<!-- show.html.erb -->
+<h1>Search results</h1>
+
+<%#= render @search.tutors %>
+<% @search.tutors.each do |tutor| %>
+  <%= tutor.display_name %>
+<% end %>

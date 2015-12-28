@@ -50,4 +50,5 @@ Rails.application.routes.draw do
   resources :messages, only: [:new, :create]
   resources :lessons
   resources :transactions, only: [:new, :create]
+  resources :searches
 end

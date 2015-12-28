@@ -1,0 +1,22 @@
+<!-- new.html.erb -->
+
+<h1>Advanced search</h1>
+<%= form_for @search do |f| %>
+  <div class="field">
+    <%#= f.text_field :area %>
+    <%= f.text_field :area, id: "area-search", placeholder: "e.g. Nedlands" %>
+  </div>
+  <div class="field">
+    <%= f.collection_select :subjects, Subject.all, :id, :name, include_blank: true %>
+  </div> 
+  <div class="field">
+    <%= f.collection_select :availability, Weekday.all, :id, :get_day, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.text_field :age %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+<% end %>
