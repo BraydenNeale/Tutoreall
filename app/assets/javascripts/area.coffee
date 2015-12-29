@@ -8,6 +8,12 @@ autocomplete = ->
   $('#area-search2').autocomplete
     source: "/areas/autocomplete.json"
 
+  # Subject autocomplete
+  #$('#faculty-search').autocomplete
+  #  source: "/subjects/autocomplete_faculty.json"
+  #$('#faculty-search2').autocomplete
+  #  source: "/subjects/autocomplete_faculty.json"
+
 # for turbolinks
 $(document).ready(autocomplete)
 $(document).on('page:update', autocomplete)

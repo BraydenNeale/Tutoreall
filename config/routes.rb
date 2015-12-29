@@ -40,6 +40,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :subjects do 
+    collection do 
+      get :autocomplete_faculty
+    end
+  end
+
   resources :lessons do 
     member do
       put :approve

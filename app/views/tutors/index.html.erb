@@ -7,7 +7,17 @@
   <% end %>
 <% end %>
 
-<div class="search_main">  
+<div class="search_main"> 
+  <% if false %>
+    <div class="search_c">
+      <%= form_tag({:controller => "tutors", :action => "index"}, :method => "get") do %>
+        <%= text_field_tag :area, params[:area], id: "area-search", class: "txtbox", placeholder: "e.g. Nedlands" %>
+        <%#= text_field_tag :subject, params[:subject], id: "faculty-search", class: "txtbox", placeholder: "e.g. Maths" %>
+        <%= select_tag 'subject', subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
+        <%= submit_tag "Search", :name => nil, class: "ser_btn" %>
+      <% end %>
+    </div>
+  <% end %>
 	<!-- <h2>Search Result: Mt Lawley, Music</h2>  	 -->
   <!-- <h2><%#= link_to  "Advanced search", new_search_path %></h2> / -->
     <div class="row">
