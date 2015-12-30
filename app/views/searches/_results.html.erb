@@ -17,7 +17,8 @@
             <div class="details">
               <h3><%= tutor.display_name %></h3>
               <p><img src="../../assets/layout/map_marker_2.png" alt=""><%= tutor.display_suburb %></p>
-              <a href="#" class="cont_btn">CONTACT</a>
+              <!-- <a href="#" class="cont_btn">CONTACT</a> -->
+              <span class="reviews"><%= link_to "View", tutor, class: "cont_btn" %></span>
                 <div class="tags">
                 <a href="">#<%= tutor.hash_tag_list.first %></a>
             </div>

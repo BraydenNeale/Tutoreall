@@ -4,10 +4,10 @@
       <div class="pro_rightbar">
       	<div class="row">
         	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-6">
-          	<div class="clearfix btns_1">
+<!--           	<div class="clearfix btns_1">
                   <a href="#" class="btn_1">BACK</a>
-                  <!-- <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a> -->
-            </div>
+                  <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a>
+            </div> -->
           	<div class="img">
               	<%= image_tag @tutor.picture_url(:profile) %>
             </div>
@@ -68,10 +68,10 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
     	<div class="pro_leftbar">
-      	<div class="clearfix btns_1">
+<!--       	<div class="clearfix btns_1">
           	<a href="#" class="btn_1">BACK</a>
-            <!-- <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a> -->
-        </div>
+            <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a>
+        </div> -->
       	<h3>Similiar Profiles</h3>
         <div class="row">
           <% @similar.each do |sim| %>
@@ -80,8 +80,9 @@
                  <div class="img"><%= link_to(image_tag(sim.picture_url(:display)), sim) %></div> 
                   <div class="details">
                     <h3><%= sim.display_name %></h3>
-                    <p><img src="../../assets/layout/map_marker_1.png" alt="">Mt Lawley, WA</p>
-                    <span class="reviews">21 Reviews</span>
+                    <p><img src="../../assets/layout/map_marker_1.png" alt=""><%= sim.display_suburb %></p>
+                    <!-- <span class="reviews">21 Reviews</span> -->
+                    <span class="reviews"><%= link_to "View", sim, class: "viewlink" %></span>
                     <div class="tags">
                       .   <!-- . is so that all displays are the same size until I work out how to manage these # -->
                       <% sim.hash_tag_list.each do |tag| %>

@@ -19,8 +19,8 @@
             <div class="details">
               <h3><%= tutor.display_name %></h3>
                 <p><img src="../../assets/layout/map_marker_2.png" alt=""><%= tutor.display_suburb %></p>
-                <span class="reviews">12 Reviews</span> <!-- need a tutor review attribute -->
-                <!-- <span class="reviews"><%#= link_to "View", tutor %></span> -->
+                <!-- <span class="reviews">12 Reviews</span>  Need a tutor review attribute-->
+                <span class="reviews"><%= link_to "View", tutor, class: "viewlink" %></span>
                 <div class="tags">
                   .   <!-- . is so that all displays are the same size until I work out how to manage these # -->
                   <% tutor.hash_tag_list.each do |tag| %>
