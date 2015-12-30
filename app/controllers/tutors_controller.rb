@@ -79,7 +79,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :subject_ids => [], 
+    params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :sex, :subject_ids => [], 
       :area_ids => [], :weekday_ids => [], wwc_card_attributes: [:number, :expiry])
   end
 

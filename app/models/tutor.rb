@@ -22,6 +22,7 @@ class Tutor < ActiveRecord::Base
 
   validate :uniqueness_of_user_email
 
+  enum sex: ['Female','Male']
 
   def uniqueness_of_user_email
     Student.all.each do |student|
