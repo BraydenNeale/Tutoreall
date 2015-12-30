@@ -15,7 +15,7 @@
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
             	<div class="details">
               	<h2><%= @tutor.display_name %></h2>
-                <p><img src="../../assets/layout/map_marker_2.png" alt="">Mt Lawley, WA</p> <%# @tutor.location %>
+                <p><img src="../../assets/layout/map_marker_2.png" alt=""><%= tutor.display_suburb %></p>
                 <div class="btns">
                   <% if is_student %>
                     <% if is_conversation(current_user, @tutor) %>

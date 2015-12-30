@@ -7,6 +7,7 @@ class TutorsController < ApplicationController
   def index
     # alltutors = Tutor.all.where(verified: true)
     alltutors = Tutor.all
+    @found = false
 
     # Where subject is faculty in this case
     if params[:area] or params[:subject]
@@ -16,6 +17,12 @@ class TutorsController < ApplicationController
     else
       @tutors = alltutors
       # @tutors = Array.new
+    end
+
+    if not @tutors.present?
+      @tutors = Tutor.featured_tutors
+    else
+      @found = true
     end
   end
 
@@ -72,7 +79,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :subject_ids => [], 
+    params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :subject_ids => [], 
       :area_ids => [], :weekday_ids => [], wwc_card_attributes: [:number, :expiry])
   end
 

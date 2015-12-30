@@ -90,9 +90,10 @@
         </ul>
       </div>
     <% end %>
+    <h2><a href="">Account Settings</a></h2>
     <div class="basic_details">
         <h3>Basic details</h3>
-          <div class="clearfix">
+          <!-- <div class="clearfix">
             <div class="block_1">
                   <input type="text" class="txtbox_1" placeholder="Chris Bowden">
               </div>    
@@ -102,7 +103,7 @@
               <div class="block_1">
                   <input type="text" class="txtbox_1" placeholder="•••••••••••••••••••••">
               </div>    
-          </div>
+          </div> -->
           <div class="clearfix">
             <div class="block_1">
                 <select class="selbox"><option>Female</option><option>Male</option></select>
@@ -116,7 +117,13 @@
               <div class="block_4">
                 <select class="selbox"><option>1991</option><option>1990</option><option>1989</option><option>1988</option></select>
               </div> -->
-              <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil, class: "selbox") %>
+              <div class="block_1">
+                <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "selbox"}) %>
+              </div>
+
+              <div class="block_1">
+                <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
+              </div>
           </div>
       </div>
       <div class="photo_details clearfix">

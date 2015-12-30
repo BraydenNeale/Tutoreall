@@ -3,6 +3,7 @@ class StaticController < ApplicationController
   def home
     # randomly display verified tutors - until we determine criteria to determine which to display
     # @tutors = Tutor.all.where(verified: true).order("RANDOM()").limit(8)
-    @tutors = Tutor.all.order("RANDOM()").limit(8)
+    # @tutors = Tutor.all.order("RANDOM()").limit(8)
+    @tutors = Tutor.featured_tutors
   end
 end

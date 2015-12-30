@@ -31,13 +31,18 @@ class Tutor < ActiveRecord::Base
     end
   end
 
-
   def display_name
     return "#{self.firstname} #{self.lastname}".titleize
   end
 
   def display_rate
     return helper.number_to_currency(self.rate)
+  end
+
+  def display_suburb
+    return "#{self.suburb.titleize}, WA" if self.suburb.present?
+
+    return ""
   end
 
   # if you want message updates to notify them in email
@@ -59,6 +64,10 @@ class Tutor < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
+  def self.featured_tutors
+    return self.all.order("RANDOM()").limit(8)
+  end
+  
   def self.searchSubject(subject)
     sub = Subject.where("name like ?", "%#{subject}%").first
     includes(:subjects).where('subjects.id' => sub.id)

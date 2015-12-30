@@ -22,13 +22,7 @@
   <!-- <h2><%#= link_to  "Advanced search", new_search_path %></h2> / -->
     <div class="row">
       <%= render partial: 'searches/advanced_search', locals: {search: Search.new} %>
-      <%= render partial: 'searches/results', locals: {tutors: @tutors} %>
+      <%= render partial: 'searches/results', locals: {tutors: @tutors, found: @found} %>
   </div>
 </div>
-
-
-
-
-
-
 
