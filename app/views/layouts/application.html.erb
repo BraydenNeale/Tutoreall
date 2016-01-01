@@ -25,24 +25,26 @@
 
             <% if user_signed_in? %>
               <div class="dropdown clearfix mszbox">
-                <a href="#" id="dropdownMenu3" class="msz_btn" data-toggle="dropdown"><span class="count"><%= current_user.mailbox.inbox({:read => false}).count %></span>MESSAGES<% if is_tutor %><%= image_tag(current_user.picture_url(:chat)) %><% end %><span class="caret"></span></a>
+                <a href="#" id="dropdownMenu3" class="msz_btn" data-toggle="dropdown"><span class="count"><%= current_user.mailbox.inbox({:read => false}).count %></span><%= current_user.firstname %><% if is_tutor %><%= image_tag(current_user.picture_url(:chat)) %><% end %><span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
                   <% if is_tutor %>
                     <li><%= link_to "My Profile", tutor_path(current_user) %></li>
                     <li><%= link_to "Dashboard", dashboard_tutor_path(current_user) %></li>
-                    <li><%= link_to "Inbox", conversations_path %></li>
+                    <li><%= link_to "Inbox #{unread_message_count}", conversations_path %></li>
                     <li><%= link_to "Settings", edit_tutor_path(current_user) %></li>
                     <li><%= link_to "Logout", destroy_tutor_session_path, :method => :delete %></li>
                   <% else %>
                     <li><%= link_to "Dashboard", dashboard_student_path(current_user) %></li>
-                    <li><%= link_to "Inbox", conversations_path %></li>
+                    <li><%= link_to "Inbox #{unread_message_count}", conversations_path %></li>
                     <li><%= link_to "Settings", edit_student_path(current_user) %></li>
                     <li><%= link_to "Logout", destroy_student_session_path, :method => :delete %></li>
                   <% end %>
                 </ul>
               </div>
             <% else %>
-            	<div class="login_signup"><a class="fancybox" href="#signin_popup">SIGN IN / SIGN UP</a></div>
+              <% if not devise_page %>
+            	 <div class="login_signup"><a class="fancybox" href="#signin_popup">SIGN IN / SIGN UP</a></div>
+              <% end %>
             <% end %>
 
             <%if current_page?(root_url) %>
@@ -62,8 +64,8 @@
 
 <div id="content">
 	<div class="container">
-    <!-- <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p> -->
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
 		<%= yield %>
 	</div>
 </div>

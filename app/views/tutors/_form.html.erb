@@ -90,23 +90,11 @@
         </ul>
       </div>
     <% end %>
-    <h2><a href="">Account Settings</a></h2>
+    <h2><%= link_to "Account Settings", edit_tutor_registration_path %></h2>
     <div class="basic_details">
         <h3>Basic details</h3>
-          <!-- <div class="clearfix">
-            <div class="block_1">
-                  <input type="text" class="txtbox_1" placeholder="Chris Bowden">
-              </div>    
-              <div class="block_1">
-                  <input type="text" class="txtbox_1" placeholder="chris.bowden@gmail.com">
-              </div>
-              <div class="block_1">
-                  <input type="text" class="txtbox_1" placeholder="•••••••••••••••••••••">
-              </div>    
-          </div> -->
           <div class="clearfix">
             <div class="block_1">
-                <!-- <select class="selbox"><option>Female</option><option>Male</option></select> -->
                 <%= f.select :sex, Tutor.sexes.keys, {}, {class: "selbox"} %>
               </div>
               <!-- <div class="block_2">

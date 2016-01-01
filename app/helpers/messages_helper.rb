@@ -40,4 +40,14 @@ module MessagesHelper
 
     return false
   end
+
+  def unread_message_count
+    count = current_user.mailbox.inbox({:read => false}).count
+
+    if count > 0 
+      return " - #{count}" 
+    end
+
+    return ""
+  end
 end
