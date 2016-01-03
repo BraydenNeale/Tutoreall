@@ -45,7 +45,7 @@ end
 
 #Project Gems - should probably go through and specify versions for these.
 gem 'devise'	# devise for user signups and logins
-gem 'rmagick' # image processing 
+gem 'rmagick', require: false # image processing 
 gem 'carrierwave' # image uploading for user profiles
 gem 'mailboxer' 	# Used to implement messaging system
 gem 'jquery-turbolinks' # Turbolinks
