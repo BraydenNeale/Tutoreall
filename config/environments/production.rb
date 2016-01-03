@@ -79,7 +79,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mailer config for production
-  config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
+  config.action_mailer.default_url_options = {:host => 'tutoreall.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
