@@ -7,6 +7,8 @@ class Tutor < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
 
+  serialize :availability
+
   mount_uploader :picture, PictureUploader
 
   acts_as_messageable # mailboxer
@@ -15,8 +17,6 @@ class Tutor < ActiveRecord::Base
   accepts_nested_attributes_for :wwc_card, :allow_destroy => true
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
-  # maybe better as an enum...
-  has_and_belongs_to_many :weekdays
 
   has_many :lessons, dependent: :destroy
 

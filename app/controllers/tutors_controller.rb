@@ -80,7 +80,7 @@ class TutorsController < ApplicationController
 
   def tutor_params
     params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :sex, :subject_ids => [], 
-      :area_ids => [], :weekday_ids => [], wwc_card_attributes: [:number, :expiry])
+      :area_ids => [], :availability => [], wwc_card_attributes: [:number, :expiry])
   end
 
   def verify_tutor

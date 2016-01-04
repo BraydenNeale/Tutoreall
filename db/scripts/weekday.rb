@@ -1,5 +1,5 @@
 # rails c 
-# load './db/scrips/weekday.rb'
+# load './db/scripts/weekday.rb'
 
 Weekday.create :day => 0 # Sun
 Weekday.create :day => 1 # Mon

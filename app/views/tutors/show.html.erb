@@ -47,7 +47,7 @@
         <h4>About</h4>
         <p><%= @tutor.about %></p>
         <h4>Availability</h4>
-        <p><%= @tutor.weekdays.collect(&:day).join(",") %></p>
+        <p><%= @tutor.availability %></p>
         <h4>Areas</h4>
 				<p><%= @tutor.areas.collect(&:name).join(",") %></p>
 				<h4>Subjects</h4>

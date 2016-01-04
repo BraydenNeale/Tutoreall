@@ -2,7 +2,7 @@
 <%= form_for(@tutor) do |f| %>
   <% if @tutor.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this sensor from being saved:</h2>
+      <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
 
       <ul>
       <% @tutor.errors.full_messages.each do |message| %>
@@ -44,14 +44,7 @@
     <%= f.text_area :experience %>
   </div> -->
 
-<!--   <div class="field">
-    <h4>Availability</h4>
-      <%= hidden_field_tag "tutor[weekday_ids][]", nil %>
-      <% Weekday.all.each do |wday| %>
-        <%= check_box_tag "tutor[weekday_ids][]", wday.id, @tutor.weekday_ids.include?(wday.id), id: dom_id(wday) %>
-        <%= label_tag dom_id(wday), wday.get_day %> <br>
-      <% end %>
-  </div>
+<!--  
 
   <div class="field">
     <h4>Areas</h4>
@@ -110,9 +103,9 @@
                 <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "selbox"}) %>
               </div>
 
-              <div class="block_1">
-                <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
-              </div>
+              <!-- <div class="block_1">
+                <%#= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
+              </div> -->
           </div>
       </div>
       <div class="photo_details clearfix">
@@ -133,11 +126,16 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="block block_1">
-                    <input type="text" class="txtbox_1" placeholder="Suburb">
+                    <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
                   </div>
                   <div class="block">
-                    <%= f.select :weekday_ids, options_from_collection_for_select(Weekday.all, :id, :get_day, {:selected => @tutor.weekday_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[weekday_ids][]'} %>
-                  </div>
+                    <% Date::DAYNAMES.each_with_index do |wday, i| %>
+                      <li>
+                        <%= check_box_tag "tutor[availability][]",i, @tutor.availability.include?(i.to_s), id: :to_s, class: "chkbox" %>
+                        <%= wday.to_s %>
+                      </li>
+                  <% end %>
+                  </div>              
                   <div class="block">
                     <%= f.select :subject_ids, options_from_collection_for_select(Subject.all, :id, :name, {:selected => @tutor.subject_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[subject_ids][]'} %>
                   </div>
