@@ -1,6 +1,0 @@
-Look up rails gems for this
-calender integration
-
-booking between tutor - student 
-confirm through message?
-
