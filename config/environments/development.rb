@@ -44,6 +44,7 @@ Rails.application.configure do
   #   LDFLAGS:  -L/usr/local/opt/openssl/lib
   #   CPPFLAGS: -I/usr/local/opt/openssl/include
 
+  config.action_mailer.perform_deliveries = true
   # run mailcatcher to catch smtp traffic
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
