@@ -1,3 +1,4 @@
+<% if false %>
 <h2>Tutor Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,3 +25,31 @@
 <% end %>
 
 <%= render "tutors/shared/links" %>
+<% end %>
+
+<div class="more_details">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="block block_1">
+          <%= f.email_field :email, autofocus: true, class: "txtbox_1", placeholder: "Email" %>
+        </div>
+        <div class="block">
+          <%= f.password_field :password, autocomplete: "off", class: "txtbox_1", placeholder: "Password" %>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="block">
+            <%= f.check_box :remember_me, class: "chkbox" %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+        <div class="block">
+          <%= f.submit "LOG IN", class: "login_btn" %>
+        </div>
+        <div class="block">
+          <%= render "tutors/shared/links" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
