@@ -1,18 +1,11 @@
-<% if false %>
-<p>Welcome <%= @email %>!</p>
-<p>Student</p>
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
-<% end %>
-
 <p>
   Hi, 
-  <%= @email %>
 <p>
 <p>
-  We're glad that you have signed up to the Tutorial Academy! All of our tutors are passionate about insipiring learners to realise their full potential. You can find the perfect tutor for you by searching for them on the Tutorial Academy website and sending them a message.
+  We're glad that you have decided to sign up to the Tutorial Academy! All of our tutors are passionate about insipiring learners to realise their full potential. You can find the perfect tutor by searching for them on the Tutorial Academy website and sending them a message.
 </p>
 
 <p>Please confirm your account through the link below</p>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<%= email_image_tag("logo.png") %>

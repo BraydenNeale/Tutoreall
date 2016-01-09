@@ -1,75 +1,3 @@
-<% if false %>
-<%= form_for(@tutor) do |f| %>
-  <% if @tutor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
-
-      <ul>
-      <% @tutor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%#= @tutor.picture if @tutor.picture? %>
-<!--   <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.file_field :picture %>
-  </div>
-  <div class="field">
-    <%= f.label :rate %><br>
-    <%= f.text_field :rate %>
-  </div>
-   <div class="field">
-     <%= f.label :date_of_birth %><br>
-    <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil) %>
-  </div> -->
-
-  <!-- Working with children card -->
-<!--   <p><b>Working With Children Card</b></p>
-  <%= f.fields_for :wwc_card do |wwc| %>
-    <%= wwc.label :number %>
-    <%= wwc.text_field :number %>
-
-    <%= wwc.label :expiry %>
-    <%= wwc.date_select(:expiry, :start_year => Date.today.year, :include_blank => true, :default => nil) %>
-  <% end %> -->
-
-<!--   <div class="field">
-    <%= f.label :about %><br>
-    <%= f.text_area :about %>
-  </div>
-  <div class="field">
-    <%= f.label :experience %><br>
-    <%= f.text_area :experience %>
-  </div> -->
-
-<!--  
-
-  <div class="field">
-    <h4>Areas</h4>
-    <%= hidden_field_tag "tutor[area_ids][]", nil %>
-    <% Area.all.each do |area| %>
-      <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area) %>
-      <%= label_tag dom_id(area), area.display_name %> <br>
-    <% end %>
-  </div> <br>
-
- <div class="field">
-    <h4>Subjects</h4>
-    <%= hidden_field_tag "tutor[subject_ids][]", nil %>
-    <% Subject.all.each do |subject| %>
-      <%= check_box_tag "tutor[subject_ids][]", subject.id, @tutor.subject_ids.include?(subject.id), id: dom_id(subject) %>
-      <%= label_tag dom_id(subject), "#{subject.display_name} - #{subject.group}" %> <br>
-    <% end %>
-  </div> -->
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-<% end %>
-
 <div class="settings_main">
   <h2>SETTINGS</h2>
   <%= form_for(@tutor) do |f| %>
@@ -83,7 +11,7 @@
         </ul>
       </div>
     <% end %>
-    <h2><%= link_to "Account Settings", edit_tutor_registration_path %></h2>
+    <h3><%= link_to "Account Settings", edit_tutor_registration_path %></h3>
     <div class="basic_details">
         <h3>Basic details</h3>
           <div class="clearfix">
@@ -102,10 +30,6 @@
               <div class="block_1">
                 <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "selbox"}) %>
               </div>
-
-              <!-- <div class="block_1">
-                <%#= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
-              </div> -->
           </div>
       </div>
       <div class="photo_details clearfix">
@@ -129,18 +53,35 @@
                     <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
                   </div>
                   <div class="block">
+                    <h4>Availability</h4>
                     <% Date::DAYNAMES.each_with_index do |wday, i| %>
                       <li>
-                        <%= check_box_tag "tutor[availability][]",i, @tutor.availability.include?(i.to_s), id: :to_s, class: "chkbox" %>
-                        <%= wday.to_s %>
+                        <%= check_box_tag "tutor[availability][]",i, @tutor.availability.include?(i.to_s), id: "day#{i}", class: "chkbox" %>
+                        <%= label_tag "day#{i}", wday.to_s %>
                       </li>
                   <% end %>
                   </div>              
                   <div class="block">
-                    <%= f.select :subject_ids, options_from_collection_for_select(Subject.all, :id, :name, {:selected => @tutor.subject_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[subject_ids][]'} %>
+                    <%#= f.select :subject_ids, options_from_collection_for_select(Subject.all, :id, :name, {:selected => @tutor.subject_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[subject_ids][]'} %>
+                    <h4>Subjects</h4>
+                    <%= hidden_field_tag "tutor[subject_ids][]", nil %>
+                    <% Subject.all.each do |subject| %>
+                      <li>
+                        <%= check_box_tag "tutor[subject_ids][]", subject.id, @tutor.subject_ids.include?(subject.id), id: dom_id(subject), class: "chkbox" %>
+                        <%= label_tag dom_id(subject), "#{subject.display_name} - #{subject.group}" %>
+                      </li>
+                    <% end %>
                   </div>
                   <div class="block">
-                    <%= f.select :area_ids, options_from_collection_for_select(Area.all, :id, :name, {:selected => @tutor.area_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[area_ids][]'} %>
+                    <%#= f.select :area_ids, options_from_collection_for_select(Area.all, :id, :name, {:selected => @tutor.area_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[area_ids][]'} %>
+                    <h4>Areas</h4>
+                    <%= hidden_field_tag "tutor[area_ids][]", nil %>
+                    <% Area.all.each do |area| %>
+                      <li>
+                        <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
+                        <%= label_tag dom_id(area), area.display_name %>
+                      </li>
+                    <% end %>
                   </div>
               </div>
               <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
@@ -155,8 +96,8 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="block"> 
                           <h5>Working with children expiry</h5>
-                          <!-- <input type="text" class="txtbox_1 datepicker" placeholder="22 / 12 / 2016"> -->
-                          <%= wwc.date_select(:expiry, :start_year => Date.today.year, :include_blank => true, :default => nil, class: "txtbox_1 datepicker") %>
+                          <input type="text" class="txtbox_1 datepicker" placeholder="22 / 12 / 2016">
+                          <%#= wwc.date_select(:expiry, :start_year => Date.today.year, :include_blank => true, :default => nil, class: "txtbox_1 datepicker") %>
                         </div>
                       </div>
                   <% end %>
@@ -183,7 +124,6 @@
               </div>
           </div>
           <div class="clearfix">
-            <!-- <input type="submit" class="save_btn" value="SAVE SETTINGS"> -->
             <%= f.submit class: "save_btn", value: "SAVE SETTINGS" %>
           </div>
       </div>
