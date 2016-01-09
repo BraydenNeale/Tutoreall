@@ -4,10 +4,10 @@
       <div class="pro_rightbar">
       	<div class="row">
         	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-6">
-<!--           	<div class="clearfix btns_1">
-                  <a href="#" class="btn_1">BACK</a>
-                  <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a>
-            </div> -->
+          	<div class="clearfix btns_1">
+                  <%= link_to "BACK", :back, class: "btn_1" %>
+                  <!-- <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a> -->
+            </div>
           	<div class="img">
               	<%= image_tag @tutor.picture_url(:profile) %>
             </div>
@@ -68,10 +68,10 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
     	<div class="pro_leftbar">
-<!--       	<div class="clearfix btns_1">
-          	<a href="#" class="btn_1">BACK</a>
-            <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a>
-        </div> -->
+      	<div class="clearfix btns_1">
+            <%= link_to "BACK", :back, class: "btn_1" %>
+            <!-- <a href="#" class="btn_1 resort_pro_btn">REPORT PROFILE</a> -->
+        </div>
       	<h3>Similiar Profiles</h3>
         <div class="row">
           <% @similar.each do |sim| %>

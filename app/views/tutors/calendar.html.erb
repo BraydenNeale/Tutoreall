@@ -1,5 +1,13 @@
 <div class="row">
-	<div class="twelve columns">
+	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-6">
+  	<div class="clearfix btns_1">
+      <%= link_to "BACK", :back, class: "btn_1" %>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<%= month_calendar events: @lessons do |date, lessons| %>
 			<%= date.strftime("%d") %>
 
