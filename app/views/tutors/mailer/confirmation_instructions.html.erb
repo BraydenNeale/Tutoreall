@@ -1,12 +1,13 @@
+<%#= @email %>
 <p>
-  Hi, 
-  <%= @email %>
+  Hi,
 </p>
 <p>
-  Thanks for signing up with the Tutorial Academy! We're excited to have you listed with us. In order for students to find you, please click the link below to confirm your account and fill out your new Tutorial Academy profile! Make sure you include a friendly profile photo. Profiles with photos get ranked higher when students search for tutors!
-</p>
-<p>
-  Click the link below to set up your account
+  Thanks for signing up with the Tutorial Academy! We're excited to have you listed with us. In order for students to find you, please click the link below to confirm your account and fill out your new Tutorial Academy profile! Make sure you include a friendly profile photo, profiles with pictures get ranked higher when students search for tutors!
 </p>
 
+<p>Click the link below to set up your account</p>
+
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<%= email_image_tag("logo.png") %>
