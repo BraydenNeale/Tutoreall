@@ -71,6 +71,11 @@ class Tutor < ActiveRecord::Base
     # return self.all.order("RANDOM()").limit(8)
     return self.all.where(verified: true).order("RANDOM()").limit(8)
   end
+
+  def self.similar_tutors(tutor)
+    # Some similariy algorithm here to return the 2 closes tutors - same subjects/area...
+    return self.all.where.not(id: tutor.id).where(verified: true).order("RANDOM()").limit(2)
+  end
   
   def self.searchSubject(subject)
     sub = Subject.where("name like ?", "%#{subject}%").first
