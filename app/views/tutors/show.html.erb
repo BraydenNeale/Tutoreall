@@ -36,22 +36,34 @@
               </div>
             </div>
         </div>
-        <h4>Sex</h4>
-        <p><%= @tutor.sex %></p>
-        <h4>Hourly rate</h4>
-        <p><%= @tutor.display_rate %></p>
-				<h4>Age</h4>
-				<p><%= @tutor.get_age %></p>
-        <h4>Experience</h4>
-        <p><%= @tutor.experience %></p>
-        <h4>About</h4>
-        <p><%= @tutor.about %></p>
-        <h4>Availability</h4>
-        <p><%= @tutor.availability %></p>
-        <h4>Areas</h4>
-				<p><%= @tutor.areas.collect(&:name).join(",") %></p>
-				<h4>Subjects</h4>
-				<p><%= @tutor.subjects.collect(&:name).join(",") %></p>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <h4>Sex</h4>
+            <p><%= @tutor.sex %></p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <h4>Hourly rate</h4>
+            <p><%= @tutor.display_rate %></p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <h4>Age</h4>
+            <p><%= @tutor.get_age %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h4>Experience</h4>
+            <p><%= @tutor.experience %></p>
+            <h4>About</h4>
+            <p><%= @tutor.about %></p>
+            <h4>Availability</h4>
+            <p><%= show_availability(@tutor.availability) %></p>
+            <h4>Areas</h4>
+            <p><%= show_areas(@tutor.areas) %></p>
+            <h4>Subjects</h4>
+            <p><%= show_subjects(@tutor.subjects) %></p>
+          </div>
+        </div>
     	</div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">

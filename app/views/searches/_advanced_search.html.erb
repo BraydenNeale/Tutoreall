@@ -18,7 +18,7 @@
                     <li>
                       <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
                       <%#= "#{sub.name}: #{sub.group}" %>
-                      <%= sub.name %>
+                      <%= label_tag dom_id(sub), "#{sub.name}" %>
                     </li>
                 <% end %>
               </ul>
@@ -26,12 +26,11 @@
           <% end %>
           <li class="active">
             <a href="#">AVAILABILITY</a>
-            <%#= hidden_field_tag "search[availability][]", nil %>
               <ul>
                 <% Date::DAYNAMES.each_with_index do |wday, i| %>
                   <li>
-                    <%= check_box_tag "search[availability][]",i, false, id: :to_s, class: "chkbox" %>
-                    <%= wday.to_s %>
+                    <%= check_box_tag "search[availability][]",i, false, id: "day#{i}", class: "chkbox" %>
+                    <%= label_tag "day#{i}", wday.to_s %>
                   </li>
                 <% end %>
               </ul>

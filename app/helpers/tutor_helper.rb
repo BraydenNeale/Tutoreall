@@ -31,12 +31,15 @@ module TutorHelper
 		s.html_safe
 	end
 
-	def show_subjects
+	def show_subjects(subjects)
+		subjects.collect(&:name).join(", ").titleize
 	end
 
-	def show_areas
+	def show_areas(areas)
+		areas.collect(&:name).join(", ").titleize
 	end
 
-	def show_availability
+	def show_availability(days)
+		days.collect{|x| Date::DAYNAMES[x.to_i]}.join(", ").titleize
 	end
 end

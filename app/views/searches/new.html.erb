@@ -31,8 +31,8 @@
                     <ul>
                       <% Date::DAYNAMES.each_with_index do |wday, i| %>
                         <li>
-                          <%= check_box_tag "search[availability][]",i, false, id: :to_s, class: "chkbox" %>
-                          <%= wday.to_s %>
+                          <%= check_box_tag "search[availability][]",i, false, id: "day#{i}", class: "chkbox" %>
+                          <%= label_tag "day#{i}", wday.to_s %>
                         </li>
                       <% end %>
                     </ul>
