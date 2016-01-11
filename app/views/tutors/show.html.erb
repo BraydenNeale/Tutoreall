@@ -52,18 +52,6 @@
 				<p><%= @tutor.areas.collect(&:name).join(",") %></p>
 				<h4>Subjects</h4>
 				<p><%= @tutor.subjects.collect(&:name).join(",") %></p>
-
-        <% if false %>
-  				<% if this_tutor(@tutor) %>
-  					<%= link_to 'my messages:', conversations_path %> <%= @messages_count %> new <br>
-  					<%= link_to 'Dashboard', dashboard_tutor_path(@tutor) %> <br>
-  					<%= link_to 'edit profile', edit_tutor_path(@tutor) %>
-  				<% elsif is_student %>
-  					<%= link_to "Message This Tutor", new_message_path(:tutor => @tutor.id) %>
-  				<% else %>
-  					<p>Sign up to message this tutor</p>
-  				<% end %>
-        <% end %>
     	</div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">

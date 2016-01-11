@@ -5,8 +5,8 @@ class TutorsController < ApplicationController
 
 
   def index
-    # alltutors = Tutor.all.where(verified: true)
-    alltutors = Tutor.all
+    alltutors = Tutor.all.where(verified: true)
+    # alltutors = Tutor.all
     @found = false
 
     # Where subject is faculty in this case

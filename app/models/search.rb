@@ -11,7 +11,9 @@ class Search < ActiveRecord::Base
   private
 
   def find_tutors
-    tutors = Tutor.all
+    # tutors = Tutor.all
+    tutors = Tutor.all.where(verified: true)
+
     filter1 = filter2 = filter3 = Array(tutors)
 
     filter1 = areas_filter(tutors) if area.present?

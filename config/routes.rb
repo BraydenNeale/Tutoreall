@@ -3,15 +3,14 @@ Rails.application.routes.draw do
   get 'transactions/new'
   root 'static#home'
 
+  devise_for :students, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+  devise_for :tutors, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+
   controller :static do 
     get :home
     get :terms_of_use
     get :privacy_policy
   end
-
-  devise_for :students, :controllers => {sessions: 'sessions', registrations: 'registrations'}
-  devise_for :tutors, :controllers => {sessions: 'sessions', registrations: 'registrations'}
-
   resources :tutors do
     member do 
       get :dashboard
@@ -47,7 +46,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lessons do 
+  resources :lessons, except: [:index] do 
     member do
       put :approve
       put :cancel
@@ -56,5 +55,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
   resources :transactions, only: [:new, :create]
-  resources :searches
+  resources :searches, only: [:create]
+  # resources :searches
 end

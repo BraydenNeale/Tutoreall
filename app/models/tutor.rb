@@ -66,7 +66,8 @@ class Tutor < ActiveRecord::Base
   end
 
   def self.featured_tutors
-    return self.all.order("RANDOM()").limit(8)
+    # return self.all.order("RANDOM()").limit(8)
+    return self.all.where(verified: true).order("RANDOM()").limit(8)
   end
   
   def self.searchSubject(subject)

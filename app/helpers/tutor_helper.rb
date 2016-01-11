@@ -30,4 +30,13 @@ module TutorHelper
 		end
 		s.html_safe
 	end
+
+	def show_subjects
+	end
+
+	def show_areas
+	end
+
+	def show_availability
+	end
 end
