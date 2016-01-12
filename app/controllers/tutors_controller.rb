@@ -5,8 +5,8 @@ class TutorsController < ApplicationController
 
 
   def index
-    alltutors = Tutor.all.where(verified: true)
-    # alltutors = Tutor.all
+    # alltutors = Tutor.all.where(verified: true)
+    alltutors = Tutor.all
     @found = false
 
     # Where subject is faculty in this case
@@ -24,6 +24,8 @@ class TutorsController < ApplicationController
     else
       @found = true
     end
+
+    @tutors = @tutors.paginate(:page => params[:page], :per_page => 8)
   end
 
   def show
@@ -33,7 +35,6 @@ class TutorsController < ApplicationController
     end
     
     @similar = Tutor.similar_tutors(@tutor)
-
   end
 
   def dashboard
