@@ -63,14 +63,20 @@ body {
     font-size: 18px;
     font-weight: bold;
     color:#4da3c3;
+    margin-left: 25px;
+    margin-right: 25px;
 
-    &:first-child{
-      margin-right: 50px;
-    }
     &:hover{
       cursor: pointer;
       text-decoration: none;
       color: black;
     }
+  }
+
+  span{
+    font-size: 18px;
+    color: black;
+    margin-left: 25px;
+    margin-right: 25px;
   }
 }

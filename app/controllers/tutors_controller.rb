@@ -5,8 +5,8 @@ class TutorsController < ApplicationController
 
 
   def index
-    # alltutors = Tutor.all.where(verified: true)
-    alltutors = Tutor.all
+    alltutors = Tutor.all.where(verified: true)
+    # alltutors = Tutor.all
     @found = false
 
     # Where subject is faculty in this case
@@ -15,11 +15,10 @@ class TutorsController < ApplicationController
     elsif params[:search]
       @tutors = Search.find(params[:search]).tutors
     else
-      @tutors = alltutors
-      # @tutors = Array.new
+      @tutors = Tutor.featured_tutors
     end
 
-    if not @tutors.present?
+    if not @tutors.any?
       @tutors = Tutor.featured_tutors
     else
       @found = true
