@@ -4,6 +4,8 @@ class TutorsController < ApplicationController
   before_action :get_mailbox, only: [:dashboard]
 
   def index
+    require 'will_paginate/array'
+
     alltutors = Tutor.all.where(verified: true)
     # alltutors = Tutor.all
     @found = false

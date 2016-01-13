@@ -11,7 +11,10 @@ class Search < ActiveRecord::Base
   private
 
   def find_tutors
-    # tutors = Tutor.all
+    if not (area.present? or subjects.present? or availability.present?)
+      return Array.new
+    end
+
     tutors = Tutor.all.where(verified: true)
 
     filter1 = filter2 = filter3 = Array(tutors)
@@ -56,5 +59,4 @@ class Search < ActiveRecord::Base
     return Array(tutors)
     # return Array(tutors.includes(:weekdays).where('weekdays.id' => availability))
   end
-
 end
