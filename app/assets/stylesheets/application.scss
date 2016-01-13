@@ -80,3 +80,10 @@ body {
     margin-right: 25px;
   }
 }
+
+.profile_box2{
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  max-height: 250px;
+}

@@ -3,7 +3,6 @@ class TutorsController < ApplicationController
   before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard, :calendar]
   before_action :get_mailbox, only: [:dashboard]
 
-
   def index
     alltutors = Tutor.all.where(verified: true)
     # alltutors = Tutor.all
