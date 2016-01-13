@@ -87,3 +87,11 @@ body {
   white-space: nowrap;
   max-height: 250px;
 }
+
+.filter_box{
+  .chkbox_label{
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+  }
+}

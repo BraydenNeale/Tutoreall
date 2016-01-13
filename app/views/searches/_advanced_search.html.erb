@@ -15,11 +15,10 @@
               <a href="#"><%= faculty.to_s %><span class="val_txt"><%="(#{Subject.all.where(faculty: faculty).count})"%></span></a>
               <ul>
                 <% Subject.all.where(faculty: faculty).each do |sub| %>
-                    <li>
-                      <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
-                      <%#= "#{sub.name}: #{sub.group}" %>
-                      <%= label_tag dom_id(sub), "#{sub.name}" %>
-                    </li>
+                  <li>
+                    <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
+                    <%= label_tag dom_id(sub), "#{sub.name}", class: "chkbox_label" %> <!-- #{sub.group} -->
+                  </li>
                 <% end %>
               </ul>
             </li>
