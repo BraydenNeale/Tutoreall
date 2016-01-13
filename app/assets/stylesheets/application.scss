@@ -89,6 +89,12 @@ body {
 }
 
 .filter_box{
+  .checkbox{
+    padding-bottom: 0px;
+    padding-top:0px;
+    margin-bottom:0px;
+    margin-top:0px;
+  }
   .chkbox_label{
     overflow: hidden; 
     text-overflow: ellipsis; 
