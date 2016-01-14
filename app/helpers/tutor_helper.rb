@@ -22,6 +22,15 @@ module TutorHelper
 		s.html_safe
 	end
 
+	def subjects_list(tutor)
+		s = ''
+		s << "<option value=nil>Select Subject</option>"
+		tutor.subjects.all.each do |subject|
+			s << "<option value='#{subject.name}'>#{subject.display_name}</option>"
+		end
+		s.html_safe
+	end
+
 	def subjects_faculties
 		s = ''
 		s << "<option value=nil>Select Subject</option>"
