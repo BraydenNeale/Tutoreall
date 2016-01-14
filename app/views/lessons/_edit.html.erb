@@ -2,7 +2,6 @@
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
-
       <ul>
       <% @lesson.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,8 +10,6 @@
     </div>
   <% end %>
   <div class="field">
-    <!-- <%#= f.label :subject %> <br> -->
-    <%#= f.text_field :subject %>
     <%= select_tag :subject, subjects_options, multiple: false, required: true %>
   </div>
   <div class="field">
@@ -36,6 +33,6 @@
   <%= f.hidden_field(:tutor_change, value: is_tutor) %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update Lesson", class: "btn" %>
   </div>
 <% end %>

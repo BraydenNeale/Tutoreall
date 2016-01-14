@@ -81,6 +81,44 @@ body {
   }
 }
 
+.lesson_edit{
+  font-size: 18px;
+  font-weight: bold;
+  color:#4da3c3;
+
+  &:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.lesson_cancel{
+  font-size: 18px;
+  font-weight: bold;
+  background: red;
+  color: black;
+
+  &:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+  }
+}
+
+.lesson_approve{
+  font-size: 18px;
+  font-weight: bold;
+  color:green;
+
+  &:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+}
+
 .profile_box2{
   overflow: hidden; 
   text-overflow: ellipsis; 
@@ -112,7 +150,7 @@ body {
 }
 
 .select_list{ display:inline-block; vertical-align:top; width:446px; height:65px; border-radius:3px; background:#fff; border:none; font-size:24px; color:#777777; font-weight:normal; margin:0 13px; padding:0 30px; }
-.lesson_btn { width:188px; height:65px; display:block; margin:20px auto 0; padding:0; border:none; cursor:pointer; background:#4da3c3; font-size:24px; line-height:65px; color:#fff; font-weight:700; text-transform:uppercase; border-radius:3px; } 
+.lesson_btn { width:188px; height:65px; display:block; margin:20px auto 0; padding:0; border:none; cursor:pointer; background:#4da3c3; font-size:24px; text-align:center; line-height:65px; color:#fff; font-weight:700; text-transform:uppercase; border-radius:3px; } 
 .lesson_btn:hover{ background:#ededed; color: #999999; } 
 
 

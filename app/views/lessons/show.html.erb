@@ -1,42 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<h4>Student</h4>
+		<p><%= @lesson.student.display_name %></p>
+	  <h4>Tutor</h4>
+	  <p><%= @lesson.tutor.display_name %></p>
+	  <h4>Date/Time</h4>
+	  <p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
+		<h4>Subject</h4>
+		<p><%= @lesson.subject %></p>
+		<h4>Location</h4>
+		<p><%= @lesson.location %></p>
+		<h4>Duration</h4>
+		<p><%= pluralize(@lesson.duration, 'minute') %> </p>
+		<h4>Cost</h4>
+		<p><%= @lesson.get_cost %></p>
+		<h4>Descrtiption</h4>
+		<p><%= @lesson.description %></p>
+		<%#= @lesson.status %></p> 
 
-<p>Subject: <%= @lesson.subject %></p>
-<p>Location: <%= @lesson.location %></p>
-<p>Description: <%= @lesson.description %></p>
-<p>Tutor: <%= @lesson.tutor.display_name %></p>
-<p>Student: <%= @lesson.student.display_name %></p>
-<p>Duration: <%= pluralize(@lesson.duration, 'minute') %> </p>
-<p>Cost: <%= @lesson.get_cost %></p>
-<p>Status: <%= @lesson.status %></p> <!-- debug only -->
-<p>Date: <%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
+		<%= status_helper %> <%= lesson_updated %><br><br>
 
+		<%if my_approval %>
+			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
+				<%= hidden_field_tag(:id, @lesson.id) %>
+				<div class="actions">
+			    <%= submit_tag 'Approve', class: "lesson_approve" %>
+			  </div>
+		  <% end %>
+		<% end %>
 
-<!-- local_time string concat broken... -->
-<%= status_helper %> <%= lesson_updated %><br><br>
+		<%= link_to 'Edit', edit_lesson_path(@lesson), class: "lesson_edit" %>
 
-<%if my_approval %>
-	<%= form_tag approve_lesson_path(@lesson), method: :put do %>
-		<%= hidden_field_tag(:id, @lesson.id) %>
-		<div class="actions">
-	    <%= submit_tag 'Approve' %>
-	  </div>
-  <% end %>
-<% end %>
+		<% if false %>
+		<!-- Need to only render this on certain lesson conditions - need to work out with Chris exactly how that is going to happen -->
+		<% if is_student %>
+			<%= render 'transactions/book_lesson', lesson: @lesson %>
+		<% end %>
+		<% end %>
+	</div>
+</div>
 
-<!-- Maybe move this into edit path -->
-<% if not is_cancelled %>
-	<%= form_tag cancel_lesson_path(@lesson), method: :put do %>
-		<%= hidden_field_tag(:id, @lesson.id) %>
-		<div class="actions">
-	    <%= submit_tag 'Cancel' %>
-	  </div>
-	<% end %>
-<% end %>
-
-<!-- Need to only render this on certain lesson conditions - need to work out with Chris exactly how that is going to happen -->
-<% if is_student %>
-	<%= render 'transactions/book_lesson', lesson: @lesson %>
-<% end %>
-
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>

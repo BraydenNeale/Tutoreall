@@ -1,6 +1,19 @@
-<h1>Editing Lesson</h1>
+<div class="clearfix btns_1">
+  <%= link_to "BACK", :back, class: "btn_1" %>
+</div>
+
+<h2>Editing Lesson</h2>
 
 <%= render 'edit' %>
 
-<%= link_to 'Show', @lesson %> |
-<%= link_to 'Back', lessons_path %>
+<% if not is_cancelled %>
+<br><br>
+<div class="clearfix">
+  <%= form_tag cancel_lesson_path(@lesson), method: :put do %>
+    <%= hidden_field_tag(:id, @lesson.id) %>
+    <div class="actions">
+      <%= submit_tag 'Cancel Lesson', class: "lesson_cancel btn" %>
+    </div>
+  <% end %>
+</div>
+<% end %>
