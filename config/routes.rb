@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   controller :static do 
     get :home
+    get :about
     get :terms_of_use
     get :privacy_policy
   end
+
   resources :tutors do
     member do 
       get :dashboard

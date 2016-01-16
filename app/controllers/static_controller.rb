@@ -7,6 +7,9 @@ class StaticController < ApplicationController
     @tutors = Tutor.featured_tutors
   end
 
+  def about
+  end
+
   def privacy_policy
   end
 
