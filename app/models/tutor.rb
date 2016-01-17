@@ -51,6 +51,11 @@ class Tutor < ActiveRecord::Base
   # if you want message updates to notify them in email
   def mailboxer_email(object)
     #return the model's email here
+    return self.email
+  end
+
+  def name
+    return display_name
   end
 
   def hash_tag_list

@@ -1,5 +1,8 @@
-<div class="block clearfix">
-  <%#= link_to(conversation_path(conversation), class: "clearfix") do %>
+<% if conversation_counter == 0 %>
+  <div class="block">
+<% else %>
+  <div class="block clearfix">
+<% end %>
   <%= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
     <% if is_tutor %>
       <div class="img"><img src="../../assets/default/search_default.png" alt=""></div>

@@ -26,7 +26,12 @@ class Student < ActiveRecord::Base
 
   def mailboxer_email(object)
  		#return the model's email here
+    return self.email
 	end
+
+  def name
+    return self.display_name
+  end
 
   def has_payment_info?
     braintree_customer_id
