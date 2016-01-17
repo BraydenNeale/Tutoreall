@@ -43,6 +43,8 @@
                 <div class="block block_1">
                     <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
                 </div>
+
+                <h5>Tutoring Details</h5>
                 <div class="settings_filter">
                   <ul>
                     <li>
@@ -94,7 +96,7 @@
                     <div class="block"> 
                       <h5>Hourly Rate</h5>
                         <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate" %>
-                        <span class="infotxt">*Tutorial Academy charges 10% commision</span>
+                        <!-- <span class="infotxt">*Tutorial Academy charges 10% commision</span> -->
                     </div>
                   </div>
                   <%= f.fields_for :wwc_card do |wwc| %>
