@@ -43,35 +43,50 @@
                 <div class="block block_1">
                     <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
                 </div>
-                <div class="block">
-                  <h5>Availability</h5>
-                  <% Date::DAYNAMES.each_with_index do |wday, i| %>
+                <div class="settings_filter">
+                  <ul>
                     <li>
-                      <%= check_box_tag "tutor[availability][]",i, @tutor.availability.include?(i.to_s), id: "day#{i}", class: "chkbox" %>
-                      <%= label_tag "day#{i}", wday.to_s %>
-                    </li>
-                <% end %>
-                </div>              
-                <div class="block">
-                  <h5>Subjects</h5>
-                  <%= hidden_field_tag "tutor[subject_ids][]", nil %>
-                  <% Subject.all.each do |subject| %>
+                      <a href="#">Availability</a>
+                      <ul>
+                        <% Date::DAYNAMES.each_with_index do |wday, i| %>
+                          <li>
+                            <%= label_tag "day#{i}", class: 'checkbox chkbox_label' do %>
+                              <%= check_box_tag "tutor[availability][]", i, @tutor.availability.include?(i.to_s), id: "day#{i}", class: "chkbox" %>
+                              <%= "#{wday.to_s}" %>
+                            <% end %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </li>              
                     <li>
-                      <%= check_box_tag "tutor[subject_ids][]", subject.id, @tutor.subject_ids.include?(subject.id), id: dom_id(subject), class: "chkbox" %>
-                      <%= label_tag dom_id(subject), "#{subject.display_name} - #{subject.group}" %>
+                      <a href="#">Subjects</a>
+                      <ul>
+                        <%= hidden_field_tag "tutor[subject_ids][]", nil %>
+                        <% Subject.all.each do |sub| %>
+                          <li>
+                            <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
+                              <%= check_box_tag "search[subjects][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
+                              <%= "#{sub.name}" %>
+                            <% end %>
+                          </li>
+                        <% end %>
+                      </ul>
                     </li>
-                  <% end %>
-                </div>
-                <div class="block">
-                  <h5>Areas</h5>
-                  <%= hidden_field_tag "tutor[area_ids][]", nil %>
-                  <% Area.all.each do |area| %>
                     <li>
-                      <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
-                      <%= label_tag dom_id(area), area.display_name %>
+                      <a>Areas</a>
+                      <ul>
+                        <%= hidden_field_tag "tutor[area_ids][]", nil %>
+                        <% Area.all.each do |area| %>
+                          <li>
+                            <%= label_tag dom_id(area), class: 'checkbox chkbox_label' do %>
+                              <%= check_box_tag "search[subjects][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
+                              <%= "#{area.display_name}" %>
+                            <% end %>
+                          </li>
+                        <% end %>
+                      </ul>
                     </li>
-                  <% end %>
-                </div>
+                  </div>
               </div>
               <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
@@ -94,8 +109,8 @@
                   <div class="row">
                     <%= f.fields_for :wwc_card do |wwc| %>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h5>Working with children expiry</h5>
                         <span class="datetime">
-                          <h5>Working with children expiry</h5>
                           <%= wwc.date_select(:expiry, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year=> Date.today.year + 5, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
                         </span>
                       </div>
@@ -111,6 +126,7 @@
                           </div>
                       </div>
                 </div>
+                </ul>
               </div>
           </div>
           <div class="clearfix">

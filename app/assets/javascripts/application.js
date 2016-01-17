@@ -57,6 +57,16 @@ $(document).ready(function() {
         
       }
     });
+
+   $(".settings_filter > ul > li > a").click(function (e) {
+      e.preventDefault();
+      $(this).parent().find('ul').slideToggle(300);
+      if ($(this).parent().hasClass('active') ) {
+        $(this).parent().removeClass('active')
+      } else { 
+        $(this).parent().addClass('active');
+      }
+    });
 });
 
 // Ajax requests for devise form from partial views

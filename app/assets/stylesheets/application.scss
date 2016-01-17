@@ -169,3 +169,38 @@ body {
   background:#fff; border:none; height:57px; margin:0 0 35px 0; border:1px solid #bbbbbb;
 }
 
+.settings_filter { margin:0; padding:50px 0 0; }
+.settings_filter > ul { margin:0; padding:0; display:block; }
+.settings_filter > ul > li { margin:0; padding:0; display:block; }
+.settings_filter > ul > li > a { margin:0; padding:0 20px 0 28px; display:block; font-size:18px; line-height:50px; color:#fff; text-transform:uppercase; font-weight:700; border-bottom:1px solid #fff; background:#bbbbbb; }
+.settings_filter > ul > li > a .val_txt { min-width:25px; vertical-align:top; text-align:center; font-size:14px; line-height:50px; color:#fff; float:right; }
+.settings_filter > ul > li.active > a { border-bottom-color:transparent; background:#999999; }
+.settings_filter > ul > li.music.active > a { background:#4da3c3; }
+.settings_filter > ul > li > ul { margin:0; padding:15px 0 10px 0; display:none; background:#ededed; }
+.settings_filter > ul > li > ul > li { margin:0; padding:0 0 10px 28px; display:block; font-size:14px; line-height:14px; color:#000000; }
+.settings_filter > ul > li.active > ul { display:block; }
+.settings_filter .icheckbox_square { width:15px; height:14px; background:url(../../assets/layout/chkbox_2.png) no-repeat 0px 0px; }
+.settings_filter .icheckbox_square.checked { background-position:-15px 0; }
+.settings_filter .sel_box { max-width:213px; }
+.settings_filter .sbHolder  { height:39px; background:#bbbbbb; }
+.settings_filter .sbSelector { font-size:14px; line-height:39px; color:#fff; height:39px; text-indent:18px; }
+.settings_filter .sbToggle { background: url(../../assets/layout/down_arr_2.png) no-repeat center center; width:15px; height:39px; }
+.settings_filter .sbOptions { background-color:#bbbbbb; }
+.settings_filter .sbOptions a { color:#fff; }
+
+.settings_filter > ul > li > ul > li { padding-left:20px; }
+.settings_filter > ul > li > a { padding:0 20px; }
+
+.settings_filter{
+  .checkbox{
+    padding-bottom: 0px;
+    padding-top:0px;
+    margin-bottom:0px;
+    margin-top:0px;
+  }
+  .chkbox_label{
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+  }
+}

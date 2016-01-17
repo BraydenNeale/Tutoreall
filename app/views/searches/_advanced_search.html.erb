@@ -1,4 +1,3 @@
-<!-- _advanced_search.html.erb -->
 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
   <div class="ser_leftbar">
     <%= form_for search do |f| %>
@@ -16,8 +15,6 @@
               <ul>
                 <% Subject.all.where(faculty: faculty).each do |sub| %>
                   <li>
-                    <%#= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
-                    <%#= label_tag dom_id(sub), "#{sub.name}", class: "chkbox_label" %> <!-- #{sub.group} -->
                     <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
                       <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
                       <%= "#{sub.name}" %>
