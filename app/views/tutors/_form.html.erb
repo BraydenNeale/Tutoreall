@@ -18,18 +18,9 @@
             <div class="block_1">
                 <%= f.select :sex, Tutor.sexes.keys, {}, {class: "selbox"} %>
               </div>
-              <!-- <div class="block_2">
-                <select class="selbox"><option>22</option><option>21</option><option>20</option><option>19</option></select>
-              </div>
-              <div class="block_3">
-                <select class="selbox"><option>November</option><option>option 2</option><option>option 3</option><option>option 4</option></select>
-              </div>
-              <div class="block_4">
-                <select class="selbox"><option>1991</option><option>1990</option><option>1989</option><option>1988</option></select>
-              </div> -->
-              <div class="block_1">
-                <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "selbox"}) %>
-              </div>
+              <span class="datetime">
+                <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
+              </span>
           </div>
       </div>
       <div class="photo_details clearfix">
@@ -62,7 +53,6 @@
                 <% end %>
                 </div>              
                 <div class="block">
-                  <%#= f.select :subject_ids, options_from_collection_for_select(Subject.all, :id, :name, {:selected => @tutor.subject_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[subject_ids][]'} %>
                   <h5>Subjects</h5>
                   <%= hidden_field_tag "tutor[subject_ids][]", nil %>
                   <% Subject.all.each do |subject| %>
@@ -73,7 +63,6 @@
                   <% end %>
                 </div>
                 <div class="block">
-                  <%#= f.select :area_ids, options_from_collection_for_select(Area.all, :id, :name, {:selected => @tutor.area_ids.split(';')}), {}, {:multiple => true, :size => 10, :name => 'tutor[area_ids][]'} %>
                   <h5>Areas</h5>
                   <%= hidden_field_tag "tutor[area_ids][]", nil %>
                   <% Area.all.each do |area| %>
@@ -86,29 +75,31 @@
               </div>
               <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="block"> 
+                      <h5>Hourly Rate</h5>
+                        <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate" %>
+                        <span class="infotxt">*Tutorial Academy charges 10% commision</span>
+                    </div>
+                  </div>
                   <%= f.fields_for :wwc_card do |wwc| %>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="block">
-                            <h5>Working with children number</h5>
-                            <%= wwc.text_field :number, class: "txtbox_1" %>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="block"> 
-                          <h5>Working with children expiry</h5>
-                          <%= wwc.date_select(:expiry, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year=> Date.today.year + 5, :include_blank => true, :default => nil}, {class: "selbox"}) %>
+                      <div class="block">
+                          <h5>Working with children number</h5>
+                          <%= wwc.text_field :number, class: "txtbox_1" %>
                         </div>
-                      </div>
+                    </div>
                   <% end %>
                 </div>
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <div class="block">
-                              <h5>Hourly Rate</h5>
-                              <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate" %>
-                              <span class="infotxt">*Tutorial Academy charges 10% commision</span>
-                          </div>
-                    </div>
+                    <%= f.fields_for :wwc_card do |wwc| %>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span class="datetime">
+                          <h5>Working with children expiry</h5>
+                          <%= wwc.date_select(:expiry, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year=> Date.today.year + 5, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
+                        </span>
+                      </div>
+                    <% end %>
                   </div>
                   <div class="clearfix">
                       <div class="where_tutor">
