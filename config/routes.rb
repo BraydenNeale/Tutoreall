@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  
+
+  # js validations
+  # mount Judge::Engine => '/judge'
+
   get 'transactions/new'
   root 'static#home'
 

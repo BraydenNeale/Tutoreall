@@ -1,0 +1,249 @@
+\q
+\q
+select * from widgets;
+select * from widgets;
+exit
+\q
+exit
+.exit
+\q
+
+
+select * from articles;
+
+
+
+
+
+
+select * from photos;
+.exit
+
+.exit
+
+show datases;
+
+ls
+
+
+drop database tutoreall_development;
+drop database tutoreall_test;
+
+	
+
+
+	
+
+
+rake db:rollback
+
+	c
+
+
+
+
+show columns from areas_providers;
+show columns from areas_providers;
+
+
+drop table areas_providers;
+
+
+
+
+
+	
+	
+
+drop database tutoreall_development;
+drop database tutoreall_production;
+drop database tutoreall_test;
+
+\l
+\c tutoreall_
+\c tutoreall_development 
+\td
+\td
+\t
+\t
+select * from students;
+\x on
+select * from students;
+select * from tutors;
+\t
+\t
+\l
+\x off
+\l
+\x on
+select * from students;
+select firstname from students;
+select firstname from tutors;
+\d 
+\c tutoreall_development;
+\d 
+\x off
+\d
+\d+ tutors
+\d
+\d+ mailboxer_receipts
+select * from mailboxer_receipts;
+\d
+select * from mailboxer_notifications;
+\x on
+select * from mailboxer_notifications;
+\q
+\l
+\l
+\c tutoreall_development
+\lt
+\t
+\t
+\d
+exit
+\q
+\d
+\l
+\c tutoreall_development 
+\t
+\l
+\td
+\d
+select * from areas limit 1;
+\d area
+\d area
+\d areas
+\d subject
+\d
+\d subjects
+\d areas
+\q
+\d
+\l
+\c tutoreall_development;
+\d
+\d tutor
+\d tutors
+\q
+\d
+\l
+\c tutoreall_development
+\d
+\d tutors
+exit
+exit
+q
+\q
+\l
+\c tutoreall_test 
+\d
+\t
+\t
+\l
+\ld
+\d
+\td
+\t
+\t
+\ld
+\dt
+\d
+\dt
+\c tutoreall_development 
+\dt
+select * from subjects;
+exit
+\
+\q
+\t
+\t
+\l
+\d tutoreall_development;
+\q
+:q
+\q
+\d
+\t
+\dt
+\lt
+\l
+\d tutoreall_development;
+\d tutoreall_development
+\d tutoreall_development;
+\d tutoreall_development
+\dt tutoreall_development
+\l
+tutoreall_development
+\l
+select columns from tutor;
+select * from tutor;
+\d
+\dt tutoreall_development
+\q
+\l
+\d bloomquotes
+\d bloom_quotes
+\c tutoreall_development
+\l
+\d
+select * from tutors;
+select columns from tutor;
+select columns from tutors;
+\dt tutors;
+\d tutors;
+dt
+\dt
+drop table cards;
+drop table cards;
+\dt
+exit
+\q
+\
+\c tutoreall_development
+\d
+\dt wwc_cards
+\d wwc_cards
+mailcatcher
+\q
+\c tutoreall_development
+\d subjects
+\d subjects
+select * from subjects where faculty like "mathematics";
+select * from subjects;;
+select start from subjects where falulty = "mathematics"
+;
+select * from subjects where falulty = "mathematics"
+;
+select * from subjects where faculty = "mathematics"
+;
+select * from subjects where faculty like'mathematics'
+;
+select * from subjects where faculty like'mathematics'
+\q
+\l
+\c tutoreall_development 
+\d
+\dt mailboxer_conversations
+select * from mailboxer_conversations;
+select * from mailboxer_conversations order by updated_at;;
+select * from mailboxer_conversations order by updated_at desc;
+select * from mailboxer_conversations order by updated_at asc;;
+\d
+\dt lessons
+select * from lessons;
+select * from lessons order by date asc;
+select * from lessons order by date desc;
+\q
+\t
+\d
+\ul
+\u
+\l
+exit
+\q
+\t
+\ld
+\d
+\l
+\u tutoreall_development
+\s tutoreall_development
