@@ -67,7 +67,7 @@
                         <% Subject.all.each do |sub| %>
                           <li>
                             <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
-                              <%= check_box_tag "search[subjects][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
+                              <%= check_box_tag "tutor[subject_ids][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
                               <%= "#{sub.name}" %>
                             <% end %>
                           </li>
@@ -81,7 +81,7 @@
                         <% Area.all.each do |area| %>
                           <li>
                             <%= label_tag dom_id(area), class: 'checkbox chkbox_label' do %>
-                              <%= check_box_tag "search[subjects][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
+                              <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
                               <%= "#{area.display_name}" %>
                             <% end %>
                           </li>

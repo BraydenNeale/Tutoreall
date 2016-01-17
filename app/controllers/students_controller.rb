@@ -48,9 +48,9 @@ class StudentsController < ApplicationController
 
   # https://developers.braintreepayments.com/guides/customers/ruby#create
   # Need to refine customer creation and deletion
-  def braintree
-    gon.client_token = generate_client_token
-  end
+  # def braintree
+  #   gon.client_token = generate_client_token
+  # end
 
   def braintree_create
     if not current_user.has_payment_info?

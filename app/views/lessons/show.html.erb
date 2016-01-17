@@ -16,7 +16,6 @@
 		<p><%= @lesson.get_cost %></p>
 		<h4>Descrtiption</h4>
 		<p><%= @lesson.description %></p>
-		<%#= @lesson.status %></p> 
 
 		<%= status_helper %> <%= lesson_updated %><br><br>
 
@@ -32,10 +31,10 @@
 		<%= link_to 'Edit', edit_lesson_path(@lesson), class: "lesson_edit" %>
 
 		<% if false %>
-		<!-- Need to only render this on certain lesson conditions - need to work out with Chris exactly how that is going to happen -->
-		<% if is_student %>
-			<%= render 'transactions/book_lesson', lesson: @lesson %>
-		<% end %>
+			<!-- Need to only render this on certain lesson conditions - need to work out with Chris exactly how that is going to happen -->
+			<% if is_student %>
+				<%= render 'transactions/book_lesson', lesson: @lesson %>
+			<% end %>
 		<% end %>
 	</div>
 </div>

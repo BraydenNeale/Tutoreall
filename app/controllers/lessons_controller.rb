@@ -13,9 +13,9 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     # gon token for braintree payment 
-    if current_user.is_a? Student
-      gon.client_token = generate_client_token
-    end
+    # if current_user.is_a? Student
+    #   gon.client_token = generate_client_token
+    # end
   end
 
   # GET /lessons/new

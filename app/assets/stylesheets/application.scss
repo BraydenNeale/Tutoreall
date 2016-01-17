@@ -206,3 +206,11 @@ body {
     white-space: nowrap;
   }
 }
+
+.search-about{
+  max-height: 160px;
+  overflow: hidden; 
+  // Only works for single line :(
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+}
