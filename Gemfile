@@ -59,7 +59,8 @@ gem 'simple_calendar'	# integrate lesson dates onto a calender
 gem 'braintree' # braintree for processing payments
 gem 'figaro' # Figaro - secure config
 gem 'gon'
-gem 'fog-aws' # carrierwave amazon s3
+# gem 'fog-aws' # carrierwave amazon s3
+gem "fog", "~> 1.3.1" # carrier wave amazon s3
 gem 'aws-sdk', '~> 2'
 
 # Use this for clientside validations
