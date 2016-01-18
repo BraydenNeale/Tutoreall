@@ -62,9 +62,13 @@ gem 'gon'
 # gem 'fog-aws' # carrierwave amazon s3
 gem "fog" # carrier wave amazon s3
 gem 'aws-sdk'
+gem 'sitemap_generator'
 
 # Use this for clientside validations
 # gem 'judge', '~> 2.1'
+
+# For when nokogiri breaks
+# sudo gem install nokogiri -v '1.6.7.1' -- --use-system-libraries --with-xml2-include=/usr/include/libxml2 --with-xml2-lib=/usr/lib
 
 #heroku
 gem 'puma'

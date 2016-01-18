@@ -287,6 +287,8 @@ GEM
       rdoc (~> 4.0)
     simple_calendar (2.0.3)
       rails (>= 3.0)
+    sitemap_generator (5.1.0)
+      builder
     spring (1.4.0)
     sprockets (3.3.4)
       rack (~> 1.0)
@@ -342,6 +344,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_calendar
+  sitemap_generator
   spring
   turbolinks
   uglifier (>= 1.3.0)
@@ -349,4 +352,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

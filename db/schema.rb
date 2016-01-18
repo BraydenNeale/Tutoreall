@@ -195,12 +195,6 @@ ActiveRecord::Schema.define(version: 20160104123253) do
   add_index "tutors_weekdays", ["tutor_id", "weekday_id"], name: "index_tutors_weekdays_on_tutor_id_and_weekday_id", using: :btree
   add_index "tutors_weekdays", ["weekday_id", "tutor_id"], name: "index_tutors_weekdays_on_weekday_id_and_tutor_id", using: :btree
 
-  create_table "weekdays", force: :cascade do |t|
-    t.integer  "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "wwc_cards", force: :cascade do |t|
     t.integer  "tutor_id"
     t.string   "number"
