@@ -321,35 +321,35 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk
-  braintree
+  aws-sdk (~> 2.2.11)
+  braintree (~> 2.56.0)
   byebug
-  carrierwave
+  carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)
-  devise
-  figaro
-  fog
-  gon
+  devise (~> 3.5.1)
+  figaro (~> 1.1.1)
+  fog (~> 1.37.0)
+  gon (~> 6.0.1)
   jbuilder (~> 2.0)
   jquery-rails
-  jquery-turbolinks
-  jquery-ui-rails
-  local_time
-  mailboxer
+  jquery-turbolinks (~> 2.1.0)
+  jquery-ui-rails (~> 5.0.5)
+  local_time (~> 1.0.3)
+  mailboxer (~> 0.13.0)
   pg
-  puma
+  puma (~> 2.13.4)
   rails (= 4.2.2)
-  rails_12factor
-  rmagick
+  rails_12factor (~> 0.0.3)
+  rmagick (~> 2.15.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  simple_calendar
-  sitemap_generator
+  simple_calendar (~> 2.0.3)
+  sitemap_generator (~> 5.1.0)
   spring
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-  will_paginate
+  will_paginate (~> 3.0.7)
 
 BUNDLED WITH
    1.11.2

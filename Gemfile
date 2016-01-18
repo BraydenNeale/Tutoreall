@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.2.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -44,25 +44,28 @@ group :development, :test do
 end
 
 #Project Gems - should probably go through and specify versions for these.
-gem 'devise'	# devise for user signups and logins
-gem 'rmagick', require: false # image processing 
-gem 'carrierwave' # image uploading for user profiles
-gem 'mailboxer' 	# Used to implement messaging system
-gem 'jquery-turbolinks' # Turbolinks
-gem 'will_paginate'		# pagination
-gem 'jquery-ui-rails'	# Jquery ui for dialogs and other jquery features
-gem 'local_time'			# output utc times in local time (javascript on client)
-gem 'simple_calendar'	# integrate lesson dates onto a calender
+gem 'devise', '~> 3.5.1'	# devise for user signups and logins
+gem 'rmagick', '~> 2.15.4', require: false # image processing 
+gem 'carrierwave', '~> 0.10.0' # image uploading for user profiles
+gem 'mailboxer', '~> 0.13.0' 	# Used to implement messaging system
+gem 'jquery-turbolinks', '~> 2.1.0' # Turbolinks
+gem 'will_paginate', '~> 3.0.7'		# pagination
+gem 'jquery-ui-rails', '~> 5.0.5'	# Jquery ui for dialogs and other jquery features
+gem 'local_time', '~> 1.0.3'			# output utc times in local time (javascript on client)
+gem 'simple_calendar', '~> 2.0.3'	# integrate lesson dates onto a calender
+
+gem 'braintree', '~> 2.56.0' # braintree for processing payments
+gem 'figaro', '~> 1.1.1' # Figaro - secure config
+gem 'gon', '~> 6.0.1'
+
+gem "fog", '~> 1.37.0' # carrier wave amazon s3
+gem 'aws-sdk', '~> 2.2.11'
+gem 'sitemap_generator', '~> 5.1.0'
+
 # gem 'mailcatcher', '~> 0.6.1' # mail catching in dev
 # gem 'chosen-rails'
 # gem 'compass-rails'
-gem 'braintree' # braintree for processing payments
-gem 'figaro' # Figaro - secure config
-gem 'gon'
 # gem 'fog-aws' # carrierwave amazon s3
-gem "fog" # carrier wave amazon s3
-gem 'aws-sdk'
-gem 'sitemap_generator'
 
 # Use this for clientside validations
 # gem 'judge', '~> 2.1'
@@ -71,6 +74,6 @@ gem 'sitemap_generator'
 # sudo gem install nokogiri -v '1.6.7.1' -- --use-system-libraries --with-xml2-include=/usr/include/libxml2 --with-xml2-lib=/usr/lib
 
 #heroku
-gem 'puma'
-gem 'rails_12factor', group: :production
+gem 'puma', '~> 2.13.4'
+gem 'rails_12factor', '~> 0.0.3', group: :production
 
