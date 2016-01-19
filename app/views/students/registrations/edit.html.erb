@@ -4,15 +4,17 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="block block_1">
-    <%= f.label :firstname %>
-    <%= f.text_field :firstname, autofocus: true, class: "txtbox_1", placeholder: "Firstname" %>
-  </div>
+  <% if false %>
+    <div class="block block_1">
+      <%= f.label :firstname %>
+      <%= f.text_field :firstname, autofocus: true, class: "txtbox_1", placeholder: "Firstname" %>
+    </div>
 
-   <div class="block">
-   <%= f.label :lastname %>
-    <%= f.text_field :lastname, class: "txtbox_1", placeholder: "Lastname" %>
-  </div>
+    <div class="block">
+     <%= f.label :lastname %>
+      <%= f.text_field :lastname, class: "txtbox_1", placeholder: "Lastname" %>
+    </div>
+  <% end %>
   
   <div class="block">
     <%= f.label :email %><br />

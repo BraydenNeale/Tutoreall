@@ -1,41 +1,34 @@
-<!-- _tutor_sign_up.html.erb -->
 <div class="signup_popup" id="signup_popup_2">
   <div class="signup_popup_inn">
     <%= form_for(resource(0), :as => resource_name(0), :html => {:id => 'register_form'}, :url => tutor_registration_path, :remote => :true, :format => :json) do |f| %>
       <h1>TUTOR SIGN UP</h1>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-            <!-- <input type="text" class="txtbox" placeholder="First name"> -->
-             <%= f.text_field :firstname, class: "txtbox", placeholder: "First name" %>
+             <%= f.text_field :firstname, class: "txtbox", placeholder: "First name", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <!-- <input type="text" class="txtbox" placeholder="Surname"> -->
-            <%= f.text_field :lastname, class: "txtbox", placeholder: "Surname" %>
+            <%= f.text_field :lastname, class: "txtbox", placeholder: "Surname", required: true %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-            <!-- <input type="text" class="txtbox" placeholder="Email"> -->
-             <%= f.email_field :email, class: "txtbox", placeholder: "Email", id: "email1" %>
+             <%= f.email_field :email, class: "txtbox", placeholder: "Email", id: "email1", required: true %>
         </div>
         <div class="col-sm-6 col-xs-12">
-            <!-- <input type="text" class="txtbox" placeholder="Students DOB"> -->
             <input type="text" class="txtbox" id="email2" placeholder="Confirm Email">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-            <!-- <input type="text" class="txtbox" placeholder="Password"> -->
             <% if false %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
             <% end %>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "txtbox" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "txtbox", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">    
-            <!-- <input type="text" class="txtbox" placeholder="Confirm Password"> -->
-             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "txtbox" %>
+             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "txtbox", required: true %>
           </div>
       </div>
       <!-- <h2>or sign up using</h2> -->
@@ -54,41 +47,3 @@
   </div>
   <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
 </div>
-
-
-<% if false %>
- <div class="signup_popup" id="signup_popup_2">
-  <div class="signup_popup_inn">
-<%= form_for(resource(0), :as => resource_name(0), :html => {:id => 'register_form'}, :url => tutor_registration_path, :remote => :true, :format => :json) do |f| %>
-
-    <div class="field">
-      <%= f.label :firstname %><br />
-      <%= f.text_field :firstname %>
-    </div>
-
-   <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
-
-    <%= f.email_field :email, :placeholder => "email" %>
-    <div class="error"><%= resource(0).errors[:email].first if resource(0).errors[:email].present? %></div>
-
-    <%= f.password_field :password, :placeholder => "password", :title => "8+ characters" %>
-    <div class="error"><%= resource(0).errors[:password].first if resource(0).errors[:password].present? %></div>
-
-    <%= f.password_field :password_confirmation, :placeholder => "confirm password" %>
-    <div class="error"><%= resource(0).errors[:password_confirmation].first if resource(0).errors[:password_confirmation].present? %></div>
-
-    <div class="option_buttons">
-        <div class="already_registered">
-            <%= link_to 'already registered?', '#', :class => 'already_registered', :id => 'already_registered', :view => 'login' %>
-        </div>
-        <%= f.submit "Sign up" %>
-        <div class="clear"></div>
-    </div>
-<% end %>
-</div>
-</div>
-
-<% end %>

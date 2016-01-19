@@ -1,24 +1,20 @@
-<!-- _student_sign_up.html.erb -->
-
-<!-- _tutor_sign_up.html.erb -->
 <div class="signup_popup" id="signup_popup_1">
   <div class="signup_popup_inn">
     <%= form_for(resource(1), :as => resource_name(1), :html => {:id => 'register_form'}, :url => student_registration_path, :remote => :true, :format => :json) do |f| %>
       <h1>STUDENT / PARENT SIGN UP</h1>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-             <%= f.text_field :firstname, class: "txtbox", placeholder: "First name" %>
+             <%= f.text_field :firstname, class: "txtbox", placeholder: "First name", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <%= f.text_field :lastname, class: "txtbox", placeholder: "Surname" %>
+            <%= f.text_field :lastname, class: "txtbox", placeholder: "Surname", required: true %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-             <%= f.email_field :email, class: "txtbox", placeholder: "Email" %>
+             <%= f.email_field :email, class: "txtbox", placeholder: "Email", required: true %>
         </div>
         <div class="col-sm-6 col-xs-12">
-            <!-- <input type="text" class="txtbox" placeholder="Students DOB"> -->
             <input type="text" class="txtbox" id="email2" placeholder="Confirm Email">
         </div>
       </div>
@@ -29,10 +25,10 @@
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
             <% end %>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "txtbox" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "txtbox", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">    
-             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "txtbox" %>
+             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "txtbox", required: true %>
           </div>
       </div>
       <div class="clearfix">

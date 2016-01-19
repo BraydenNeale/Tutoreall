@@ -3,17 +3,12 @@
 <div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
       <h1>SIGN IN</h1>
-      <!-- <div class="clearfix">
-          <input type="text" class="txtbox" placeholder="">
-          <input type="text" class="txtbox" placeholder="">
-          <input type="submit" class="login_btn" value="LOG IN" >
-      </div> -->
       <div class="clearfix">
         <h2>TUTOR</h2>
         <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_tutor'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
 
-          <%= f.email_field :email, :placeholder => "email", class: "txtbox" %>
-          <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
+          <%= f.email_field :email, :placeholder => "email", class: "txtbox", required: true %>
+          <%= f.password_field :password, :placeholder => "password", class: "txtbox", required: true %>
 
           <% if false %>
             <% if devise_mapping(0).rememberable? -%>
@@ -29,8 +24,8 @@
       <h2>STUDENT</h2>
         <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_student'}, :url => student_session_path, :remote => :true, :format => :json) do |f| %>
 
-          <%= f.email_field :email, :placeholder => "email", class: "txtbox" %>
-          <%= f.password_field :password, :placeholder => "password", class: "txtbox" %>
+          <%= f.email_field :email, :placeholder => "email", class: "txtbox", required: true %>
+          <%= f.password_field :password, :placeholder => "password", class: "txtbox", required: true %>
 
           <% if false %>
             <% if devise_mapping(1).rememberable? -%>
@@ -53,27 +48,3 @@
   </div>
   <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
 </div>
-
-<% if false %>
-<div class="signin_popup" id="signin_popup">
-  <div class="signin_popup_inn">
-    <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_form'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
-
-      <%= f.email_field :email, :autofocus => true, :placeholder => "email", :id => 'login_email' %>
-      <%= f.password_field :password, :placeholder => "password", :id => 'login_password' %>
-
-      <% if devise_mapping(0).rememberable? -%>
-        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-      <% end -%>
-
-      <div><%= f.submit "Sign up" %></div>
-    <% end %>
-
-      <div class="center_txt">
-          <h2>Are you a student?<a href="#signup_popup_1" class="fancybox signup_btn">SIGN UP</a></h2>
-          <h2>Are you a tutor?<a href="#signup_popup_2" class="fancybox signup_btn">SIGN UP</a></h2>
-      </div>
-  </div>
-  <div class="curve_1"><img src="../../assets/layout/popup_curve_1.png" alt=""></div>
-</div>
-<% end %>
