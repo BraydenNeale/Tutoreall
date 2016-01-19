@@ -70,25 +70,26 @@ $(document).ready(function() {
 });
 
 // Ajax requests for devise form from partial views
-
+// Even failed logins returning ajax success...
 $(document).on('submit', '#login_tutor', function(e) {
 }).on('ajax:success', '#login_tutor', function(e, data, status, xhr) {
   window.location.assign("");
+  // alert("Successfully signed in");
 }).on('ajax:error', '#login_tutor', function(e, data, status, xhr) {
-  alert('error occurred: Try again');
+  alert('Username or Password incorrect: Please try again');
 });
 
 $(document).on('submit', '#login_student', function(e) {
 }).on('ajax:success', '#login_student', function(e, data, status, xhr) {
   window.location.assign("")
 }).on('ajax:error', '#login_student', function(e, data, status, xhr) {
-  alert('error occurred: Try again');
+  alert('Username or Password incorrect: Please try again');
 });
 
 $(document).on('submit', '#register_form', function(e){
 }).on('ajax:success', '#register_form', function(e, data, status, xhr) {
   window.location.assign("")
-  alert("Confirmation email has been sent");
+  alert("Welcome to Tutorial Academy, Please confirm your account via the confirmation email that has been sent");
 }).on('ajax:error', '#register_form', function(e, data, status, xhr) {
-  alert('error occurred: Try again');
+  alert('An error occurred, Please ensure all fields were filled out correctly and try again');
 });

@@ -25,6 +25,9 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
+  # Refresh it 
+  # rake -s sitemap:refresh
+
   add '/home'
   add '/about'
   add '/terms_of_use'

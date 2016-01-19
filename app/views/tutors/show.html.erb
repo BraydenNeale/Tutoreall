@@ -23,9 +23,9 @@
                     <% else %>
                       <a href="#msz_popup" class="fancybox">CONTACT</a>
                     <% end %>
-
-                    <a href="#">BOOK</a>
-                    <a href="#">REVIEW</a>
+                    <!-- <a href="#">BOOK</a> -->
+                    <!-- <a href="#">REVIEW</a> -->
+                    <a href="mailto:Chris@tutorial.academy?Subject=Report%20tutor%20<%= @tutor.id %>%20<%= tutor.firstname %>%20<%= tutor.lastname %>" target="_top" ></a>
                     <a href="#">REPORT</a>
                   <% elsif not current_user.present? %>
                     <p>Sign in to message this tutor</p>                  

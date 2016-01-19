@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   devise_for :students, :controllers => {sessions: 'sessions', registrations: 'registrations'}
   devise_for :tutors, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+  # devise_for :students
+  # devise_for :tutors
 
   controller :static do 
     get :home

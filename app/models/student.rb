@@ -9,7 +9,10 @@ class Student < ActiveRecord::Base
 
   acts_as_messageable
 
-   validate :uniqueness_of_user_email
+  validate :uniqueness_of_user_email
+
+  validates :firstname, presence: true, length: { in: 2..35 }
+  validates :lastname, presence: true, length: { in: 2..35 }
 
 
   def uniqueness_of_user_email
