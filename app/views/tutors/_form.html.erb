@@ -78,7 +78,7 @@
                       <a>Areas</a>
                       <ul>
                         <%= hidden_field_tag "tutor[area_ids][]", nil %>
-                        <% Area.all.each do |area| %>
+                        <% Area.all.order_by('name ASC').each do |area| %>
                           <li>
                             <%= label_tag dom_id(area), class: 'checkbox chkbox_label' do %>
                               <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
