@@ -25,8 +25,8 @@
                     <% end %>
                     <!-- <a href="#">BOOK</a> -->
                     <!-- <a href="#">REVIEW</a> -->
-                    <a href="mailto:Chris@tutorial.academy?Subject=Report%20tutor%20<%= @tutor.id %>%20<%= @tutor.firstname %>%20<%= @tutor.lastname %>" target="_top" ></a>
-                    <a href="#">REPORT</a>
+                    <!-- <a href="#">REPORT</a> -->
+                    <a href="mailto:Chris@tutorial.academy?Subject=Report%20tutor%20<%= @tutor.firstname %>%20<%= @tutor.lastname %>%20<%= @tutor.id %>" target="_top" >REPORT</a>
                   <% elsif not current_user.present? %>
                     <p>Sign in to message this tutor</p>                  
                     <a href="#signin_popup" class="fancybox sign_up_btn">SIGN IN</a></h1>
