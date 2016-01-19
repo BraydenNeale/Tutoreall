@@ -11,7 +11,7 @@ class Search < ActiveRecord::Base
   private
 
   def find_tutors
-    if not (area.present? or subjects.present? or availability.present?)
+    if not (area.present? or subjects.present? or availability.present? or age.present?)
       return Array.new
     end
 

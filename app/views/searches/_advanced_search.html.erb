@@ -17,7 +17,7 @@
                   <li>
                     <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
                       <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
-                      <%= "#{sub.name}" %>
+                      <%= "#{sub.display_name}" %>
                     <% end %>
 
                   </li>

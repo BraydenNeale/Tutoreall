@@ -68,7 +68,7 @@
                           <li>
                             <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
                               <%= check_box_tag "tutor[subject_ids][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
-                              <%= "#{sub.name}" %>
+                              <%= "#{sub.display_name}" %>
                             <% end %>
                           </li>
                         <% end %>
