@@ -4,17 +4,17 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 </head>
 <body>
-  <% if is_tutor %>
+  <% if @current.is_a? Tutor %>
     <h2><%= "Hey #{@student.firstname.titleize}! "%> </h2>
     <p>
       Tutor: <%= @tutor.display_name %> has set up a lesson for you,
-      head over to <%= link_to lesson_path(@lesson) %> to check it out!
+      head over to <%= link_to "Tutorial.Academy", lesson_path(@lesson) %> to check it out!
     </p>
   <% else %>
     <h2><%= "Hey #{@tutor.firstname.titleize}!" %> </h2>
     <p>
       Student: <% @student.display_name %> has requested a lesson from you,
-      head over to <%= link_to lesson_path(@lesson) %> to check it out! %>
+      head over to <%= link_to "Tutorial.Academy", @lesson %> to check it out!
     </p>
   <% end %>
   <%= email_image_tag("logo.png") %>

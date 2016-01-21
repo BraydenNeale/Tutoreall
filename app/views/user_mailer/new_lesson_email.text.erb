@@ -1,15 +1,15 @@
-<% if is_tutor %>
+<% if @current.is_a? Tutor %>
 <%= "Hey #{@student.firstname.titleize}! "%>
 =============================================
 
 Tutor: <%= @tutor.display_name %> has set up a lesson for you,
-head over to <%= link_to lesson_path(@lesson) %> to check it out!
+head over to <%= link_to "Tutorial.Academy", lesson_path(@lesson) %> to check it out!
 <% else %>
 <%= "Hey #{@tutor.firstname.titleize}!" %>
 =============================================
 
-  Student: <% @student.display_name %> has requested a lesson from you,
-  head over to <%= link_to lesson_path(@lesson) %> to check it out! %>
+  Student: <%= @student.display_name %> has requested a lesson from you,
+  head over to <%= link_to "Tutorial.Academy", lesson_path(@lesson) %> to check it out! %>
 <% end %>
 
 Thanks, 
