@@ -1,0 +1,16 @@
+<% if is_tutor %>
+<%= "Hey #{@student.firstname.titleize}! "%>
+=============================================
+
+Tutor: <%= @tutor.display_name %> has set up a lesson for you,
+head over to <%= link_to lesson_path(@lesson) %> to check it out!
+<% else %>
+<%= "Hey #{@tutor.firstname.titleize}!" %>
+=============================================
+
+  Student: <% @student.display_name %> has requested a lesson from you,
+  head over to <%= link_to lesson_path(@lesson) %> to check it out! %>
+<% end %>
+
+Thanks, 
+  Tutorial Academy
