@@ -86,7 +86,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.update(lesson_params)
-        UserMailer.lesson_change_email(@lesson).deliver_later
+        UserMailer.lesson_change_email(@lesson, current_user).deliver_later
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else

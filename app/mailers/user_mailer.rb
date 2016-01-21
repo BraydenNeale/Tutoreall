@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
     end
   end
 
-  def lesson_change_email(lesson)
+  def lesson_change_email(lesson, current)
     @student = lesson.student
     @tutor = lesson.tutor
     @subject = lesson.subject
