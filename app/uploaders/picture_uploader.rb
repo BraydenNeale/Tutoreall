@@ -2,6 +2,12 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
 
+  after :store, :delete_original_file
+
+  def delete_original_file(new_file)
+    File.delete path if version_name.blank?
+  end
+
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -10,7 +16,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   if Rails.env.development? || Rails.env.test?
     storage :file
   else
-    storage :fog  
+    storage :fog
   end
 
   # Override the directory where uploaded files will be stored.
