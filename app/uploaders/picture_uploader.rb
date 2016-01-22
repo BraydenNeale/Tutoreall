@@ -1,13 +1,7 @@
 # encoding: utf-8
 
 class PictureUploader < CarrierWave::Uploader::Base
-
-  after :store, :delete_original_file
-
-  def delete_original_file(new_file)
-    File.delete path if version_name.blank?
-  end
-
+  
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
