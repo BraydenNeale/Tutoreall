@@ -4,17 +4,19 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>You have a new reply: <%= @subject %></h1>
+    <h2>Hey, you have received a reply!</h2>
     <p>
-      You have received a new reply:
+      New reply:
     </p>
     <blockquote>
       <p>
-        <%= raw @message.body %>
+        "<%= raw @message.body %>"
       </p>
     </blockquote>
     <p>
-      Visit <%= link_to root_url, root_url %> and go to your inbox for more info.
+      Check it out at: <%= link_to root_url, root_url %> and go to your inbox for more info.
     </p>
+
+    <%= email_image_tag("logo.png") %>
   </body>
 </html>
