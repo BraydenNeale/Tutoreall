@@ -30,6 +30,7 @@ end
 # SitemapGenerator::Sitemap.ping_search_engines
 
 # heroku run rake sitemap:create
+# http://www.tutorial.academy/sitemap1.xml.gz
 
 # Refresh it 
 # rake -s sitemap:refresh
