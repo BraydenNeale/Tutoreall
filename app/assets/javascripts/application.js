@@ -74,7 +74,7 @@ $(document).ready(function() {
 $(document).on('submit', '#login_tutor', function(e) {
 }).on('ajax:success', '#login_tutor', function(e, data, status, xhr) {
   window.location.assign("");
-  // alert("Successfully signed in");
+  alert("Successfully signed in");
 }).on('ajax:error', '#login_tutor', function(e, data, status, xhr) {
   alert('Username or Password incorrect: Please try again');
 });
@@ -82,6 +82,7 @@ $(document).on('submit', '#login_tutor', function(e) {
 $(document).on('submit', '#login_student', function(e) {
 }).on('ajax:success', '#login_student', function(e, data, status, xhr) {
   window.location.assign("")
+  alert("Successfully signed in");
 }).on('ajax:error', '#login_student', function(e, data, status, xhr) {
   alert('Username or Password incorrect: Please try again');
 });
