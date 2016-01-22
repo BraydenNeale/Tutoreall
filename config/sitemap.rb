@@ -27,7 +27,9 @@ SitemapGenerator::Sitemap.create do
   end
 end
 
-SitemapGenerator::Sitemap.ping_search_engines
+# SitemapGenerator::Sitemap.ping_search_engines
+
+# heroku run rake sitemap:create
 
 # Refresh it 
 # rake -s sitemap:refresh
