@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>Hey, you have received a reply!</h2>
+    <p>
+      New reply:
+    </p>
+    <blockquote>
+      <p>
+        "<%= raw @message.body %>"
+      </p>
+    </blockquote>
+    <p>
+      Check it out at: <%= link_to root_url, root_url %> and go to your inbox for more info.
+    </p>
+
+    <%#= email_image_tag("logo.png") %>
+  </body>
+</html>

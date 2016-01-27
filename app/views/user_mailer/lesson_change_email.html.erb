@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+  <!-- Tutor created the lesson - so email the  -->
+  <% if @current.is_a? Tutor %>
+    <h2><%= "Hey #{@student.firstname.titleize}!" %> </h2>
+  <% else %>
+    <h2><%= "Hey #{@tutor.firstname.titleize}!" %> </h2>
+  <% end %>
+
+  <p>
+    The details of one of your lessons have been updated,
+    head over to <%= link_to "Tutorial.Academy", lesson_path(@lesson) %> to view the changes
+  </p>
+
+  <%= email_image_tag("logo.png") %>
+</body>
+</html>

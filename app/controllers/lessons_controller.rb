@@ -37,6 +37,7 @@ class LessonsController < ApplicationController
     
     respond_to do |format|
       if @lesson.save
+        UserMailer.new_lesson_email(@lesson, current_user).deliver_later
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
       else
@@ -52,6 +53,7 @@ class LessonsController < ApplicationController
   def approve
     @lesson.status = "approved"
     if @lesson.save
+      UserMailer.lesson_change_email(@lesson, current_user).deliver_later
       flash[:notice] = "Lesson Approved"
       redirect_to @lesson
     else
@@ -64,6 +66,8 @@ class LessonsController < ApplicationController
   def cancel
     @lesson.status = "cancelled"
     if @lesson.save
+      # specific cancel email later:
+      UserMailer.lesson_change_email(@lesson, current_user).deliver_later
       flash[:notice] = "Lesson Cancelled"
       redirect_to @lesson
     else
@@ -82,6 +86,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.update(lesson_params)
+        UserMailer.lesson_change_email(@lesson, current_user).deliver_later
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else

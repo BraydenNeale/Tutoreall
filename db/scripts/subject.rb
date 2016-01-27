@@ -2,7 +2,7 @@
 # load './db/scripts/subject.rb'
 
 Subject.create :name => "mathematics", :faculty => "mathematics", :group => "highschool"
-Subject.create :name => "specialist", :faculty => "mathematics", :group => "highschool"
+Subject.create :name => "maths specialist", :faculty => "mathematics", :group => "highschool"
 
 Subject.create :name => "biology", :faculty => "science", :group => "highschool"
 Subject.create :name => "human biology", :faculty => "science", :group => "highschool"
@@ -17,7 +17,7 @@ Subject.create :name => "literature", :faculty => "english", :group => "highscho
 
 Subject.create :name => "geography", :faculty => "humanities", :group => "highschool"
 Subject.create :name => "history", :faculty => "humanities", :group => "highschool"
-Subject.create :name => "pyschology", :faculty => "humanities", :group => "highschool"
+Subject.create :name => "psychology", :faculty => "humanities", :group => "highschool"
 Subject.create :name => "politics and law", :faculty => "humanities", :group =>"highschool"
 
 Subject.create :name => "art", :faculty => "arts", :group => "highschool"

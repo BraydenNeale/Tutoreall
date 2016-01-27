@@ -1,0 +1,12 @@
+<% if @current.is_a? Tutor %>
+<%= "Hey #{@student.firstname.titleize}! "%>
+<% else %>
+<%= "Hey #{@tutor.firstname.titleize}!" %>
+<% end %>
+=============================================
+
+The details of one of your lessons have been updated,
+head over to <%= link_to "Tutorial.Academy", lesson_path(@lesson) %> to view the changes
+
+Thanks, 
+  Tutorial Academy
