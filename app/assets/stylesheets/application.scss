@@ -238,6 +238,13 @@ body {
   
 }
 
+
+#content > .container {
+  display:block;
+  padding-left:7%;
+  padding-right:7%;
+}
+
 #footer > .container {
   display:block;
   padding-left:7%;
@@ -254,4 +261,13 @@ body {
 
 .sign_up_btn:hover{
   text-decoration:none;
+}
+
+#header .container .header .login_signup .fancybox:hover {
+  text-decoration:none;
+}
+
+/*Select subject dropdown indent*/
+.home #header .search_c .sub_txtbox {
+  text-indent:10%;
 }
