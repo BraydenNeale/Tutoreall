@@ -271,3 +271,14 @@ body {
 .home #header .search_c .sub_txtbox {
   text-indent:10%;
 }
+
+#search_totur .sub_txtbox {
+  text-indent:10%;
+}
+
+
+/*Hidden age overflow*/
+
+#content .search_main .ser_leftbar .filter_box > ul > li.active > ul {
+  overflow:visible !important;
+}
