@@ -247,8 +247,8 @@ body {
 
 #footer > .container {
   display:block;
-  padding-left:7%;
-  padding-right:7%;
+  padding-left:5%;
+  padding-right:5%;
 }
 
 .signin_popup h2 {
@@ -281,4 +281,22 @@ body {
 
 #content .search_main .ser_leftbar .filter_box > ul > li.active > ul {
   overflow:visible !important;
+}
+
+
+/*Misaligned sub*/
+#content .search_main .ser_leftbar .leftbar_serchbox .txtbox_2 {
+  width:100%;
+}
+
+#content .search_main .ser_leftbar .btn_1 {
+  width:100%;
+}
+#content .search_main .ser_leftbar .btn_1:hover {
+  background: #808080;
+  color:#000000;
+}
+
+#content .search_main .ser_leftbar .leftbar_serchbox {
+  padding-right:0px;
 }
