@@ -3,6 +3,7 @@ class Search < ActiveRecord::Base
   serialize :availability
 
   enum age_brackets: ['Don\'t mind','Less than 25','26 - 40','Above 40']
+  enum sex: ['Any','Female','Male']
 
   def tutors
     @tutors ||= find_tutors
@@ -22,13 +23,10 @@ class Search < ActiveRecord::Base
 
     tutors = filter1 & filter2
 
-    tutors = age_filter(tutors) if age.present?
-    tutors = availability_filter(tutors) if availability.present?
-    # tutors = sex_filter(tutors) if sex.present?
-    puts "\n\nTUTORS\n\n"
-    puts tutors
-    puts "\n\n"
+    tutors = age_filter(tutors)
+    tutors = sex_filter(tutors)
 
+    tutors = availability_filter(tutors) if availability.present?
 
     return tutors
 
@@ -68,17 +66,21 @@ class Search < ActiveRecord::Base
     return ar
   end
 
-  def sex_filter
+  def sex_filter(tutors)
+    tutors = tutors.select {|t| t.Female? } if self.Female?
+    tutors = tutors.select {|t| t.Male? } if self.Male?
+
+    return tutors
   end
 
   def search_is_blank?
     if (
       (not (area.present? or subjects.present? or availability.present?)) and 
-      age == 0 
-      # sex == 0
+      age == 0  and
+      sex == 0
       )
 
-      return 0;
+      return true;
     end
 
     return false;

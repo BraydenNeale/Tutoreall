@@ -28,7 +28,7 @@
               </ul>
             </li>
           <% end %>
-          <li class="active">
+          <li>
             <a href="#">AVAILABILITY</a>
               <ul>
                 <% Date::DAYNAMES.each_with_index do |wday, i| %>
@@ -48,6 +48,16 @@
                   </div>
                 </li>
               </ul>
+          </li>
+          <li class="active">
+            <a href="#">SEX</a>
+            <ul>
+              <li>
+                <div class="sel_box">
+                  <%= f.select :sex, Search.sexes.keys, {}, class: "selbox" %>
+                </div>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
