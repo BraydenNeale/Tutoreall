@@ -11,9 +11,7 @@ class Search < ActiveRecord::Base
   private
 
   def find_tutors
-    if not (area.present? or subjects.present? or availability.present? or age.present?)
-      return Array.new
-    end
+    return Array.new if search_is_blank?
 
     tutors = Tutor.all.where(verified: true)
 
@@ -27,7 +25,13 @@ class Search < ActiveRecord::Base
     tutors = age_filter(tutors) if age.present?
     tutors = availability_filter(tutors) if availability.present?
     # tutors = sex_filter(tutors) if sex.present?
+    puts "\n\nTUTORS\n\n"
+    puts tutors
+    puts "\n\n"
+
+
     return tutors
+
   end
 
   # Age brackets - taken from tutoric
@@ -65,5 +69,18 @@ class Search < ActiveRecord::Base
   end
 
   def sex_filter
+  end
+
+  def search_is_blank?
+    if (
+      (not (area.present? or subjects.present? or availability.present?)) and 
+      age == 0 
+      # sex == 0
+      )
+
+      return 0;
+    end
+
+    return false;
   end
 end
