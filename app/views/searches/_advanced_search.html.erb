@@ -3,6 +3,9 @@
     <%= form_for search do |f| %>
       <div class="clearfix leftbar_serchbox">
         <%= f.text_field :area, id: "area-search", placeholder: "Enter your suburb", class: "txtbox_2" %>
+      </div>
+
+      <div class="clearfix search_button">
         <%= f.submit "SEARCH", class: "btn_1" %>
       </div>
       
