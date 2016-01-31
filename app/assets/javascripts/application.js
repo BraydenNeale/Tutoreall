@@ -11,6 +11,7 @@
 // about supported directives.
 //
 // require jquery
+//= require sweetalert
 //= require jquery-1.7.2.min
 //= require jquery.turbolinks
 //= require jquery-ui
@@ -74,23 +75,23 @@ $(document).ready(function() {
 $(document).on('submit', '#login_tutor', function(e) {
 }).on('ajax:success', '#login_tutor', function(e, data, status, xhr) {
   window.location.assign("");
-  alert("Successfully signed in");
+  swal("Success", "Logging you in now", 'success');
 }).on('ajax:error', '#login_tutor', function(e, data, status, xhr) {
-  alert('Username or Password incorrect: Please try again');
+  swal('Oh no.', 'Please check you email, password and try again' ,'error');
 });
 
 $(document).on('submit', '#login_student', function(e) {
 }).on('ajax:success', '#login_student', function(e, data, status, xhr) {
   window.location.assign("")
-  alert("Successfully signed in");
+  swal("Success", "Logging you in now", 'success');
 }).on('ajax:error', '#login_student', function(e, data, status, xhr) {
-  alert('Username or Password incorrect: Please try again');
+  swal('Oh no.', 'Please check you email, password and try again' ,'error');
 });
 
 $(document).on('submit', '#register_form', function(e){
 }).on('ajax:success', '#register_form', function(e, data, status, xhr) {
   window.location.assign("")
-  alert("Welcome to Tutorial Academy, Please confirm your account via the confirmation email that has been sent");
+  swal("Welcome to Tutorial Academy, Please confirm your account via the confirmation email that has been sent");
 }).on('ajax:error', '#register_form', function(e, data, status, xhr) {
-  alert('An error occurred, Please ensure all fields were filled out correctly and try again');
+  swal('An error occurred, Please ensure all fields were filled out correctly and try again');
 });

@@ -10,10 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require sweetalert
  *= require_tree .
  * require_tree ../../../vendor/assets/stylesheets/.
  *= require_self
  *= require jquery-ui
+ 
  */
 
 // @import "chosen";
@@ -46,7 +48,7 @@ body {
   cursor:pointer; 
   text-align:center; 
   background:#4da3c3; 
-  font-size:24px; 
+  font-size:20px; 
   line-height:65px; 
   color:#fff; 
   font-weight:700; 
@@ -56,6 +58,13 @@ body {
     background:#999999; 
     color: #ededed;
   }
+}
+
+.login_btn_space {
+  margin-top:20px;
+  margin-bottom:20px;
+  height: 55px;
+  line-height:5px;
 }
 
 .pag-main{
