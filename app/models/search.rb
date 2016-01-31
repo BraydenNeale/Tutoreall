@@ -17,15 +17,16 @@ class Search < ActiveRecord::Base
 
     tutors = Tutor.all.where(verified: true)
 
-    filter1 = filter2 = filter3 = Array(tutors)
+    filter1 = filter2 = Array(tutors)
 
     filter1 = areas_filter(tutors) if area.present?
     filter2 = subjects_filter(tutors) if subjects.present?
-    filter3 = availability_filter(tutors) if availability.present?
 
-    tutors = filter1 & filter2 & filter3
+    tutors = filter1 & filter2
+
     tutors = age_filter(tutors) if age.present?
-
+    tutors = availability_filter(tutors) if availability.present?
+    # tutors = sex_filter(tutors) if sex.present?
     return tutors
   end
 
@@ -53,10 +54,16 @@ class Search < ActiveRecord::Base
     return Array(tutors.includes(:subjects).where('subjects.id' => subjects))
   end
 
-  # Not currently working - but need to refactor the whole week day model of tutors
   def availability_filter(tutors)
-    # return tutors
-    return Array(tutors)
-    # return Array(tutors.includes(:weekdays).where('weekdays.id' => availability))
+    ar = Array.new
+
+    tutors.each do |tutor|
+      ar.push(tutor) if not (availability & tutor.availability).empty?
+    end
+
+    return ar
+  end
+
+  def sex_filter
   end
 end
