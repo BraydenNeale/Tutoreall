@@ -77,3 +77,7 @@ gem 'sitemap_generator', '~> 5.1.0'
 gem 'puma', '~> 2.13.4'
 gem 'rails_12factor', '~> 0.0.3', group: :production
 
+#sweet alerts
+source 'https://rails-assets.org' do
+   gem 'rails-assets-sweetalert'
+end
