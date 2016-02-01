@@ -77,7 +77,7 @@ $(document).on('submit', '#login_tutor', function(e) {
   window.location.assign("");
   swal("Success", "Logging you in now", 'success');
 }).on('ajax:error', '#login_tutor', function(e, data, status, xhr) {
-  swal('Oh no.', 'Please check you email, password and try again' ,'error');
+  swal('Oh no.', 'Please check your email, password and try again' ,'error');
 });
 
 $(document).on('submit', '#login_student', function(e) {
@@ -85,13 +85,13 @@ $(document).on('submit', '#login_student', function(e) {
   window.location.assign("")
   swal("Success", "Logging you in now", 'success');
 }).on('ajax:error', '#login_student', function(e, data, status, xhr) {
-  swal('Oh no.', 'Please check you email, password and try again' ,'error');
+  swal('Oh no.', 'Please check your email, password and try again' ,'error');
 });
 
 $(document).on('submit', '#register_form', function(e){
 }).on('ajax:success', '#register_form', function(e, data, status, xhr) {
   window.location.assign("")
-  swal("Welcome to Tutorial Academy, Please confirm your account via the confirmation email that has been sent");
+  swal("Welcome to Tutorial Academy", "Please confirm your account via the confirmation email that has been sent", 'success');
 }).on('ajax:error', '#register_form', function(e, data, status, xhr) {
-  swal('An error occurred, Please ensure all fields were filled out correctly and try again');
+  swal('Oh no.', 'Please ensure all fields were filled out correctly and try again', 'error');
 });
