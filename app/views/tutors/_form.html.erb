@@ -16,11 +16,13 @@
         <h3>Basic details</h3>
           <div class="clearfix">
             <div class="block_1">
+              <h4>Gender</h4>
                 <%= f.select :sex, Tutor.sexes.keys, {}, {class: "selbox"} %>
-              </div>
-              <span class="datetime">
+            </div>
+            <span class="datetime">
+              <h4>Date of Birth</h4>
                 <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
-              </span>
+            </span>
           </div>
       </div>
       <div class="photo_details clearfix">
@@ -41,6 +43,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="block block_1">
+                  <h5>Suburb</h5>
                     <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
                 </div>
 
@@ -102,7 +105,7 @@
                   <%= f.fields_for :wwc_card do |wwc| %>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                       <div class="block">
-                          <h5>Working with children number</h5>
+                          <h5>Working with Children Number</h5>
                           <%= wwc.text_field :number, class: "txtbox_1" %>
                         </div>
                     </div>
@@ -111,7 +114,7 @@
                   <div class="row">
                     <%= f.fields_for :wwc_card do |wwc| %>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h5>Working with children expiry</h5>
+                        <h5>Working with Children Expiry</h5>
                         <span class="datetime">
                           <%= wwc.date_select(:expiry, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year=> Date.today.year + 5, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
                         </span>

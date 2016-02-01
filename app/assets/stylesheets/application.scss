@@ -313,3 +313,49 @@ body {
 #content .search_main .ser_leftbar .filter_box .sbHolder {
     width: 90%;
 }
+
+/*More textdecoration none*/
+
+#content .filter_btns a {
+  text-decoration:none;
+}
+
+.btn_1:hover {
+  text-decoration:none;
+}
+
+.simple-calendar > a {
+}
+
+/*Textdecoration on front page name*/
+#header .mszbox .msz_btn {
+  text-decoration:none;
+}
+
+.settings_filter > ul > li a {
+  text-decoration:none;
+}
+
+/*Weirdness in tutor settings*/
+#content .settings_main .more_details .block_1 {
+  padding-top:0px;
+}
+
+.pro_rightbar h4{
+  font-size:24px;
+  font-weight:650;
+  color:#2299B7;
+}
+
+.lesson_show h4 {
+  font-size:28px;
+  font-weight:600;
+}
+
+.help_message > p{
+  color:#999999;
+}
+
+.learn_more > a{ 
+  text-decoration:none;
+}
