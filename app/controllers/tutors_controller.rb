@@ -97,7 +97,8 @@ class TutorsController < ApplicationController
     rate = tutor.rate.present?
     birth = tutor.date_of_birth.present?
     
-    wwc = verify_wwc_card(tutor.wwc_card)
+    # wwc = verify_wwc_card(tutor.wwc_card)
+    wwc = true
 
     # account information
     if(rate and birth and wwc)

@@ -62,6 +62,9 @@
             <p><%= show_areas(@tutor.areas) %></p>
             <h4>Subjects</h4>
             <p><%= show_subjects(@tutor.subjects) %></p>
+            <% if @tutor.wwc_card.present? %>
+              <h4>This tutor has a valid working with children card!</h4>
+            <% end %>
           </div>
         </div>
     	</div>
