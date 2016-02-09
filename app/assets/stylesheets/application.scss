@@ -401,3 +401,40 @@ a:hover {
   padding-top:70px;
 } 
 }
+
+@media (min-width:320px) {
+  .curve_1 {
+    display:none;
+  }
+}
+
+@media (min-width:481px) {
+  .curve_1 {
+    display:block;
+  }
+}
+
+
+/*Fix for large names front page*/
+.profilebox > .details > h3 {
+  height:63px;
+}
+
+@media (max-width:1440px) {
+  .profilebox > .details > h3 {
+    font-size:20px;
+  }
+}
+
+
+@media (max-width:961px) {
+  .profilebox > .details > h3 {
+    font-size:18px;
+  }
+}
+
+
+
+.profilebox_2 > .clearfix > .details > h3 {
+  
+}
