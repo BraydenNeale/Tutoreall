@@ -1,33 +1,3 @@
-<% if false %>
-<!-- refactor this into controller -->
-<% tutors = Set.new %>
-
-<h1>Dashboard</h1>
-
-<div class="row">
-	<div class="four columns">
-		<h4>My conversations</h4>
-			<%= render partial: 'conversations/conversation', collection: @conversations %>
-	</div>
-	<div class="four columns">
-		<h4>My Lessons</h4>
-		<%= link_to "My Calender", calendar_student_path(current_user) %> <br> <br>
-		<% @lessons.each do |lesson| %>
-			<%= link_to "#{lesson.tutor.firstname.titleize}-#{lesson.subject}", lesson %> 
-			<%= local_time(lesson.date, '%d/%m/%Y %H:%M') %> <br>
-			<% tutors.add(lesson.tutor) %>
-		<% end %>
-	</div>
-	<div class="four columns">
-		<h4>My Tutors</h4>
-		<% tutors.each do |tutor| %>
-			<%= link_to tutor.display_name, tutor %>
-		<% end %>
-	</div>
-</div>
-<%#= will_paginate %>
-<% end %>
-
 <div class="student_main">
   <div class="clearfix">
     <h2>My Tutors</h2>
@@ -44,23 +14,24 @@
             <div class="img">
                 <%= image_tag tutor.picture_url(:display) %>
                 <div class="btns">
-                    <!-- <a href="#msz_popup" class="fancybox">MESSAGE</a> -->
-                    <%= link_to "MESSAGE", conversations_path(current: get_conversation(current_user, tutor)) %>
-                    <!-- <a href="#book_popup" class="fancybox">BOOK</a> -->
-                    <%= link_to 'BOOK', new_lesson_path(student: current_user, tutor: tutor) %>
+                    <% if is_conversation(current_user, tutor) %>
+                      <%= link_to "MESSAGE", conversations_path(current: get_conversation(current_user, tutor)) %>
+                    <% end %>
+                    <%= link_to 'BOOK', new_partial_lesson_path(student: current_user, tutor: tutor), remote: true %>
                 </div>
             </div>
             <h3><%= tutor.display_name %></h3>
             <% next_lesson = next_tutor_lesson(tutor, current_user) %>
-            <%#= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
               <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
               	<a href="#"><%= next_lesson_faculty(next_lesson) %></a>
               </p>
-            <%# end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 
-<%#= render partial: 'lessons/lesson', locals: {tutor: @tutor} %>
+<a id="book_popup_click" href="#book_popup" class="fancybox" style="display:none"></a>
+<div id="book_popup" class="book_popup"></div>
+
+<!-- <a href="#msz_popup" class="fancybox">MESSAGE</a>  -->

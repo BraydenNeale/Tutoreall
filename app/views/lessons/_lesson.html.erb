@@ -22,13 +22,11 @@
       <input type="submit" class="book_btn" value="BOOK">
     </div>
 </div> -->
-<% lesson = Lesson.new %>
-
+<% if false %>
 <%= form_for(lesson) do |f| %>
   <% if lesson.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
-
+      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
       <ul>
       <% lesson.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -58,14 +56,65 @@
   </div>
 
   <%= f.hidden_field :student_id, value: student.id %>
+  <%= f.hidden_field :tutor_id, value: tutor.id %>
   <%= f.hidden_field :status, value: "initial" %>
   <%= f.hidden_field :tutor_change, value: is_tutor %>
-
-  <!-- hidden_field_tag and adding requests from student - Branch created -->
-  <%#= hidden_field_tag(:tutor_id, @tutor.id) %>
-  <%#= hidden_field_tag(:status, "requested") %> 
   
   <div class="actions">
     <%= f.submit %>
+  </div>
+<% end %>
+<% end %>
+
+
+<%= form_for(lesson) do |f| %>
+  <% if lesson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+      <ul>
+      <% lesson.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="clearfix">
+        <h2 class="lesson_form_title">New Lesson</h2>
+      </div>
+      <div class="clearfix">
+        <%= f.select(:subject, subjects_list(tutor), {multiple: false, required: true}, {class: "select_list" }) %>
+      </div>
+      <div class="clearfix">
+        <%= f.text_field :location, class: "txtbox_1", placeholder: "Location" %>
+      </div>
+      <div class="clearfix">
+        <%= f.text_area :description, placeholder: "Description" %>
+      </div>
+      <div class="clearfix lesson_number">
+        <%= f.number_field :duration, min: 30, step: 5, required: true, class: "txtbox_1", placeholder: "Duration (minutes)" %>
+      </div>
+      <div class="clearfix">
+        <%= f.label :date %><br>
+        <%= f.datetime_select(:date, {order: [:day, :month, :year], start_year: Time.now.year, end_year: Time.now.year+1, required: true}, {} )%>
+      </div>
+      <%= f.hidden_field :student_id, value: student.id %>
+      <%= f.hidden_field :tutor_id, value: tutor.id %>
+      <%= f.hidden_field :tutor_change, value: is_tutor %>
+
+      <% if is_tutor %>
+        <%= f.hidden_field :status, value: "initial" %>
+      <% else %>
+        <%= f.hidden_field :status, value: "requested" %>
+      <% end %>
+
+      <div class="clearfix">
+        <% value = "ADD LESSON" %>
+        <% value = "REQUEST LESSON" if is_student %>
+        <%= f.submit  value: value, class: "btn_1 request_lesson_space" %>
+      </div>
+    </div>
   </div>
 <% end %>

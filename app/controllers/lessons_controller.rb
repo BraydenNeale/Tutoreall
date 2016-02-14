@@ -26,6 +26,21 @@ class LessonsController < ApplicationController
     @tutor = Tutor.find_by(id: params[:tutor])
   end
 
+  def new_partial
+    # for some reason passing current_user through dashboard loop - becomes 1 after first instance...
+    if(current_user.is_a? Student)
+      @tutor = Tutor.find(params[:tutor])
+      @student = current_user
+    else
+      @student = Student.find(params[:student])
+      @tutor = current_user
+    end
+
+    respond_to do | format |
+      format.js {render :layout => false}
+    end
+  end
+
   # GET /lessons/1/edit
   def edit
   end
@@ -46,8 +61,6 @@ class LessonsController < ApplicationController
       end
     end
   end
-
-  # could/should refactor approve/cancel into update
 
   # put
   def approve

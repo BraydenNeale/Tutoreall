@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     member do
       put :approve
       put :cancel
+      get :new_partial
     end
   end
 

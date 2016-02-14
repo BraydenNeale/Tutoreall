@@ -1,0 +1,2 @@
+$("#book_popup").html("<%= escape_javascript( render(partial: "lesson", locals: {tutor: @tutor, student: @student, lesson: Lesson.new }) ) %>");
+document.getElementById('book_popup_click').click();
