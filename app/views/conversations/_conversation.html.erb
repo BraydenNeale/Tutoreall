@@ -3,7 +3,8 @@
 <% else %>
   <div class="block clearfix">
 <% end %>
-  <%= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
+  <%#= link_to(conversations_path(current: conversation.id), class: "clearfix") do %>
+  <%= link_to(partial_chat_conversation_path(conversation), remote: true, class: "clearfix") do %>
     <% if is_tutor %>
       <div class="img"><img src="../../assets/default/search_default.png" alt=""></div>
     <% else %>

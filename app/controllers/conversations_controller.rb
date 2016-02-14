@@ -19,15 +19,19 @@ class ConversationsController < ApplicationController
 			@current = @mailbox.conversations.find(params[:current])
 			@current.mark_as_read(current_user)
 		else
-			# @current = @conversations.first
-			@current = nil
+			@current = @conversations.first
 		end
+	end
+
+	def partial_chat
+		respond_to do | format |
+      format.js {render :layout => false}
+    end
 	end
 
 	def reply
 	  current_user.reply_to_conversation(@conversation, params[:body])
 	  flash[:success] = 'Reply sent'
-	  # redirect_to conversation_path(@conversation)
 	  redirect_to conversations_path(current: @conversation.id)
 	end
 

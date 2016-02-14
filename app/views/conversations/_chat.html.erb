@@ -7,40 +7,38 @@
       </div>
     </div> -->
     <div class="msz_box">
-      <% if current.present? %>
-        <% if is_tutor %>
-          <div class="load_msz">
-           <%= link_to "ADD LESSON", new_lesson_path(student: get_partner(current).id, tutor: current_user) %>
-          </div>
-        <% else %>
-          <div class="load_msz">
-            <%= link_to "REQUEST LESSON", new_lesson_path(tutor: get_partner(current).id, student: current_user) %>
-          </div>
-        <% end %>
-        <% current.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
-          <% message = receipt.message %>
-          <div class="block clearfix">
-            <div class="img">
-              <% if check_is_tutor(message.sender) %>
-                <%= image_tag(message.sender.picture_url(:chat)) %>
-              <% else %>
-                <img src="../../assets/default/chat_default.png" alt="">
-              <% end %>
-            </div>
-            <div class="desc">
-                <h4><%= message.sender.firstname.titleize %></h4>
-                <%#= local_time(message.created_at.strftime("%-d %B %Y, %H:%M:%S")) %>
-                <p><%= message.body %></p>
-            </div>
-          </div>
-        <% end %>
-        <div class="replay_box">
-          <%= form_tag reply_conversation_path(current), method: :post do %>
-            <%= text_area_tag 'body', nil, placeholder: 'Write a reply...', required: true %>
-            <%= submit_tag 'Send', class: "send_btn" %>
-          <% end %>
+      <% if is_tutor %>
+        <div class="load_msz">
+         <%= link_to "ADD LESSON", new_lesson_path(student: get_partner(current).id, tutor: current_user) %>
+        </div>
+      <% else %>
+        <div class="load_msz">
+          <%= link_to "REQUEST LESSON", new_lesson_path(tutor: get_partner(current).id, student: current_user) %>
         </div>
       <% end %>
+      <% current.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
+        <% message = receipt.message %>
+        <div class="block clearfix">
+          <div class="img">
+            <% if check_is_tutor(message.sender) %>
+              <%= image_tag(message.sender.picture_url(:chat)) %>
+            <% else %>
+              <img src="../../assets/default/chat_default.png" alt="">
+            <% end %>
+          </div>
+          <div class="desc">
+              <h4><%= message.sender.firstname.titleize %></h4>
+              <%#= local_time(message.created_at.strftime("%-d %B %Y, %H:%M:%S")) %>
+              <p><%= message.body %></p>
+          </div>
+        </div>
+      <% end %>
+      <div class="replay_box">
+        <%= form_tag reply_conversation_path(current), method: :post do %>
+          <%= text_area_tag 'body', nil, placeholder: 'Write a reply...', required: true %>
+          <%= submit_tag 'Send', class: "send_btn" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

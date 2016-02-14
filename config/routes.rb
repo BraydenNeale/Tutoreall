@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 	  member do
 	    post :reply
       post :mark_as_read
+      get :partial_chat
 	  end
 	end
 

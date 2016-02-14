@@ -12,15 +12,16 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
       <div class="inbox_left">
         <div class="help_message">
-          <p>When you have messages, they will appear here.</p>
         </div>
 <!--         <div class="clearfix">
           <h2>INBOX</h2>
           <input type="text" class="txtbox_2" placeholder="SEARCH">
         </div> -->
-        <%= render partial: 'conversations/conversation', collection: @conversations %>
+        <%#= render partial: 'conversations/conversation', collection: @conversations %>
       </div>
     </div>
-    <%= render partial: 'conversations/chat', locals: {current: @current} %>
+    <div id="chat-div">
+      <%= render partial: 'conversations/chat', locals: {current: @current} %>
+    </div>
   </div>
 </div>
