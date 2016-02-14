@@ -108,35 +108,6 @@ class TutorsController < ApplicationController
     return false;
   end
 
-  def verify_wwc_card(wwc)
-    if not wwc.present?
-      return false
-    end
-
-    # WWC num is 6 chars long
-    if wwc.number.length != 6
-      # errors.add :base, 'Number not correct format'
-      return false
-    end
-
-    # WWC num is all digits
-    if !/\A\d+\z/.match(wwc.number) # if not a positive number
-      # errors.add :base, 'Number not correct format'
-      return false
-    end
-
-    # if card has expired
-    if(wwc.expiry <= Date.today)
-      # errors.add :base, "Card has expired"
-      return false
-    end
-
-    # complex selenium script or compare with webscraped data 
-    # to determine if is valid according to www.checkwwc.wa.gov.au/
-
-    return true
-  end
-
   def get_mailbox
     @mailbox ||= current_user.mailbox
   end

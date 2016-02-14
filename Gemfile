@@ -62,6 +62,8 @@ gem "fog", '~> 1.37.0' # carrier wave amazon s3
 gem 'aws-sdk', '~> 2.2.11'
 gem 'sitemap_generator', '~> 5.1.0'
 
+gem 'faker', '~> 1.6', '>= 1.6.1' # seed data
+
 # gem 'mailcatcher', '~> 0.6.1' # mail catching in dev
 # gem 'chosen-rails'
 # gem 'compass-rails'
