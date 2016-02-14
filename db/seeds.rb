@@ -25,6 +25,8 @@ when "development"
       suburb: Area.order("RANDOM()").first.display_name,
       sex: Random.rand(0..1),
       availability: (0..6).to_a.shuffle.take(Random.rand(0..6)).map(&:to_s),
+      :area_ids => Area.ids.shuffle.take(Random.rand(0..Area.count)),
+      :subject_ids => Subject.ids.shuffle.take(Random.rand(0..Subject.count))
     )
   end
 
