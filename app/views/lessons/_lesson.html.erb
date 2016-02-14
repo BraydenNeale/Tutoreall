@@ -1,5 +1,5 @@
-<!--  <div id="book_popup" class="book_popup">
-  <h2>BOOK TOMOKO NAGANO</h2>
+ <div id="book_popup" class="book_popup">
+  <h2>Book NAME</h2>
   <div class="clearfix">  
       <div class="sel_box_1"><select class="selbox"><option>Select Subject</option><option>option 2</option><option>option 3</option><option>option 4</option></select></div>
       <input type="text" class="txtbox" placeholder="Location">
@@ -21,7 +21,9 @@
     <div class="clearfix">
       <input type="submit" class="book_btn" value="BOOK">
     </div>
-</div> -->
+</div>
+
+<% if false %>
 <% lesson = Lesson.new %>
 
 <%= form_for(lesson) do |f| %>
@@ -68,4 +70,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>
