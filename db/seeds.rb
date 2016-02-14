@@ -6,21 +6,30 @@
 case Rails.env
 
 when "development"
+
+  Lesson.destroy_all
+  Tutor.destroy_all
+  Student.destroy_all
+
+  statuses = ["approved", "completed", "cancelled", "problem", "edited", "initial", "braintree"]
+
   # Tutors
-  # destroy tutors after seed - Tutor.destroy_all(['id Not In (?)', Tutor.first(5).collect(&:id)])
+  # destroy tutors after seed - Tutor.destroy_all(['id In (?)', Tutor.last(100).collect(&:id)])
+  # Tutor.destroy_all(['id not In (?)', Tutor.first(5).collect(&:id)])
   100.times do 
     Tutor.create(
       email: Faker::Internet.email,
       password: "password", 
-      password_confirmation: 'password',
+      password_confirmation: "password",
       firstname: Faker::Name.first_name,
       lastname: Faker::Name.last_name,
+      confirmation_sent_at: Time.now,
       confirmed_at: Time.now,
       verified: true,
       picture: Faker::Avatar.image,
       rate: Random.rand(10..200),
-      about: Faker::Hipster.paragraphs(rand(0..20)).join("\n"),
-      experience: Faker::Hipster.paragraphs(rand(0..20)).join("\n"),
+      about: Faker::Hipster.paragraphs(rand(0..20)).join("\n")[0..1999],
+      experience: Faker::Hipster.paragraphs(rand(0..20)).join("\n")[0.1999],
       date_of_birth: Faker::Date.between(80.years.ago, 18.years.ago),
       suburb: Area.order("RANDOM()").first.display_name,
       sex: Random.rand(0..1),
@@ -30,28 +39,33 @@ when "development"
     )
   end
 
+  100.times do 
+    Student.create(
+      email: Faker::Internet.email,
+      password: "password", 
+      password_confirmation: "password",
+      firstname: Faker::Name.first_name,
+      lastname: Faker::Name.last_name,
+      confirmation_sent_at: Time.now,
+      confirmed_at: Time.now,
+    )
+  end
 
-
-
-
-
-
-  # students
-
-
-
-
-
-
-
-  #lessons
-
-
-
-
-
-
-
+  500.times do
+    tutor = Tutor.last(100).shuffle.first
+    if(tutor.subjects.any?)
+      tutor.lessons.create(
+        student_id: Student.last(100).shuffle.first.id,
+        date: Faker::Date.between(1.months.ago, 2.months.from_now),
+        status: statuses[Random.rand(0..6)],
+        description: Faker::Hipster.paragraphs(rand(0..5)).join("\n"),
+        duration: Random.rand(30..180),
+        tutor_change: Random.rand(0..1),
+        location: Faker::Hipster.sentence,
+        subject: tutor.subjects.shuffle.first.display_name,
+      )
+    end
+  end
 
 when "production"
    # No seeding

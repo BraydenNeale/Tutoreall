@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :approve, :cancel]
-  before_action :authenticate_user!
-  before_action :verify_user, only: [:edit, :update, :destroy, :show]
+  # before_action :authenticate_user!
+  # before_action :verify_user, only: [:edit, :update, :destroy, :show]
 
   # GET /lessons
   # GET /lessons.json
@@ -119,7 +119,7 @@ class LessonsController < ApplicationController
 
     def verify_user
       set_lesson
-      unless current_user.id == @lesson.tutor_id || current_user.id == @lesson.student.id
+      unless current_user.id == @lesson.tutor.id || current_user.id == @lesson.student.id
         redirect_to root_path, notice: "Forbidden"
       end
     end

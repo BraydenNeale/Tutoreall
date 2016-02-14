@@ -6,6 +6,7 @@ class Lesson < ActiveRecord::Base
   validates :duration, presence:true
   validates :date, presence: true
   validates :location, presence: true
+  validates :description, length: { maximum: 2000 }
 
   # attr_accessible :student_id, :tutor_id, :date, :status, :subject, :description, :duration, :tutor_change, :location
 
