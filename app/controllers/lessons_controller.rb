@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :approve, :cancel]
-  # before_action :authenticate_user!
-  # before_action :verify_user, only: [:edit, :update, :destroy, :show]
+  before_action :authenticate_user!
+  before_action :verify_user, only: [:edit, :update, :destroy, :show]
 
   # GET /lessons
   # GET /lessons.json
@@ -28,6 +28,7 @@ class LessonsController < ApplicationController
 
   def new_partial
     # for some reason passing current_user through dashboard loop - becomes 1 after first instance...
+
     if(current_user.is_a? Student)
       @tutor = Tutor.find(params[:tutor])
       @student = current_user

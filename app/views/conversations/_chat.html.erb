@@ -9,11 +9,12 @@
     <div class="msz_box">
       <% if is_tutor %>
         <div class="load_msz">
-         <%= link_to "ADD LESSON", new_lesson_path(student: get_partner(current).id, tutor: current_user) %>
+        <!-- Passing current - to shut rails up: never used (just partial inception) -->
+         <%= link_to 'ADD LESSON', new_partial_lesson_path(current, student: get_partner(current).id, tutor: current_user), remote: true %>
         </div>
       <% else %>
         <div class="load_msz">
-          <%= link_to "REQUEST LESSON", new_lesson_path(tutor: get_partner(current).id, student: current_user) %>
+          <%= link_to 'REQUEST LESSON', new_partial_lesson_path(current, tutor: get_partner(current).id, student: current_user), remote: true %>
         </div>
       <% end %>
       <% current.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
