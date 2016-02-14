@@ -21,10 +21,12 @@
                 </div>
             </div>
             <h3><%= tutor.display_name %></h3>
-            <% next_lesson = next_tutor_lesson(tutor, current_user) %>
-              <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
-              	<a href="#"><%= next_lesson_faculty(next_lesson) %></a>
-              </p>
+            <% next_lesson = next_student_lesson(tutor, current_user) %>
+            <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
+              <% if next_lesson.present? %>
+                <%= link_to 'VIEW', lesson_path(next_lesson) %>
+              <% end %>
+            </p>
         </div>
       </div>
     <% end %>

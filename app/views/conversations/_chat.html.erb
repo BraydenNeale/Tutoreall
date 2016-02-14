@@ -7,16 +7,15 @@
       </div>
     </div> -->
     <div class="msz_box">
-      <% if is_tutor %>
-        <div class="load_msz">
-        <!-- Passing current - to shut rails up: never used (just partial inception) -->
-         <%= link_to 'ADD LESSON', new_partial_lesson_path(current, student: get_partner(current).id, tutor: current_user), remote: true %>
-        </div>
-      <% else %>
-        <div class="load_msz">
+      <div class="load_msz">
+        <p><%= "Chatting with #{get_partner(current).display_name}: " %>
+        <% if is_tutor %>
+          <!-- Passing current - to shut rails up: never used (just partial inception) -->
+          <%= link_to 'ADD LESSON', new_partial_lesson_path(current, student: get_partner(current).id, tutor: current_user), remote: true %>
+        <% else %>
           <%= link_to 'REQUEST LESSON', new_partial_lesson_path(current, tutor: get_partner(current).id, student: current_user), remote: true %>
-        </div>
-      <% end %>
+        <% end %> </p>
+      </div>
       <% current.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
         <% message = receipt.message %>
         <div class="block clearfix">
