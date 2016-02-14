@@ -433,8 +433,12 @@ a:hover {
   }
 }
 
-
-
-.profilebox_2 > .clearfix > .details > h3 {
-  
+#content .search_main .ser_leftbar .filter_box > ul > li > a {
+  text-decoration:none;
 }
+
+
+.profilebox_2 > .search-about {
+  height:140px;
+}
+
