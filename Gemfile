@@ -64,6 +64,8 @@ gem 'sitemap_generator', '~> 5.1.0'
 
 gem 'faker', '~> 1.6', '>= 1.6.1' # seed data
 
+gem 'workflow', '~> 1.2' # Scheduling state machine
+
 # gem 'mailcatcher', '~> 0.6.1' # mail catching in dev
 # gem 'chosen-rails'
 # gem 'compass-rails'

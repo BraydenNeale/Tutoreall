@@ -1,47 +1,57 @@
 <div class="row lesson_show">
-	<div class="receipt-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<div class="receipt">
-			<% dashboard_path = is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user) %>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-			<p class="grey_text">To view all your lessons, go to your <%= link_to 'dashboard', dashboard_path %>.</p>
+		<p class="grey_text">To view all of your lessons, go to your <%= link_to "Dashboard", is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user) %></p>
 
-			<h4>Student</h4>
-			<p><%= @lesson.student.display_name %></p>
-		  	<h4>Tutor</h4>
-		  	<p><%= @lesson.tutor.display_name %></p>
-		  	<h4>Date/Time</h4>
-		  	<p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
-			<h4>Subject</h4>
-			<p><%= @lesson.subject %></p>
-			<h4>Location</h4>
-			<p><%= @lesson.location %></p>
-			<h4>Duration</h4>
-			<p><%= pluralize(@lesson.duration, 'minute') %> </p>
-			<h4>Cost</h4>
-			<p><%= @lesson.get_cost %></p>
-			<h4>Descrtiption</h4>
-			<p><%= @lesson.description %></p>
+		<%= lesson_status_message %>
 
-			<%= status_helper %> <%= lesson_updated %><br><br>
+		<h4>Student</h4>
+		<p><%= @lesson.student.display_name %></p>
+	  <h4>Tutor</h4>
+	  <p><%= @lesson.tutor.display_name %></p>
+	  <h4>Date/Time</h4>
+	  <p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
+		<h4>Subject</h4>
+		<p><%= @lesson.subject %></p>
+		<h4>Location</h4>
+		<p><%= @lesson.location %></p>
+		<h4>Duration</h4>
+		<p><%= pluralize(@lesson.duration, 'minute') %> </p>
+		<h4>Cost</h4>
+		<p><%= @lesson.get_cost %></p>
+		<h4>Description</h4>
+		<p><%= @lesson.description %></p>
 
-			<%if my_approval %>
-				<%= form_tag approve_lesson_path(@lesson), method: :put do %>
-					<%= hidden_field_tag(:id, @lesson.id) %>
-					<div class="actions">
-				    <%= submit_tag 'Approve', class: "lesson_approve" %>
-				  </div>
+		<%if my_approval %>
+			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
+				<%= hidden_field_tag(:id, @lesson.id) %>
+				<div class="actions">
+			    <%= submit_tag 'Approve', class: "lesson_approve" %>
+			  </div>
+		  <% end %>
+		<% end %>
+
+		<% if @lesson.current_state < :completed %>
+			<%= link_to 'Edit this lesson', edit_lesson_path(@lesson), class: "lesson_edit" %>
+		<% end %>
+
+		<% if is_student and @lesson.approved? %>
+			<%= render 'transactions/book_lesson', lesson: @lesson %>
+		<% end %>
+
+		<% if @lesson.current_state < :completed %>
+			<br><br>	
+			<h4>Cancel This Lesson</h4>
+			<div class="clearfix">
+				<p>Can't make this lesson? - Cancel it here</p>
+			  <%= form_tag cancel_lesson_path(@lesson), method: :put do %>
+			    <%= hidden_field_tag(:id, @lesson.id) %>
+			    <div class="actions">
+			      <%= submit_tag 'Cancel Lesson', class: "lesson_cancel btn" %>
+			    </div>
 			  <% end %>
-			<% end %>
-
-			<%= link_to 'Edit', edit_lesson_path(@lesson), class: "lesson_edit" %>
-
-			<% if false %>
-				<!-- Need to only render this on certain lesson conditions - need to work out with Chris exactly how that is going to happen -->
-				<% if is_student %>
-					<%= render 'transactions/book_lesson', lesson: @lesson %>
-				<% end %>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
 </div>
 

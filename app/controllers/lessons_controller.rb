@@ -65,7 +65,6 @@ class LessonsController < ApplicationController
 
   # put
   def approve
-    @lesson.status = "approved"
     if @lesson.save
       UserMailer.lesson_change_email(@lesson, current_user).deliver_later
       flash[:notice] = "Lesson Approved"
@@ -78,7 +77,6 @@ class LessonsController < ApplicationController
 
   # put
   def cancel
-    @lesson.status = "cancelled"
     if @lesson.save
       # specific cancel email later:
       UserMailer.lesson_change_email(@lesson, current_user).deliver_later
@@ -93,10 +91,9 @@ class LessonsController < ApplicationController
   # PATCH/PUT /lessons/1
   # PATCH/PUT /lessons/1.json
   def update
-    # Need to move these out of update in order to refactor approve - for some reason not going through params
-    @lesson.status = params[:status]
-    @lesson.tutor_change = params[:tutor_change]
-    @lesson.subject = params[:subject]
+    # # Need to move these out of update in order to refactor approve - for some reason not going through params
+    # @lesson.tutor_change = params[:tutor_change]
+    # @lesson.subject = params[:subject]
 
     respond_to do |format|
       if @lesson.update(lesson_params)
@@ -128,7 +125,7 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:student_id, :date, :status, :subject, :description, :duration, :tutor_change, :location)
+      params.require(:lesson).permit(:student_id, :date, :subject, :description, :duration, :tutor_change, :location)
     end
 
     def verify_user
