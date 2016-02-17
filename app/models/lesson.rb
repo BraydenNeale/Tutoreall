@@ -15,23 +15,36 @@ class Lesson < ActiveRecord::Base
     state :new do # Lesson was just created (tutor_change tracks who created it)
       event :approve, transitions_to:  :approved
       event :edit, transitions_to: :edited
+      event :cancel, transitions_to: :cancelled
     end
     state :approved do # Lesson accepted with current details
       event :edit, transitions_to: :edited
       event :cancel, transitions_to: :cancelled
       event :pay, transitions_to: :paid
+      event :finish, transitions_to: :completed
     end
     state :paid do # Lesson paid for through braintree
       event :refund, transitions_to: :refunded
+      event :cancel, transitions_to: :cancelled
+      event :finish, transitions_to: :completed
     end
     state :edited do # Lesson details updated (tutor_change tracks who changed it)
       event :approve, transitions_to: :approved
+      event :cancel, transitions_to: :cancelled
     end
     state :completed do # Lesson date has passed
+      event :problem_reported, transitions_to: :problem
+    end
+    state :problem do # Lesson date has passed - someone has raised a problem with the lesson
+      event :resolve, transitions_to: :completed
+      event :refund, transitions_to: :refunded
     end
     state :cancelled # Lesson was cancelled
-    state :problem # Lesson date has passed - someone has raised a problem with the lesson
-    state :refunded # Lesson has been refunderd
+    state :refunded # Lesson has been refunded
+
+    # cancel paid? - cancelled and paid late fee
+    # cancel refunded? - held funds returned to student
+    # may need another state between after/before completed for when we/tutor gets the money
   end
 
   def get_cost
