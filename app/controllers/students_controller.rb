@@ -79,16 +79,6 @@ class StudentsController < ApplicationController
   end
 
   def braintree_update
-    # result = Braintree::Customer.update(
-    #   "a_customer_id", # id of customer to update
-    #   :first_name => "New First Name",
-    #   :last_name => "New Last Name"
-    # )
-    # if result.success?
-    #   puts "customer successfully updated"
-    # else
-    #   p result.errors
-    # end
   end
 
   private
@@ -102,7 +92,7 @@ class StudentsController < ApplicationController
 
   def verify_student
     set_student
-      # sort out error for students who arent' logged in 
+      # sort out error for students who arent' logged in
       unless current_user.id == @student.id
         redirect_to root, notice: "Forbidden"
       end
@@ -117,7 +107,6 @@ class StudentsController < ApplicationController
       Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
     else
       Braintree::ClientToken.generate
-      # add an error - can't pay without payment info already added
     end
   end
 end

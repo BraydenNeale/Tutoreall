@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215124922) do
+ActiveRecord::Schema.define(version: 20160220120921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20160215124922) do
 
   add_index "areas_tutors", ["area_id", "tutor_id"], name: "index_areas_tutors_on_area_id_and_tutor_id", using: :btree
   add_index "areas_tutors", ["tutor_id", "area_id"], name: "index_areas_tutors_on_tutor_id_and_area_id", using: :btree
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.string   "number"
+    t.string   "bsb"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "tutor_id"
+  end
+
+  add_index "bank_accounts", ["tutor_id"], name: "index_bank_accounts_on_tutor_id", using: :btree
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "tutor_id"
@@ -204,6 +215,7 @@ ActiveRecord::Schema.define(version: 20160215124922) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bank_accounts", "tutors"
   add_foreign_key "lessons", "students"
   add_foreign_key "lessons", "tutors"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"

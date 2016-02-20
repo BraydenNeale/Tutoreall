@@ -4,7 +4,6 @@
     You can pay for this lesson securely right now! <%= link_to "Find out why you should?", home_path %> 
   </p>
   <%= form_tag transactions_path do%>
-    <%= render 'student_form' unless current_user.has_payment_info? %>
     <p>Please enter your payment details:</p>
     <%= hidden_field_tag(:lesson_id, lesson.id) %>
     <div id="dropin"></div>

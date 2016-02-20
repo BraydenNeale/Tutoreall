@@ -9,9 +9,6 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    # will be directed here from lesson accept or edit page as a student - amount will be determined from that
-    # gon.client_token = generate_client_token
-
     @lesson = Lesson.find_by(id: params[:lesson_id])
 
     unless current_user.has_payment_info?
@@ -22,10 +19,10 @@ class TransactionsController < ApplicationController
           first_name: current_user.firstname,
           last_name: current_user.lastname,
           email: current_user.email,
-          # phone: params[:phone]
         },
         options: {
-          store_in_vault: true
+          store_in_vault: true,
+          verify_card: true
         })
     else
       result = Braintree::Transaction.sale(
