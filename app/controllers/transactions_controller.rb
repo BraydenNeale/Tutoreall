@@ -15,35 +15,39 @@ class TransactionsController < ApplicationController
     @lesson = Lesson.find_by(id: params[:lesson_id])
 
     unless current_user.has_payment_info?
-      @result = Braintree::Transaction.sale(
+      result = Braintree::Transaction.sale(
         amount: @lesson.braintree_payment,
         payment_method_nonce: params[:payment_method_nonce],
         customer: {
           first_name: current_user.firstname,
           last_name: current_user.lastname,
           email: current_user.email,
-          phone: params[:phone]
+          # phone: params[:phone]
         },
         options: {
           store_in_vault: true
         })
     else
-      @result = Braintree::Transaction.sale(
+      result = Braintree::Transaction.sale(
         amount: @lesson.braintree_payment,
         payment_method_nonce: params[:payment_method_nonce])
     end
     # @result.transaction.payment_instrument_type is the type of payment that was used credit/paypal
 
-    if @result.success?
-      current_user.update(braintree_customer_id: @result.transaction.customer_details.id) unless current_user.has_payment_info?
+    if result.success?
+      current_user.update(braintree_customer_id: result.transaction.customer_details.id) unless current_user.has_payment_info?
       # Change state of lesson
-      @lesson.update(status: "braintree")
-      # some other validations ... in the db
-      redirect_to root_url, notice: "Lesson has been booked"
+      @lesson.pay!
+
+      redirect_to lesson_path(@lesson), notice: "Lesson has been booked"
     else
-      flash[:alert] = "Something went wrong"
-      gon.client_token = generate_client_token
-      render :new
+      redirect_to lesson_path(@lesson), notice: "Error: #{result.message}"
+      # Debug
+      # result.errors.each do |error|
+      #   puts error.attribute
+      #   puts error.code
+      #   puts error.message
+      # end
     end
   end
 

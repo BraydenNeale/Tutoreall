@@ -32,6 +32,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    gon.client_token = generate_client_token
   end
 
   def update

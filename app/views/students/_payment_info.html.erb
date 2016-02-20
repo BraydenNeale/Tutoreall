@@ -1,14 +1,4 @@
-<!-- <div class="form-container">
-  <h2 class="mbs">New Transaction</h2>
-  <%#= form_tag transactions_path do%>
-    <%#= render 'student_form' unless current_user.has_payment_info? %>
-    <p>Please enter your payment details:</p>
-    <div id="dropin"></div>
-    <%#=submit_tag "Pay 5$", class: "button mt1" %>
-  <%#end%>
-</div> -->
-
-<p>Please enter your phone number:</p>
+<!-- Can grab all of these from student model -->
 <!-- <div class="mb1"> -->
   <%#= text_field_tag :first_name, "",placeholder: "First Name", class: "radius" %>
 <!-- </div> -->
@@ -19,5 +9,7 @@
   <%#= text_field_tag :company, "",placeholder: "Company", class: "radius" %>
 <!-- </div> -->
 <div class="mb1">
-  <%= text_field_tag :phone, "",placeholder: "Phone", class: "radius" %>
+  <%= label_tag 'Phone number: ' %>
+  <%= text_field_tag :phone, "",placeholder: "#phone", class: "radius" %>
 </div>
+<br>

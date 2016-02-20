@@ -1,15 +1,16 @@
-<% if false %>
-<div class="form-container">
-  <h2 class="mbs">New Transaction</h2>
-  <%= form_tag students_path do%>
-    <%#= render 'student_form' unless current_user.has_payment_info? %>
-    <p>Please enter your payment details:</p>
-    <div id="dropin"></div>
-    <%=submit_tag "Update payment info", class: "button mt1" %>
-  <%end%>
-</div>
-<% end %>
-
 <div class="form-container">
   <h3><%= link_to "Account Settings", edit_student_registration_path %></h3>
+</div>
+
+<div class="form-container">  
+  <h2 class="mbs">Add payment details</h2>
+  <p>You can add a card or paypal account in order to pay for lessons over the platform: <%= link_to "Why should I do this?", home_path %></p>
+  <%= form_for(current_user, url: braintree_create_student_path) do |f| %>
+    <%#= render 'payment_info' unless current_user.has_payment_info? %>
+    <%= render 'payment_info' %>
+
+    <p>Please enter your payment details:</p>
+    <div id="dropin"></div>
+    <%=submit_tag "Save payment details", class: "button mt1" %>
+  <%end%>
 </div>

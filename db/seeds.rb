@@ -11,8 +11,6 @@ when "development"
   Tutor.destroy_all
   Student.destroy_all
 
-  statuses = ["approved", "completed", "cancelled", "problem", "edited", "initial", "braintree"]
-
   # Tutors
   # destroy tutors after seed - Tutor.destroy_all(['id In (?)', Tutor.last(100).collect(&:id)])
   # Tutor.destroy_all(['id not In (?)', Tutor.first(5).collect(&:id)])
@@ -57,7 +55,6 @@ when "development"
       tutor.lessons.create(
         student_id: Student.last(100).shuffle.first.id,
         date: Faker::Date.between(1.months.ago, 2.months.from_now),
-        status: statuses[Random.rand(0..6)],
         description: Faker::Hipster.paragraphs(rand(0..5)).join("\n"),
         duration: Random.rand(30..180),
         tutor_change: Random.rand(0..1),

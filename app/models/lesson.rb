@@ -12,7 +12,7 @@ class Lesson < ActiveRecord::Base
 
   include Workflow
   workflow do 
-    state :new do # Lesson was just created (tutor_change tracks who created it)
+    state :initial do # Lesson was just created (tutor_change tracks who created it)
       event :approve, transitions_to:  :approved
       event :edit, transitions_to: :edited
       event :cancel, transitions_to: :cancelled
@@ -47,12 +47,13 @@ class Lesson < ActiveRecord::Base
     # may need another state between after/before completed for when we/tutor gets the money
   end
 
+  # Helpers
   def get_cost
     return helper.number_to_currency((self.duration * self.tutor.rate) / 60)
   end
 
   def braintree_payment
-    return (self.duration * self.tutor.rate) / 60
+    return helper.number_to_currency((self.duration * self.tutor.rate) / 60, unit: "")
   end
 
   def helper
@@ -63,4 +64,20 @@ class Lesson < ActiveRecord::Base
   def start_time
   	self.date
   end
+
+  # Workflow state transitions
+  def pay
+    
+    # Determine %'s to pay to tutor and organisations
+  end
+
+  def approve
+    # Send an email to other user
+  end
+
+  def cancel 
+    # Send an email
+  end
+
+  # ... 
 end

@@ -13,14 +13,13 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     # gon token for braintree payment 
-    # if current_user.is_a? Student
-    #   gon.client_token = generate_client_token
-    # end
+    if current_user.is_a? Student
+      gon.client_token = generate_client_token
+    end
   end
 
   # GET /lessons/new
   def new
-    # @lesson = current_user.lessons.build
     @lesson = Lesson.new
     @student = Student.find_by(id: params[:student])
     @tutor = Tutor.find_by(id: params[:tutor])
@@ -65,6 +64,7 @@ class LessonsController < ApplicationController
 
   # put
   def approve
+    @lesson.approve!
     if @lesson.save
       UserMailer.lesson_change_email(@lesson, current_user).deliver_later
       flash[:notice] = "Lesson Approved"
@@ -77,6 +77,7 @@ class LessonsController < ApplicationController
 
   # put
   def cancel
+    @lesson.cancel!
     if @lesson.save
       # specific cancel email later:
       UserMailer.lesson_change_email(@lesson, current_user).deliver_later
@@ -122,8 +123,7 @@ class LessonsController < ApplicationController
     def set_lesson
       @lesson = Lesson.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def lesson_params
       params.require(:lesson).permit(:student_id, :date, :subject, :description, :duration, :tutor_change, :location)
     end
