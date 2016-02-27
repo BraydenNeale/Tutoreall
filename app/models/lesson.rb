@@ -67,7 +67,17 @@ class Lesson < ActiveRecord::Base
 
   # Workflow state transitions
   def pay
-    
+    lesson = self # referring to self in a loop was a mindfuck
+    cut = 5 # Our cut is $5
+    to_pay_tutor = lesson.get_cost.to_f - cut
+
+    self.tutor.organisations.each do |org|
+      Payment.create(lesson_id: lesson.id, bank_account_id: org.bank_account.id)
+      to_pay_tutor -= org.fee
+    end
+
+    Payment.create(lesson_id: lesson.id, bank_account_id: lesson.tutor.bank_account.id)
+
     # Determine %'s to pay to tutor and organisations
   end
 

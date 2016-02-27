@@ -70,7 +70,7 @@ module LessonsHelper
 		end
 		html = "<p>"
 		if @lesson.initial?
-			html << "This lesson was created by #{user} on #{data}"
+			html << "This lesson was created by #{user} on #{date}"
 		elsif @lesson.edited? 
 			html << "This lesson was last edited by #{user} on #{date}"
 		elsif @lesson.approved?

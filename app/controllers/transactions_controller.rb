@@ -21,8 +21,7 @@ class TransactionsController < ApplicationController
           email: current_user.email,
         },
         options: {
-          store_in_vault: true,
-          verify_card: true
+          store_in_vault: true
         })
     else
       result = Braintree::Transaction.sale(

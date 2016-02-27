@@ -1,3 +1,3 @@
 class BankAccount < ActiveRecord::Base
-  belongs_to :tutor
+  belongs_to :provider, polymorphic: true
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220120921) do
+ActiveRecord::Schema.define(version: 20160227093542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,13 @@ ActiveRecord::Schema.define(version: 20160220120921) do
     t.string   "number"
     t.string   "bsb"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "tutor_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "provider_id"
+    t.string   "provider_type"
   end
 
-  add_index "bank_accounts", ["tutor_id"], name: "index_bank_accounts_on_tutor_id", using: :btree
+  add_index "bank_accounts", ["provider_type", "provider_id"], name: "index_bank_accounts_on_provider_type_and_provider_id", using: :btree
 
   create_table "lessons", force: :cascade do |t|
     t.integer  "tutor_id"
@@ -114,6 +115,37 @@ ActiveRecord::Schema.define(version: 20160220120921) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+
+  create_table "organisations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "about"
+    t.decimal  "fee"
+    t.string   "logo"
+    t.string   "banner"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organisations_tutors", id: false, force: :cascade do |t|
+    t.integer "organisation_id", null: false
+    t.integer "tutor_id",        null: false
+  end
+
+  add_index "organisations_tutors", ["organisation_id", "tutor_id"], name: "index_organisations_tutors_on_organisation_id_and_tutor_id", using: :btree
+  add_index "organisations_tutors", ["tutor_id", "organisation_id"], name: "index_organisations_tutors_on_tutor_id_and_organisation_id", using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "lesson_id"
+    t.integer  "bank_account_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "processed",       default: false, null: false
+    t.decimal  "value"
+  end
+
+  add_index "payments", ["bank_account_id"], name: "index_payments_on_bank_account_id", using: :btree
+  add_index "payments", ["lesson_id"], name: "index_payments_on_lesson_id", using: :btree
 
   create_table "searches", force: :cascade do |t|
     t.string   "area"
@@ -215,10 +247,11 @@ ActiveRecord::Schema.define(version: 20160220120921) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bank_accounts", "tutors"
   add_foreign_key "lessons", "students"
   add_foreign_key "lessons", "tutors"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "payments", "bank_accounts"
+  add_foreign_key "payments", "lessons"
 end
