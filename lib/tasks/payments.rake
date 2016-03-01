@@ -1,12 +1,17 @@
 desc "export a csv file of all payments to be processed this week to s3"
-task :export_payments_csv do
+task :export_payments_csv => :environment do
   require 'csv'
   # Generate arrays with required data
   CSV.open("payment_csv_#{Date.today.strftime("%Y-%m-%d")}.csv","w") do |csv|
-    Payments.each.where(processed: false) do |pay|
-      if pay.lesson.date < date.today
+    Payment.all.where(processed: false).each do |pay|
+      if pay.lesson.date < Date.today
+        puts "checking lesson"
         if pay.lesson.completed?
-          csv << [pay.provider.bank_account.bsb, pay.provider.bank_account.number, pay.provider.bank_account.name, pay.get_value]
+          puts "lesson completed adding to csv"
+          csv << [pay.bank_account.bsb, pay.bank_account.number, pay.bank_account.name, pay.get_value]
+          pay.processed = true
+          # pay.lesson.archive! - lesson has been processed
+          pay.save!
         # cancelled - refund? refund - remove?
         end
       end

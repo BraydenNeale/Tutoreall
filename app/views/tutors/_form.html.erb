@@ -12,6 +12,14 @@
       </div>
     <% end %>
     <h3><%= link_to "Account Settings", edit_tutor_registration_path %></h3>
+    <h3>Payment Information</h3>
+<!--     <div class="payment_details"> -->
+      <%= f.fields_for :bank_account do |ba| %>
+        <%= ba.text_field :bsb, class: "txtbox_1" %>
+        <%= ba.text_field :number, class: "txtbox_1" %>
+        <%= ba.text_field :name, class: "txtbox_1" %>
+      <% end %>
+    <!-- </div> -->
     <div class="basic_details">
         <h3>Basic details</h3>
           <div class="clearfix">
@@ -121,16 +129,6 @@
                       </div>
                     <% end %>
                   </div>
-                 <!--  <div class="clearfix">
-                    <div class="where_tutor">
-                        <h5>Where do you tutor?</h5>
-                        <div class="clearfix">
-                            <div class="opt opt_1"><input type="checkbox" class="chkbox">Public place</div>
-                            <div class="opt opt_2"><input type="checkbox" class="chkbox">Tutors home</div>
-                            <div class="opt opt_3"><input type="checkbox" class="chkbox">Students home</div>
-                        </div>
-                    </div>
-                  </div> -->
                 </ul>
               </div>
           </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227093542) do
+ActiveRecord::Schema.define(version: 20160301124108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,10 +138,10 @@ ActiveRecord::Schema.define(version: 20160227093542) do
   create_table "payments", force: :cascade do |t|
     t.integer  "lesson_id"
     t.integer  "bank_account_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "processed",       default: false, null: false
-    t.decimal  "value"
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.boolean  "processed",                               default: false, null: false
+    t.decimal  "value",           precision: 6, scale: 2
   end
 
   add_index "payments", ["bank_account_id"], name: "index_payments_on_bank_account_id", using: :btree
@@ -199,20 +199,20 @@ ActiveRecord::Schema.define(version: 20160227093542) do
   add_index "subjects_tutors", ["tutor_id", "subject_id"], name: "index_subjects_tutors_on_tutor_id_and_subject_id", using: :btree
 
   create_table "tutors", force: :cascade do |t|
-    t.string   "email",                  default: "",         null: false
-    t.string   "encrypted_password",     default: "",         null: false
+    t.string   "email",                                          default: "",         null: false
+    t.string   "encrypted_password",                             default: "",         null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,          null: false
+    t.integer  "sign_in_count",                                  default: 0,          null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
     t.string   "picture"
-    t.decimal  "rate"
+    t.decimal  "rate",                   precision: 6, scale: 2
     t.text     "about"
     t.text     "experience"
     t.string   "firstname"
@@ -221,10 +221,10 @@ ActiveRecord::Schema.define(version: 20160227093542) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.boolean  "verified",               default: false
+    t.boolean  "verified",                                       default: false
     t.string   "suburb"
     t.integer  "sex"
-    t.string   "availability",           default: "--- []\n"
+    t.string   "availability",                                   default: "--- []\n"
   end
 
   add_index "tutors", ["confirmation_token"], name: "index_tutors_on_confirmation_token", unique: true, using: :btree

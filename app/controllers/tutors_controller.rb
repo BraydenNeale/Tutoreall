@@ -56,6 +56,7 @@ class TutorsController < ApplicationController
 
   def edit
     @tutor.build_wwc_card if @tutor.wwc_card.nil?
+    @tutor.build_bank_account if @tutor.bank_account.nil?
   end
 
   def update
@@ -81,7 +82,7 @@ class TutorsController < ApplicationController
 
   def tutor_params
     params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :sex, :subject_ids => [], 
-      :area_ids => [], :availability => [], wwc_card_attributes: [:number, :expiry])
+      :area_ids => [], :availability => [], :organisation_ids => [], wwc_card_attributes: [:number, :expiry], bank_account_attributes: [:bsb, :number, :name])
   end
 
   def verify_tutor

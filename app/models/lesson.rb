@@ -69,16 +69,14 @@ class Lesson < ActiveRecord::Base
   def pay
     lesson = self # referring to self in a loop was a mindfuck
     cut = 5 # Our cut is $5
-    to_pay_tutor = lesson.get_cost.to_f - cut
+    to_pay_tutor = lesson.braintree_payment.to_f - cut
 
     self.tutor.organisations.each do |org|
-      Payment.create(lesson_id: lesson.id, bank_account_id: org.bank_account.id)
+      Payment.create(lesson_id: lesson.id, bank_account_id: org.bank_account.id, value: org.fee)
       to_pay_tutor -= org.fee
     end
 
-    Payment.create(lesson_id: lesson.id, bank_account_id: lesson.tutor.bank_account.id)
-
-    # Determine %'s to pay to tutor and organisations
+    Payment.create(lesson_id: lesson.id, bank_account_id: lesson.tutor.bank_account.id, value: to_pay_tutor)
   end
 
   def approve

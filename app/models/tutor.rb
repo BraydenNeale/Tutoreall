@@ -17,8 +17,9 @@ class Tutor < ActiveRecord::Base
   acts_as_messageable # mailboxer
 
   has_one :bank_account, dependent: :destroy, as: :provider
+  accepts_nested_attributes_for :bank_account, allow_destroy: true
   has_one :wwc_card, dependent: :destroy
-  accepts_nested_attributes_for :wwc_card, :allow_destroy => true
+  accepts_nested_attributes_for :wwc_card, allow_destroy: true
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
   has_and_belongs_to_many :organisations
