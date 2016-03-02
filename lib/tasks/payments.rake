@@ -2,7 +2,8 @@ desc "export a csv file of all payments to be processed this week to s3"
 task :export_payments_csv => :environment do
   require 'csv'
   # Generate arrays with required data
-  CSV.open("payment_csv_#{Date.today.strftime("%Y-%m-%d")}.csv","w") do |csv|
+  file_path = "payments_export_#{Date.today.strftime("%Y-%m-%d")}.csv"
+  CSV.open(file_path,"w") do |csv|
     Payment.all.where(processed: false).each do |pay|
       if pay.lesson.date < Date.today
         puts "checking lesson"
@@ -16,11 +17,18 @@ task :export_payments_csv => :environment do
         end
       end
     end
+
+    # Store csv in s3
+    uploader = PaymentUploader.new
+    uploader.store!(csv)
   end
+
+  # Email csv to Chris - test env wil be caught by mailcatcher
+  PaymentMailer.csv_export(file_path).deliver
+  File.delete(file_path)
 end
 
 desc "Download a .aba file of all payments to be processed this week to s3"
 task :export_payments_aba do 
   puts "Not implemented"
 end
-
