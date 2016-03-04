@@ -4,6 +4,6 @@
     <%= render 'payment_info' unless current_user.has_payment_info? %>
     <p>Please enter your payment details:</p>
     <div id="dropin"></div>
-    <%=submit_tag "Add payment details", class: "button mt1" %>
+    <%=submit_tag "Add payment details", class: "btn btn-primary" %>
   <%end%>
 </div>

@@ -5,35 +5,37 @@
 
 		<%= lesson_status_message %>
 
-		<h4>Student</h4>
-		<p><%= @lesson.student.display_name %></p>
-	  <h4>Tutor</h4>
-	  <p><%= @lesson.tutor.display_name %></p>
-	  <h4>Date/Time</h4>
-	  <p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
-		<h4>Subject</h4>
-		<p><%= @lesson.subject %></p>
-		<h4>Location</h4>
-		<p><%= @lesson.location %></p>
-		<h4>Duration</h4>
-		<p><%= pluralize(@lesson.duration, 'minute') %> </p>
-		<h4>Cost</h4>
-		<p><%= @lesson.get_cost %></p>
-		<h4>Description</h4>
-		<p><%= @lesson.description %></p>
+		
+				<h4>Student</h4>
+				<p><%= @lesson.student.display_name %></p>
+				<h4>Tutor</h4>
+				<p><%= @lesson.tutor.display_name %></p>
+				<h4>Date/Time</h4>
+				<p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
+				<h4>Subject</h4>
+				<p><%= @lesson.subject %></p>
+				<h4>Location</h4>
+				<p><%= @lesson.location %></p>
+				<h4>Duration</h4>
+				<p><%= pluralize(@lesson.duration, 'minute') %> </p>
+				<h4>Cost</h4>
+				<p><%= @lesson.get_cost %></p>
+				<h4>Description</h4>
+				<p><%= @lesson.description %></p>
 
-		<%if my_approval %>
-			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
-				<%= hidden_field_tag(:id, @lesson.id) %>
-				<div class="actions">
-			    <%= submit_tag 'Approve', class: "lesson_approve" %>
-			  </div>
-		  <% end %>
-		<% end %>
+				<%if my_approval %>
+					<%= form_tag approve_lesson_path(@lesson), method: :put do %>
+						<%= hidden_field_tag(:id, @lesson.id) %>
+						<div class="actions">
+					    <%= submit_tag 'Approve', class: "lesson_approve" %>
+					  </div>
+				  <% end %>
+				<% end %>
 
-		<% if @lesson.current_state < :completed %>
-			<%= link_to 'Edit this lesson', edit_lesson_path(@lesson), class: "lesson_edit" %>
-		<% end %>
+				<% if @lesson.current_state < :completed %>
+					<%= link_to 'Edit this lesson', edit_lesson_path(@lesson), class: "btn btn-default" %>
+				<% end %>
+
 
 		<% if is_student and @lesson.approved? %>
 			<%= render 'transactions/book_lesson', lesson: @lesson %>
@@ -47,7 +49,7 @@
 			  <%= form_tag cancel_lesson_path(@lesson), method: :put do %>
 			    <%= hidden_field_tag(:id, @lesson.id) %>
 			    <div class="actions">
-			      <%= submit_tag 'Cancel Lesson', class: "lesson_cancel btn" %>
+			      <%= submit_tag 'Cancel Lesson', class: "btn btn-danger" %>
 			    </div>
 			  <% end %>
 			</div>
