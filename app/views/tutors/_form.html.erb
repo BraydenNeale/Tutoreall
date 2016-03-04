@@ -1,5 +1,5 @@
 <div class="settings_main">
-  <h2>SETTINGS</h2>
+  <h2>Settings</h2>
   <%= form_for(@tutor) do |f| %>
     <% if @tutor.errors.any? %>
       <div id="error_explanation">
@@ -15,8 +15,11 @@
     <h3>Payment Information</h3>
 <!--     <div class="payment_details"> -->
       <%= f.fields_for :bank_account do |ba| %>
+        <h4>BSB</h4>
         <%= ba.text_field :bsb, class: "txtbox_1" %>
+        <h4>Account Number</h4>
         <%= ba.text_field :number, class: "txtbox_1" %>
+        <h4>Account Name</h4>
         <%= ba.text_field :name, class: "txtbox_1" %>
       <% end %>
     <!-- </div> -->
