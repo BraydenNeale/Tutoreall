@@ -20,7 +20,9 @@ module MessagesHelper
 
   def get_partner(conversation)
   	# Only between 2 users
-  	return conversation.participants.find { |p| p != current_user }
+    if conversation.present?
+  	 return conversation.participants.find { |p| p != current_user }
+    end
   end
 
   def get_conversation(student, tutor)
