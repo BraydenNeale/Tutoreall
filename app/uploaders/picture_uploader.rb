@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class PictureUploader < CarrierWave::Uploader::Base
   
   # Include RMagick or MiniMagick support:
@@ -42,9 +41,20 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   #Create different versions of your uploaded files:
-  # Only 1 banner version
-  version :main do
+  version :profile do
     process :resize_to_fill => [441, 442]
+  end
+
+  version :chat do 
+    process :resize_to_fill => [41, 41]
+  end
+
+  version :display do 
+    process :resize_to_fill => [314, 314]
+  end
+
+  version :search do 
+    process :resize_to_fill => [206, 206]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
