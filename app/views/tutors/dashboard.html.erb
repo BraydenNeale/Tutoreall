@@ -29,6 +29,22 @@
                 <%= link_to 'CREATE', new_partial_lesson_path(student: student, tutor: current_user), remote: true %>
               <% end %>
             </p>
+
+            <div class="row">
+              <div class="center_state_buttons">
+                <% if next_lesson.approved? %>
+                  <a class="btn btn-success disabled">Approved</a>
+                <% end %>
+
+                <% if next_lesson.edited? or next_lesson.initial? %>
+                  <a class="btn btn-warning disabled">Pending</a>
+                <% end %>
+                
+                <% if next_lesson.cancelled? %>
+                  <a class="btn btn-danger disabled">Cancelled</a>
+                <% end %>
+              </div>
+            </div>  
         </div>
       </div>
     <% end %>

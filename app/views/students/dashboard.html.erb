@@ -33,7 +33,7 @@
                   <a class="btn btn-success disabled">Approved</a>
                 <% end %>
 
-                <% if next_lesson.edited? %>
+                <% if next_lesson.edited? or next_lesson.initial? %>
                   <a class="btn btn-warning disabled">Pending</a>
                 <% end %>
                 
