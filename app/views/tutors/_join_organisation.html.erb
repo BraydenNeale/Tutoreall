@@ -1,0 +1,18 @@
+<div id="msz_popup" class="msz_popup">
+
+  <h5>Associate with an organisation</h5>
+  <%= form_for tutor, :url => {:action => "join_organisation", params: {id: tutor.id}} do |f| %>
+    
+    <%= hidden_field_tag "tutor[organisation_ids][]", nil %>
+    <% Organisation.all.each do |org| %>
+        <%= label_tag dom_id(org), class: 'checkbox chkbox_label' do %>
+          <%= check_box_tag "tutor[organisation_ids][]", org.id, tutor.organisation_ids.include?(org.id), id: dom_id(org), class: "chkbox" %>
+          <%= "#{org.name}" %>
+        <% end %>
+    <% end %>
+
+    <div class="clearfix">
+      <%= f.submit class: "save_btn", value: "Join organisation" %>
+    </div>
+  <% end %> 
+</div>

@@ -1,5 +1,5 @@
 class TutorsController < ApplicationController
-  before_action :set_tutor, only: [:show, :edit, :update, :destroy]
+  before_action :set_tutor, only: [:show, :edit, :update, :destroy, :join_organisation]
   before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard, :calendar]
   before_action :get_mailbox, only: [:dashboard]
 
@@ -68,6 +68,18 @@ class TutorsController < ApplicationController
       if @tutor.update(tutor_params)
         format.html { redirect_to @tutor, notice: 'Profile successfully updated.' }
         format.json { render :show, status: :ok, location: @tutor }
+      else
+        format.html { render :edit }
+        format.json { render json: @tutor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def join_organisation
+    respond_to do |format|
+      if @tutor.update(tutor_params)
+        format.html { redirect_to edit_tutor_path(@tutor), notice: 'Request to join organisation submitted.' }
+        format.json { render :edit, status: :ok, location: @tutor }
       else
         format.html { render :edit }
         format.json { render json: @tutor.errors, status: :unprocessable_entity }

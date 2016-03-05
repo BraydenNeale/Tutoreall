@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     member do 
       get :dashboard
       get :calendar
+      patch :join_organisation
     end
   end
 

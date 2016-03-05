@@ -64,6 +64,12 @@ class LessonsController < ApplicationController
 
   # put
   def approve
+    if(current_user.is_a? Tutor)
+      @lesson.tutor_change = true;
+    else
+      @lesson.tutor_change = false;
+    end
+
     @lesson.approve!
     if @lesson.save
       UserMailer.lesson_change_email(@lesson, current_user).deliver_later
@@ -77,6 +83,12 @@ class LessonsController < ApplicationController
 
   # put
   def cancel
+    if(current_user.is_a? Tutor)
+      @lesson.tutor_change = true;
+    else
+      @lesson.tutor_change = false;
+    end
+
     @lesson.cancel!
     if @lesson.save
       # specific cancel email later:
@@ -98,6 +110,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.update(lesson_params)
+        @lesson.edit!
         UserMailer.lesson_change_email(@lesson, current_user).deliver_later
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
