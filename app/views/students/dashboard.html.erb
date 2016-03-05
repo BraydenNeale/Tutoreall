@@ -24,7 +24,7 @@
             <% next_lesson = next_student_lesson(current_user, tutor) %>
             <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
               <% if next_lesson.present? %>
-                <%= link_to 'VIEW', lesson_path(next_lesson) %>
+                <%= link_to 'VIEW', lesson_path(next_lesson), data: { no_turbolink: true } %>
                   <div class="row">
                     <div class="center_state_buttons">
                     <% if next_lesson.approved? %>

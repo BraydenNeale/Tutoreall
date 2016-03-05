@@ -24,7 +24,7 @@
             <% next_lesson = next_student_lesson(student, current_user) %>
             <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
               <% if next_lesson.present? %>
-                <%= link_to 'VIEW', lesson_path(next_lesson) %>
+                <%= link_to 'VIEW', lesson_path(next_lesson), data: { no_turbolink: true } %>
               <% else %>
                 <%= link_to 'CREATE', new_partial_lesson_path(student: student, tutor: current_user), remote: true %>
               <% end %>
