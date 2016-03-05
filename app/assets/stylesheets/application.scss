@@ -116,15 +116,7 @@ body {
 }
 
 .lesson_approve{
-  font-size: 18px;
-  font-weight: bold;
-  color:green;
-
-  &:hover{
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-  }
+  margin-bottom:10px;
 }
 
 .profile_box2{
@@ -453,4 +445,9 @@ a:hover {
 
 .settings_main h2 {
   font-family:lato;
+}
+
+.center_state_buttons {
+  position:relative;
+  left:5%;
 }
