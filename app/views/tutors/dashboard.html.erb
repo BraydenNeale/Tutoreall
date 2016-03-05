@@ -22,29 +22,47 @@
             </div>
             <h3><%= student.display_name %></h3>
             <% next_lesson = next_student_lesson(student, current_user) %>
-            <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
-              <% if next_lesson.present? %>
-                <%= link_to 'VIEW', lesson_path(next_lesson) %>
+
+            <% if next_lesson.present? %>
+
+
+              <% if next_lesson.edited? or next_lesson.initial? %>
+                <p><strong>Waiting</strong> for confirmation for your lesson on <%= next_lesson_date(next_lesson) %></p>
               <% else %>
-                <%= link_to 'CREATE', new_partial_lesson_path(student: student, tutor: current_user), remote: true %>
+                <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %></p>
               <% end %>
-            </p>
 
-            <div class="row">
-              <div class="center_state_buttons">
-                <% if next_lesson.approved? %>
-                  <a class="btn btn-success disabled">Approved</a>
-                <% end %>
+              <div class="row">
+                  <div class="center_state_buttons space_below_state_button">
+                    <% if next_lesson.approved? %>
+                      <a class="btn btn-success btn-sm disabled">Approved</a>
+                    <% end %>
 
-                <% if next_lesson.edited? or next_lesson.initial? %>
-                  <a class="btn btn-warning disabled">Pending</a>
-                <% end %>
-                
-                <% if next_lesson.cancelled? %>
-                  <a class="btn btn-danger disabled">Cancelled</a>
-                <% end %>
+                    <% if next_lesson.edited? or next_lesson.initial? %>
+                      <a class="btn btn-warning btn-sm disabled">Pending</a>
+                    <% end %>
+                    
+                    <% if next_lesson.cancelled? %>
+                      <a class="btn btn-danger btn-sm disabled">Cancelled</a>
+                    <% end %>
+                  </div>
               </div>
-            </div>  
+
+                <div class="row center_state_buttons ">
+                <%= link_to 'View Next Lesson Details', lesson_path(next_lesson), class:"btn btn-primary btn-sm"%>
+                </div>  
+
+            <%= link_to 'Book new Lesson', new_partial_lesson_path(student: student, tutor: current_user), remote: true %>
+
+
+            <% else %>
+
+
+              
+
+            <% end %>
+
+
         </div>
       </div>
     <% end %>
