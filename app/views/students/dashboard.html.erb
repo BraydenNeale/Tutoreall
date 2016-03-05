@@ -17,10 +17,11 @@
                     <% if is_conversation(current_user, tutor) %>
                       <%= link_to "MESSAGE", conversations_path(current: get_conversation(current_user, tutor)) %>
                     <% end %>
-                    <%= link_to 'BOOK', new_partial_lesson_path(student: current_user, tutor: tutor), remote: true %>
                 </div>
             </div>
             <h3><%= tutor.display_name %></h3>
+              <%= link_to 'Book new Lesson', new_partial_lesson_path(student: current_user, tutor: tutor), remote: true, class:"btn btn-sm btn-default space_below_state_button" %>
+
             <% next_lesson = next_student_lesson(current_user, tutor) %>
             
             
@@ -36,15 +37,15 @@
                 <div class="row">
                   <div class="center_state_buttons space_below_state_button">
                     <% if next_lesson.approved? %>
-                      <a class="btn btn-success btn-sm disabled">Approved</a>
+                      <span class="label label-success">Approved</span>
                     <% end %>
 
                     <% if next_lesson.edited? or next_lesson.initial? %>
-                      <a class="btn btn-warning btn-sm disabled">Pending</a>
+                      <span class="label label-warning">Pending</span>
                     <% end %>
                     
                     <% if next_lesson.cancelled? %>
-                      <a class="btn btn-danger btn-sm disabled">Cancelled</a>
+                      <span class="label label-danger">Cancelled</span>
                     <% end %>
                   </div>
                 </div>
