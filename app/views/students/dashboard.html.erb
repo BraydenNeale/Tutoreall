@@ -17,17 +17,23 @@
                     <% if is_conversation(current_user, tutor) %>
                       <%= link_to "MESSAGE", conversations_path(current: get_conversation(current_user, tutor)) %>
                     <% end %>
+                    <%= link_to 'BOOK', new_partial_lesson_path(student: current_user, tutor: tutor), remote: true %>
                 </div>
             </div>
             <h3><%= tutor.display_name %></h3>
-              <%= link_to 'Book new Lesson', new_partial_lesson_path(student: current_user, tutor: tutor), remote: true, class:"btn btn-sm btn-default space_below_state_button" %>
-
             <% next_lesson = next_student_lesson(current_user, tutor) %>
             
             
               <% if next_lesson.present? %>
                 <% if next_lesson.edited? or next_lesson.initial? %>
+
+                <% if next_lesson.tutor_change? %>
+                  <p class="left-align">Click <%= link_to 'here', lesson_path(next_lesson) %> to approve lesson on <%= next_lesson_date(next_lesson) %></p>
+                <% else %>
                   <p><strong>Waiting</strong> for tutor confirmation for your lesson on <%= next_lesson_date(next_lesson) %></p>
+                <% end %>
+
+
                 <% else %>
                   <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %></p>
                 <% end %>

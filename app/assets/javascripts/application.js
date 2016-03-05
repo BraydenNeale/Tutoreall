@@ -52,6 +52,7 @@ $(document).ready(function() {
     padding:0
   });
 
+
   
   $("#content .search_main .ser_leftbar .filter_box > ul > li > a").click(function (e) {
       e.preventDefault();
@@ -73,6 +74,21 @@ $(document).ready(function() {
         $(this).parent().addClass('active');
       }
     });
+
+   // $(".lesson-cancel-fake").click(function(e) {
+   //    swal({   
+   //      title: "Are you sure?",   
+   //      text: "You won't be able to do undo this action",   
+   //      type: "warning",
+   //      showCancelButton: true,   
+   //      confirmButtonColor: "#DD6B55",   
+   //      confirmButtonText: "Yes, cancel my lesson!",   
+   //      closeOnConfirm: false 
+   //    }, function(){   
+   //      swal("Done!", "Your lesson has been cancelled.", "success"); });
+   //      $('.lesson-cancel-real').click()
+   // });
+
 });
 
 // Ajax requests for devise form from partial views
