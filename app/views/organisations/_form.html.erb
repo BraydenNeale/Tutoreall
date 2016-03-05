@@ -1,0 +1,63 @@
+<%= form_for(@organisation) do |f| %>
+  <% if @organisation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@organisation.errors.count, "error") %> prohibited this organisation from being saved:</h2>
+      <ul>
+      <% @organisation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="block">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="block">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="block">
+    <%= f.label :about %>
+    <%= f.text_area :about %>
+  </div>
+
+  <div class="block">
+    <%= f.label :fee %>
+    <%= f.text_field :fee %>
+  </div>
+
+  <div class="block">
+    <%= f.label :logo %>
+    <%= f.file_field :logo %>
+  </div>
+
+  <div class="block">
+    <%= f.label :banner %>
+    <%= f.file_field :banner %>
+  </div>
+
+  <div class="block">
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  </div>
+
+  <h3>Payment Information</h3>
+  <div class="block">
+    <%= f.fields_for :bank_account do |ba| %>
+      <h4>BSB</h4>
+      <%= ba.text_field :bsb, class: "txtbox_1" %>
+      <h4>Account Number</h4>
+      <%= ba.text_field :number, class: "txtbox_1" %>
+      <h4>Account Name</h4>
+      <%= ba.text_field :name, class: "txtbox_1" %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # js validations
   # mount Judge::Engine => '/judge'
 
@@ -59,6 +58,12 @@ Rails.application.routes.draw do
       put :approve
       put :cancel
       get :new_partial
+    end
+  end
+ 
+  resources :organisations do 
+    collection do 
+      get :autocomplete
     end
   end
 

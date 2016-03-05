@@ -7,6 +7,8 @@ autocomplete = ->
     source: "/areas/autocomplete.json"
   $('#area-search2').autocomplete
     source: "/areas/autocomplete.json"
+  $('#organisation-search').autocomplete
+    source: "/organisations/autocomplete.json"
 
   # Subject autocomplete
   #$('#faculty-search').autocomplete

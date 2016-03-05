@@ -1,0 +1,16 @@
+<h2><%= @organisation.name %></h2>
+<p><%= @organisation.about %></p>
+<p><%= @organisation.get_fee %></p>
+<p><%= @organisation.website %></p>
+<p><%= @organisation.email %></p>
+
+<h4>Tutors</h4>
+<% @organisation.tutors.each do |tutor| %>
+  <%= tutor.display_name %>
+<% end %>
+
+<%= image_tag @organisation.logo_url(:profile) %>
+<%= image_tag @organisation.banner_url(:main) %>
+
+<%= link_to 'Edit', edit_organisation_path(@organisation) %> |
+<%= link_to 'Back', organisations_path %>

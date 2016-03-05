@@ -7,8 +7,9 @@ class Tutor < ActiveRecord::Base
 
   validates :firstname, presence: true, length: { in: 2..35 }
   validates :lastname, presence: true, length: { in: 2..35 }
-  validates :about, length: { maximum: 2000 }
-  validates :experience, length: { maximum: 2000 }
+  validates :about, length: { maximum: 3000 }
+  validates :rate, presence: true, numericality: true
+  validates :experience, length: { maximum: 3000 }
 
   serialize :availability
 
