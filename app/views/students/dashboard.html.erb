@@ -25,24 +25,22 @@
             <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %>
               <% if next_lesson.present? %>
                 <%= link_to 'VIEW', lesson_path(next_lesson) %>
+                  <div class="row">
+                    <div class="center_state_buttons">
+                    <% if next_lesson.approved? %>
+                      <a class="btn btn-success disabled">Approved</a>
+                    <% end %>
+
+                    <% if next_lesson.edited? %>
+                      <a class="btn btn-warning disabled">Pending</a>
+                    <% end %>
+                    
+                    <% if next_lesson.cancelled? %>
+                      <a class="btn btn-danger disabled">Cancelled</a>
+                    <% end %>
+                    </div>
+                  </div>
               <% end %>
-
-              <div class="row">
-                <div class="center_state_buttons">
-                <% if next_lesson.approved? %>
-                  <a class="btn btn-success disabled">Approved</a>
-                <% end %>
-
-                <% if next_lesson.edited? %>
-                  <a class="btn btn-warning disabled">Pending</a>
-                <% end %>
-                
-                <% if next_lesson.cancelled? %>
-                  <a class="btn btn-danger disabled">Cancelled</a>
-                <% end %>
-                </div>
-              </div>
-
             </p>
         </div>
       </div>

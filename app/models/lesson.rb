@@ -17,6 +17,10 @@ class Lesson < ActiveRecord::Base
       event :edit, transitions_to: :edited
       event :cancel, transitions_to: :cancelled
     end
+    state :edited do # Lesson details updated (tutor_change tracks who changed it)
+      event :approve, transitions_to: :approved
+      event :cancel, transitions_to: :cancelled
+    end
     state :approved do # Lesson accepted with current details
       event :edit, transitions_to: :edited
       event :cancel, transitions_to: :cancelled
@@ -27,10 +31,6 @@ class Lesson < ActiveRecord::Base
       event :refund, transitions_to: :refunded
       event :cancel, transitions_to: :cancelled
       event :finish, transitions_to: :completed
-    end
-    state :edited do # Lesson details updated (tutor_change tracks who changed it)
-      event :approve, transitions_to: :approved
-      event :cancel, transitions_to: :cancelled
     end
     state :completed do # Lesson date has passed
       event :problem_reported, transitions_to: :problem
