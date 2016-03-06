@@ -6,7 +6,7 @@ class Organisation < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
   mount_uploader :banner, BannerUploader
 
-  validates :name, presence: true, length: {in: 2..100}
+  validates :name, presence: true, uniqueness: true, length: {in: 2..100}
   validates :fee, presence: true, numericality: true
   validates :website, length: { maximum: 100}
   validates :about, length: { maximum: 3000 }

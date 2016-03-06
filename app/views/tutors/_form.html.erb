@@ -109,8 +109,15 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="block"> 
                       <h5>Hourly Rate</h5>
-                        <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate" %>
-                        <!-- <span class="infotxt">*Tutorial Academy charges 10% commision</span> -->
+                      <% readonly_bool = @tutor.is_get_ahead_tutor? ? true : false %>
+                      <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate", readonly: readonly_bool %>
+                      <!-- Additional rate info -->
+                      <ul>
+                        <li><%= "+ #{Tutor.get_tutorial_academy_fee} - Tutorial Academy" %></li>
+                        <% @tutor.organisations.each do |org| %>
+                          <li><%= "+ #{org.get_fee} - #{org.name}" %></li>
+                        <% end %>
+                      </ul>
                     </div>
                   </div>
                   <%= f.fields_for :wwc_card do |wwc| %>

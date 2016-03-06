@@ -93,9 +93,9 @@ Area.create :name => "jarrahdale", :code => "6124", :city => "perth", :state => 
 Area.create :name => "keysbrook", :code => "6126", :city => "perth", :state => "WA", :region => "serpentine - jarrahdale"
 
 # Kalamunda
-Area.create :name => "HighWycombe", :code => "6057", :city => "perth", :state => "WA", :region => "kalamunda"
+Area.create :name => "high wycombe", :code => "6057", :city => "perth", :state => "WA", :region => "kalamunda"
 Area.create :name => "forrestfield", :code => "6058", :city => "perth", :state => "WA", :region => "kalamunda"
-Area.create :name => "Bickley", :code => "6076", :city => "perth", :state => "WA", :region => "kalamunda"
+Area.create :name => "bickley", :code => "6076", :city => "perth", :state => "WA", :region => "kalamunda"
 
 # Mundaring (6070 - 6558)
 Area.create :name => "darlington", :code => "6070", :city => "perth", :state => "WA", :region => "mundaring"

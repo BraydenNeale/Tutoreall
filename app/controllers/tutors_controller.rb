@@ -76,8 +76,24 @@ class TutorsController < ApplicationController
   end
 
   def join_organisation
+
+    # fail...
+    # if(params[:organisation_ids])
+    #   get_ahead_tutoring = Organisation.all.where(name: "Get Ahead Tutoring").first
+    #   params[:organisation_ids].each do |org_id|
+    #     if(org_id == get_ahead_tutoring.id)
+    #       @tutor.rate = 40.00
+    #       break
+    #     end
+    #   end
+    # end
+
     respond_to do |format|
       if @tutor.update(tutor_params)
+        if(@tutor.is_get_ahead_tutor?)
+          @tutor.rate = 40.00
+          @tutor.save!
+        end
         format.html { redirect_to edit_tutor_path(@tutor), notice: 'Request to join organisation submitted.' }
         format.json { render :edit, status: :ok, location: @tutor }
       else

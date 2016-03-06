@@ -33,6 +33,14 @@
                     <a href="#signup_popup_1" class="fancybox sign_up_btn">SIGN UP</a></h1>
                   <% end %>
                 </div>
+                <div class="org_logo">
+                  <!-- Not sure how to handle multiple organisations... - works for just one currently -->
+                  <% @tutor.organisations.each do |org| %>
+                    <%#= org.name.titleize %>
+                    <%= link_to(image_tag(org.logo_url(:profile)), url_with_protocol(org.website)) %>
+                    <%#= link_to(image_tag(org.banner_url(:main)), url_with_protocol(org.website)) %>
+                  <% end %>
+                </div>
               </div>
             </div>
         </div>
@@ -43,7 +51,7 @@
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <h4>Hourly rate</h4>
-            <p><%= @tutor.display_rate %></p>
+            <p><%= @tutor.rate_with_organisation_fees %></p>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <h4>Age</h4>
@@ -99,14 +107,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <h2>Temp Organisation things...</h2>
-    <% @tutor.organisations.each do |org| %>
-      <%= org.name.titleize %>
-      <%= link_to(image_tag(org.logo_url(:profile)), url_for(org.website)) %>
-      <%= link_to(image_tag(org.banner_url(:main)), url_for(org.website)) %>
-    <% end %>
   </div>
 </div>
 

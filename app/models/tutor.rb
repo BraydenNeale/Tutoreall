@@ -29,6 +29,7 @@ class Tutor < ActiveRecord::Base
   validate :uniqueness_of_user_email
 
   enum sex: ['Female','Male']
+  @@tutorial_academy_fee = 5 # we take a fixed price of $5
 
   def uniqueness_of_user_email
     Student.all.each do |student|
@@ -38,12 +39,27 @@ class Tutor < ActiveRecord::Base
     end
   end
 
+  def self.get_tutorial_academy_fee
+    # can't use defined helper :(
+    ActionController::Base.helpers.number_to_currency(@@tutorial_academy_fee)
+  end
+
   def display_name
     return "#{self.firstname} #{self.lastname}".titleize
   end
 
   def display_rate
     return helper.number_to_currency(self.rate)
+  end
+
+  def rate_with_organisation_fees
+    cost = self.rate
+    cost += @@tutorial_academy_fee
+    self.organisations.each do |org|
+      cost += org.fee
+    end
+
+    return helper.number_to_currency(cost)
   end
 
   def display_suburb
@@ -78,6 +94,18 @@ class Tutor < ActiveRecord::Base
     now = Time.now.utc.to_date
     dob = self.date_of_birth
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+
+  def is_get_ahead_tutor?
+    get_ahead_tutoring = Organisation.all.where(name: "Get Ahead Tutoring").first
+
+    self.organisations.each do |org|
+      if org.id == get_ahead_tutoring.id
+        return true
+      end
+    end
+
+    return false
   end
 
   def self.featured_tutors
