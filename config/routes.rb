@@ -63,11 +63,11 @@ Rails.application.routes.draw do
     end
   end
  
-  resources :organisations do 
-    collection do 
-      get :autocomplete
-    end
-  end
+  # resources :organisations do 
+  #   collection do 
+  #     get :autocomplete
+  #   end
+  # end
 
   resources :messages, only: [:new, :create]
   resources :transactions, only: [:new, :create]
