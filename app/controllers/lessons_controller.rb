@@ -48,7 +48,9 @@ class LessonsController < ApplicationController
   # POST /lessons
   # POST /lessons.json
   def create
-    @lesson = Tutor.find(params[:lesson][:tutor_id]).lessons.build(lesson_params)
+    tutor = Tutor.find(params[:lesson][:tutor_id])
+    @lesson = tutor.lessons.build(lesson_params)
+    @lesson.cost = (@lesson.duration * tutor.rate_with_organisation_fees) / 60
     
     respond_to do |format|
       if @lesson.save
@@ -138,7 +140,7 @@ class LessonsController < ApplicationController
     end
     
     def lesson_params
-      params.require(:lesson).permit(:student_id, :date, :subject, :description, :duration, :tutor_change, :location)
+      params.require(:lesson).permit(:student_id, :date, :subject, :description, :duration, :tutor_change, :location, :cost)
     end
 
     def verify_user

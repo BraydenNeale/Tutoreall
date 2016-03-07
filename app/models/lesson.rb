@@ -49,11 +49,13 @@ class Lesson < ActiveRecord::Base
 
   # Helpers
   def get_cost
-    return helper.number_to_currency((self.duration * self.tutor.rate) / 60)
+    # return helper.number_to_currency((self.duration * self.tutor.rate) / 60)
+    return helper.number_to_currency(self.cost)
   end
 
   def braintree_payment
-    return helper.number_to_currency((self.duration * self.tutor.rate) / 60, unit: "")
+    # return helper.number_to_currency((self.duration * self.tutor.rate) / 60, unit: "")
+    return helper.number_to_currency(self.const, unit: "")
   end
 
   def helper

@@ -52,6 +52,10 @@ class Tutor < ActiveRecord::Base
     return helper.number_to_currency(self.rate)
   end
 
+  def display_rate_with_organisation_fees
+    return helper.number_to_currency(rate_with_organisation_fees)
+  end
+
   def rate_with_organisation_fees
     cost = self.rate
     cost += @@tutorial_academy_fee
@@ -59,7 +63,7 @@ class Tutor < ActiveRecord::Base
       cost += org.fee
     end
 
-    return helper.number_to_currency(cost)
+    return cost
   end
 
   def display_suburb
@@ -178,6 +182,28 @@ class Tutor < ActiveRecord::Base
 
   def helper
     ActionController::Base.helpers
+  end
+
+  def has_bank_account?
+    if not self.bank_account.present?
+      return false
+    end
+
+    if self.bank_account.bsb.length != 6
+      return false
+    end
+
+    # bsb is all digits
+    if !/\A\d+\z/.match(self.bank_account.bsb) # if not a positive number
+      return false
+    end
+
+    #account number is all digits
+    if !/\A\d+\z/.match(self.bank_account.number) # if not a positive number
+      return false
+    end
+
+    return true
   end
 
   private
