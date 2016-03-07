@@ -8,7 +8,7 @@ class Tutor < ActiveRecord::Base
   validates :firstname, presence: true, length: { in: 2..35 }
   validates :lastname, presence: true, length: { in: 2..35 }
   validates :about, length: { maximum: 3000 }
-  validates :rate, presence: true, numericality: true
+  validates :rate, presence: true, numericality: true, if: :rate
   validates :experience, length: { maximum: 3000 }
 
   serialize :availability
@@ -60,6 +60,9 @@ class Tutor < ActiveRecord::Base
   end
 
   def rate_with_organisation_fees
+    if not self.rate.present?
+      return 0;
+    end
     cost = self.rate
 
     if not self.has_bank_account?

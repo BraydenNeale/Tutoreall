@@ -1,15 +1,4 @@
 <%= form_for(@tutor) do |f| %>
-  <% if @tutor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this update from being saved:</h2>
-      <ul>
-      <% @tutor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <div class="basic_details">
       <h3>Basic details</h3>
         <div class="clearfix">

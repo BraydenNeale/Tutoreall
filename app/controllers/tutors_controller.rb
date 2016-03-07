@@ -81,7 +81,7 @@ class TutorsController < ApplicationController
         format.html { redirect_to edit_tutor_path(@tutor), notice: 'Bank account successfully added.' }
         format.json { render :edit, status: :ok, location: @tutor }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_tutor_path(@tutor), notice: 'Error: Could not update account info' }
         format.json { render json: @tutor.errors, status: :unprocessable_entity }
       end
     end
@@ -97,7 +97,7 @@ class TutorsController < ApplicationController
         format.html { redirect_to edit_tutor_path(@tutor), notice: 'Request to join organisation submitted.' }
         format.json { render :edit, status: :ok, location: @tutor }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_tutor_path(@tutor), notice: 'Error: Organisations could not be updated' }
         format.json { render json: @tutor.errors, status: :unprocessable_entity }
       end
     end
