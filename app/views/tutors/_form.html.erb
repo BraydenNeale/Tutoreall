@@ -1,150 +1,138 @@
-<div class="settings_main">
-  <h2>Settings</h2>
-  <%= form_for(@tutor) do |f| %>
-    <% if @tutor.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this sensor from being saved:</h2>
-        <ul>
-        <% @tutor.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <h3><%= link_to "Account Settings", edit_tutor_registration_path %></h3>
-    <h3>Payment Information</h3>
-<!--     <div class="payment_details"> -->
-      <%= f.fields_for :bank_account do |ba| %>
-        <h4>BSB</h4>
-        <%= ba.text_field :bsb, class: "txtbox_1" %>
-        <h4>Account Number</h4>
-        <%= ba.text_field :number, class: "txtbox_1" %>
-        <h4>Account Name</h4>
-        <%= ba.text_field :name, class: "txtbox_1" %>
+<%= form_for(@tutor) do |f| %>
+  <% if @tutor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this update from being saved:</h2>
+      <ul>
+      <% @tutor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    <!-- </div> -->
-    <div class="basic_details">
-        <h3>Basic details</h3>
-          <div class="clearfix">
-            <div class="block_1">
-              <h4>Gender</h4>
-                <%= f.select :sex, Tutor.sexes.keys, {}, {class: "selbox"} %>
-            </div>
-            <span class="datetime">
-              <h4>Date of Birth</h4>
-                <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
-            </span>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="basic_details">
+      <h3>Basic details</h3>
+        <div class="clearfix">
+          <div class="block_1">
+            <h4>Gender</h4>
+              <%= f.select :sex, Tutor.sexes.keys, {}, {class: "selbox"} %>
           </div>
-      </div>
-      <div class="photo_details clearfix">
-        <div class="block_1">
-            <h3>Photo</h3>
-              <div class="img"><%= image_tag(@tutor.picture_url(:display)) %></div>
-              <!-- <a href="#" class="edit_btn">EDIT IMAGE</a> -->
-             <%= f.file_field :picture %>
-          </div>
-          <div class="block_2">
-            <h3>Experience</h3>
-            <%= f.text_area :experience %>
-            <h3>About</h3>
-            <%= f.text_area :about %>
-          </div>
-      </div>
-      <div class="more_details">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="block block_1">
-                  <h5>Suburb</h5>
-                    <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
-                </div>
-
-                <h5>Tutoring Details</h5>
-                <div class="settings_filter">
-                  <ul>
-                    <li>
-                      <a href="#">Availability</a>
-                      <ul>
-                        <% Date::DAYNAMES.each_with_index do |wday, i| %>
-                          <li>
-                            <%= label_tag "day#{i}", class: 'checkbox chkbox_label' do %>
-                              <%= check_box_tag "tutor[availability][]", i, @tutor.availability.include?(i.to_s), id: "day#{i}", class: "chkbox" %>
-                              <%= "#{wday.to_s}" %>
-                            <% end %>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </li>              
-                    <li>
-                      <a href="#">Subjects</a>
-                      <ul>
-                        <%= hidden_field_tag "tutor[subject_ids][]", nil %>
-                        <% Subject.all.each do |sub| %>
-                          <li>
-                            <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
-                              <%= check_box_tag "tutor[subject_ids][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
-                              <%= "#{sub.display_name}" %>
-                            <% end %>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </li>
-                    <li>
-                      <a>Areas</a>
-                      <ul>
-                        <%= hidden_field_tag "tutor[area_ids][]", nil %>
-                        <% Area.order('name ASC').each do |area| %>
-                          <li>
-                            <%= label_tag dom_id(area), class: 'checkbox chkbox_label' do %>
-                              <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
-                              <%= "#{area.display_name}" %>
-                            <% end %>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </li>
-                  </div>
+          <span class="datetime">
+            <h4>Date of Birth</h4>
+              <%= f.date_select(:date_of_birth, {:order => [:day, :month, :year], :start_year => 1900, :end_year=> Date.today.year, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
+          </span>
+        </div>
+    </div>
+    <div class="photo_details clearfix">
+      <div class="block_1">
+          <h3>Photo</h3>
+            <div class="img"><%= image_tag(@tutor.picture_url(:display)) %></div>
+            <!-- <a href="#" class="edit_btn">EDIT IMAGE</a> -->
+           <%= f.file_field :picture %>
+        </div>
+        <div class="block_2">
+          <h3>Experience</h3>
+          <%= f.text_area :experience %>
+          <h3>About</h3>
+          <%= f.text_area :about %>
+        </div>
+    </div>
+    <div class="more_details">
+      <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="block block_1">
+                <h5>Suburb</h5>
+                  <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
               </div>
-              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="block"> 
-                      <h5>Hourly Rate</h5>
-                      <% readonly_bool = @tutor.is_get_ahead_tutor? ? true : false %>
-                      <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate", readonly: readonly_bool %>
-                      <!-- Additional rate info -->
-                      <ul>
+
+              <h5>Tutoring Details</h5>
+              <div class="settings_filter">
+                <ul>
+                  <li>
+                    <a href="#">Availability</a>
+                    <ul>
+                      <% Date::DAYNAMES.each_with_index do |wday, i| %>
+                        <li>
+                          <%= label_tag "day#{i}", class: 'checkbox chkbox_label' do %>
+                            <%= check_box_tag "tutor[availability][]", i, @tutor.availability.include?(i.to_s), id: "day#{i}", class: "chkbox" %>
+                            <%= "#{wday.to_s}" %>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>              
+                  <li>
+                    <a href="#">Subjects</a>
+                    <ul>
+                      <%= hidden_field_tag "tutor[subject_ids][]", nil %>
+                      <% Subject.all.each do |sub| %>
+                        <li>
+                          <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
+                            <%= check_box_tag "tutor[subject_ids][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
+                            <%= "#{sub.display_name}" %>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                  <li>
+                    <a>Areas</a>
+                    <ul>
+                      <%= hidden_field_tag "tutor[area_ids][]", nil %>
+                      <% Area.order('name ASC').each do |area| %>
+                        <li>
+                          <%= label_tag dom_id(area), class: 'checkbox chkbox_label' do %>
+                            <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
+                            <%= "#{area.display_name}" %>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="block"> 
+                    <h5>Hourly Rate</h5>
+                    <% readonly_bool = @tutor.is_get_ahead_tutor? ? true : false %>
+                    <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate", readonly: readonly_bool %>
+                    <!-- Additional rate info -->
+                    <ul>
+                      <% if @tutor.has_bank_account? %>
                         <li><%= "+ #{Tutor.get_tutorial_academy_fee} - Tutorial Academy" %></li>
-                        <% @tutor.organisations.each do |org| %>
-                          <li><%= "+ #{org.get_fee} - #{org.name}" %></li>
-                        <% end %>
-                      </ul>
-                    </div>
+                      <% end %>
+                      <% @tutor.organisations.each do |org| %>
+                        <li><%= "+ #{org.get_fee} - #{org.name}" %></li>
+                      <% end %>
+                    </ul>
                   </div>
+                </div>
+                <%= f.fields_for :wwc_card do |wwc| %>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="block">
+                        <h5>Working with Children Number</h5>
+                        <%= wwc.text_field :number, class: "txtbox_1" %>
+                      </div>
+                  </div>
+                <% end %>
+              </div>
+                <div class="row">
                   <%= f.fields_for :wwc_card do |wwc| %>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <div class="block">
-                          <h5>Working with Children Number</h5>
-                          <%= wwc.text_field :number, class: "txtbox_1" %>
-                        </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <h5>Working with Children Expiry</h5>
+                      <span class="datetime">
+                        <%= wwc.date_select(:expiry, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year=> Date.today.year + 5, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
+                      </span>
                     </div>
                   <% end %>
                 </div>
-                  <div class="row">
-                    <%= f.fields_for :wwc_card do |wwc| %>
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h5>Working with Children Expiry</h5>
-                        <span class="datetime">
-                          <%= wwc.date_select(:expiry, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year=> Date.today.year + 5, :include_blank => true, :default => nil}, {class: "dateselect"}) %>
-                        </span>
-                      </div>
-                    <% end %>
-                  </div>
-                </ul>
-              </div>
-          </div>
-          <div class="clearfix">
-            <%= f.submit class: "save_btn", value: "SAVE SETTINGS" %>
-          </div>
-      </div>
-  <% end %>
-</div>
+              </ul>
+            </div>
+        </div>
+        <div class="clearfix">
+          <%= f.submit class: "save_btn", value: "SAVE SETTINGS" %>
+        </div>
+    </div>
+<% end %>

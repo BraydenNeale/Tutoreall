@@ -1,5 +1,5 @@
 class TutorsController < ApplicationController
-  before_action :set_tutor, only: [:show, :edit, :update, :destroy, :join_organisation]
+  before_action :set_tutor, only: [:show, :edit, :update, :destroy, :join_organisation, :add_bank_account]
   before_action :verify_tutor, only: [:edit, :update, :destroy, :dashboard, :calendar]
   before_action :get_mailbox, only: [:dashboard]
 
@@ -75,19 +75,19 @@ class TutorsController < ApplicationController
     end
   end
 
+  def add_bank_account
+    respond_to do |format|
+      if @tutor.update(tutor_params)
+        format.html { redirect_to edit_tutor_path(@tutor), notice: 'Bank account successfully added.' }
+        format.json { render :edit, status: :ok, location: @tutor }
+      else
+        format.html { render :edit }
+        format.json { render json: @tutor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def join_organisation
-
-    # fail...
-    # if(params[:organisation_ids])
-    #   get_ahead_tutoring = Organisation.all.where(name: "Get Ahead Tutoring").first
-    #   params[:organisation_ids].each do |org_id|
-    #     if(org_id == get_ahead_tutoring.id)
-    #       @tutor.rate = 40.00
-    #       break
-    #     end
-    #   end
-    # end
-
     respond_to do |format|
       if @tutor.update(tutor_params)
         if(@tutor.is_get_ahead_tutor?)

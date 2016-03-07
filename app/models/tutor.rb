@@ -58,6 +58,11 @@ class Tutor < ActiveRecord::Base
 
   def rate_with_organisation_fees
     cost = self.rate
+
+    if not self.has_bank_account?
+      return cost
+    end
+
     cost += @@tutorial_academy_fee
     self.organisations.each do |org|
       cost += org.fee
@@ -189,6 +194,15 @@ class Tutor < ActiveRecord::Base
       return false
     end
 
+    if self.bank_account.bsb.nil? or self.bank_account.number.nil? or self.bank_account.name.nil?
+      return false
+    end
+
+    if self.bank_account.bsb.blank? or self.bank_account.number.blank? or self.bank_account.name.blank?
+      return false
+    end
+
+    # BSB is 6 numbers
     if self.bank_account.bsb.length != 6
       return false
     end

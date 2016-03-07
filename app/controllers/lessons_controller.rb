@@ -110,9 +110,16 @@ class LessonsController < ApplicationController
     # @lesson.tutor_change = params[:tutor_change]
     # @lesson.subject = params[:subject]
 
+    # could be un unforseen problem where tutor fee is changed and student doesn't know about it
+    # solved by showing price on form
+    # - also worse case the student can just cancel
+    @lesson.cost = (@lesson.duration * @lesson.tutor.rate_with_organisation_fees) / 60
+
     respond_to do |format|
       if @lesson.update(lesson_params)
-        @lesson.edit!
+        if not @lesson.edited?
+          @lesson.edit! # Can't transition to same state
+        end
         UserMailer.lesson_change_email(@lesson, current_user).deliver_later
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
@@ -122,6 +129,10 @@ class LessonsController < ApplicationController
       end
     end
   end
+
+  # Problem with paid lesson tranisitioning to edit - need to add a rescheduled state for this
+  # def reschedule
+  # end
 
   # DELETE /lessons/1
   # DELETE /lessons/1.json

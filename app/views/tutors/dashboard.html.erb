@@ -23,7 +23,6 @@
             </div>
             <h3><%= student.display_name %></h3>
 
-
             <% next_lesson = next_student_lesson(student, current_user) %>
             <% if next_lesson.present? %>
               <% if next_lesson.edited? or next_lesson.initial? %>
@@ -59,12 +58,8 @@
                 <%= link_to 'View Next Lesson Details', lesson_path(next_lesson), class:"btn btn-primary btn-sm"%>
                 </div>  
 
-
-
             <% else %>
-
-
-              
+              <p>No Lesson currently scheduled</p>
 
             <% end %>
 

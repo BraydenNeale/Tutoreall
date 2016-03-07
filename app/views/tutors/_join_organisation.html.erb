@@ -1,6 +1,8 @@
 <div id="msz_popup" class="msz_popup">
 
-  <h5>Associate with an organisation</h5>
+  <h2>Associate with an organisation</h2>
+  <p>By associating with an organisation you get all of the benfits that they offer to their tutors. This will also rank you higher in our recommended tutors index and search pages as parents and students are more confident in such tutors.</p>
+  <p>Please note and be warned that tutoring organisations add their premium to the price of you lesson and take that premium when your lesson payment is processed</p>
   <%= form_for tutor, :url => {:action => "join_organisation", params: {id: tutor.id}} do |f| %>
     
     <%= hidden_field_tag "tutor[organisation_ids][]", nil %>
@@ -12,7 +14,8 @@
     <% end %>
 
     <div class="clearfix">
-      <%= f.submit class: "save_btn", value: "Join organisation" %>
+      <br>
+      <%= f.submit class: "save_btn btn_1", value: "Join organisation" %>
     </div>
   <% end %> 
 </div>

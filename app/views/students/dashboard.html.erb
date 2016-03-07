@@ -23,22 +23,19 @@
             <h3><%= tutor.display_name %></h3>
             <% next_lesson = next_student_lesson(current_user, tutor) %>
             
-            
               <% if next_lesson.present? %>
                 <% if next_lesson.edited? or next_lesson.initial? %>
 
                 <% if next_lesson.tutor_change? %>
-                  <p class="left-align">Click <%= link_to 'here', lesson_path(next_lesson) %> to approve lesson on <%= next_lesson_date(next_lesson) %></p>
+                  <p><%= link_to 'Click here to approve your lesson on', lesson_path(next_lesson) %></p>
+                  <p><%= next_lesson_date(next_lesson) %></p>
                 <% else %>
                   <p><strong>Waiting</strong> for tutor confirmation for your lesson on <%= next_lesson_date(next_lesson) %></p>
                 <% end %>
 
-
                 <% else %>
                   <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %></p>
                 <% end %>
-
-                
 
                 <div class="row">
                   <div class="center_state_buttons space_below_state_button">

@@ -1,0 +1,15 @@
+<div id="msz_popup" class="msz_popup">
+  <%= form_for lesson, :url => {:action => "reschedule", params: {id: lesson.id}} do |f| %>
+
+    <div class="field">
+       <%= f.label :date %><br>
+      <%= f.datetime_select(:date, start_year: Time.now.year, order: [:day, :month, :year], required: true) %>
+    </div>
+
+    <%= f.hidden_field(:tutor_change, value: is_tutor) %>
+
+    <div class="actions">
+      <%= f.submit "Reschedule lesson", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

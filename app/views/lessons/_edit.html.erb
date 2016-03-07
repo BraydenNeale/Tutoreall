@@ -1,38 +1,43 @@
-<%= form_for(@lesson) do |f| %>
-  <% if @lesson.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
-      <ul>
-      <% @lesson.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div id="msz_popup" class="msz_popup">
+  <%= form_for(@lesson) do |f| %>
+    <% if @lesson.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+        <ul>
+        <% @lesson.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h2>Update the details of this lesson</h2>
+    
+    <div class="field">
+      <%= f.label :subject %> <br>
+      <%= select_tag :subject, subjects_options, multiple: false, required: true %>
+    </div>
+    <div class="field">
+      <%= f.label :location %> <br>
+      <%= f.text_field :location %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :duration %> (minutes) <br>
+      <%= f.number_field :duration, min: 30, step: 5, required: true %>
+    </div>
+    <div class="field">
+       <%= f.label :date %><br>
+      <%= f.datetime_select(:date, start_year: Time.now.year, order: [:day, :month, :year], required: true) %>
+    </div>
+
+    <%= f.hidden_field(:status, value: "edited") %>
+    <%= f.hidden_field(:tutor_change, value: is_tutor) %>
+
+    <div class="actions">
+      <%= f.submit "Update Lesson", class: "btn btn-primary" %>
     </div>
   <% end %>
-  <div class="field">
-    <%= select_tag :subject, subjects_options, multiple: false, required: true %>
-  </div>
-  <div class="field">
-    <%= f.label :location %> <br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :duration %> (minutes) <br>
-    <%= f.number_field :duration, min: 30, step: 5, required: true %>
-  </div>
-  <div class="field">
-     <%= f.label :date %><br>
-    <%= f.datetime_select(:date, start_year: Time.now.year, order: [:day, :month, :year], required: true) %>
-  </div>
-
-  <%= f.hidden_field(:status, value: "edited") %>
-  <%= f.hidden_field(:tutor_change, value: is_tutor) %>
-
-  <div class="actions">
-    <%= f.submit "Update Lesson", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>

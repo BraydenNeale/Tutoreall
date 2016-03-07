@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :dashboard
       get :calendar
       patch :join_organisation
+      patch :add_bank_account
     end
   end
 
