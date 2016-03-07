@@ -23,7 +23,10 @@ class Tutor < ActiveRecord::Base
   accepts_nested_attributes_for :wwc_card, allow_destroy: true
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
-  has_and_belongs_to_many :organisations
+
+  has_many :associations
+  has_many :organisations, -> { where(associations: {confirmed: true} )}, through: :associations, source: :organisation
+  has_many :organisation_requests, -> { where(associations: {confirmed: false} )}, through: :associations, source: :organisation
 
   has_many :lessons, dependent: :destroy
   validate :uniqueness_of_user_email

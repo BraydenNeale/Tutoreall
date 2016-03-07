@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307052215) do
+ActiveRecord::Schema.define(version: 20160307100725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20160307052215) do
 
   add_index "areas_tutors", ["area_id", "tutor_id"], name: "index_areas_tutors_on_area_id_and_tutor_id", using: :btree
   add_index "areas_tutors", ["tutor_id", "area_id"], name: "index_areas_tutors_on_tutor_id_and_area_id", using: :btree
+
+  create_table "associations", force: :cascade do |t|
+    t.integer  "tutor_id"
+    t.integer  "organisation_id"
+    t.boolean  "confirmed",       default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string   "number"
@@ -128,14 +136,6 @@ ActiveRecord::Schema.define(version: 20160307052215) do
     t.datetime "updated_at", null: false
     t.string   "website"
   end
-
-  create_table "organisations_tutors", id: false, force: :cascade do |t|
-    t.integer "organisation_id", null: false
-    t.integer "tutor_id",        null: false
-  end
-
-  add_index "organisations_tutors", ["organisation_id", "tutor_id"], name: "index_organisations_tutors_on_organisation_id_and_tutor_id", using: :btree
-  add_index "organisations_tutors", ["tutor_id", "organisation_id"], name: "index_organisations_tutors_on_tutor_id_and_organisation_id", using: :btree
 
   create_table "payments", force: :cascade do |t|
     t.integer  "lesson_id"

@@ -136,3 +136,7 @@
         </div>
     </div>
 <% end %>
+
+<% @tutor.organisation_requests.each do |org| %>
+<%= org.name %>
+<% end %>
