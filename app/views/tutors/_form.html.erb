@@ -89,7 +89,7 @@
                     <%= f.text_field :rate, class: "txtbox_1", placeholder: "Hourly Rate", readonly: readonly_bool %>
                     <!-- Additional rate info -->
                     <ul>
-                      <% if @tutor.has_bank_account? %>
+                      <% if @tutor.has_bank_account? and @tutor.rate.present? %>
                         <li><%= "+ #{Tutor.get_tutorial_academy_fee} - Tutorial Academy" %></li>
                       <% end %>
                       <% @tutor.organisations.each do |org| %>
