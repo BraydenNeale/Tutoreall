@@ -15,4 +15,10 @@ class StaticController < ApplicationController
 
   def terms_of_use
   end
+
+  def how_it_works
+  end
+
+  def dispute_resolution
+  end
 end

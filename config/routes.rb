@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get :about
     get :terms_of_use
     get :privacy_policy
+    get :how_it_works
+    get :dispute_resolution
   end
 
   resources :tutors do
