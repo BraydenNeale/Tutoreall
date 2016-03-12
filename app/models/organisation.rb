@@ -4,7 +4,7 @@ class Organisation < ActiveRecord::Base
   has_many :associations
 
   has_many :tutors, -> { where(associations: {confirmed: true} )}, through: :associations, source: :tutor
-  has_many :tutor_requests, -> { where(associations: {confirmed: true} )}, through: :associations, source: :tutor
+  has_many :tutor_requests, -> { where(associations: {confirmed: false} )}, through: :associations, source: :tutor
 
   mount_uploader :logo, LogoUploader
   mount_uploader :banner, BannerUploader

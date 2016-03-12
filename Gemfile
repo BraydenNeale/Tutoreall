@@ -52,7 +52,7 @@ gem 'jquery-turbolinks', '~> 2.1.0' # Turbolinks
 gem 'will_paginate', '~> 3.0.7'		# pagination
 gem 'jquery-ui-rails', '~> 5.0.5'	# Jquery ui for dialogs and other jquery features
 gem 'local_time', '~> 1.0.3'			# output utc times in local time (javascript on client)
-gem 'simple_calendar', '~> 2.0.3'	# integrate lesson dates onto a calender
+gem 'simple_calendar', '~> 2.0.3'	# integrate lesson dates onto a calendar
 
 gem 'braintree', '~> 2.56.0' # braintree for processing payments
 gem 'figaro', '~> 1.1.1' # Figaro - secure config

@@ -62,7 +62,7 @@ class Lesson < ActiveRecord::Base
     ActionController::Base.helpers
   end
 
-  # Simple calender
+  # Simple calendar
   def start_time
   	self.date
   end
