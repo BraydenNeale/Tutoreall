@@ -28,13 +28,11 @@
               <% if next_lesson.edited? or next_lesson.initial? %>
                 <% if next_lesson.tutor_change? %>
                   <p><strong>Waiting</strong> for student confirmation for your lesson on <%= next_lesson_date(next_lesson) %></p>
-                
                 <% else %>
                   <p><%= link_to 'Click here to approve your lesson on', lesson_path(next_lesson) %></p>
                   <p><%= next_lesson_date(next_lesson) %></p>
                 <% end %>
-
-              <% else %>
+              <% elsif not next_lesson.cancelled? %>
                 <p><strong>Next Lesson:</strong> <%= next_lesson_date(next_lesson) %></p>
               <% end %>
 
