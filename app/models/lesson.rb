@@ -70,7 +70,6 @@ class Lesson < ActiveRecord::Base
   # Workflow state transitions
   def pay
     lesson = self # referring to self in a loop was a mindfuck
-    (@lesson.duration * tutor.rate_with_organisation_fees) / 60
     cut = (5 * lesson.duration) / 60 # Our cut is $5 an hour
     to_pay_tutor = lesson.braintree_payment.to_f - cut
 
