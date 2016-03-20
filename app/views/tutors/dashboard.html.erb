@@ -44,6 +44,10 @@
                       <span class="label label-success">Approved</span>
                     <% end %>
 
+                    <% if next_lesson.paid? %>
+                      <span class="label label-success">Paid</span>
+                    <% end %>
+
                     <% if next_lesson.edited? or next_lesson.initial? %>
                       <span class="label label-warning">Pending</span>
                     <% end %>

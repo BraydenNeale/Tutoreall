@@ -5,6 +5,19 @@
 
 		<%= lesson_status_message %>
 
+		<%if my_approval %>
+			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
+				<%= hidden_field_tag(:id, @lesson.id) %>
+				<div class="actions">
+			    <%= submit_tag 'Approve', class: "btn btn-success lesson_approve" %>
+			  </div>
+		  <% end %>
+		<% end %>
+
+		<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
+			<%= render 'transactions/book_lesson', lesson: @lesson %>
+		<% end %>
+
 		<h4>Student</h4>
 		<p><%= @lesson.student.display_name %></p>
 		<h4>Tutor</h4>
@@ -22,25 +35,12 @@
 		<h4>Description</h4>
 		<p><%= @lesson.description %></p>
 
-		<%if my_approval %>
-			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
-				<%= hidden_field_tag(:id, @lesson.id) %>
-				<div class="actions">
-			    <%= submit_tag 'Approve', class: "btn btn-success lesson_approve" %>
-			  </div>
-		  <% end %>
-		<% end %>
-
 		<% if @lesson.current_state < :paid %>
 			<%= render partial: 'lessons/edit', locals: {tutor: @tutor} %>
 			<a href="#msz_popup" class="fancybox btn btn-primary">Edit this lesson</a>
 		<% elsif @lesson.current_state < :completed %>
-			<%#= render partial: 'lessons/reschedule', local: {tutor: @tutor %>}
+			<%#= render partial: 'lessons/reschedule', local: {tutor: @tutor } %>
 			<!-- <a href="msz_popup2" class="fancybox btn btn-primary">Reschedule this lesson</a> -->
-		<% end %>
-
-		<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
-			<%= render 'transactions/book_lesson', lesson: @lesson %>
 		<% end %>
 
 		<% if @lesson.current_state < :completed %>

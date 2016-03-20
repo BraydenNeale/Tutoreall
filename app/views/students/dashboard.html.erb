@@ -40,7 +40,15 @@
                 <div class="row">
                   <div class="center_state_buttons space_below_state_button">
                     <% if next_lesson.approved? %>
-                      <span class="label label-success">Approved</span>
+                      <% if @lesson.tutor.has_bank_account?  %>
+                        <span class="label label-success">Approved - Lesson can now be payed for</span>
+                      <% else %>
+                        <span class="label label-success">Approved</span>
+                      <% end %>
+                    <% end %>
+
+                    <% if next_lesson.paid? %>
+                      <span class="label label-success">Paid</span>
                     <% end %>
 
                     <% if next_lesson.edited? or next_lesson.initial? %>
