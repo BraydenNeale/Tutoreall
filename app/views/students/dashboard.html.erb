@@ -40,7 +40,7 @@
                   <div class="center_state_buttons space_below_state_button">
                     <% if next_lesson.approved? %>
                       <% if next_lesson.tutor.has_bank_account?  %>
-                        <span class="label label-success">Approved - Lesson can now be payed for</span>
+                        <span class="label label-success"><%= link_to "Approved - Click here to pay", pay_for_lesson_path(next_lesson) %></span>
                       <% else %>
                         <span class="label label-success">Approved</span>
                       <% end %>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="row center_state_buttons ">
-                <%= link_to 'View Next Lesson Details', lesson_path(next_lesson), class:"btn btn-primary btn-sm"%>
+                <%= link_to 'View Next Lesson Details', lesson_path(next_lesson), class:"btn btn-primary btn-sm", data: { no_turbolink: true } %>
                 </div>  
               <% end %>
         </div>

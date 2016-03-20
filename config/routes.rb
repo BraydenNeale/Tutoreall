@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       put :approve
       put :cancel
       get :new_partial
+      get :pay_for
     end
   end
  

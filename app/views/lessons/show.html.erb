@@ -16,6 +16,7 @@
 
 		<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
 			<%= render 'transactions/book_lesson', lesson: @lesson %>
+			<br>
 		<% end %>
 
 		<h4>Student</h4>

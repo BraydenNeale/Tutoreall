@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :approve, :cancel]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :approve, :cancel, :pay_for]
   before_action :authenticate_user!
   before_action :verify_user, only: [:edit, :update, :destroy, :show]
 
@@ -13,6 +13,12 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     # gon token for braintree payment 
+    if current_user.is_a? Student
+      gon.client_token = generate_client_token
+    end
+  end
+
+  def pay_for
     if current_user.is_a? Student
       gon.client_token = generate_client_token
     end

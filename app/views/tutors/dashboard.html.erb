@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="row center_state_buttons ">
-                <%= link_to 'View Next Lesson Details', lesson_path(next_lesson), class:"btn btn-primary btn-sm"%>
+                <%= link_to 'View Next Lesson Details', lesson_path(next_lesson), class:"btn btn-primary btn-sm", data: { no_turbolink: true }%>
                 </div>  
 
             <% else %>

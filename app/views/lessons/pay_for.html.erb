@@ -1,0 +1,9 @@
+<h1>Pay for lesson</h1>
+<p><%= "Lesson between #{@lesson.tutor.display_name} and #{@lesson.student.display_name} on #{local_time(@lesson.date.strftime('%d/%m/%Y %H:%M'))}" %></p>
+
+<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
+  <%= render 'transactions/book_lesson', lesson: @lesson %>
+  <br>
+<% end %>
+
+<%= link_to "Back to Dashboard", is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user), class:'btn btn-default space_above' %>
