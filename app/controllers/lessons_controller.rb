@@ -91,6 +91,10 @@ class LessonsController < ApplicationController
       @lesson.tutor_change = false;
     end
 
+    if(@lesson.paid?)
+      PaymentMailer.lesson_cancelled(@lesson).deliver_later
+    end
+
     @lesson.cancel!
     if @lesson.save
       # specific cancel email later:
