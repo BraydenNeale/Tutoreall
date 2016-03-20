@@ -35,6 +35,6 @@ class UserMailer < ApplicationMailer
       to = @student
     end
 
-    mail(to: to, subject: subject)
+    mail(to: to.email, subject: subject)
   end
 end
