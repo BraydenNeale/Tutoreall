@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2 class="mbs">Book Lesson</h2>
+  <h2 class="mbs">Pay for lesson</h2>
   <p>
     You can pay for this lesson securely right now! <%= link_to "Find out why you should?", home_path %> 
   </p>
@@ -7,6 +7,6 @@
     <p>Please enter your payment details:</p>
     <%= hidden_field_tag(:lesson_id, lesson.id) %>
     <div id="dropin"></div>
-    <%= submit_tag "Book lesson - #{lesson.get_cost}", class: "btn btn-primary" %>
+    <%= submit_tag "Pay now - #{lesson.get_cost}", class: "btn btn-primary" %>
   <% end %>
 </div>

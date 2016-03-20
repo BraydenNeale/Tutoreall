@@ -40,7 +40,7 @@
                   <div class="center_state_buttons space_below_state_button">
                     <% if next_lesson.approved? %>
                       <% if next_lesson.tutor.has_bank_account?  %>
-                        <span class="label label-success"><%= link_to "Approved - Click here to pay", pay_for_lesson_path(next_lesson) %></span>
+                        <span class="label label-success"><%= link_to "Approved - Click here to pay", pay_for_lesson_path(next_lesson), data: { no_turbolink: true }, class: "pay-link" %></span>
                       <% else %>
                         <span class="label label-success">Approved</span>
                       <% end %>
