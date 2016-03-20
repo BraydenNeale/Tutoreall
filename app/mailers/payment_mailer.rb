@@ -10,7 +10,7 @@ class PaymentMailer < ApplicationMailer
   def lesson_cancelled(lesson)
     @lesson = lesson
     to = 'chris@tutorial.academy'
-    subject = 'Lesson id #{lesson.id} cancelled'
+    subject = 'Paid lesson has been cancelled - refund needed'
 
     mail(to: to, subject: subject)
   end
