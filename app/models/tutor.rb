@@ -34,6 +34,8 @@ class Tutor < ActiveRecord::Base
   enum sex: ['Female','Male']
   @@tutorial_academy_fee = 5 # we take a fixed price of $5
 
+  after_create :staging_auto_confirm
+
   def uniqueness_of_user_email
     Student.all.each do |student|
       if(student.email == self.email)
@@ -224,6 +226,14 @@ class Tutor < ActiveRecord::Base
     end
 
     return true
+  end
+
+  def staging_auto_confirm
+    if Rails.env.production?
+      if(ENV['HEROKU_APP_ENVIRONMENT'] == 'STAGING')
+        self.confirm!
+      end
+    end
   end
 
   private

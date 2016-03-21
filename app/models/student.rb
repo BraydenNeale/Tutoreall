@@ -14,6 +14,7 @@ class Student < ActiveRecord::Base
   validates :firstname, presence: true, length: { in: 2..35 }
   validates :lastname, presence: true, length: { in: 2..35 }
 
+  after_create :staging_auto_confirm
 
   def uniqueness_of_user_email
     Tutor.all.each do |tutor|
@@ -38,5 +39,13 @@ class Student < ActiveRecord::Base
 
   def has_payment_info?
     braintree_customer_id
+  end
+
+  def staging_auto_confirm
+    if Rails.env.production?
+      if(ENV['HEROKU_APP_ENVIRONMENT'] == 'STAGING')
+        self.confirm!
+      end
+    end
   end
 end
