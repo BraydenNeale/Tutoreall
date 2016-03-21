@@ -93,6 +93,10 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
+  if(ENV['APP_ENVIRONMENT'] == 'STAGING')
+    ActionMailer::Base.register_interceptor(StagingEmailInterceptor)
+  end
+
   # Devise - ssl
   # config.to_prepare { Devise::SessionsController.force_ssl }
   # config.to_prepare { Devise::RegistrationsController.force_ssl }
