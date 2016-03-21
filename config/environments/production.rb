@@ -93,7 +93,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-  if(ENV['APP_ENVIRONMENT'] == 'STAGING')
+  if(ENV['HEROKU_APP_ENVIRONMENT'] == 'STAGING')
     ActionMailer::Base.register_interceptor(StagingEmailInterceptor)
   end
 
