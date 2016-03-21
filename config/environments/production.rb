@@ -80,7 +80,7 @@ Rails.application.configure do
 
   # Mailer config for production
   # config.action_mailer.default_url_options = {:host => 'tutoreall.herokuapp.com'}
-  config.action_mailer.default_url_options = {:host => 'www.tutorial.academy'}
+  config.action_mailer.default_url_options = {:host => 'tutorialacademy.com.au'}
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
@@ -92,4 +92,12 @@ Rails.application.configure do
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
+
+  # Devise - ssl
+  config.to_prepare { Devise::SessionsController.force_ssl }
+  config.to_prepare { Devise::RegistrationsController.force_ssl }
+  config.to_prepare { Devise::PasswordsController.force_ssl }
+
+  # Set confirm email links to use https
+  # config.action_mailer.default_url_options = { protocol: 'https', :host => 'tutorialacademy.com.au' }
 end
