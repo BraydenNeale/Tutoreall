@@ -94,9 +94,9 @@ Rails.application.configure do
   }
 
   # Devise - ssl
-  config.to_prepare { Devise::SessionsController.force_ssl }
-  config.to_prepare { Devise::RegistrationsController.force_ssl }
-  config.to_prepare { Devise::PasswordsController.force_ssl }
+  # config.to_prepare { Devise::SessionsController.force_ssl }
+  # config.to_prepare { Devise::RegistrationsController.force_ssl }
+  # config.to_prepare { Devise::PasswordsController.force_ssl }
 
   # Set confirm email links to use https
   # config.action_mailer.default_url_options = { protocol: 'https', :host => 'tutorialacademy.com.au' }
