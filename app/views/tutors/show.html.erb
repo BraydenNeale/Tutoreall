@@ -74,8 +74,8 @@
               <h4>This tutor has a valid working with children card!</h4>
             <% end %>
             <% @tutor.organisations.each do |org| %>
-            <h4>org.name</h4>
-            <p>org.about</p>
+            <h4><%= org.name %></h4>
+            <p><%= org.about %></p>
             <% end %>
           </div>
         </div>
