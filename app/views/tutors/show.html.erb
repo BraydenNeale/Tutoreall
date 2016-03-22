@@ -37,7 +37,7 @@
                   <!-- Not sure how to handle multiple organisations... - works for just one currently -->
                   <% @tutor.organisations.each do |org| %>
                     <%#= org.name.titleize %>
-                    <%= link_to(image_tag(org.logo_url(:profile)), url_with_protocol(org.website)) %>
+                    <%= link_to(image_tag(org.logo_url(:profile), title: org.hover_text), url_with_protocol(org.website)) %>
                     <%#= link_to(image_tag(org.banner_url(:main)), url_with_protocol(org.website)) %>
                   <% end %>
                 </div>
