@@ -73,6 +73,10 @@
             <% if @tutor.has_valid_wwc_card? %>
               <h4>This tutor has a valid working with children card!</h4>
             <% end %>
+            <% @tutor.organisations.each do |org| %>
+            <h4>org.name</h4>
+            <p>org.about</p>
+            <% end %>
           </div>
         </div>
     	</div>
