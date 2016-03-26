@@ -243,8 +243,8 @@ class Tutor < ActiveRecord::Base
       return false
     end
 
-    # WWC num is 6 chars long
-    if wwc.number.length != 6
+    # WWC num is 6 chars long - can also be 7...
+    if wwc.number.length < 6
       # errors.add :base, 'Number not correct format'
       return false
     end

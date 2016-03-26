@@ -37,7 +37,7 @@
                   <!-- Not sure how to handle multiple organisations... - works for just one currently -->
                   <% @tutor.organisations.each do |org| %>
                     <%#= org.name.titleize %>
-                    <%= link_to(image_tag(org.logo_url(:profile), title: org.hover_text, alt: org.name), url_with_protocol(org.website)) %>
+                    <%= link_to(image_tag(org.logo_url(:profile), alt: org.name, title: org.name,), url_with_protocol(org.website)) %>
                     <%#= link_to(image_tag(org.banner_url(:main)), url_with_protocol(org.website)) %>
                   <% end %>
                 </div>
@@ -73,9 +73,9 @@
             <% if @tutor.has_valid_wwc_card? %>
               <h4>This tutor has a valid working with children card!</h4>
             <% end %>
-            <% @tutor.organisations.each do |org| %>
-            <h4><%= org.name.titleize %></h4>
-            <p><%= org.about %></p>
+            <%# @tutor.organisations.each do |org| %>
+            <%#= org.name.titleize %>
+            <%#= org.about %>
             <% end %>
           </div>
         </div>
