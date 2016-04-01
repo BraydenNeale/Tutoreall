@@ -243,6 +243,14 @@ class Tutor < ActiveRecord::Base
       return false
     end
 
+    if not wwc.number.present?
+      return false
+    end
+
+    if not wwc.expiry.present?
+      return false
+    end
+
     # WWC num is 6 chars long - can also be 7...
     if wwc.number.length < 6
       # errors.add :base, 'Number not correct format'
