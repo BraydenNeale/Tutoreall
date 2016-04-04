@@ -64,6 +64,8 @@ class TutorsController < ApplicationController
       @tutor.verified = true
     end
 
+    @tutor.suburb = Area.where("lower(name) like ?", "%#{params[:suburb_name].downcase}%").first.id
+
     respond_to do |format|
       if @tutor.update(tutor_params)
         format.html { redirect_to @tutor, notice: 'Profile successfully updated.' }
@@ -109,8 +111,7 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :sex, :subject_ids => [], 
-      :area_ids => [], :availability => [], :organisation_ids => [], wwc_card_attributes: [:number, :expiry], bank_account_attributes: [:bsb, :number, :name])
+    params.require(:tutor).permit(:picture, :rate, :about, :experience, :date_of_birth, :suburb, :area_id, :sex, :subject_ids => [], :availability => [], :organisation_ids => [], wwc_card_attributes: [:number, :expiry], bank_account_attributes: [:bsb, :number, :name])
   end
 
   def verify_tutor

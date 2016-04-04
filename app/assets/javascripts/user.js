@@ -59,16 +59,16 @@ function tutor_registation_validation(event)
   field = document.getElementById("tutor_lastname").value;
   validate_generic_string_field(field, 2, 35, "lastname", messages); // lastname
 
+  // ... tutor_email value is always blank.. rails bug?
   field = document.getElementById("tutor_email").value;
   validate_generic_string_field(field, 3, 254, "email", messages); // email
 
   if(field != document.getElementById("confirm_email").value)
   {
-    // console.log("field: " + field + ". confirm_email" + document.getElementById("confirm_email").value + "\n");
     messages.push("Your email addresses do not match");
   }
 
-  // I can't verify passwords match ... hidden once typed
+  // tutor_password is always blank.. rails bug?
   field = document.getElementById("tutor_password").value;
   validate_generic_string_field(field, 8, 128, "password", messages); // password
 

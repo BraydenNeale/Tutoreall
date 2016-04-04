@@ -45,6 +45,10 @@ class Search < ActiveRecord::Base
   def areas_filter(tutors)
     ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
 
+    # Determine area lattitude and longitude
+    # rank tutors based on area
+    # tutors.sortby straightline distance from tutor suburb to area
+
     if ar.present?
       return Array(tutors.includes(:areas).where('areas.id' => ar.id)) 
     end

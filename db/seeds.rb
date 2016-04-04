@@ -7,9 +7,15 @@ case Rails.env
 
 when "development"
 
+  Payment.destroy_all
   Lesson.destroy_all
   Tutor.destroy_all
   Student.destroy_all
+  Area.destroy_all
+  Subject.destroy_all
+
+  load './db/scripts/perth.rb'
+  load './db/scripts/subject.rb'
 
   # Tutors
   # destroy tutors after seed - Tutor.destroy_all(['id In (?)', Tutor.last(100).collect(&:id)])
@@ -29,10 +35,9 @@ when "development"
       about: Faker::Hipster.paragraphs(rand(0..20)).join("\n")[0..1999],
       experience: Faker::Hipster.paragraphs(rand(0..20)).join("\n")[0.1999],
       date_of_birth: Faker::Date.between(80.years.ago, 18.years.ago),
-      suburb: Area.order("RANDOM()").first.display_name,
+      suburb: Area.order("RANDOM()").first.id,
       sex: Random.rand(0..1),
       availability: (0..6).to_a.shuffle.take(Random.rand(0..6)).map(&:to_s),
-      :area_ids => Area.ids.shuffle.take(Random.rand(0..Area.count)),
       :subject_ids => Subject.ids.shuffle.take(Random.rand(0..Subject.count))
     )
   end

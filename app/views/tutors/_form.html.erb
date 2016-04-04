@@ -31,9 +31,8 @@
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="block block_1">
                 <h5>Suburb</h5>
-                  <%= f.text_field :suburb, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
+                  <%= text_field_tag :suburb_name, id: "area-search", class: "txtbox_1", placeholder: "Suburb" %>
               </div>
-
               <h5>Tutoring Details</h5>
               <div class="settings_filter">
                 <ul>
@@ -59,20 +58,6 @@
                           <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
                             <%= check_box_tag "tutor[subject_ids][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
                             <%= "#{sub.display_name}" %>
-                          <% end %>
-                        </li>
-                      <% end %>
-                    </ul>
-                  </li>
-                  <li>
-                    <a>Areas</a>
-                    <ul>
-                      <%= hidden_field_tag "tutor[area_ids][]", nil %>
-                      <% Area.order('name ASC').each do |area| %>
-                        <li>
-                          <%= label_tag dom_id(area), class: 'checkbox chkbox_label' do %>
-                            <%= check_box_tag "tutor[area_ids][]", area.id, @tutor.area_ids.include?(area.id), id: dom_id(area), class: "chkbox" %>
-                            <%= "#{area.display_name}" %>
                           <% end %>
                         </li>
                       <% end %>

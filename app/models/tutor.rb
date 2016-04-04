@@ -24,6 +24,8 @@ class Tutor < ActiveRecord::Base
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :areas
 
+
+
   has_many :associations
   has_many :organisations, -> { where(associations: {confirmed: true} )}, through: :associations, source: :organisation
   has_many :organisation_requests, -> { where(associations: {confirmed: false} )}, through: :associations, source: :organisation
@@ -80,9 +82,12 @@ class Tutor < ActiveRecord::Base
   end
 
   def display_suburb
-    return "#{self.suburb.titleize}, WA" if self.suburb.present?
-
-    return ""
+    area = Area.find(self.suburb)
+    if area.present?
+      return "#{area.display_name}, #{area.state}"
+    else
+      return ""
+    end
   end
 
   # if you want message updates to notify them in email

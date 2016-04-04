@@ -4,7 +4,7 @@
 # load './db/scripts/perth.rb'
 
 # CBD
-Area.create :name => "perth city", :code => "6000", :city => "perth", :state => "WA", :region => "cbd" 
+Area.create :name => "perth city", :code => "6000", :city => "perth", :state => "WA", :region => "cbd"
 Area.create :name => "highgate", :code => "6003", :city => "perth", :state => "WA", :region => "cbd"
 Area.create :name => "east perth", :code => "6004", :city => "perth", :state => "WA", :region => "cbd"
 # Area.create :name => "kings park", :code => "6005"

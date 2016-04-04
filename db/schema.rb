@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322120159) do
+ActiveRecord::Schema.define(version: 20160404125805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,9 @@ ActiveRecord::Schema.define(version: 20160322120159) do
     t.string   "state"
     t.string   "city"
     t.string   "region"
+    t.float    "latitude"
+    t.float    "longitude"
   end
-
-  create_table "areas_tutors", id: false, force: :cascade do |t|
-    t.integer "area_id",  null: false
-    t.integer "tutor_id", null: false
-  end
-
-  add_index "areas_tutors", ["area_id", "tutor_id"], name: "index_areas_tutors_on_area_id_and_tutor_id", using: :btree
-  add_index "areas_tutors", ["tutor_id", "area_id"], name: "index_areas_tutors_on_tutor_id_and_area_id", using: :btree
 
   create_table "associations", force: :cascade do |t|
     t.integer  "tutor_id"
@@ -225,9 +219,9 @@ ActiveRecord::Schema.define(version: 20160322120159) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean  "verified",                                       default: false
-    t.string   "suburb"
     t.integer  "sex"
     t.string   "availability",                                   default: "--- []\n"
+    t.integer  "suburb"
   end
 
   add_index "tutors", ["confirmation_token"], name: "index_tutors_on_confirmation_token", unique: true, using: :btree

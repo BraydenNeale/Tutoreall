@@ -66,8 +66,8 @@
             <p><%= @tutor.about %></p>
             <h4>Availability</h4>
             <p><%= show_availability(@tutor.availability) %></p>
-            <h4>Areas</h4>
-            <p><%= show_areas(@tutor.areas) %></p>
+            <h4>Location</h4>
+            <p><%= @tutor.display_suburb %></p>
             <h4>Subjects</h4>
             <p><%= show_subjects(@tutor.subjects) %></p>
             <% if @tutor.has_valid_wwc_card? %>
