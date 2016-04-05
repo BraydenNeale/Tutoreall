@@ -66,6 +66,7 @@ gem 'faker', '~> 1.6', '>= 1.6.1' # seed data
 
 gem 'workflow', '~> 1.2' # Scheduling state machine
 gem 'geocoder', '~> 1.3', '>= 1.3.2'
+gem 'haversine', '~> 0.3.0'
 
 # gem 'mailcatcher', '~> 0.6.1' # mail catching in dev
 # gem 'chosen-rails'

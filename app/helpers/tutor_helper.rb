@@ -33,7 +33,7 @@ module TutorHelper
 
 	def subjects_faculties
 		s = ''
-		s << "<option value=nil>Select Subject</option>"
+		s << "<option value=''>Select Subject</option>"
 		Subject.uniq.pluck(:faculty).each do |faculty|
 			s << "<option value='#{faculty}'>#{faculty}</option>"
 		end

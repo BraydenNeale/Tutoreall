@@ -6,17 +6,15 @@ class TutorsController < ApplicationController
   def index
     require 'will_paginate/array'
 
-    alltutors = Tutor.all.where(verified: true)
-    # alltutors = Tutor.all
     @found = false
 
     # Where subject is faculty in this case
     if params[:area] or params[:subject]
-      @tutors = alltutors.simple_search(params[:area], params[:subject])
+      @tutors = Tutor.simple_search(params[:area], params[:subject])
     elsif params[:search]
       @tutors = Search.find(params[:search]).tutors
     else
-      @tutors = Tutor.featured_tutors
+      @tutors = Array.new
     end
 
     if not @tutors.any?

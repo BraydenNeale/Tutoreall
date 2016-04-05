@@ -136,42 +136,14 @@ class Tutor < ActiveRecord::Base
     # Some similariy algorithm here to return the 2 closes tutors - same subjects/area...
     return self.all.where.not(id: tutor.id).where(verified: true).order("RANDOM()").limit(2)
   end
-  
-  def self.searchSubject(subject)
-    sub = Subject.where("name like ?", "%#{subject}%").first
-    includes(:subjects).where('subjects.id' => sub.id)
-  end
 
-  def self.searchArea(area)
-    ar = Area.where("name like ?", "%#{area}%").first
-
-    if ar.present?
-      includes(:areas).where('areas.id' => ar.id)
-    else
-      return Array.new
-    end
-  end
-
-  def self.search(area, subject)
-    ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first 
-    sub = Subject.where("name like ?", "%#{subject}%").first
-
-    if ar.present?
-      tutors = includes(:areas).where('areas.id' => ar.id)
-      if sub.present?
-        return tutors.includes(:subjects).where('subjects.id' => sub.id)
-      else
-        return tutors
-      end
-    elsif sub.present?
-      includes(:subjects).where('subjects.id' => sub.id)
-    else
-      return Array.new
-    end
-  end
-
-  # area still messed up - need to fix
   def self.simple_search(area, faculty)
+    tutors = Array.new
+
+    if not(area.present? or faculty.present?)
+      return tutors
+    end
+
     if(area.present?)
       ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
     end
@@ -180,23 +152,35 @@ class Tutor < ActiveRecord::Base
 
     if(subs.present?)
       tutors = self.joins(:subjects).where(subjects: { id: subs.ids }).distinct
-
-      if ar.present?
-        return tutors.includes(:areas).where('areas.id' => ar.id)
-      end
-
-      return tutors
+    else
+      tutors = Tutor.all
     end
+
+    # only want verified tutors
+    tutors = tutors.select {|t| t.verified }
 
     if(ar.present?)
-      return self.includes(:areas).where('areas.id' => ar.id)
+      tutors.sort_by! do |tut| 
+        area_sort(tut, ar)
+      end
     end
 
-    return Array.new
+    return tutors
   end
 
   def helper
     ActionController::Base.helpers
+  end
+
+  # Some bugs present
+  def self.area_sort(tutor, area)
+    require 'haversine'
+
+    distance = 10000000 # some really big number...
+    ar = Area.find(tutor.suburb)
+    distance = Haversine.distance(ar.latitude, ar.longitude, area.latitude, area.longitude) if ar.present?
+
+    return distance
   end
 
   def has_bank_account?

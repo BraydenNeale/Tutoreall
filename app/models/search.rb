@@ -14,22 +14,26 @@ class Search < ActiveRecord::Base
   def find_tutors
     return Array.new if search_is_blank?
 
-    tutors = Tutor.all.where(verified: true)
+    tutors = Array(Tutor.all.where(verified: true))
 
-    filter1 = filter2 = Array(tutors)
-
-    filter1 = areas_filter(tutors) if area.present?
-    filter2 = subjects_filter(tutors) if subjects.present?
-
-    tutors = filter1 & filter2
-
+    tutors = subjects_filter(tutors) if subjects.present?
     tutors = age_filter(tutors)
     tutors = sex_filter(tutors)
-
     tutors = availability_filter(tutors) if availability.present?
 
-    return tutors
+    if(self.area.present?)
+      ar = Area.where("lower(name) like ?", "%#{self.area.downcase}%").first
+      # tutors = area_filter(tutors, ar)
+    end
+    # presort based on ranking?
 
+    if(ar.present?)
+      tutors.sort_by! do |tut| 
+        Tutor.area_sort(tut, ar)
+      end
+    end
+
+    return tutors
   end
 
   # Age brackets - taken from tutoric
@@ -42,18 +46,8 @@ class Search < ActiveRecord::Base
     return tutors
   end
 
-  def areas_filter(tutors)
-    ar = Area.where("lower(name) like ?", "%#{area.downcase}%").first
-
-    # Determine area lattitude and longitude
-    # rank tutors based on area
-    # tutors.sortby straightline distance from tutor suburb to area
-
-    if ar.present?
-      return Array(tutors.includes(:areas).where('areas.id' => ar.id)) 
-    end
-
-    return Array.new
+  def area_filter(tutors, area)
+    # maybe only include tutors within a cetain radius...
   end
 
   def subjects_filter(tutors)

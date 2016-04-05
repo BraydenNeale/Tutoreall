@@ -69,7 +69,7 @@
               		<h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
                   <div class="front_page_search_fields">
   									<%= text_field_tag :area, params[:area], id: "area-search", class: "txtbox", placeholder: "e.g. Nedlands" %>
-  									<%= select_tag 'subject', subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
+  									<%= select_tag :subject, subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
   									<%= submit_tag "Search", :name => nil, class: "ser_btn" %>
                   </div>
 								<% end %>
@@ -97,7 +97,7 @@
 	        <%= form_tag({:controller => "tutors", :action => "index"}, :method => "get") do %>
 	          <h1><strong>Search</strong> for a <em><strong>tutor</strong></em></h1>
 	          <%= text_field_tag :area, params[:area], id: "area-search2", class: "txtbox", placeholder: "e.g. Nedlands" %>
-	          <%= select_tag 'subject', subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
+	          <%= select_tag :subject, subjects_faculties, class: "txtbox sub_txtbox", multiple: false %>
 	          <%= submit_tag "Search", :name => nil, class: "ser_btn" %>
 	        <% end %>
 	    </div>
