@@ -57,6 +57,12 @@ class TutorsController < ApplicationController
   def edit
     @tutor.build_wwc_card if @tutor.wwc_card.nil?
     @tutor.build_bank_account if @tutor.bank_account.nil?
+
+    @current_suburb = ""
+    tutor_area = Area.find_by_id(@tutor.suburb)
+    if(tutor_area.present?)
+      @current_suburb = tutor_area.display_name
+    end
   end
 
   def update
@@ -64,7 +70,10 @@ class TutorsController < ApplicationController
       @tutor.verified = true
     end
 
-    @tutor.suburb = Area.where("lower(name) like ?", "%#{params[:suburb_name].downcase}%").first.id
+    area = Area.where("lower(name) like ?", "%#{params[:suburb_name].downcase}%").first
+    if(area.present?)
+      @tutor.suburb = area.id
+    end
 
     respond_to do |format|
       if @tutor.update(tutor_params)

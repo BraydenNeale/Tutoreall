@@ -22,9 +22,6 @@ class Tutor < ActiveRecord::Base
   has_one :wwc_card, dependent: :destroy
   accepts_nested_attributes_for :wwc_card, allow_destroy: true
   has_and_belongs_to_many :subjects
-  has_and_belongs_to_many :areas
-
-
 
   has_many :associations
   has_many :organisations, -> { where(associations: {confirmed: true} )}, through: :associations, source: :organisation
@@ -82,7 +79,7 @@ class Tutor < ActiveRecord::Base
   end
 
   def display_suburb
-    area = Area.find(self.suburb)
+    area = Area.find_by_id(self.suburb)
     if area.present?
       return "#{area.display_name}, #{area.state}"
     else
