@@ -53,7 +53,7 @@
                     <a href="#">Subjects</a>
                     <ul>
                       <%= hidden_field_tag "tutor[subject_ids][]", nil %>
-                      <% Subject.all.each do |sub| %>
+                      <% Subject.order('name ASC').each do |sub| %>
                         <li>
                           <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
                             <%= check_box_tag "tutor[subject_ids][]", sub.id, @tutor.subject_ids.include?(sub.id), id: dom_id(sub), class: "chkbox" %>
