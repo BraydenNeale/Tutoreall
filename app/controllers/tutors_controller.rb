@@ -59,13 +59,15 @@ class TutorsController < ApplicationController
   end
 
   def update
+    if(params[:suburb_name].present?)
+      area = Area.where("lower(name) like ?", "%#{params[:suburb_name].downcase}%").first
+      if(area.present?)
+        @tutor.suburb = area.id
+      end
+    end
+    
     if(is_verified(@tutor))
       @tutor.verified = true
-    end
-
-    area = Area.where("lower(name) like ?", "%#{params[:suburb_name].downcase}%").first
-    if(area.present?)
-      @tutor.suburb = area.id
     end
 
     respond_to do |format|
