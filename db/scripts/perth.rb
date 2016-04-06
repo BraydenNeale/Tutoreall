@@ -6,7 +6,7 @@
 # area copy script - get lat/long info onto heroku
 # f = File.new("./db/scripts/area_copy.rb", 'w')
 # Area.all.each do |area|
-#   f << "Area.create :name => \"#{area.name}\", :code => \"#{area.code}\", :city => \"#{area.city}\", :state => \"#{area.state}\", :region => \"#{area.region}\", :latitude => #{area.latitude} :longitude => #{area.longitude}\n"
+#   f << "Area.create :name => \"#{area.name}\", :code => \"#{area.code}\", :city => \"#{area.city}\", :state => \"#{area.state}\", :region => \"#{area.region}\", :latitude => #{area.latitude}, :longitude => #{area.longitude}\n"
 # end
 
 # CBD
