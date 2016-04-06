@@ -3,7 +3,7 @@ class Area < ActiveRecord::Base
 		validates :code, presence: true, uniqueness: true
 
     geocoded_by :get_gmap_address
-    after_validation :geocode
+    # after_validation :geocode
 
 	def display_name
     return "#{self.name}".titleize

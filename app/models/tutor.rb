@@ -177,7 +177,7 @@ class Tutor < ActiveRecord::Base
     require 'haversine'
 
     distance = 10000000 # some really big number...
-    ar = Area.find(tutor.suburb)
+    ar = Area.find_by_id(tutor.suburb)
     distance = Haversine.distance(ar.latitude, ar.longitude, area.latitude, area.longitude) if ar.present?
 
     return distance

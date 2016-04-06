@@ -3,6 +3,12 @@
 # rails c 
 # load './db/scripts/perth.rb'
 
+# area copy script - get lat/long info onto heroku
+# f = File.new("./db/scripts/area_copy.rb", 'w')
+# Area.all.each do |area|
+#   f << "Area.create :name => \"#{area.name}\", :code => \"#{area.code}\", :city => \"#{area.city}\", :state => \"#{area.state}\", :region => \"#{area.region}\", :latitude => #{area.latitude} :longitude => #{area.longitude}\n"
+# end
+
 # CBD
 Area.create :name => "perth city", :code => "6000", :city => "perth", :state => "WA", :region => "cbd"
 Area.create :name => "highgate", :code => "6003", :city => "perth", :state => "WA", :region => "cbd"
