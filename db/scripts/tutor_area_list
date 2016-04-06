@@ -1,0 +1,22 @@
+TUTOR AREA REFACTOR
+
+Tutor       suburb_name          Area_id
+1           "perth city"         1
+2           ""                   nil
+3           "subiaco"            39
+4           "ballajura"          92
+5           "east fremantle"     28
+6           - no tutor 
+7           "perth"              1
+8           "shelley"            ?
+9           nil                  nil
+10          "martin"             nil
+11          "beeliar"            nil
+12          "como"               22
+13          "st james"           nil
+14          "city beach"         45
+15          "madeley"            nil
+16          nil                  nil
+17          "mount pleasant"     nil
+18          "wanneroo"           nil
+19          ""

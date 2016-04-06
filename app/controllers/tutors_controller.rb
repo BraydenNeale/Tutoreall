@@ -26,12 +26,7 @@ class TutorsController < ApplicationController
     @tutors = @tutors.paginate(:page => params[:page], :per_page => 8)
   end
 
-  def show
-    # only displayed if the profile is that of the current user
-    if(user_signed_in?)
-      @messages_count = current_user.mailbox.inbox({:read => false}).count
-    end
-    
+  def show    
     @similar = Tutor.similar_tutors(@tutor)
   end
 
@@ -133,12 +128,13 @@ class TutorsController < ApplicationController
   def is_verified(tutor)
     rate = tutor.rate.present?
     birth = tutor.date_of_birth.present?
+    area = tutor.suburb.present?
     
     # wwc = verify_wwc_card(tutor.wwc_card)
     wwc = true
 
     # account information
-    if(rate and birth and wwc)
+    if(rate and birth and area and wwc)
       return true
     end
 
