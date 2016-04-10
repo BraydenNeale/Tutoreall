@@ -78,13 +78,33 @@ class Tutor < ActiveRecord::Base
     return cost
   end
 
-  def display_suburb
+  def area
+    # default is Perth city so this should always be valid
     area = Area.find_by_id(self.suburb)
-    if area.present?
-      return "#{area.display_name}, #{area.state}"
-    else
-      return ""
+
+    if not area.present?
+      area = Area.first
     end
+
+    return area
+  end
+
+  def check_verify
+    # all required fields have been filled out, tutor has a valid wwc card and tutor has an account linked (how to check valid?)
+    rate = self.rate.present?
+    birth = self.date_of_birth.present?
+    # wwc = verify_wwc_card(self.wwc_card)
+    wwc = true
+
+    # account information
+
+    if(rate and birth and wwc)
+      self.verified = true;
+    end
+  end
+
+  def display_suburb
+    return "#{self.area.display_name}, #{self.area.state}"
   end
 
   # if you want message updates to notify them in email
@@ -172,13 +192,11 @@ class Tutor < ActiveRecord::Base
     ActionController::Base.helpers
   end
 
-  # Some bugs present
   def self.area_sort(tutor, area)
     require 'haversine'
 
-    distance = 10000000 # some really big number...
-    ar = Area.find_by_id(tutor.suburb)
-    distance = Haversine.distance(ar.latitude, ar.longitude, area.latitude, area.longitude) if ar.present?
+    distance = Haversine.distance(tutor.area.latitude, tutor.area.longitude, 
+      area.latitude, area.longitude)
 
     return distance
   end

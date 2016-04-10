@@ -50,12 +50,6 @@ class TutorsController < ApplicationController
   def edit
     @tutor.build_wwc_card if @tutor.wwc_card.nil?
     @tutor.build_bank_account if @tutor.bank_account.nil?
-
-    @current_suburb = ""
-    tutor_area = Area.find_by_id(@tutor.suburb)
-    if(tutor_area.present?)
-      @current_suburb = tutor_area.display_name
-    end
   end
 
   def update
@@ -66,9 +60,7 @@ class TutorsController < ApplicationController
       end
     end
     
-    if(is_verified(@tutor))
-      @tutor.verified = true
-    end
+    @tutor.check_verify
 
     respond_to do |format|
       if @tutor.update(tutor_params)
@@ -124,23 +116,6 @@ class TutorsController < ApplicationController
     unless current_user.id == @tutor.id
       redirect_to root, notice: "Forbidden"
     end
-  end
-
-  # all required fields have been filled out, tutor has a valid wwc card and tutor has an account linked (how to check valid?)
-  def is_verified(tutor)
-    rate = tutor.rate.present?
-    birth = tutor.date_of_birth.present?
-    area = tutor.suburb.present?
-    
-    # wwc = verify_wwc_card(tutor.wwc_card)
-    wwc = true
-
-    # account information
-    if(rate and birth and area and wwc)
-      return true
-    end
-
-    return false;
   end
 
   def get_mailbox

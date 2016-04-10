@@ -31,7 +31,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="block block_1">
                 <h5>Suburb</h5>
-                  <%= text_field_tag :suburb_name, @current_suburb, id: "area-search", class: 'txtbox_1' %>
+                  <%= text_field_tag :suburb_name, @tutor.area.display_name, id: "area-search", class: 'txtbox_1' %>
               </div>
               <h5>Tutoring Details</h5>
               <div class="settings_filter">
