@@ -99,7 +99,8 @@ class Tutor < ActiveRecord::Base
     # account information
 
     if(rate and birth and wwc)
-      self.verified = true;
+      self.verified = true
+      self.save!
     end
   end
 

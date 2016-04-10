@@ -59,11 +59,10 @@ class TutorsController < ApplicationController
         @tutor.suburb = area.id
       end
     end
-    
-    @tutor.check_verify
 
     respond_to do |format|
       if @tutor.update(tutor_params)
+        @tutor.check_verify
         format.html { redirect_to @tutor, notice: 'Profile successfully updated.' }
         format.json { render :show, status: :ok, location: @tutor }
       else
