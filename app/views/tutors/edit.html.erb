@@ -1,17 +1,13 @@
 <div class="settings_main">
   <h2>Settings</h2>
   <% if not @tutor.verified %>
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <!-- <h4>
-        You need to fill in the required fields and add a valid working with children card in order to be indexed for students to find.
-      </h4> -->
-
-      <h4>
-        Please fill out your profile information to be indexed for students to find.
-      </h4>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4>
+          Please fill out your profile information to be indexed for students to find.
+        </h4>
+      </div>
     </div>
-  </div>
   <% end %>
 
   <% if @tutor.errors.any? %>
@@ -25,16 +21,19 @@
     </div>
   <% end %>
 
-  <h3><a href="#msz_popup2" class="fancybox">Add a Bank Account</a></h3>
-
-  <% if @tutor.has_bank_account? %>
-      <h3><a href="#msz_popup" class="fancybox">Associate With an organisation</a></h3>
-      <%= render partial: 'tutors/join_organisation', locals: {tutor: @tutor} %>
-  <% end %>
-
-  <h3><%= link_to "Account Settings", edit_tutor_registration_path %></h3>
-
-  <%= render partial: 'tutors/add_bank_account', locals: {tutor: @tutor} %>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <h3><%= link_to "Account Settings", edit_tutor_registration_path %></h3>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <h3><a href="#msz_popup2" class="fancybox">Add a Bank Account</a></h3>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <h3><a href="#msz_popup" class="fancybox">Associate With an Organisation</a></h3>
+    </div>
+  </div>
 
   <%= render 'form' %>
+  <%= render partial: 'tutors/add_bank_account', locals: {tutor: @tutor} %>
+  <%= render partial: 'tutors/join_organisation', locals: {tutor: @tutor} %>
 </div>
