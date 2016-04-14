@@ -1,7 +1,7 @@
 <div id="msz_popup" class="msz_popup">
   <h2>Associate with an organisation</h2>
   <p>By associating with an organisation you get all of the benfits that they offer to their tutors. This will also rank you higher in our recommended tutors index and search pages as parents and students are more confident in such tutors.</p>
-  <p>Please note and be warned that tutoring organisations add their premium to the price of you lesson and take that premium when your lesson payment is processed</p>
+  <p>Please note that tutoring organisations add their premium to the price of you lesson and take that premium when your lesson payment is processed</p>
 
   <% if @tutor.has_bank_account? %>
     <%= form_for tutor, :url => {:action => "join_organisation", params: {id: tutor.id}} do |f| %>
@@ -20,6 +20,6 @@
       </div>
     <% end %>
   <% else %>
-    <h3 class="red-sorry">Sorry... you need to add a bank account before you can partner with an organisation</h3>
+    <h3 class="red-sorry">Sorry... You need to add a bank account before you can associate with an organisation.</h3>
   <% end %>
 </div>

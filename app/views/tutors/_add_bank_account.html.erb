@@ -2,7 +2,7 @@
 
   <h2>Payment information</h2>
   <p>In order to be able to receive your payments for lessons which your students have scheduled and paid for online, you need to add a valid bank account. Adding an account also lets you associate with a tutoring organisation if you choose to do so!</p>
- <p>Please note and be warned that Tutorial Academy adds a premium of $5 to the price of your lesson. We will only take this premium if your lesson is payed for through our online payment service</p>
+ <p>Please note that Tutorial Academy adds a premium of $5 to the price of your lesson. We will only take this premium if your lesson is payed for through our online payment service</p>
   <%= form_for tutor, :url => {:action => "add_bank_account", params: {id: tutor.id}} do |f| %>
     <%= f.fields_for :bank_account do |ba| %>
       <h4>BSB</h4>
