@@ -2,21 +2,21 @@
   <div class="signup_popup_inn">
     <%= form_for(resource(0), :as => resource_name(0), :html => {:id => 'register_form', }, 
       :url => tutor_registration_path, :remote => :true, :format => :json, ) do |f| %>
-      <h1>TUTOR SIGN UP</h1>
+      <h2>Tutor sign up</h2>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-             <%= f.text_field :firstname, class: "txtbox", placeholder: "First name", required: true %>
+             <%= f.text_field :firstname, class: "form-control input-lg input-lg-custom", placeholder: "First name", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <%= f.text_field :lastname, class: "txtbox", placeholder: "Surname", required: true %>
+            <%= f.text_field :lastname, class: "form-control input-lg input-lg-custom", placeholder: "Surname", required: true %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-             <%= f.email_field :email, class: "txtbox", placeholder: "Email", required: true %>
+             <%= f.email_field :email, class: "form-control input-lg input-lg-custom", placeholder: "Email", required: true %>
         </div>
         <div class="col-sm-6 col-xs-12">
-            <input type="text" class="txtbox" id="confirm_email" placeholder="Confirm Email">
+            <input type="text" class="form-control input-lg input-lg-custom" id="confirm_email" placeholder="Confirm Email">
         </div>
       </div>
       <div class="row">
@@ -26,10 +26,10 @@
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
             <% end %>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "txtbox", required: true %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control input-lg input-lg-custom", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">    
-             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "txtbox", required: true %>
+             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control input-lg input-lg-custom", required: true %>
           </div>
       </div>
       <!-- <h2>or sign up using</h2> -->
