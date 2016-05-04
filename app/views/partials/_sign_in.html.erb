@@ -1,46 +1,63 @@
 <!-- _sign_in.html.erb -->
-
 <div class="signin_popup" id="signin_popup">
   <div class="signin_popup_inn">
-      <h1>SIGN IN</h1>
+      <h2 class="main-color">Sign in</h2>
+      <hr>
       <div class="clearfix">
-        <h2>TUTOR</h2>
-        <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_tutor'}, :url => tutor_session_path, :remote => :true, :format => :json) do |f| %>
-
-          <%= f.email_field :email, :placeholder => "email", class: "txtbox", required: true %>
-          <%= f.password_field :password, :placeholder => "password", class: "txtbox", required: true %>
-
-          <% if false %>
-            <% if devise_mapping(0).rememberable? -%>
-              <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-            <% end -%>
+        <h2>Tutor</h2>
+        <div class="row">
+          <%= form_for(resource(0), as: resource_name(0), :html => {:id => 'login_tutor'}, :url => tutor_session_path, 
+            :remote => :true, :format => :json) do |f| %>
+            <div class="col-xl-4 col-lg-4">
+              <%= f.email_field :email, :placeholder => "email", 
+                class: "form-control input-lg input-lg-custom", required: true %>
+            </div>
+            <div class="col-xl-4 col-lg-4">
+              <%= f.password_field :password, :placeholder => "password", 
+              class: "form-control input-lg input-lg-custom", required: true %>
+            </div>
+            <div class="col-xl-2 checkbox col-lg-2">
+              <% if devise_mapping(0).rememberable? %>
+                <label for=""><%= f.check_box :remember_me, class: "chkbox" %>Remember me</label>
+              <% end -%>
+            </div>
+            <div class="col-xl-2 col-lg-2">
+              <%= f.submit "LOG IN", class: "login_btn" %>
+            </div>
           <% end %>
-
-          <%= f.submit "LOG IN", class: "login_btn" %>
-        <% end %>
-        <br><br>
+        </div>
       </div>
+      <hr>
       <div class="clearfix">
-      <h2>STUDENT</h2>
-        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_student'}, :url => student_session_path, :remote => :true, :format => :json) do |f| %>
-
-          <%= f.email_field :email, :placeholder => "email", class: "txtbox", required: true %>
-          <%= f.password_field :password, :placeholder => "password", class: "txtbox", required: true %>
-
-          <% if false %>
-            <% if devise_mapping(1).rememberable? -%>
-              <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <h2>Student</h2>
+      <div class="row">
+        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_tutor'}, :url => tutor_session_path, 
+          :remote => :true, :format => :json) do |f| %>
+          <div class="col-xl-4 col-lg-4">
+            <%= f.email_field :email, :placeholder => "email", 
+              class: "form-control input-lg input-lg-custom", required: true %>
+          </div>
+          <div class="col-xl-4 col-lg-4">
+            <%= f.password_field :password, :placeholder => "password", 
+            class: "form-control input-lg input-lg-custom", required: true %>
+          </div>
+          <div class="col-xl-2 checkbox col-lg-2">
+            <% if devise_mapping(1).rememberable? %>
+              <label for=""><%= f.check_box :remember_me, class: "chkbox" %>Remember me</label>
             <% end -%>
-          <% end %>
-
-          <%= f.submit "LOG IN", class: "login_btn" %>
+          </div>
+          <div class="col-xl-2 col-lg-2">
+            <%= f.submit "LOG IN", class: "login_btn" %>
+          </div>
         <% end %>
+        </div>
       </div>
+      <hr>
 
-      <div class="social">
-          <!-- <a href="#"><img src="../../assets/layout/facebook.png" alt=""></a>
-          <a href="#"><img src="../../assets/layout/google_plus.png" alt=""></a> -->
-      </div>
+<!--       <div class="social">
+          <a href="#"><img src="../../assets/layout/facebook.png" alt=""></a>
+          <a href="#"><img src="../../assets/layout/google_plus.png" alt=""></a>
+      </div> -->
       <div class="center_txt">
           <h2>Are you a student?<a href="#signup_popup_1" class="fancybox signup_btn">SIGN UP</a></h2>
           <h2>Are you a tutor?<a href="#signup_popup_2" class="fancybox signup_btn">SIGN UP</a></h2>

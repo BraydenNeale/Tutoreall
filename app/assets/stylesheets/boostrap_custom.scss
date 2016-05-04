@@ -1,0 +1,12 @@
+// CUSTOM UPDATES TO BOOTSTRAP STYLES
+
+$color-main: #428bca;
+
+.main-color{
+  color: $color-main !important;
+}
+
+.input-lg-custom{
+ height:65px !important;
+ font-size:24px !important;
+}
