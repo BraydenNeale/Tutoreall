@@ -1,19 +1,27 @@
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <div class="block block_1">
-        <%= devise_error_messages! %>
-        <h4>Forgot your password?</h4>
+  <div class="col-lg-12">
+    <%= devise_error_messages! %>
+    <h4>Forgot your password?</h4>
+  </div>
+</div>
+
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), 
+    html: { method: :post, role: "form" }) do |f| %>
+    <div class="form-group">
+      <div class="col-lg-9">
+        <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: "Email" %>
       </div>
-      <div class="block">
-        <%= f.email_field :email, autofocus: true, class: "txtbox_1", placeholder: "Email" %>
+      <div class="col-lg-3">
+        <%= f.submit "Send me reset password instructions", class: "btn btn-info btn-lg" %>
       </div>
-      <div class="block">
-        <%= f.submit "Send me reset password instructions" %>
-      </div>
-      <div class="block">
-        <%= render "students/shared/links" %>
-      </div>
-    <% end %>
+    </div>
+  <% end %>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-lg-12">
+     <%= render "students/shared/links" %>
   </div>
 </div>
