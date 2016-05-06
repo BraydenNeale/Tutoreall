@@ -9,6 +9,16 @@ class Search < ActiveRecord::Base
     @tutors ||= find_tutors
   end
 
+  # Rails enums fucking suck...
+  def self.get_age_string(age_num)
+    display_text = "Don't Mind"
+    display_text = "Less than 25" if age_num == 1
+    display_text = "From 26 to 40" if age_num == 2
+    display_text = "Above 40" if age_num == 3
+
+    return display_text
+  end
+
   private
 
   def find_tutors

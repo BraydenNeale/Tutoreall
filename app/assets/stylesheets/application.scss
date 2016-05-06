@@ -272,16 +272,16 @@ body {
   text-indent:10%;
 }
 
-#search_totur .sub_txtbox {
-  text-indent:10%;
-}
+// #search_totur .sub_txtbox {
+//   text-indent:10%;
+// }
 
 
-/*Hidden age overflow*/
+// /*Hidden age overflow*/
 
-#content .search_main .ser_leftbar .filter_box > ul > li.active > ul {
-  overflow:visible !important;
-}
+// #content .search_main .ser_leftbar .filter_box > ul > li.active > ul {
+//   overflow:visible !important;
+// }
 
 
 /*Misaligned sub*/
@@ -483,4 +483,9 @@ a:hover {
 
 .red-sorry{
   color:red;
+}
+
+.advanced-search-trigger{
+  width: 100%;
+  margin-bottom: 20px;
 }

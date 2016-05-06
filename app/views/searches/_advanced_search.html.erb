@@ -1,20 +1,22 @@
 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
   <div class="ser_leftbar">
-    <%= form_for search do |f| %>
+    <button class="btn btn-info btn-lg advanced-search-trigger" id="show-search-form" onclick="hidden_toggle()">
+      Advanced Search <span class="caret"></span>
+    </button>
+    <%= form_for(search, html: {class: "custom-hidden", id: "advanced-search-form"}) do |f| %>
+
       <div class="clearfix leftbar_serchbox">
         <%= f.text_field :area, id: "area-search", placeholder: "Enter your suburb", class: "txtbox_2" %>
       </div>
-
       <div class="clearfix search_button">
-        <%= f.submit "SEARCH", class: "btn_1" %>
+        <%= f.submit "Search", class: "btn_1" %>
       </div>
-      
       <div class="filter_box">
         <ul>
           <% Subject.uniq.pluck(:faculty).each_with_index do |faculty, idx| %>
             <li>
             <!-- <li class="active music">  Has the blue highlight -->
-              <a href="#"><%= faculty.to_s %><span class="val_txt"><%="(#{Subject.all.where(faculty: faculty).count})"%></span></a>
+              <a href="#"><%= faculty.to_s.titleize %><span class="val_txt"><%="(#{Subject.all.where(faculty: faculty).count})"%></span></a>
               <ul>
                 <% Subject.all.where(faculty: faculty).each do |sub| %>
                   <li>
@@ -22,14 +24,13 @@
                       <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
                       <%= "#{sub.display_name}" %>
                     <% end %>
-
                   </li>
                 <% end %>
               </ul>
             </li>
           <% end %>
           <li>
-            <a href="#">AVAILABILITY</a>
+            <a href="#">Availability</a>
               <ul>
                 <% Date::DAYNAMES.each_with_index do |wday, i| %>
                   <li>
@@ -40,23 +41,27 @@
               </ul>
           </li>
           <li class="active">
-            <a href="#">AGE</a>
+            <a href="#">Age</a>
               <ul>
-                <li>
-                  <div class="sel_box">
-                    <%= f.select :age, Search.age_brackets, {}, class: "selbox" %>
-                  </div>
-                </li>
+                <% Search.age_brackets.each_with_index do |age_range, i| %>
+                  <li class="radio-inline"> 
+                    <%#= f.radio_button :age, age_range %>
+                    <%#= f.label age_range.to_sym %>
+                    <%= f.radio_button :age, i, id: "age#{i}" %>
+                    <%= label_tag "age#{i}", Search.get_age_string(i) %>
+                  </li>
+                <% end %>
               </ul>
           </li>
           <li class="active">
-            <a href="#">SEX</a>
+            <a href="#">Gender</a>
             <ul>
-              <li>
-                <div class="sel_box">
-                  <%= f.select :sex, Search.sexes.keys, {}, class: "selbox" %>
-                </div>
-              </li>
+              <% Search.sexes.keys.each do |sex_type| %>
+                <li class="radio-inline">
+                  <%= f.radio_button :sex, sex_type %>
+                  <%= f.label sex_type.to_sym %>
+                </li>
+              <% end %>
             </ul>
           </li>
         </ul>
