@@ -20,7 +20,7 @@
               <ul>
                 <% Subject.all.where(faculty: faculty).each do |sub| %>
                   <li>
-                    <%= label_tag dom_id(sub), class: 'checkbox chkbox_label' do %>
+                    <%= label_tag dom_id(sub), class: 'checkbox chkbox_label custom-hover' do %>
                       <%= check_box_tag "search[subjects][]", sub.id, false, id: dom_id(sub), class: "chkbox" %>
                       <%= "#{sub.display_name}" %>
                     <% end %>
@@ -35,7 +35,7 @@
                 <% Date::DAYNAMES.each_with_index do |wday, i| %>
                   <li>
                     <%= check_box_tag "search[availability][]",i, false, id: "day#{i}", class: "chkbox" %>
-                    <%= label_tag "day#{i}", wday.to_s %>
+                    <%= label_tag "day#{i}", wday.to_s, class: "custom-hover" %>
                   </li>
                 <% end %>
               </ul>
@@ -48,7 +48,7 @@
                     <%#= f.radio_button :age, age_range %>
                     <%#= f.label age_range.to_sym %>
                     <%= f.radio_button :age, i, id: "age#{i}" %>
-                    <%= label_tag "age#{i}", Search.get_age_string(i) %>
+                    <%= label_tag "age#{i}", Search.get_age_string(i), class: "custom-hover" %>
                   </li>
                 <% end %>
               </ul>
@@ -56,10 +56,10 @@
           <li class="active">
             <a href="#">Gender</a>
             <ul>
-              <% Search.sexes.keys.each do |sex_type| %>
+              <% Search.sexes.keys.each_with_index do |sex_type, i| %>
                 <li class="radio-inline">
-                  <%= f.radio_button :sex, sex_type %>
-                  <%= f.label sex_type.to_sym %>
+                  <%= f.radio_button :sex, sex_type, id: "sex#{i}"%>
+                  <%= label_tag "sex#{i}", sex_type.to_sym, class: "custom-hover" %>
                 </li>
               <% end %>
             </ul>

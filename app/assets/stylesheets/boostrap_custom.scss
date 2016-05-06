@@ -18,3 +18,9 @@ $color-main: #428bca;
 .custom-show{
   // Nothing 
 }
+
+.custom-hover{
+  &:hover{
+    cursor: pointer;
+  }
+}
