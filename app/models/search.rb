@@ -48,6 +48,12 @@ class Search < ActiveRecord::Base
 
   # Age brackets - taken from tutoric
   def age_filter(tutors)
+    # Filter out all tutors that haven't set ages... (killing staging server)
+    # Other environments need tutors to have valid ages for them to be verified
+    if(ENV['HEROKU_APP_ENVIRONMENT'] == 'STAGING')
+      tutors = tutors.select {|t| t.date_of_birth.present? }
+    end
+
     tutors = tutors.select {|t| t.get_age < 25 } if age == 1 # < 25
     tutors = tutors.select {|t| t.get_age >= 25 and t.get_age <= 40} if age == 2
     tutors = tutors.select {|t| t.get_age > 40} if age == 3
