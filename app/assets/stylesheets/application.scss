@@ -208,18 +208,22 @@ body {
 }
 
 .search-about{
-  max-height: 160px;
-  overflow: hidden; 
+  // max-height: 160px;
+  // overflow: hidden;
   // Only works for single line :(
   // text-overflow: ellipsis;
   // white-space: nowrap;
 }
 
+.tutor-name{
+  overflow: hidden;
+  text-overflow: ellipsis
+  max-height: 50px;
+}
+
 .msz_box{
   min-height: 215px;
 }
-
-
 
 #about-page-title {
   text-align:center;
@@ -235,9 +239,7 @@ body {
   font-size:18px;
   line-height:170%;
   text-align:left;
-  
 }
-
 
 #content > .container {
   display:block;

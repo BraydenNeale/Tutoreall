@@ -14,7 +14,7 @@
             <div class="clearfix">
               <div class="img"><%= link_to(image_tag(tutor.picture_url(:search)), tutor) %></div> 
               <div class="details">
-                <h3><%= tutor.display_name %></h3>
+                <h3 class="tutor-name"><%= tutor.display_name %></h3>
                 <p><img src="../../assets/layout/map_marker_2.png" alt=""><%= tutor.display_suburb %></p>
                 <!-- <a href="#" class="cont_btn">CONTACT</a> -->
                 <span class="reviews"><%= link_to "View", tutor, class: "cont_btn" %></span>
