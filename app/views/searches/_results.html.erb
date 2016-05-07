@@ -15,12 +15,10 @@
               <div class="img"><%= link_to(image_tag(tutor.picture_url(:search)), tutor) %></div> 
               <div class="details">
                 <h3 class="tutor-name"><%= tutor.display_name %></h3>
-                <p><img src="../../assets/layout/map_marker_2.png" alt=""><%= tutor.display_suburb %></p>
+                <p class="tutor-area"><img src="../../assets/layout/map_marker_2.png" alt=""><%= tutor.display_suburb %></p>
                 <!-- <a href="#" class="cont_btn">CONTACT</a> -->
                 <span class="reviews"><%= link_to "View", tutor, class: "cont_btn" %></span>
-                <div class="tags">
-                  <a href="">#<%= tutor.hash_tag_list.first %></a>
-                </div>
+                <!-- <div class="tags"><a href="">#<%#= tutor.hash_tag_list.first %></a></div> -->
               </div>
             </div>
             <p class="search-about"><%= tutor.about %><p>
