@@ -1,6 +1,7 @@
 <div class="signup_popup" id="signup_popup_1">
   <div class="signup_popup_inn">
-    <%= form_for(resource(1), :as => resource_name(1), :html => {:id => 'register_form'}, :url => student_registration_path, :remote => :true, :format => :json) do |f| %>
+    <%= form_for(resource(1), :as => resource_name(1), :html => {:id => 'register_form'}, 
+      :url => student_registration_path, :remote => :true, :format => :json) do |f| %>
       <h2>Student / Parent sign up</h2>
       <div class="row">
         <div class="col-sm-6 col-xs-12">

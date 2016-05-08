@@ -1,66 +1,105 @@
-<div class="row lesson_show">
+<div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<p class="grey-text">To view all of your lessons, go to your <%= link_to "Dashboard", is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user) %> <br>
+			<span class=".black-text"><%= lesson_status_message %></span>
+		</p>
+	</div>
+</div>
 
-		<p class="grey_text">To view all of your lessons, go to your <%= link_to "Dashboard", is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user) %></p>
+<div class="row">
+	<div class="col-lg-3">
+		<h4 class="lesson-heading">Student</h4>
+		<p><%= @lesson.student.display_name %></p>
+	</div>
 
-		<%= lesson_status_message %>
+	<div class="col-lg-3">
+		<h4 class="lesson-heading">Tutor</h4>
+		<p><%= @lesson.tutor.display_name %></p>
+	</div>
 
+	<div class="col-lg-3">
+		<h4 class="lesson-heading">Date/Time</h4>
+		<p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
+	</div>
+
+	<div class="col-lg-3">
+		<h4 class="lesson-heading">Cost</h4>
+		<p><%= @lesson.get_cost %></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-3">
+		<h4 class="lesson-heading">Subject</h4>
+		<p><%= @lesson.subject %></p>
+	</div>
+	<div class="col-lg-6">
+		<h4 class="lesson-heading">Location</h4>
+		<p><%= @lesson.location %></p>
+	</div>
+	<div class="col-lg-3">
+		<h4 class="lesson-heading">Duration</h4>
+		<p><%= pluralize(@lesson.duration, 'minute') %> </p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+		<h4 class="lesson-heading">Description</h4>
+		<p><%= @lesson.description %></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-4">
+		<!-- Approve -->
 		<%if my_approval %>
 			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
 				<%= hidden_field_tag(:id, @lesson.id) %>
 				<div class="actions">
-			    <%= submit_tag 'Approve', class: "btn btn-success lesson_approve" %>
+			    <%= submit_tag 'Approve Lesson', class: "btn btn-lg btn-success" %>
 			  </div>
 		  <% end %>
 		<% end %>
+	</div>
 
-		<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
-			<%= render 'transactions/book_lesson', lesson: @lesson %>
-			<br>
-		<% end %>
-
-		<h4>Student</h4>
-		<p><%= @lesson.student.display_name %></p>
-		<h4>Tutor</h4>
-		<p><%= @lesson.tutor.display_name %></p>
-		<h4>Date/Time</h4>
-		<p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
-		<h4>Subject</h4>
-		<p><%= @lesson.subject %></p>
-		<h4>Location</h4>
-		<p><%= @lesson.location %></p>
-		<h4>Duration</h4>
-		<p><%= pluralize(@lesson.duration, 'minute') %> </p>
-		<h4>Cost</h4>
-		<p><%= @lesson.get_cost %></p>
-		<h4>Description</h4>
-		<p><%= @lesson.description %></p>
-
+	<!-- Edit -->
+	<div class="col-lg-4">
 		<% if @lesson.current_state < :paid %>
 			<%= render partial: 'lessons/edit', locals: {tutor: @tutor} %>
-			<a href="#msz_popup" class="fancybox btn btn-primary">Edit this lesson</a>
+			<a href="#msz_popup" class="fancybox btn btn-lg btn-primary">Edit Lesson</a>
 		<% elsif @lesson.current_state < :completed %>
 			<%#= render partial: 'lessons/reschedule', local: {tutor: @tutor } %>
 			<!-- <a href="msz_popup2" class="fancybox btn btn-primary">Reschedule this lesson</a> -->
 		<% end %>
+	</div>
 
+	<!-- Cancel -->
+	<div class="col-lg-4">
 		<% if @lesson.current_state < :completed %>
-			<br><br>	
-			<h4>Cancel This Lesson</h4>
-			<div class="clearfix">
 			  <%= form_tag cancel_lesson_path(@lesson), data: {confirm: "Are you sure?"}, method: :put do %>
 			    <%= hidden_field_tag(:id, @lesson.id) %>
-			    <div class="actions">
-			      <%= submit_tag 'Cancel Lesson', class: "lesson-cancel-real btn btn-danger" %>
-			    </div>
+			      <%= submit_tag 'Cancel Lesson', class: "btn btn-danger btn-lg" %>
 			  <% end %>
-			</div>
-
 		<% end %>
+	</div>
+</div>
 
+<!-- Book -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="col-lg-4">
+			<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
+				<%= render 'transactions/book_lesson', lesson: @lesson %>
+			<% end %>
+		</div>
+	</div>
+</div>
 
-		<%= link_to "Back to Dashboard", is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user), class:'btn btn-default space_above' %>
-
+<div class="row">
+	<div class="col-lg-12">
+		<%= link_to "Back to Dashboard", is_tutor ? dashboard_tutor_path(current_user) : dashboard_student_path(current_user), 
+			class:'btn btn-default space_above' %>
 	</div>
 </div>
 

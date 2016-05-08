@@ -139,6 +139,8 @@ class Tutor < ActiveRecord::Base
   def is_get_ahead_tutor?
     get_ahead_tutoring = Organisation.all.where(name: "Get Ahead Tutoring").first
 
+    return false if not get_ahead_tutoring.present?
+
     self.organisations.each do |org|
       if org.id == get_ahead_tutoring.id
         return true

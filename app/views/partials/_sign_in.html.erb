@@ -31,7 +31,7 @@
       <div class="clearfix">
       <h2>Student</h2>
       <div class="row">
-        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_tutor'}, :url => tutor_session_path, 
+        <%= form_for(resource(1), as: resource_name(1), :html => {:id => 'login_tutor'}, :url => student_session_path, 
           :remote => :true, :format => :json) do |f| %>
           <div class="col-xl-4 col-lg-4">
             <%= f.email_field :email, :placeholder => "email", 

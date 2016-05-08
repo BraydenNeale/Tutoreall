@@ -99,10 +99,9 @@
                     <!-- <span class="reviews">21 Reviews</span> -->
                     <span class="reviews"><%= link_to "View", sim, class: "viewlink" %></span>
                     <div class="tags">
-                      .   <!-- . is so that all displays are the same size until I work out how to manage these # -->
-                      <% sim.hash_tag_list.each do |tag| %>
-                        <a href="">#<%= tag %></a>
-                      <% end %>
+                      <%# sim.hash_tag_list.each do |tag| %>
+                        <!-- <a href="">#<%#= tag %></a> -->
+                      <%# end %>
                     </div>
                   </div>
               </div>
