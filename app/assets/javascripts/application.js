@@ -51,8 +51,6 @@ $(document).ready(function() {
   $('a.fancybox').fancybox({
     padding:0
   });
-
-
   
   $("#content .search_main .ser_leftbar .filter_box > ul > li > a").click(function (e) {
       e.preventDefault();
@@ -66,45 +64,14 @@ $(document).ready(function() {
     });
 
    $(".settings_filter > ul > li > a").click(function (e) {
-      e.preventDefault();
-      $(this).parent().find('ul').slideToggle(300);
-      if ($(this).parent().hasClass('active') ) {
-        $(this).parent().removeClass('active')
-      } else { 
-        $(this).parent().addClass('active');
-      }
-    });
-
-   // $(".lesson-cancel-fake").click(function(e) {
-   //    swal({   
-   //      title: "Are you sure?",   
-   //      text: "You won't be able to do undo this action",   
-   //      type: "warning",
-   //      showCancelButton: true,   
-   //      confirmButtonColor: "#DD6B55",   
-   //      confirmButtonText: "Yes, cancel my lesson!",   
-   //      closeOnConfirm: false 
-   //    }, function(){   
-   //      swal("Done!", "Your lesson has been cancelled.", "success"); });
-   //      $('.lesson-cancel-real').click()
-   // });
-
+    e.preventDefault();
+    $(this).parent().find('ul').slideToggle(300);
+    if ($(this).parent().hasClass('active') ) {
+      $(this).parent().removeClass('active')
+    } else { 
+      $(this).parent().addClass('active');
+    }
+  });
 });
 
-//   var x = document.getElementById("register_form").elements["contact_detail[phone_number]"];
-//   if (x == null || x == "") {
-//       alert()
-//       valid = false;
-//   }
-//   else if
-//   {
-
-//   }
-
-//   return true;
-// });
-
-// $('#show-search-form').click(function() {
-//   alert('clicked');
-// });
 

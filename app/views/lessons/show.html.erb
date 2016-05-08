@@ -7,39 +7,39 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 		<h4 class="lesson-heading">Student</h4>
 		<p><%= @lesson.student.display_name %></p>
 	</div>
 
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 		<h4 class="lesson-heading">Tutor</h4>
 		<p><%= @lesson.tutor.display_name %></p>
 	</div>
 
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" >
 		<h4 class="lesson-heading">Date/Time</h4>
 		<p><%= local_time(@lesson.date.strftime('%d/%m/%Y %H:%M')) %></p>
 	</div>
 
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 		<h4 class="lesson-heading">Cost</h4>
 		<p><%= @lesson.get_cost %></p>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 		<h4 class="lesson-heading">Subject</h4>
 		<p><%= @lesson.subject %></p>
 	</div>
-	<div class="col-lg-6">
-		<h4 class="lesson-heading">Location</h4>
-		<p><%= @lesson.location %></p>
-	</div>
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 		<h4 class="lesson-heading">Duration</h4>
 		<p><%= pluralize(@lesson.duration, 'minute') %> </p>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<h4 class="lesson-heading">Location</h4>
+		<p><%= @lesson.location %></p>
 	</div>
 </div>
 
@@ -51,8 +51,8 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-4">
-		<!-- Approve -->
+	<!-- Approve -->
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 		<%if my_approval %>
 			<%= form_tag approve_lesson_path(@lesson), method: :put do %>
 				<%= hidden_field_tag(:id, @lesson.id) %>
@@ -64,10 +64,11 @@
 	</div>
 
 	<!-- Edit -->
-	<div class="col-lg-4">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 		<% if @lesson.current_state < :paid %>
-			<%= render partial: 'lessons/edit', locals: {tutor: @tutor} %>
 			<a href="#msz_popup" class="fancybox btn btn-lg btn-primary">Edit Lesson</a>
+
+			<!-- <button class="btn btn-lg btn-info">Large Button</button> -->
 		<% elsif @lesson.current_state < :completed %>
 			<%#= render partial: 'lessons/reschedule', local: {tutor: @tutor } %>
 			<!-- <a href="msz_popup2" class="fancybox btn btn-primary">Reschedule this lesson</a> -->
@@ -75,7 +76,7 @@
 	</div>
 
 	<!-- Cancel -->
-	<div class="col-lg-4">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 		<% if @lesson.current_state < :completed %>
 			  <%= form_tag cancel_lesson_path(@lesson), data: {confirm: "Are you sure?"}, method: :put do %>
 			    <%= hidden_field_tag(:id, @lesson.id) %>
@@ -88,11 +89,9 @@
 <!-- Book -->
 <div class="row">
 	<div class="col-lg-12">
-		<div class="col-lg-4">
-			<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
-				<%= render 'transactions/book_lesson', lesson: @lesson %>
-			<% end %>
-		</div>
+		<% if is_student and @lesson.approved? and @lesson.tutor.has_bank_account? %>
+			<%= render 'transactions/book_lesson', lesson: @lesson %>
+		<% end %>
 	</div>
 </div>
 
@@ -103,3 +102,4 @@
 	</div>
 </div>
 
+<%= render partial: 'lessons/edit', locals: {tutor: @tutor} %>
