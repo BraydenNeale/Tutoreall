@@ -10,11 +10,11 @@
             :remote => :true, :format => :json) do |f| %>
             <div class="col-xl-4 col-lg-4">
               <%= f.email_field :email, :placeholder => "email", 
-                class: "form-control input-lg input-lg-custom", required: true %>
+                class: "form-control input-lg input-xl-custom", required: true %>
             </div>
             <div class="col-xl-4 col-lg-4">
               <%= f.password_field :password, :placeholder => "password", 
-              class: "form-control input-lg input-lg-custom", required: true %>
+              class: "form-control input-lg input-xl-custom", required: true %>
             </div>
             <div class="col-xl-2 checkbox col-lg-2">
               <% if devise_mapping(0).rememberable? %>
@@ -35,11 +35,11 @@
           :remote => :true, :format => :json) do |f| %>
           <div class="col-xl-4 col-lg-4">
             <%= f.email_field :email, :placeholder => "email", 
-              class: "form-control input-lg input-lg-custom", required: true %>
+              class: "form-control input-lg input-xl-custom", required: true %>
           </div>
           <div class="col-xl-4 col-lg-4">
             <%= f.password_field :password, :placeholder => "password", 
-            class: "form-control input-lg input-lg-custom", required: true %>
+            class: "form-control input-lg input-xl-custom", required: true %>
           </div>
           <div class="col-xl-2 checkbox col-lg-2">
             <% if devise_mapping(1).rememberable? %>

@@ -6,7 +6,17 @@ $color-main: #428bca;
   color: $color-main !important;
 }
 
-.input-lg-custom{
+.inpout-md-custom{
+  height: 20px !important;
+  font-size: 10px !important;
+}
+
+.inpout-lg-custom{
+  height: 55px !important;
+  font-size: 20px !important;
+}
+
+.input-xl-custom{
  height:65px !important;
  font-size:24px !important;
 }

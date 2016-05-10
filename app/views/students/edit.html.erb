@@ -2,12 +2,12 @@
   <h3><%= link_to "Account Settings", edit_student_registration_path %></h3>
 </div>
 
-<div class="form-container">  
+<div class="form-container">
   <h2 class="mbs">Add payment details</h2>
   <p>You can add a card or paypal account in order to pay for lessons over the platform: <%= link_to "Why should I do this?", home_path %></p>
   <%= form_for(current_user, url: braintree_create_student_path) do |f| %>
     <p>Please enter your payment details:</p>
     <div id="dropin"></div>
     <%=submit_tag "Save payment details", class: "btn btn-primary" %>
-  <%end%>
+  <% end %>
 </div>

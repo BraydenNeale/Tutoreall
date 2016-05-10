@@ -5,18 +5,18 @@
       <h2>Tutor sign up</h2>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-             <%= f.text_field :firstname, class: "form-control input-lg input-lg-custom", placeholder: "First name", required: true %>
+             <%= f.text_field :firstname, class: "form-control input-lg input-xl-custom", placeholder: "First name", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <%= f.text_field :lastname, class: "form-control input-lg input-lg-custom", placeholder: "Surname", required: true %>
+            <%= f.text_field :lastname, class: "form-control input-lg input-xl-custom", placeholder: "Surname", required: true %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6 col-xs-12">
-             <%= f.email_field :email, class: "form-control input-lg input-lg-custom", placeholder: "Email", required: true %>
+             <%= f.email_field :email, class: "form-control input-lg input-xl-custom", placeholder: "Email", required: true %>
         </div>
         <div class="col-sm-6 col-xs-12">
-            <input type="text" class="form-control input-lg input-lg-custom" id="confirm_email" placeholder="Confirm Email">
+            <input type="text" class="form-control input-lg input-xl-custom" id="confirm_email" placeholder="Confirm Email">
         </div>
       </div>
       <div class="row">
@@ -26,10 +26,10 @@
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
             <% end %>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control input-lg input-lg-custom", required: true %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control input-lg input-xl-custom", required: true %>
           </div>
           <div class="col-sm-6 col-xs-12">    
-             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control input-lg input-lg-custom", required: true %>
+             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control input-lg input-xl-custom", required: true %>
           </div>
       </div>
       <!-- <h2>or sign up using</h2> -->
