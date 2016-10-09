@@ -78,8 +78,9 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+# Production db through heroku
 production:
   <<: *default
   database: tutoreall_production
-  username: Brayden
   # password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
