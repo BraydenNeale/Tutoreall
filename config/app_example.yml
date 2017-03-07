@@ -1,0 +1,20 @@
+#figaro heroku:set -e production
+#figaro heroku:set -e production -a appname
+
+# Copy (and complete) this configuration info into /config/application.yml
+#     keep it secure and out of source control
+
+DEVISE_SECRECT_KEY: 'devise_key'
+EMAIL_FROM: 'mail@test.com'
+AWS_ACCESS_KEY_ID: 'aws_key'
+AWS_SECRET_ACCESS_KEY: 'secret'
+POSTGRES_HOST: 'db'
+POSTGRES_USER: 'tauser'
+POSTGRES_PASSWORD: 'password'
+BRAINTREE_MERCHANT_ID: 'braintreeID'
+BRAINTREE_PUBLIC_KEY: 'publickey'
+BRAINTREE_PRIVATE_KEY: 'privatekey'
+S3_BUCKET_NAME:  's3_bucket'
+FOG_DIRECTORY: 'fog_directory'
+STAGING_EMAIL_ADDRESS: 'mail@test.com'
+HEROKU_APP_ENVIRONMENT: 'STAGING'
