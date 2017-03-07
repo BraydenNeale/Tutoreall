@@ -1,42 +1,62 @@
 == README
 
 Tutorial Academy
-	A booking, scheduling and payment service for connecting students and tutors in Perth.
+	A booking, scheduling and payment service for connecting students and tutors.
 	You can view the site at:
 		tutorial-academy.herokuapp.com
 		(and if the URLs are still registered)
 		tutorial.academy
 		tutorialacademy.com.au
 
-	payments through braintree, hosting through heroku, images uploaded to amazon s3 (bucket discontinued)
+		*TODO: Redeploy with seeded example data... production project has been discontinued
 
-	Some bugs
-		- have run end to end tests to confirm braintree payment integration working.
+	- Payments and payment info are managed securely through braintree
+	- Hosting currently managed through heroku
+	- Images uploaded to amazon s3 (buckets discontinued) through carrierwave
+	- User signup, login and security handled through Devise
+
+	Some bugs (mostly small front-end styling errors)
+		- Have performed manual end-to-end tests to confirm braintree payment integration working.
 
 	Code moved to a public repo as of 9/10/2016 due to lack of interest in continuing the project.
+	Now serves as a skeleton/example app that can be cloned and adapted.
 
 * Ruby version 
 	ruby "2.2.2", rails "4.2.2"
 
 * System dependencies
-	postgres, braintree, 
+	docker, docker-compose
 
 * Configuration
-	figaro file for secure keys/values
+	Using the rails figaro gem
+	Store secure configuration values in /config/application.yml
+	(an example template /config/app_example.yml is provided
+		- cp ./config/app_example.ym ./config/application.yml
+		- populate application.yml with your keys and envirnonment info
+		(Make sure to keep these out of source control)
+
+* Installation
+	* Automatically install through docker *
+	git clone
+	docker-compose build
+	docker-compose up -d
+	docker-compose run --rm app rake db:create db:migrate
+	(And for testing/seeded users)
+	docker-compose run --rm app rake db:seed 
+
+	*** TODO - add script to automate docker-compose installation
 
 * Database creation 
 * Database initialization
-	= generic rails - rake db:create, rake db:migrate rake db:seed (for test data)
-
-* How to run the test suite
-* Services (job queues, cache servers, search engines, etc.)
-	initialize db and then just launch the dev server - manual tests setup for now
-	no automated tests, no unit tests... 
+	Database automatically configured through docker
+	Can set your db name, host, credentials through application.yml
+	PostgresQL 9.5
 
 * Deployment instructions
+	*** To be updated ***
+	(Old instructions)
 	app hosted on heroku
 	git push heroku master
-
 	git push staging master (heroku staging server)
 * ...
 
