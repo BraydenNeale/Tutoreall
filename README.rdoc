@@ -35,9 +35,14 @@ Tutorial Academy
 		- populate application.yml with your keys and envirnonment info
 		(Make sure to keep these out of source control)
 
+	Docker-compose config in .env (base dir)
+	
+	TODO: remove figaro and set app config and compose config from the same file...
+
 * Installation
 	* Automatically install through docker *
 	git clone
+	(sudo systemctl start docker)
 	docker-compose build
 	docker-compose up -d
 	docker-compose run --rm app rake db:create db:migrate

@@ -18,3 +18,8 @@ S3_BUCKET_NAME:  's3_bucket'
 FOG_DIRECTORY: 'fog_directory'
 STAGING_EMAIL_ADDRESS: 'mail@test.com'
 HEROKU_APP_ENVIRONMENT: 'STAGING'
+
+# Set the following docker-compose variables in:
+# .env (based directory)
+# POSTGRES_USER=tauser
+# POSTGRES_PASSWORD=password

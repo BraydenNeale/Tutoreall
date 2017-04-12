@@ -6,12 +6,14 @@ volumes:
 
 services:
   db:
+    env_file: .env
     image: postgres:9.5
     environment:
-      POSTGRES_USER: tauser
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5433:5432"
+      - 5433:5432
+    container_name: postgres9.5
 
   app:
     env_file: ./config/application.yml
@@ -20,8 +22,9 @@ services:
     volumes:
       - .:/usr/src/tutorial_academy
     ports:
-      - "8080:3000"
+      - 8080:3000
     depends_on:
       - db
     links:
       - db 
+    container_name: webserver_ta
