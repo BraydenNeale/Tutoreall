@@ -9,14 +9,14 @@ $(document).on('submit', '#login_tutor', function(e) {
     title: "Success",
     text: "Logging you in now",
     type: 'success',
-    timer: 2000
+    timer: 5000
   });
 }).on('ajax:error', '#login_tutor', function(e, data, status, xhr) {
   swal({
     title: 'Oh no.',
     text: 'Please check your email, password and try again',
     type: 'error',
-    timer: 1000
+    timer: 5000
   });
 });
 
@@ -27,14 +27,14 @@ $(document).on('submit', '#login_student', function(e) {
     title: "Success", 
     text: "Logging you in now", 
     type: 'success',
-    timer: 2000
+    timer: 5000
   });
 }).on('ajax:error', '#login_student', function(e, data, status, xhr) {
   swal({
     title: 'Oh no.',
     text: 'Please check your email, password and try again',
     type: 'error',
-    timer: 1000
+    timer: 5000
   });
 });
 
