@@ -1,7 +1,7 @@
 # TutorialAcademy
 A **DISCONTINUED** booking, scheduling and payment service for connecting students and tutors in Perth. You can view the site at:
-* [tutorial-academy.herokuapp.com]
-* And if still registered: [tutorial.academy] and [tutorialacademy.com.au]
+* [tutorial-academy.herokuapp.com](https://tutorial-academy.herokuapp.com)
+* And if still registered: [tutorial.academy](https://tutorial.academy/) and [tutorialacademy.com.au](https://tutorialacademy.com.au/)
 
 Code moved to this public repo as of 9/10/2016 due to a lack of interest in continuing the project
 
