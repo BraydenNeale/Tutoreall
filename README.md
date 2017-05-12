@@ -6,7 +6,9 @@ A **DISCONTINUED** booking, scheduling and payment service for connecting studen
 Code moved to this public repo as of 9/10/2016 due to a lack of interest in continuing the project
 
 ## Installation
-Installing this master branch is a pain... refer to [docker branch](https://github.com/BraydenNeale/tutorial_academy/tree/docker) for installing with docker-compose.
+* `docker-compose build`
+* `docker-composee up -d`
+* container port forwarded to port 8080 -> localhost:8080 to view the app
 
 ### Components
 * Hosting through Heroku
@@ -18,10 +20,8 @@ Installing this master branch is a pain... refer to [docker branch](https://gith
 
 ### Database
 ##### PGSQL
-* `rake db:create`
-* `rake db:migrate`
-* `rake db:seed` - for test data
-
+* `docker-compose run -rm app rake db:create db:migrate`
+* `docker-compose run -rm app rake db:seed` - for test data
 ## Known issues
 * Logins have been disabled for the hosted site.
 * Many basic styling issues
