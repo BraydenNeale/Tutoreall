@@ -5,7 +5,7 @@
 
 case Rails.env
 
-when "development"
+# when "development"
 
   Payment.destroy_all
   Lesson.destroy_all
@@ -69,6 +69,6 @@ when "development"
     end
   end
 
-when "production"
-   # No seeding
-end
+# when "production"
+#    # No seeding
+# end
