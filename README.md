@@ -7,8 +7,11 @@ Code moved to this public repo as of 9/10/2016 due to a lack of interest in cont
 
 ## Installation
 * `docker-compose build`
-* `docker-composee up -d`
+* `docker-compose up -d`
 * container port forwarded to port 8080 -> localhost:8080 to view the app
+
+### Restart
+* `docker-compose restart app`
 
 ### Components
 * Hosting through Heroku
@@ -20,8 +23,12 @@ Code moved to this public repo as of 9/10/2016 due to a lack of interest in cont
 
 ### Database
 ##### PGSQL
-* `docker-compose run -rm app rake db:create db:migrate`
-* `docker-compose run -rm app rake db:seed` - for test data
+* `docker-compose run --rm app rake db:create db:migrate`
+* `docker-compose run --rm app rake db:seed` - for test data
+
+### Env variables
+Refer to *./config/app_example.yml* for an overview of the environment variables used in this project
+
 ## Known issues
 * Logins have been disabled for the hosted site.
 * Many basic styling issues

@@ -1,9 +1,10 @@
 #figaro heroku:set -e production
 #figaro heroku:set -e production -a appname
 
-# Copy (and complete) this configuration info into /config/application.yml
+# ***
+# Copy (and complete) this configuration info into ./config/application.yml
 #     keep it secure and out of source control
-
+# ***
 DEVISE_SECRECT_KEY: 'devise_key'
 EMAIL_FROM: 'mail@test.com'
 AWS_ACCESS_KEY_ID: 'aws_key'
@@ -21,7 +22,9 @@ HEROKU_APP_ENVIRONMENT: 'STAGING'
 
 SEED_USER_PASSWORD: "password"
 
+#***
 # Set the following docker-compose variables in:
-# .env (based directory)
+# ./config/database.env
+# ***
 # POSTGRES_USER=tauser
 # POSTGRES_PASSWORD=password
