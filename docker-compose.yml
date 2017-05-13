@@ -6,14 +6,13 @@ volumes:
 
 services:
   db:
-    env_file: .env
+    env_file: ./config/database.env
     image: postgres:9.5
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - 5433:5432
-    container_name: postgres9.5
 
   app:
     env_file: ./config/application.yml
@@ -25,6 +24,3 @@ services:
       - 8080:3000
     depends_on:
       - db
-    links:
-      - db 
-    container_name: webserver_ta

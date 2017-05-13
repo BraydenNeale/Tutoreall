@@ -18,7 +18,9 @@
 
 # Ignore application configuration
 /config/application.yml
-.env
+/config/database.env
 
 # Ignore local upload
 /public/uploads/
+
+.DS_Store

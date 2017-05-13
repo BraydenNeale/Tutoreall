@@ -19,6 +19,8 @@ FOG_DIRECTORY: 'fog_directory'
 STAGING_EMAIL_ADDRESS: 'mail@test.com'
 HEROKU_APP_ENVIRONMENT: 'STAGING'
 
+SEED_USER_PASSWORD: "password"
+
 # Set the following docker-compose variables in:
 # .env (based directory)
 # POSTGRES_USER=tauser

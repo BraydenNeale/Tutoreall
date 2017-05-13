@@ -23,8 +23,8 @@ when "development"
   100.times do 
     Tutor.create(
       email: Faker::Internet.email,
-      password: "password", 
-      password_confirmation: "password",
+      password: ENV['SEED_USER_PASSWORD'], 
+      password_confirmation: ENV['SEED_USER_PASSWORD'],
       firstname: Faker::Name.first_name,
       lastname: Faker::Name.last_name,
       confirmation_sent_at: Time.now,
