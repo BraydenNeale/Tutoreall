@@ -17,7 +17,7 @@ Code moved to this public repo as of 9/10/2016 due to a lack of interest in cont
 * Hosting through Heroku
 * Payments handled through Braintree
 * Images were uploaded to amazon s3 (bucket discontinued)
-* Figaro gem for managin storing key/value pairs
+* Figaro gem for managing environment key/value pairs
 
 * Ruby Version = 2.2.2, Rails = 4.2.2
 
