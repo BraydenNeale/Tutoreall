@@ -6,17 +6,14 @@ volumes:
 
 services:
   db:
-    env_file: ./config/database.env
     image: postgres:9.5
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file: ./config/database.env
     ports:
       - 5433:5432
 
   app:
-    env_file: ./config/application.yml
     build: .
+    env_file: ./config/application.yml
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/usr/src/tutorial_academy
