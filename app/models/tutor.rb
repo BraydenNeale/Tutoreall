@@ -196,10 +196,14 @@ class Tutor < ActiveRecord::Base
   end
 
   def self.area_sort(tutor, area)
-    require 'haversine'
+    # Haversine argument error... don't have time to properly debug this
+    #require 'haversine'
 
-    distance = Haversine.distance(tutor.area.latitude, tutor.area.longitude, 
-      area.latitude, area.longitude)
+    #distance = Haversine.distance(tutor.area.latitude, tutor.area.longitude, 
+    #  area.latitude, area.longitude)
+
+    # temp taxi-cab formula: dist((x,y), (a,b)) = |x - a| + |y - b|
+    distance = (tutor.area.latitude - area.latitude).abs + (tutor.area.longitude - area.longitude).abs
 
     return distance
   end
