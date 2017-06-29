@@ -24,7 +24,7 @@ class Search < ActiveRecord::Base
   def find_tutors
     return Array.new if search_is_blank?
 
-    tutors = Array(Tutor.all.where(verified: true))
+    tutors = Tutor.all.where(verified: true)
 
     tutors = subjects_filter(tutors) if subjects.present?
     tutors = age_filter(tutors)
