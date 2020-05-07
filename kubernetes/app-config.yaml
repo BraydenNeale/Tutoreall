@@ -1,0 +1,21 @@
+#Example data...  Don't source control legit config - TODO k8s secrets
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  AWS_ACCESS_KEY_ID: awskey
+  AWS_SECRET_ACCESS_KEY: secret
+  BRAINTREE_MERCHANT_ID: braintreeID
+  BRAINTREE_PRIVATE_KEY: privatekey
+  BRAINTREE_PUBLIC_KEY: publickey
+  DEVISE_SECRECT_KEY: devisekey
+  EMAIL_FROM: mail@test.com
+  FOG_DIRECTORY: fogdirectory
+  HEROKU_APP_ENVIRONMENT: STAGING
+  POSTGRES_HOST: postgres-db
+  POSTGRES_PASSWORD: password
+  POSTGRES_USER: tauser
+  S3_BUCKET_NAME: s3bucket
+  SEED_USER_PASSWORD: password
+  STAGING_EMAIL_ADDRESS: mail@test.com

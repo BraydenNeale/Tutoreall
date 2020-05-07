@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db
+  labels:
+    tier: database
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: postgres
+        tier: database
+    spec:
+      containers:
+      - name: postgres-db
+        image: postgres:9.5
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: db-config
+      volumes:
+      - name: db-data
+        persistentVolumeClaim:
+          claimName: postgres-db-volume

@@ -1,0 +1,8 @@
+#Example data...  Don't source control legit config - TODO k8s secrets
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  POSTGRES_PASSWORD: password
+  POSTGRES_USER: tauser
