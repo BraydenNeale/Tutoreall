@@ -238,8 +238,8 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.2)
-    puma (2.13.4)
-    rack (1.6.13)
+    puma (3.12.4)
+    rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.2)
@@ -349,7 +349,7 @@ DEPENDENCIES
   local_time (~> 1.0.3)
   mailboxer (~> 0.13.0)
   pg
-  puma (~> 2.13.4)
+  puma (~> 3.12.4)
   rails (= 4.2.2)
   rails-assets-sweetalert!
   rails_12factor (~> 0.0.3)
