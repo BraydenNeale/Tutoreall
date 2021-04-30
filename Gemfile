@@ -56,7 +56,7 @@ gem 'simple_calendar', '~> 2.0.3'	# integrate lesson dates onto a calendar
 
 gem 'braintree', '~> 2.56.0' # braintree for processing payments
 gem 'figaro', '~> 1.1.1' # Figaro - secure config
-gem 'gon', '~> 6.0.1'
+gem 'gon', '~> 6.4.0'
 
 gem "fog", '~> 1.37.0' # carrier wave amazon s3
 gem 'aws-sdk', '~> 2.2.11'
