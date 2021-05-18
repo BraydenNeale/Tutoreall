@@ -80,7 +80,7 @@ gem 'haversine', '~> 0.3.0'
 # sudo gem install nokogiri -v '1.6.7.1' -- --use-system-libraries --with-xml2-include=/usr/include/libxml2 --with-xml2-lib=/usr/lib
 
 #heroku
-gem 'puma', '~> 2.13.4'
+gem 'puma', '~> 4.3.8'
 gem 'rails_12factor', '~> 0.0.3', group: :production
 
 #sweet alerts
